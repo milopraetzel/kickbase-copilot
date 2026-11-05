@@ -39,6 +39,7 @@ from kickbase_agent.decision.models import Proposal
 from kickbase_agent.decision.overdraft import (
     MIDWEEK_SWAP_BRIDGE_EUR,
     PLANNING_OVERDRAFT_UNTIL,
+    SWAP_SALE_CREDIT_PERCENT,
     midweek_swap_bridge,
     overdraft_active,
     planning_overdraft,
@@ -135,34 +136,87 @@ def _comeback_expected_points(market_value_eur: int) -> float:
     return min(125.0, round(COMEBACK_EXPECTED_POINTS + (mv_m - 6.0) * 2.0, 1))
 
 
+def _is_rival_pos_starter(player_dict: dict) -> bool:
+    if "prob" in player_dict or "lineup_prob" in player_dict:
+        return int(player_dict.get("prob") or player_dict.get("lineup_prob") or 1) in {1, 2}
+    if "aufgestellt" in player_dict:
+        return bool(player_dict.get("aufgestellt"))
+    return True
+
+
 def estimate_rival_scarcity(
     market_listings: list,
     *,
     position: int,
     rival_squads: list[dict] | None = None,
 ) -> int:
-    """Schätzt die Anzahl der Mitspieler mit akutem Bedarf auf ``position``."""
+    """Schätzt die Anzahl der Mitspieler mit akutem Bedarf auf ``position``.
+
+    WICHTIG: Nur echte Mitspieler-Kader mit weniger als dem Formations-Minimum
+    auf ``position`` zählen als Nachfrager. Verkäufer (`mp.seller_id`) bieten
+    auf dieser Position an und dürfen niemals als Nachfrager gezählt werden.
+    """
+    _ = market_listings
     pos_min = {1: 1, 2: 3, 3: 2, 4: 1}.get(int(position), 1)
     needy_rivals: set[str] = set()
     for mgr in rival_squads or []:
         if mgr.get("me"):
             continue
         uid = str(mgr.get("user_id") or mgr.get("id") or "")
-        players = mgr.get("spieler") or mgr.get("players") or []
+        players = mgr.get("spieler") or mgr.get("players") or mgr.get("it") or []
         pos_count = sum(
             1
             for p in players
-            if int(p.get("pos") or p.get("position") or 0) == int(position)
-            and int(p.get("prob") or p.get("lineup_prob") or 1) in {1, 2}
+            if isinstance(p, dict)
+            and int(p.get("pos") or p.get("position") or 0) == int(position)
+            and _is_rival_pos_starter(p)
         )
         if uid and pos_count < pos_min:
             needy_rivals.add(uid)
-    for mp in market_listings:
-        seller = str(getattr(mp, "seller_id", "") or "")
-        mp_pos = int(getattr(getattr(mp, "player", None), "position", 0) or 0)
-        if seller and mp_pos == int(position):
-            needy_rivals.add(seller)
     return len(needy_rivals)
+
+
+async def load_rival_squads_for_scarcity(
+    client, league_id: str, own_user_id: str
+) -> list[dict]:
+    """Lädt die Mitspieler-Kader über `get_ranking` + `get_manager_squad`."""
+    preset = getattr(client, "rival_squads", None)
+    if preset is not None:
+        return list(preset)
+    if not (hasattr(client, "get_ranking") and hasattr(client, "get_manager_squad")):
+        return []
+    try:
+        ranking = await client.get_ranking(league_id)
+    except Exception:
+        return []
+    squads: list[dict] = []
+    for entry in ranking or []:
+        uid = str(getattr(entry, "user_id", "") or "")
+        if not uid or uid == str(own_user_id):
+            continue
+        try:
+            raw = await client.get_manager_squad(league_id, uid)
+        except Exception:
+            continue
+        items = (raw or {}).get("it") if isinstance(raw, dict) else None
+        if not isinstance(items, list):
+            continue
+        squads.append(
+            {
+                "user_id": uid,
+                "me": False,
+                "players": [
+                    {
+                        "id": str(it.get("pi") or it.get("i") or ""),
+                        "pos": int(it.get("pos") or 0),
+                        "lo": it.get("lo"),
+                    }
+                    for it in items
+                    if isinstance(it, dict)
+                ],
+            }
+        )
+    return squads
 #: Regel-ID für den gezielten Abbau von Nicht-Startern bei negativem Kontostand.
 DEFICIT_COVER_RULE = "sell_deficit_cover"
 #: Konto-heilender Downgrade-Tausch (25.10.2026): Wenn das Konto bei 11er-Kader im Minus
@@ -200,9 +254,12 @@ SWAP_HOLD_AFTER_PURCHASE = timedelta(days=3)
 #: Mindest-Punktgewinn im 4-Spieltage-Horizont, ab dem ein noch nicht abgegebenes
 #: (`planned`) Tausch-Vorhaben durch ein stärkeres Tausch-Paar abgelöst wird.
 SWAP_UPGRADE_MIN_GAIN_POINTS = 15.0
-#: Unter der Woche (> 48 h vor Anpfiff) löst ein kleines Defizit innerhalb der
-#: Wochen-Brücke (`MIDWEEK_SWAP_BRIDGE_EUR`) keinen Downgrade-Tausch aus.
+#: Unter der Woche (> 48 h vor Anpfiff) löst ein kleines Defizit innerhalb von
+#: `MIDWEEK_DEFICIT_DOWNGRADE_MAX_EUR` (bzw. bis `MIDWEEK_SWAP_BRIDGE_EUR` am
+#: frühen Wochenanfang > 76 h vor Anpfiff) keinen Downgrade-Tausch aus.
 MIDWEEK_DEFICIT_DOWNGRADE_LEAD = timedelta(hours=48)
+EARLY_WEEK_DEFICIT_DOWNGRADE_LEAD = timedelta(hours=76)
+MIDWEEK_DEFICIT_DOWNGRADE_MAX_EUR = 3_500_000
 #: So weit liest load_recent_purchases das Audit zurück (mehr als die Haltefrist).
 PURCHASE_LOOKBACK = timedelta(days=30)
 
@@ -643,6 +700,14 @@ async def build_plan(
     squad = await client.get_squad(lg)
     market = await client.get_market(lg)
     budget = await client.get_budget(lg)
+    if getattr(client, "rival_squads", None) is not None or (
+        load_performance is _DEFAULT_LOAD_PERFORMANCE
+        and hasattr(client, "get_ranking")
+        and hasattr(client, "get_manager_squad")
+    ):
+        loaded_rival_squads = await load_rival_squads_for_scarcity(client, lg, auth.user_id)
+    else:
+        loaded_rival_squads = []
 
     squad_players = [sp.player for sp in squad]
     # Gelistete EIGENE Spieler stehen bei Kickbase in Kader UND Markt —
@@ -1266,6 +1331,14 @@ async def build_plan(
                 and li_status.get(player.id) not in {Status.BENCH, Status.OUT}
                 and (
                     _observed_24h_change(player) >= ROLE_PROOF_KB3_MIN_MV_CHANGE_24H
+                    or (
+                        li_status.get(player.id) is Status.STARTER
+                        and (
+                            bool(getattr(player, "mv_change_24h_observed", False))
+                            or len(history.get(player.id, [])) >= 2
+                        )
+                        and _observed_24h_change(player) > 0
+                    )
                     or player.id in comeback_ids
                     or player.id in profiteur_ids
                 )
@@ -1755,11 +1828,11 @@ async def build_plan(
             if loss_plan.filled_slots < result.filled_slots
             else max(0.0, float(result.horizon_points - loss_plan.horizon_points))
         )
-        starter_gain_pts = slot_gain_horizon / 4.0
+        starter_gain_pts = slot_gain_horizon
         rival_scarcity = estimate_rival_scarcity(
             alive,
             position=int(fresh.position),
-            rival_squads=getattr(client, "rival_squads", None),
+            rival_squads=loaded_rival_squads,
         )
         premium = (
             bid_premium(
@@ -2008,20 +2081,7 @@ async def build_plan(
         ]
         if custom_rules_active and agent_rules.allow_sells == "bench_only":
             sale_candidates = list(non_starter_sales)
-        sale_side = (
-            [
-                p for p in sale_candidates
-                if not (
-                    is_verified_starter(p.id, p.lineup_prob, li_status, p.fitness_status)
-                    and (
-                        int(getattr(p, "mv_trend", 0) or 0) == 1
-                        or _observed_24h_change(p) > 0
-                    )
-                )
-            ]
-            if non_starter_sales
-            else sale_candidates
-        )
+        sale_side = list(sale_candidates)
         def _favorable_next_two_games(player_obj) -> bool:
             return (
                 fixture_horizon_multiplier(
@@ -2234,10 +2294,16 @@ async def build_plan(
                 bridge = _pair_bridge(sold, price)
                 gain = projections[pid]["horizon_points"] - projections[sold.id]["horizon_points"]
                 credit_p = min(proceeds + bridge, price + max(0, -remaining))
+                tolerated_deficit = (
+                    MIDWEEK_SWAP_BRIDGE_EUR
+                    if deadline is not None
+                    and (deadline - now) > EARLY_WEEK_DEFICIT_DOWNGRADE_LEAD
+                    else MIDWEEK_DEFICIT_DOWNGRADE_MAX_EUR
+                )
                 midweek_bridge_tolerated = (
                     deadline is not None
                     and (deadline - now) > MIDWEEK_DEFICIT_DOWNGRADE_LEAD
-                    and -remaining <= MIDWEEK_SWAP_BRIDGE_EUR
+                    and -remaining <= tolerated_deficit
                 )
                 heals_deficit_downgrade = (
                     remaining < 0
@@ -2394,6 +2460,7 @@ async def build_plan(
                         (
                             int(not row.seller_id),
                             plan.filled_slots,
+                            int(_sale_tier(squad_by_id[sold_id]) <= 1),
                             round(plan.horizon_points, 6),
                             -prio,
                             -net,
@@ -2502,11 +2569,11 @@ async def build_plan(
                 float(option.horizon_points)
                 - float(projections[sold_id]["horizon_points"]),
             )
-            swap_starter_gain_pts = swap_gain_horizon / 4.0
+            swap_starter_gain_pts = swap_gain_horizon
             swap_rival_scarcity = estimate_rival_scarcity(
                 alive,
                 position=int(fresh.position),
-                rival_squads=getattr(client, "rival_squads", None),
+                rival_squads=loaded_rival_squads,
             )
             premium = (
                 None
@@ -2952,6 +3019,7 @@ async def build_plan(
         0,
         -(
             cash_plan
+            - swap_trade_cover
             + trade_held_cover
             - sum(prices[p] for p in selected_ids if p not in commitments and p not in new_swaps)
         ),
@@ -3229,8 +3297,8 @@ async def build_plan(
                 f"Tausch auf Planungs-Dispo (bis {PLANNING_OVERDRAFT_UNTIL:%d.%m.%Y}): "
                 f"{sold.first_name} {sold.last_name}".strip() + f" (MW {sold.market_value:,} €) "
                 f"geht per Sofortverkauf, sobald das Ziel im Kader steht; angerechnet "
-                f"{proceeds:,} € (90 %), netto {max(0, prices[pid] - proceeds):,} € aus "
-                "echtem Geld."
+                f"{proceeds:,} € ({SWAP_SALE_CREDIT_PERCENT} %), netto "
+                f"{max(0, prices[pid] - proceeds):,} € aus echtem Geld."
             ).replace(",", "."))
         review = {
             "schema_version": 1,

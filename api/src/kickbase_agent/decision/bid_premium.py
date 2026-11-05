@@ -129,7 +129,7 @@ def bid_premium(
         )
         growth = GROWTH_INTERCEPT + GROWTH_STEP * clipped + GROWTH_MARGIN
         if starter_gain_points >= 80.0:
-            starter_anchor = min(0.065, 0.03 + (starter_gain_points - 80.0) * 0.00025)
+            starter_anchor = min(0.05, 0.03 + (starter_gain_points - 80.0) * 0.000125)
             growth = max(growth, starter_anchor)
         premium, rule = (win_curve, "kurve") if win_curve < growth else (growth, "prognose")
         if rival_scarcity_count > 0:

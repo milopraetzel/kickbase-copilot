@@ -193,7 +193,7 @@ _TRADE_ACTION_TYPES = ("bid", "cancel_bid", "sell", "list", "delist", "accept", 
 _DISPOSAL_ACTION_TYPES = ("sell", "list", "accept")
 
 
-def _protected_veto(action: PlannedAction) -> str | None:
+def _protected_veto(action: PlannedAction, *, player_name: str = "") -> str | None:
     """Verfassungs-Sperre: geschützte Spieler werden NIE abgegeben; None = frei.
 
     Emils Anweisung vom 25.08.26 („Verkaufe nicht Olise, aber sonst mach einfach
@@ -212,8 +212,9 @@ def _protected_veto(action: PlannedAction) -> str | None:
         return None
     pid = str(action.player_id or "")
     rules = load_agent_rules()
+    combined_name = f"{player_name} {action.rationale or ''}".strip()
     protected_by_rules = rules.is_custom_active() and rules.is_player_protected(
-        pid, str(action.rationale or "")
+        pid, combined_name
     )
     if not pid or (pid not in protected_player_ids() and not protected_by_rules):
         return None
@@ -843,6 +844,32 @@ class ActionExecutor:
         else:
             self._preflight = preflight
 
+    async def _resolve_disposal_player_name(
+        self, action: PlannedAction, rules: AgentRules
+    ) -> str:
+        """Löst den Spielernamen aus dem Liga-Kader auf, falls Namensschutz aktiv ist."""
+        if (
+            action.action_type not in _DISPOSAL_ACTION_TYPES
+            or not rules.is_custom_active()
+            or not rules.protected_players
+            or self._client is None
+            or not hasattr(self._client, "get_squad")
+        ):
+            return ""
+        pid = str(action.player_id or "")
+        try:
+            squad = await self._client.get_squad(action.league_id)
+            for sp in squad or []:
+                p = getattr(sp, "player", sp)
+                if str(getattr(p, "id", "") or "") == pid:
+                    first = str(getattr(p, "first_name", "") or "")
+                    last = str(getattr(p, "last_name", "") or "")
+                    name = str(getattr(p, "name", "") or "")
+                    return f"{first} {last} {name}".strip()
+        except Exception:
+            return ""
+        return ""
+
     async def execute(
         self, action: PlannedAction, *, dry_run: bool | None = None, now: datetime | None = None
     ) -> ActionResult:
@@ -914,7 +941,8 @@ class ActionExecutor:
         # 'skipped_dry_run' durchlaufen, sonst liest sich der Bericht so, als
         # wäre der Verkauf bloß wegen AGENT_DRY_RUN unterblieben. Geschrieben
         # wird in beiden Fällen nichts; hier steht nur der ehrliche Grund.
-        if (protected := _protected_veto(action)) is not None:
+        resolved_name = await self._resolve_disposal_player_name(action, rules)
+        if (protected := _protected_veto(action, player_name=resolved_name)) is not None:
             _write_log.warning("verfassung: %s", protected)
             return self._resolve(row, "refused", stamp, rationale=protected)
 
@@ -1015,7 +1043,9 @@ class ActionExecutor:
         beim Klick garantiert `refused` endet, gehört nicht in Emils Zentrale.
         """
         stamp = now or datetime.now(UTC)
-        if (protected := _protected_veto(action)) is not None:
+        rules = load_agent_rules()
+        resolved_name = await self._resolve_disposal_player_name(action, rules)
+        if (protected := _protected_veto(action, player_name=resolved_name)) is not None:
             _write_log.warning("verfassung (stage): %s", protected)
             return ActionResult(status="refused", action_id=None, message=protected)
         key = idempotency_key(action, stamp.date().isoformat())
@@ -1128,7 +1158,8 @@ class ActionExecutor:
         # Verfassung auch im Freigabe-Pfad: Ein vor der Schutz-Einführung
         # gestagter Vorschlag (oder eine nachträglich erweiterte Liste) darf
         # durch einen Klick nicht doch noch ausgeführt werden.
-        if (protected := _protected_veto(action)) is not None:
+        resolved_name = await self._resolve_disposal_player_name(action, rules)
+        if (protected := _protected_veto(action, player_name=resolved_name)) is not None:
             _write_log.warning("verfassung (staged): %s", protected)
             return self._resolve(row, "refused", stamp, rationale=protected)
         if (r_veto := _rules_veto(action, rules)) is not None:

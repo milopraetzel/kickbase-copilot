@@ -15,6 +15,7 @@ from kickbase_agent.agent.rules import load_agent_rules, save_agent_rules
 from kickbase_agent.cli import plan as plan_mod
 from kickbase_agent.cli.cockpit.workspace import render_workspace
 from kickbase_agent.db.models import Base
+from kickbase_agent.decision.bid_premium import bid_premium
 from kickbase_agent.decision.lineup import best_partial_lineup
 from kickbase_agent.decision.lineup_service import _forecast_lineup
 from kickbase_agent.intel.models import ExplosionCandidate
@@ -213,19 +214,128 @@ def test_lineup_tie_breaker_uses_current_market_value_and_bench_quality() -> Non
     assert partial.starters[0].player_id == "z-star"
 
 
-def test_comeback_prior_scales_with_market_value_and_rival_scarcity_counts() -> None:
+@pytest.mark.asyncio
+async def test_comeback_prior_and_live_rival_scarcity_ignore_sellers() -> None:
     assert plan_mod._comeback_expected_points(2_000_000) == 55.0
     assert plan_mod._comeback_expected_points(6_000_000) == 75.0
     assert plan_mod._comeback_expected_points(25_000_000) > 105.0
 
+    # Verkäufer (seller_id) bieten auf der Position an und dürfen NICHT als Nachfrager zählen:
+    scarcity_only_sellers = plan_mod.estimate_rival_scarcity(
+        [SimpleNamespace(seller_id="rival-seller", player=SimpleNamespace(position=4))],
+        position=4,
+        rival_squads=None,
+    )
+    assert scarcity_only_sellers == 0
+
     scarcity = plan_mod.estimate_rival_scarcity(
-        [SimpleNamespace(seller_id="rival-1", player=SimpleNamespace(position=4))],
+        [SimpleNamespace(seller_id="rival-seller", player=SimpleNamespace(position=4))],
         position=4,
         rival_squads=[
             {"user_id": "rival-2", "spieler": [{"pos": 2, "prob": 1}]},
+            {"user_id": "rival-3", "spieler": [{"pos": 4, "prob": 1}]},
         ],
     )
-    assert scarcity == 2
+    assert scarcity == 1
+
+    # Live-Laden über get_ranking + get_manager_squad ignoriert eigenen Account und zählt
+    # Konkurrenten mit Positionsmangel:
+    class _FakeClient:
+        async def get_ranking(self, league_id: str):
+            return [
+                SimpleNamespace(user_id="me-1"),
+                SimpleNamespace(user_id="rival-a"),
+                SimpleNamespace(user_id="rival-b"),
+            ]
+
+        async def get_manager_squad(self, league_id: str, user_id: str):
+            if user_id == "rival-a":
+                # 0 Stürmer (pos=4 < 1) -> unterbesetzt auf Position 4
+                return {"it": [{"pi": "p1", "pos": 2, "lo": 0}]}
+            # 2 Stürmer (pos=4 >= 1) -> nicht unterbesetzt auf Position 4
+            return {
+                "it": [
+                    {"pi": "p2", "pos": 4, "lo": 9},
+                    {"pi": "p3", "pos": 4, "lo": 10},
+                ]
+            }
+
+    loaded = await plan_mod.load_rival_squads_for_scarcity(_FakeClient(), "L1", "me-1")
+    assert len(loaded) == 2
+    assert plan_mod.estimate_rival_scarcity([], position=4, rival_squads=loaded) == 1
+
+
+@pytest.mark.asyncio
+async def test_round3_starter_gain_units_and_numeric_id_protection() -> None:
+    # 1. starter_gain_points in 4-Spieltage-Horizontpunkten (>= 80.0 = +20 Pkt/Spieltag):
+    # Leicht fallender Top-Starter (+120 Horizontpunkte) fällt nicht auf +0,5 % ("faller"),
+    # sondern nutzt den Top-Starter-Anker (growth_margin >= 3,5 %).
+    low_gain = bid_premium(10_000_000, -60_000, True, starter_gain_points=30.0)
+    top_starter = bid_premium(10_000_000, -60_000, True, starter_gain_points=120.0)
+    assert low_gain is not None and low_gain.rule == "faller"
+    assert top_starter is not None and top_starter.rule != "faller"
+    assert top_starter.amount == 10_350_000
+    assert top_starter.growth_margin == pytest.approx(0.035)
+
+    # 2. Numerische Spieler-IDs ("832") matchen exakt "832", niemals "18329" oder "8320":
+    save_agent_rules(
+        {
+            "mode": "full_autopilot",
+            "protected_players": ["832", "Musiala"],
+        },
+        updated_by="test",
+    )
+    loaded_rules = load_agent_rules()
+    assert loaded_rules.is_player_protected("832", "Andere Person") is True
+    assert loaded_rules.is_player_protected("18329", "Harry Kane") is False
+    assert loaded_rules.is_player_protected("8320", "Harry Kane") is False
+
+    # 3. ActionExecutor löst bei numerischer player_id ("18329") und leerem rationale
+    # den Spielernamen ("Jamal Musiala") live über client.get_squad() auf und verweigert:
+    class _SquadClient:
+        async def get_squad(self, league_id: str):
+            return [
+                SimpleNamespace(
+                    player=SimpleNamespace(
+                        id="18329", first_name="Jamal", last_name="Musiala"
+                    )
+                ),
+                SimpleNamespace(
+                    player=SimpleNamespace(
+                        id="18330", first_name="Harry", last_name="Kane"
+                    )
+                ),
+            ]
+
+    engine = create_engine("sqlite:///:memory:", future=True)
+    Base.metadata.create_all(engine)
+    with Session(engine, future=True) as session:
+        executor = ActionExecutor(_SquadClient(), session, preflight=False)
+        blocked = await executor.execute(
+            PlannedAction(
+                action_type="sell",
+                league_id="L1",
+                player_id="18329",
+                amount=25_000_000,
+                rule_id="sell_1",
+            )
+        )
+        assert blocked.status == "refused"
+        assert "Geschützter Spieler" in (blocked.message or "")
+
+        # Unbeteiligte numerische ID "18330" (trotz "832"-Ähnlichkeit kein Substring-Treffer)
+        # wird nicht vom Verfassungs-Schutz blockiert:
+        allowed = await executor.execute(
+            PlannedAction(
+                action_type="sell",
+                league_id="L1",
+                player_id="18330",
+                amount=25_000_000,
+                rule_id="sell_2",
+            ),
+            dry_run=True,
+        )
+        assert allowed.status == "skipped_dry_run"
 
 
 @pytest.mark.asyncio

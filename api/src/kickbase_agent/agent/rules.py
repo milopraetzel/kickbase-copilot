@@ -57,11 +57,9 @@ class AgentRules:
             token = entry.strip().lower()
             if not token:
                 continue
-            if (
-                token == pid
-                or (len(token) >= 3 and token in pid)
-                or (pname and token in pname)
-            ):
+            if token == pid or (pname and token in pname):
+                return True
+            if not pid.isdigit() and not token.isdigit() and len(token) >= 3 and token in pid:
                 return True
         return False
 
