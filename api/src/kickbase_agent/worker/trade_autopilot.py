@@ -43,6 +43,7 @@ from zoneinfo import ZoneInfo
 
 from sqlalchemy import select, update
 
+from kickbase_agent.agent.rules import load_agent_rules
 from kickbase_agent.config import get_settings
 from kickbase_agent.db.models import Intent, Report
 from kickbase_agent.db.session import SessionLocal
@@ -60,6 +61,7 @@ from kickbase_agent.trading.trade_book import (
     is_trade,
     load_trade_book,
     regular_fill,
+    remaining_updates_until_friday,
     sale_cover,
     sale_deadline,
     trade_sale_proceeds,
@@ -338,6 +340,14 @@ def plan_bids(
     existing, blocked, taken = set(existing), set(blocked), set(taken)
     ordered = sorted(candidates, key=lambda c: c.player_id not in existing)
     stamp = _utc(now)
+    rules = load_agent_rules()
+    active_cap_eur = (
+        int(rules.trade_budget_cap_million * 1_000_000)
+        if rules.is_custom_active()
+        else TRADE_CAP_EUR
+    )
+    haircut_pct = rules.friday_buffer_haircut_pct if rules.is_custom_active() else 0.0
+    updates_left = remaining_updates_until_friday(stamp, sale_by)
     plans: list[BidPlan] = []
     skipped: dict[str, str] = {}
     kept_amount = kept_count = kept_cost = 0
@@ -377,8 +387,10 @@ def plan_bids(
             continue
         assert slot is not None
         amount = min(cand.max_bid, trade_cap(slot.mv))
-        if capacity.exposure + kept_amount + amount > TRADE_CAP_EUR:
-            skipped[pid] = f"Handelsrahmen {_eur(TRADE_CAP_EUR)} reicht nicht"
+        if rules.is_custom_active():
+            amount = min(amount, int(rules.max_bid_million * 1_000_000))
+        if capacity.exposure + kept_amount + amount > active_cap_eur:
+            skipped[pid] = f"Handelsrahmen {_eur(active_cap_eur)} reicht nicht"
             continue
         if capacity.open_trades + kept_count >= MAX_OPEN_TRADES:
             skipped[pid] = f"schon {MAX_OPEN_TRADES} Handelsspieler/-gebote offen"
@@ -394,10 +406,14 @@ def plan_bids(
             skipped[pid] = "Kickbases 33-%-Grenze (mit 1 M Abstand)"
             continue
         # Deckung zum Anpfiff (Review 02.10.2026 / Emil 03.11.2026): Schlägt alles zu und bleibt
-        # der Marktwert, bringt der Sofortverkauf 100 % des Marktwerts zurück — nur der Aufschlag
-        # über Marktwert muss aus echtem Geld gedeckt sein, sonst verkauften Pfand-Einlöser und
-        # Notbremse Stammspieler. Kosten je Gebot = max(0, Betrag − MW).
-        cost = max(0, amount - trade_sale_proceeds(slot.mv))
+        # der Marktwert, bringt der Sofortverkauf 100 % des Marktwerts zurück (ggf. abzgl.
+        # konfiguriertem Freitags-Haircut).
+        proceeds = trade_sale_proceeds(
+            slot.mv,
+            updates_until_friday=updates_left,
+            haircut_per_update_pct=haircut_pct,
+        )
+        cost = max(0, amount - proceeds)
         if (capacity.coverage is not None
                 and capacity.coverage - kept_cost - cost < KICKOFF_MIN_BALANCE):
             skipped[pid] = (f"Deckung zum Anpfiff reicht nicht (Konto nach Verkauf zu 100 % MW "
@@ -904,6 +920,9 @@ async def run_trade_autopilot(channel=None, *, now: datetime | None = None) -> s
         if _is_planned_dispo_swap_bid(r)
     )
     engine_planned_amount = sum(int(r.amount or 0) for r in engine_bid_rows)
+    rules = load_agent_rules()
+    haircut_pct = rules.friday_buffer_haircut_pct if rules.is_custom_active() else 0.0
+    updates_left = remaining_updates_until_friday(stamp, sale_by)
     capacity = Capacity(
         exposure=sum(p.buy_price for p in book.positions.values()) + sum(book.live_bids.values()),
         open_trades=len(book.positions) + len(book.live_bids),
@@ -912,10 +931,20 @@ async def run_trade_autopilot(channel=None, *, now: datetime | None = None) -> s
         after_bids=budget - sum(live_bids.values()) - engine_planned_amount,
         floor=overdraft_floor(team_value, budget),
         coverage=budget - sum(live_bids.values()) - swap_cash_reserved
-        + sale_cover(held_mv=held_mv, bid_target_mv=target_mv, now=stamp, sale_by=sale_by),
+        + sale_cover(
+            held_mv=held_mv,
+            bid_target_mv=target_mv,
+            now=stamp,
+            sale_by=sale_by,
+            updates_until_friday=updates_left,
+            haircut_per_update_pct=haircut_pct,
+        ),
         regular_counts=regular_counts,
     )
-    if not get_settings().agent_trade_autopilot:
+    rules_trading_disabled = rules.is_custom_active() and (
+        not rules.allow_mw_trading or not rules.allow_bids or rules.mode == "dry_run"
+    )
+    if not get_settings().agent_trade_autopilot or rules_trading_disabled:
         # Halt nur für den Handel: Gebote räumen, verkaufen weiter (sonst bliebe das Minus).
         bids, skipped = [], dict.fromkeys(existing, STOP_REASON)
         notes.append(f"{STOP_REASON}: keine neuen Gebote, geplante geräumt; Verkäufe der "

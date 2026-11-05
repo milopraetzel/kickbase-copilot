@@ -134,7 +134,7 @@ def test_unknown_completed_points_use_explicit_live_standings():
     data = {
         "ranking": [{"user_id": "2663242", "name": "emil", "me": True,
                      "rank": 2, "points": 827},
-                    {"user_id": "2227102", "name": "Niklas B.", "rank": 1,
+                    {"user_id": "2227102", "name": "Schmidinho", "rank": 1,
                      "points": 1825}],
         "strategy": {"manager_stats": [
             {"user_id": "2663242", "completed_points": None, "dashboard_points": 827},
@@ -402,7 +402,8 @@ def test_player_dossier_renders_jev_klartext_and_agent_verdict():
     }
     res = _browser_runtime(data, "openPlayer('8247');")
     assert "Transfermarkt-Radar" in res["content"]
-    assert "Mein Kader auf einen Blick" in res["content"]
+    assert "Mein Kader auf einen Blick" not in res["content"]
+    assert 'id="efficiency-radar"' not in res["content"]
     assert "42 Checks" in res["content"]
     assert "Kauf-Vorhaben aktiv: Gebot 7,36 Mio. €" in res["drawer"]
     assert "Rani Khedira" in res["drawer"]
@@ -462,7 +463,7 @@ def test_efficiency_radar_compares_points_per_million_across_pools_and_metrics()
     assert payload["fair"]["cloud"][0]["position"] == 1
     assert payload["fair"]["cloud"][0]["team"]
 
-    res = _browser_runtime(data)
+    res = _browser_runtime(data, "click({dataset:{view:'spieler'}});")
     content = res["content"]
     assert "Preis-Leistungs-Radar" in content
     assert "Punkte pro Mio. € Marktwert" in content
@@ -474,7 +475,10 @@ def test_efficiency_radar_compares_points_per_million_across_pools_and_metrics()
     assert eff_tbody.index("Kader Schnapper") < eff_tbody.index("Rivalen Juwel")
 
     # Sortierwechsel auf Gesamtpunkte pro Mio. €: k1 = 480 / 4M = 120,0 vor r1 = 540 / 5M = 108,0
-    res_total = _browser_runtime(data, "click({dataset:{effSort:'total_per_m'}});")
+    res_total = _browser_runtime(
+        data,
+        "click({dataset:{view:'spieler'}});click({dataset:{effSort:'total_per_m'}});",
+    )
     eff_total = res_total["eff"][res_total["eff"].index("<tbody>"):]
     assert "120,0" in eff_total
     assert "108,0" in eff_total
@@ -482,21 +486,30 @@ def test_efficiency_radar_compares_points_per_million_across_pools_and_metrics()
     assert eff_total.index("Markt Star") < eff_total.index("Bundesliga Geheimtipp")
 
     # Sortierwechsel auf 4-ST-Prognose pro Mio. €: k1 = 320 / 4M = 80,0 vor m1 = 600 / 20M = 30,0
-    res_fc = _browser_runtime(data, "click({dataset:{effSort:'forecast_per_m'}});")
+    res_fc = _browser_runtime(
+        data,
+        "click({dataset:{view:'spieler'}});click({dataset:{effSort:'forecast_per_m'}});",
+    )
     eff_fc = res_fc["eff"][res_fc["eff"].index("<tbody>"):]
     assert "80,0" in eff_fc
     assert "30,0" in eff_fc
     assert eff_fc.index("Kader Schnapper") < eff_fc.index("Markt Star")
 
     # Schnellfilter auf Transfermarkt: zeigt nur Markt Star
-    res_mkt = _browser_runtime(data, "click({dataset:{effPool:'market'}});")
+    res_mkt = _browser_runtime(
+        data,
+        "click({dataset:{view:'spieler'}});click({dataset:{effPool:'market'}});",
+    )
     eff_mkt = res_mkt["eff"]
     assert "Markt Star" in eff_mkt
     assert "Kader Schnapper" not in eff_mkt
     assert "Bundesliga Geheimtipp" not in eff_mkt
 
     # Suche und Positionsfilter
-    res_pos = _browser_runtime(data, "change({id:'eff-pos',value:'2'});")
+    res_pos = _browser_runtime(
+        data,
+        "click({dataset:{view:'spieler'}});change({id:'eff-pos',value:'2'});",
+    )
     assert "Rivalen Juwel" in res_pos["eff"]
     assert "Kader Schnapper" not in res_pos["eff"]
 

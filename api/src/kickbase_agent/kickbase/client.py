@@ -61,6 +61,27 @@ class KickbaseClient:
             if rate_limit_per_second is not None
             else settings.kickbase_rate_limit_per_second
         )
+        self._http: httpx.AsyncClient | None = None
+
+    def _get_http_client(self) -> httpx.AsyncClient:
+        if self._http is None or self._http.is_closed:
+            self._http = httpx.AsyncClient(
+                timeout=10.0,
+                limits=httpx.Limits(max_keepalive_connections=10, max_connections=20),
+            )
+        return self._http
+
+    async def aclose(self) -> None:
+        """Schließt den persistenten HTTP-Connection-Pool."""
+        if self._http is not None and not self._http.is_closed:
+            await self._http.aclose()
+        self._http = None
+
+    async def __aenter__(self) -> KickbaseClient:
+        return self
+
+    async def __aexit__(self, *exc: object) -> None:
+        await self.aclose()
 
     def _headers(self) -> dict[str, str]:
         headers = {"Authorization": f"Bearer {self._token}"}
@@ -74,10 +95,10 @@ class KickbaseClient:
         delays = iter(self._retry_delays_429)
         while True:
             await self._limiter.acquire()
-            async with httpx.AsyncClient(timeout=10.0) as client:
-                response = await client.request(
-                    method, self._base_url + path, headers=self._headers(), json=json
-                )
+            client = self._get_http_client()
+            response = await client.request(
+                method, self._base_url + path, headers=self._headers(), json=json
+            )
             if response.status_code in (401, 403) and auth_retry_left:
                 # Ein abgelaufenes Token beantwortet Kickbase mit 403, nicht 401 (Box-Ausfall
                 # 12.10.2026 nach genau 7 Tagen Laufzeit). Einmal neu anmelden und wiederholen;

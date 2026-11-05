@@ -15,6 +15,8 @@ COMPOSE = Path(__file__).resolve().parents[3] / "docker-compose.yml"
 def compose_project(tmp_path):
     if shutil.which("docker") is None:
         pytest.skip("Docker Compose ist nicht installiert")
+    if "traefik.http.middlewares" not in COMPOSE.read_text():
+        pytest.skip("Self-Hosted Compose ohne Box-Traefik-Labels")
     version = subprocess.run(["docker", "compose", "version"], capture_output=True)
     if version.returncode:
         pytest.skip("Docker Compose ist nicht installiert")
@@ -61,8 +63,8 @@ def test_shell_override_keeps_proxy_and_api_token_equal(compose_project):
     assert api["labels"][header + "X-KBA-Write-Token"] == api["environment"]["KBA_API_WRITE_TOKEN"]
 
 
-def test_nginx_serves_the_jev_page_instead_of_the_catch_all():
-    """Ohne eigene Location lieferte der Catch-all für /jev.html still index.html (200)."""
+def test_nginx_rejects_removed_html_routes_instead_of_the_catch_all():
+    """Fehlende .html-Dateien liefern 404 statt still index.html (200)."""
     conf = (Path(__file__).resolve().parents[3] / "deploy" / "cockpit-nginx.conf").read_text()
-    assert "location = /jev.html" in conf
-    assert "try_files /jev.html =404;" in conf
+    assert r"location ~ \.html$" in conf
+    assert "try_files $uri =404;" in conf

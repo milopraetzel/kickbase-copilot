@@ -63,6 +63,7 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from kickbase_agent.agent.freeze import freeze_veto
+from kickbase_agent.agent.rules import AgentRules, load_agent_rules
 from kickbase_agent.config import get_settings
 from kickbase_agent.db.models import Intent, TransferAction
 from kickbase_agent.decision.funding_recovery import funding_review_veto
@@ -210,14 +211,45 @@ def _protected_veto(action: PlannedAction) -> str | None:
     if action.action_type not in _DISPOSAL_ACTION_TYPES:
         return None
     pid = str(action.player_id or "")
-    if not pid or pid not in protected_player_ids():
+    rules = load_agent_rules()
+    protected_by_rules = rules.is_custom_active() and rules.is_player_protected(
+        pid, str(action.rationale or "")
+    )
+    if not pid or (pid not in protected_player_ids() and not protected_by_rules):
         return None
     return (
         f"Geschützter Spieler {pid}: {action.action_type} verweigert — "
-        "Verfassung (protected_player_ids), gilt für JEDEN Pfad inklusive der "
+        "Verfassung (protected_player_ids / Regelwerk), gilt für JEDEN Pfad inklusive der "
         f"Anpfiff-Notbremse. Änderbar nur über {PROTECTED_ENV_VAR} (.env, "
-        "Emils Hoheit), nicht durch den Agenten."
+        "Emils Hoheit) oder das Regelwerk, nicht durch den Agenten."
     )
+
+
+def _rules_veto(action: PlannedAction, rules: AgentRules) -> str | None:
+    """Prüft das vom Nutzer konfigurierte Regelwerk (`data/agent_rules.json`)."""
+    if not rules.is_custom_active():
+        return None
+    is_kickoff = (action.rule_id or "").startswith("kickoff-")
+    if action.action_type == "bid":
+        if not rules.allow_bids:
+            return "Regelwerk-Veto: Gebote sind im Regelwerk deaktiviert (allow_bids=false)."
+        max_bid_eur = int(rules.max_bid_million * 1_000_000)
+        if type(action.amount) is int and action.amount > max_bid_eur:
+            return (
+                f"Regelwerk-Veto: Gebot ({action.amount} EUR) überschreitet "
+                f"max_bid_million ({rules.max_bid_million:.1f} M EUR)."
+            )
+    elif action.action_type in _DISPOSAL_ACTION_TYPES:
+        if is_kickoff and not rules.allow_friday_rescue:
+            return (
+                "Regelwerk-Veto: Freitags-Notverkauf ist im Regelwerk deaktiviert "
+                "(allow_friday_rescue=false)."
+            )
+        if not is_kickoff and rules.allow_sells == "none":
+            return "Regelwerk-Veto: Verkäufe sind im Regelwerk deaktiviert (allow_sells=none)."
+    elif action.action_type == "lineup" and not rules.allow_lineup:
+        return "Regelwerk-Veto: Auto-Aufstellung ist im Regelwerk deaktiviert (allow_lineup=false)."
+    return None
 
 #: Autonome rule_id-Präfixe: für sie gilt der Starter-Schutz hart — Emils
 #: manuelle Wege (mcp-*, mit confirm/emil_go) und die Notbremse (kickoff-*)
@@ -815,12 +847,17 @@ class ActionExecutor:
         self, action: PlannedAction, *, dry_run: bool | None = None, now: datetime | None = None
     ) -> ActionResult:
         settings = get_settings()
+        rules = load_agent_rules()
         stamp = now or datetime.now(UTC)
-        # Kill-Switch: AGENT_DRY_RUN=1 gewinnt IMMER. Der Parameter kann Dry-Run
-        # nur zusätzlich erzwingen (dry_run=True), aber nie aufheben — vorher
-        # konnte ein Aufrufer mit dry_run=False am globalen Not-Aus vorbei live
-        # schreiben (Review-Fund).
-        effective_dry = bool(settings.agent_dry_run) or dry_run is True
+        # Kill-Switch: AGENT_DRY_RUN=1 oder Regelwerk mode="dry_run" gewinnt IMMER.
+        # Der Parameter kann Dry-Run nur zusätzlich erzwingen (dry_run=True),
+        # aber nie aufheben — vorher konnte ein Aufrufer mit dry_run=False am
+        # globalen Not-Aus vorbei live schreiben (Review-Fund).
+        effective_dry = (
+            bool(settings.agent_dry_run)
+            or dry_run is True
+            or (rules.is_custom_active() and rules.mode == "dry_run")
+        )
         key = idempotency_key(action, stamp.date().isoformat())
 
         existing = self._find_existing(key)
@@ -880,6 +917,10 @@ class ActionExecutor:
         if (protected := _protected_veto(action)) is not None:
             _write_log.warning("verfassung: %s", protected)
             return self._resolve(row, "refused", stamp, rationale=protected)
+
+        if (r_veto := _rules_veto(action, rules)) is not None:
+            _write_log.warning("regelwerk: %s", r_veto)
+            return self._resolve(row, "refused", stamp, rationale=r_veto)
 
         if effective_dry:
             return self._resolve(row, "skipped_dry_run", stamp)
@@ -1075,7 +1116,8 @@ class ActionExecutor:
         # WICHTIG (Review-Fund): ehrlich als skipped_dry_run melden — vorher stand
         # hier "executed", und der Nutzer glaubte, der Trade sei real passiert.
         settings = get_settings()
-        if settings.agent_dry_run:
+        rules = load_agent_rules()
+        if settings.agent_dry_run or (rules.is_custom_active() and rules.mode == "dry_run"):
             return self._resolve(
                 row, "skipped_dry_run", stamp,
                 raw_response={"dry_run": True},
@@ -1089,6 +1131,9 @@ class ActionExecutor:
         if (protected := _protected_veto(action)) is not None:
             _write_log.warning("verfassung (staged): %s", protected)
             return self._resolve(row, "refused", stamp, rationale=protected)
+        if (r_veto := _rules_veto(action, rules)) is not None:
+            _write_log.warning("regelwerk (staged): %s", r_veto)
+            return self._resolve(row, "refused", stamp, rationale=r_veto)
 
         # Auch ein Freigabe-Klick hebt das Selbst-Einfrieren nicht auf: Der Zustand
         # sagt „ich traue mir gerade nicht", und daran ändert ein Knopfdruck nichts

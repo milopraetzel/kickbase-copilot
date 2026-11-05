@@ -3685,10 +3685,11 @@ JS = (
   }
   function actionHref(value) {
     const s = String(value || "");
-    if (/^legacy\.html/i.test(s)) return "";
-    return /^#(?:heute|uebersicht|liga|spieler|jev)(?:\?manager=[a-zA-Z0-9_-]+)?$/.test(s)
+    return /^#(?:heute|uebersicht|liga|spieler|jev|regeln)(?:\?manager=[a-zA-Z0-9_-]+)?$/.test(s)
       ? s
-      : safeURL(s);
+      : /^https?:\/\//i.test(s)
+        ? safeURL(s)
+        : "";
   }
   function todayKPIsHTML() {
     if (cash === null && !squad.length && !market.length) return "";
@@ -3814,7 +3815,7 @@ JS = (
                 ? `<button class="text-link" data-player="${esc(s.player_id)}"` +
                   ` data-player-manager="${esc(my.user_id || "")}">Spieler ansehen ↗</button>`
                 : "") +
-              (href && href !== "legacy.html#zentrale"
+              (href
                 ? `<a class="text-link" href="${esc(href)}">${esc(
                     s.action_label || "Details ansehen",
                   )} ↗</a>`
@@ -3910,54 +3911,6 @@ JS = (
         })
         .join("") +
       `</tbody></table></div></article>`
-    );
-  }
-  function quickSquadHTML() {
-    if (!squad.length) return "";
-    const inPlan = new Set(arr(teamPlan.lineup_ids).map(String)),
-      ordered = [...squad].sort((a, b) => {
-        const aElf = inPlan.has(String(a.pid)) || a.elf ? 1 : 0,
-          bElf = inPlan.has(String(b.pid)) || b.elf ? 1 : 0;
-        if (aElf !== bElf) return bElf - aElf;
-        return aiFactor(b).score - aiFactor(a).score || (num(b.mv) ?? 0) - (num(a.mv) ?? 0);
-      });
-    return (
-      `<details class="panel compact-details"><summary>` +
-      `<span>Mein Kader auf einen Blick · Startelf, Bank &amp; AI-Faktor` +
-      ` (${squad.length} Spieler)</span>` +
-      `<span class="tag">Aufklappen ↓</span></summary>` +
-      `<div style="margin-top:14px"><div class="panel-head"><div>` +
-      `<h2>Startelf, Bank &amp; AI-Faktor</h2></div>` +
-      `<button class="button secondary btn-sm" data-own-overview>` +
-      `Vollständige Übersicht →</button></div>` +
-      `<div class="table-wrap"><table><thead><tr><th>Spieler</th>` +
-      `<th>AI-Faktor</th><th>Status &amp; Jev</th><th class="num">Marktwert</th>` +
-      `<th class="num">4-ST-Prognose</th>` +
-      `<th class="num">Pkt. / Mio. €</th></tr></thead><tbody>` +
-      ordered
-        .map((p) => {
-          const fc = forecasts[String(p.pid)],
-            isElf = inPlan.has(String(p.pid)) || p.elf,
-            mvSub =
-              num(p.mv24) !== null && p.mv24 !== 0
-                ? `<small class="cell-sub ${cls(p.mv24)}">${money(p.mv24)} / 24h</small>`
-                : "",
-            hz =
-              num(fc?.horizon_points) !== null
-                ? fmt(fc.horizon_points, 0) + " Pkt."
-                : fmt(p.avg ?? p.ap);
-          return (
-            `<tr><td>${playerName(p)}</td>` +
-            `<td>${aiFactorCell(p)}</td><td>` +
-            `${chip(isElf ? "Startelf" : "Bank", isElf ? "good" : "warn")} ` +
-            `${predictedStatus(p)}${p.protected ? " " + chip("Geschützt") : ""}` +
-            `${jevBadgeInline(p)}</td><td class="num">${money(p.mv)}${mvSub}</td>` +
-            `<td class="num">${hz}</td>` +
-            `${ppmCell(p)}</tr>`
-          );
-        })
-        .join("") +
-      `</tbody></table></div></div></details>`
     );
   }
   const marketIds = new Set(market.map((p) => String(p.pid))),
@@ -4202,12 +4155,7 @@ JS = (
         ["forecast_per_m", "4-ST-Prog. / Mio. €"],
         ["ai_factor", "AI-Faktor"],
       ],
-      headRight =
-        `<span class="tag" id="eff-count-chip">${fmt(filteredCount)} Spieler</span>` +
-        (!fullPage
-          ? ` <button type="button" class="button secondary btn-sm" data-view="spieler">` +
-            `Vollbild-Suche →</button>`
-          : ""),
+      headRight = `<span class="tag" id="eff-count-chip">${fmt(filteredCount)} Spieler</span>`,
       inner =
         `<div class="panel-head"><div>` +
         `<span class="eyebrow">Preis-Leistungs-Radar &amp; Bundesliga-Suche</span>` +
@@ -4248,15 +4196,6 @@ JS = (
           )
           .join("")}</div></div></div>` +
         `<div id="eff-body">${efficiencyBodyHTML()}</div>`;
-    if (!fullPage) {
-      return (
-        `<details class="panel compact-details" id="efficiency-radar">` +
-        `<summary><span>Preis-Leistungs-Radar &amp; Bundesliga-Suche` +
-        ` (${fmt(filteredCount)} Spieler)</span>` +
-        `<span class="tag">Aufklappen ↓</span></summary>` +
-        `<div style="margin-top:16px">${inner}</div></details>`
-      );
-    }
     return `<article class="panel" id="efficiency-radar">${inner}</article>`;
   }
   function spielerView() {
@@ -4472,9 +4411,7 @@ JS = (
       todayKPIsHTML() +
       controlHubHTML() +
       `<div class="grid-main"><div>${lineupPitchHTML()}${marketRadarHTML()}</div>` +
-      `<div class="side-column">${panel("Relevante Nachrichten", "", newsHTML())}</div></div>` +
-      quickSquadHTML() +
-      efficiencyRadarHTML()
+      `<div class="side-column">${panel("Relevante Nachrichten", "", newsHTML())}</div></div>`
     );
   }
   function managerPlayerFinance(p, profile) {
@@ -4691,18 +4628,34 @@ JS = (
     allow_sells: "swap_allowed",
     allow_mw_trading: true,
     trade_budget_cap_million: 50.0,
-    friday_buffer_haircut_pct: 3.5,
+    friday_buffer_haircut_pct: 0.0,
     allow_lineup: true,
     allow_friday_rescue: true,
     veto_minutes: 30,
     protected_players: [],
+    ...(D.rules && typeof D.rules === "object" ? D.rules : {}),
   };
+  function loadRulesFromBackend() {
+    try {
+      chainVal(
+        apiCall("/api/rules", "GET"),
+        (res) => {
+          const next = res?.rules || (res?.mode ? res : null);
+          if (next && typeof next === "object") {
+            rulesState = { ...rulesState, ...next };
+            if (view === "regeln") render();
+          }
+        },
+        () => {},
+      );
+    } catch (_) {}
+  }
   function regelnView() {
     const r = rulesState || {};
     const protSet = new Set(
       (r.protected_players || []).map((x) => String(x).trim().toLowerCase()),
     );
-    const squadChips = (d.kader || [])
+    const squadChips = (D.kader || [])
       .map((p) => {
         const nm = String(p.name || "");
         const locked =
@@ -4855,6 +4808,7 @@ JS = (
     '""),\n'
     r"""    );
     render();
+    if (view === "regeln") loadRulesFromBackend();
     window.scrollTo({ top: 0, behavior: "instant" });
   }
   function showBackendNotice(msg, tone = "good") {
@@ -5403,6 +5357,7 @@ JS = (
     : "";
   document.getElementById("manager-name").textContent = meName;
   render();
+  if (typeof fetch === "function") loadRulesFromBackend();
 })();
 """
 )

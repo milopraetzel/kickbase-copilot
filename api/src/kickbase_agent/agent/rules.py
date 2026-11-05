@@ -9,6 +9,7 @@ und der KI-Chat lesen und schreiben dieselbe Datei.
 from __future__ import annotations
 
 import json
+import os
 from dataclasses import asdict, dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
@@ -16,6 +17,7 @@ from typing import Any
 
 from kickbase_agent.config import get_settings
 
+RULES_ENV_VAR = "AGENT_RULES_FILE"
 VALID_MODES = ("dry_run", "veto_copilot", "full_autopilot")
 VALID_SELL_POLICIES = ("none", "bench_only", "swap_allowed")
 
@@ -31,7 +33,7 @@ class AgentRules:
     allow_sells: str = "swap_allowed"
     allow_mw_trading: bool = True
     trade_budget_cap_million: float = 50.0
-    friday_buffer_haircut_pct: float = 3.5
+    friday_buffer_haircut_pct: float = 0.0
     allow_lineup: bool = True
     allow_friday_rescue: bool = True
     veto_minutes: int = 30
@@ -43,6 +45,10 @@ class AgentRules:
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
 
+    def is_custom_active(self) -> bool:
+        """True, sobald der Nutzer das Regelwerk aktiv gespeichert hat."""
+        return bool(self.onboarding_completed and self.updated_by != "env_default")
+
     def is_player_protected(self, player_id: str, player_name: str = "") -> bool:
         """Prueft, ob ein Spieler auf der persoenlichen Schutzliste steht."""
         pid = str(player_id).strip().lower()
@@ -51,7 +57,11 @@ class AgentRules:
             token = entry.strip().lower()
             if not token:
                 continue
-            if token == pid or (pname and token in pname):
+            if (
+                token == pid
+                or (len(token) >= 3 and token in pid)
+                or (pname and token in pname)
+            ):
                 return True
         return False
 
@@ -91,7 +101,7 @@ PRESETS: dict[str, dict[str, Any]] = {
         "allow_sells": "swap_allowed",
         "allow_mw_trading": True,
         "trade_budget_cap_million": 50.0,
-        "friday_buffer_haircut_pct": 3.5,
+        "friday_buffer_haircut_pct": 0.0,
         "allow_lineup": True,
         "allow_friday_rescue": True,
         "veto_minutes": 30,
@@ -101,8 +111,16 @@ PRESETS: dict[str, dict[str, Any]] = {
 
 def rules_file_path() -> Path:
     """Pfad zur gemeinsamen ``agent_rules.json`` im Datenverzeichnis."""
-    settings = get_settings()
-    data_dir = Path(settings.agent_data_dir)
+    env_override = os.environ.get(RULES_ENV_VAR, "").strip()
+    if env_override:
+        override_path = Path(env_override)
+        override_path.parent.mkdir(parents=True, exist_ok=True)
+        return override_path
+    try:
+        settings = get_settings()
+        data_dir = Path(settings.agent_data_dir)
+    except Exception:
+        data_dir = Path("data")
     data_dir.mkdir(parents=True, exist_ok=True)
     return data_dir / "agent_rules.json"
 
@@ -110,15 +128,17 @@ def rules_file_path() -> Path:
 def load_agent_rules(path: Path | None = None) -> AgentRules:
     """Laedt das aktuelle Regelwerk oder initialisiert es aus den ``.env``-Defaults."""
     target = path or rules_file_path()
-    settings = get_settings()
     if not target.exists():
-        default_mode = "dry_run" if settings.agent_dry_run else "full_autopilot"
-        base = dict(PRESETS[default_mode])
-        protected = [
-            p.strip()
-            for p in getattr(settings, "agent_protected_players", "").split(",")
-            if p.strip()
-        ]
+        try:
+            settings = get_settings()
+            dry_run = bool(settings.agent_dry_run)
+            raw_prot = getattr(settings, "protected_player_ids", "")
+        except Exception:
+            dry_run = True
+            raw_prot = "8329"
+        base = dict(PRESETS["full_autopilot"])
+        base["mode"] = "dry_run" if dry_run else "full_autopilot"
+        protected = [p.strip() for p in str(raw_prot).split(",") if p.strip()]
         base["protected_players"] = protected
         base["onboarding_completed"] = False
         base["updated_at"] = datetime.now(UTC).isoformat()

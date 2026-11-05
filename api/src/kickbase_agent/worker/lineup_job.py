@@ -13,6 +13,7 @@ import logging
 from datetime import UTC, datetime, timedelta
 
 from kickbase_agent.agent.executor import ActionExecutor, PlannedAction
+from kickbase_agent.agent.rules import load_agent_rules
 from kickbase_agent.cli.plan import build_plan
 from kickbase_agent.config import get_settings
 from kickbase_agent.db.session import SessionLocal
@@ -180,6 +181,10 @@ async def run_lineup_set(channel: DiscordChannel) -> str:
     """Beste 11 berechnen und (wenn geärmt) via Executor setzen. Gibt den Status zurück.
     Handelsspieler stehen nie in der Elf (`Plan.lineup_squad`, Emil 01.10.2026)."""
     settings = get_settings()
+    rules = load_agent_rules()
+    if rules.is_custom_active() and not rules.allow_lineup:
+        _log.info("Auto-Aufstellung im Regelwerk deaktiviert (allow_lineup=false)")
+        return "disabled_by_rules"
     plan = await build_plan()
     client, _auth = await make_kickbase_client()
     with SessionLocal() as session:

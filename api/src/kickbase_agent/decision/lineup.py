@@ -102,6 +102,14 @@ def best_lineup(squad: list[ExplosionCandidate]) -> Lineup:
     return best
 
 
+def _candidate_mv(c: ExplosionCandidate) -> int:
+    return int(
+        getattr(c, "current_market_value", 0)
+        or getattr(c, "market_value", 0)
+        or 0
+    )
+
+
 def best_partial_lineup(
     squad: list[ExplosionCandidate],
     score: Callable[[ExplosionCandidate], float] | None = None,
@@ -111,9 +119,9 @@ def best_partial_lineup(
     Jeder leere Platz kostet 100 Punkte, ein aufgestellter Spieler ohne Einsatz
     null (L-080). Deshalb gewinnt die Formation, die die MEISTEN vorhandenen
     Spieler unterbringt; erst bei Gleichstand entscheidet die Punktsumme, danach
-    die Reihenfolge in `_FORMATIONS`. Bewusst getrennt von `best_lineup`: dessen
-    leeres Ergebnis heißt für Kaufprüfung und Kadersicherungen „keine Elf" und
-    darf diese Bedeutung nicht verlieren.
+    lineup_score und current_market_value, zuletzt die Reihenfolge in `_FORMATIONS`.
+    Bewusst getrennt von `best_lineup`: dessen leeres Ergebnis heißt für Kaufprüfung
+    und Kadersicherungen „keine Elf" und darf diese Bedeutung nicht verlieren.
     """
     rate = score or (lambda c: c.lineup_score)
     pos: dict[int, list[ExplosionCandidate]] = {1: [], 2: [], 3: [], 4: []}
@@ -121,14 +129,29 @@ def best_partial_lineup(
         if c.position in pos:
             pos[c.position].append(c)
     for players in pos.values():
-        players.sort(key=lambda c: (-rate(c), c.player_id))
+        players.sort(
+            key=lambda c: (
+                -rate(c),
+                -float(getattr(c, "lineup_score", 0.0) or 0.0),
+                -_candidate_mv(c),
+                c.player_id,
+            )
+        )
 
     best: Lineup | None = None
-    best_key: tuple[int, float] | None = None
+    best_key: tuple[int, float, float, int] | None = None
     for d, m, s in _FORMATIONS:
         lines = [pos[1][:1], pos[2][:d], pos[3][:m], pos[4][:s]]
         starters = [c for line in lines for c in line]
-        key = (len(starters), sum(rate(c) for c in starters))
+        key = (
+            len(starters),
+            round(sum(rate(c) for c in starters), 6),
+            round(
+                sum(float(getattr(c, "lineup_score", 0.0) or 0.0) for c in starters),
+                6,
+            ),
+            sum(_candidate_mv(c) for c in starters),
+        )
         if best_key is not None and key <= best_key:
             continue
         slots: list[str | None] = []

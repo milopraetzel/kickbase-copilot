@@ -2,10 +2,11 @@ import pytest
 
 
 @pytest.fixture(autouse=True)
-def _env(monkeypatch):
+def _env(monkeypatch, tmp_path):
     monkeypatch.setenv("KICKBASE_EMAIL", "test@example.com")
     monkeypatch.setenv("KICKBASE_PASSWORD", "pw")
     monkeypatch.setenv("DATABASE_URL", "sqlite:///:memory:")
+    monkeypatch.setenv("AGENT_RULES_FILE", str(tmp_path / "agent_rules.json"))
     # Test-Isolation von der lokalen .env (Token/Liga/Agent-Flags dürfen nicht leaken)
     monkeypatch.setenv("KICKBASE_TOKEN", "")
     monkeypatch.setenv("KICKBASE_REFRESH_TOKEN", "")

@@ -73,6 +73,7 @@ from sqlalchemy.orm import Session
 
 from kickbase_agent.agent import freeze as fz
 from kickbase_agent.agent.executor import ActionExecutor, ActionResult, PlannedAction
+from kickbase_agent.agent.rules import load_agent_rules
 from kickbase_agent.cli.plan import Plan, build_plan
 from kickbase_agent.config import get_settings
 from kickbase_agent.db.models import Intent, Report, TransferAction
@@ -715,7 +716,13 @@ def schedule_for(now: datetime, amount: int, row: MarketRow | None) -> Schedule:
       deadline None, execute_at = jetzt + 2 h.
     - Kein Listing-Bezug (list/sell): deadline None, execute_at = jetzt + 2 h.
     """
-    default_at = now + VETO_WINDOW
+    rules = load_agent_rules()
+    custom_veto = (
+        timedelta(minutes=max(5, int(rules.veto_minutes)))
+        if rules.is_custom_active()
+        else VETO_WINDOW
+    )
+    default_at = now + custom_veto
     if row is None:
         return Schedule("kickbase", None, default_at)
     if row.is_manager or not row.expires_in_s or row.expires_in_s <= 0:

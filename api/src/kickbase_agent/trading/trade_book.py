@@ -22,13 +22,17 @@ from __future__ import annotations
 
 from collections.abc import Iterable, Mapping
 from dataclasses import dataclass, field
-from datetime import UTC, datetime, timedelta
+from datetime import UTC, datetime, time, timedelta
 from typing import Any
+from zoneinfo import ZoneInfo
 
 from sqlalchemy import select
 
+from kickbase_agent.agent.rules import load_agent_rules
 from kickbase_agent.db.models import Intent, TransferAction
 from kickbase_agent.decision.lineup import _FORMATIONS, MIN_SQUAD_SIZE
+
+_BERLIN = ZoneInfo("Europe/Berlin")
 
 #: Quelle eines Handelsvorhabens (Intent.sources).
 TRADE_KEY = "trade"
@@ -103,27 +107,78 @@ def sale_deadline(deadline: datetime | None, regular_filled: int) -> datetime | 
     return _utc(deadline) - (SALE_LEAD_GAP if regular_filled < MIN_SQUAD_SIZE else SALE_LEAD)
 
 
+def remaining_updates_until_friday(
+    now: datetime | None, sale_by: datetime | None
+) -> int:
+    """Anzahl der verbleibenden 22:00-Uhr-Marktwert-Updates (Europe/Berlin) zwischen
+    `now` und `sale_by`."""
+    if now is None or sale_by is None:
+        return 0
+    start = _utc(now).astimezone(_BERLIN)
+    end = _utc(sale_by).astimezone(_BERLIN)
+    if end <= start:
+        return 0
+    cursor = datetime.combine(start.date(), time(22, 0), tzinfo=_BERLIN)
+    if cursor <= start:
+        cursor += timedelta(days=1)
+    count = 0
+    while cursor <= end:
+        count += 1
+        cursor += timedelta(days=1)
+    return count
+
+
 def sale_overdue(now: datetime, sale_by: datetime | None) -> bool:
     """Verkaufstermin samt Karenz verstrichen? Dann ist der Verkauf gescheitert."""
     return sale_by is not None and _utc(now) >= _utc(sale_by) + SALE_GRACE
 
 
 def sale_cover(
-    *, held_mv: Iterable[int], bid_target_mv: Iterable[int], now: datetime,
+    *,
+    held_mv: Iterable[int],
+    bid_target_mv: Iterable[int],
+    now: datetime,
     sale_by: datetime | None,
+    updates_until_friday: int | None = None,
+    haircut_per_update_pct: float | None = None,
 ) -> int:
     """Was der Handel bis zum Verkaufstermin zurückbringt: Handelsspieler und Ziele laufender
-    Handelsgebote mit 100 % ihres Marktwerts (Kickbase-Sofortverkauf zahlt exakt den Marktwert;
-    Emil 03.11.2026: keine künstliche 10-%-Strafe auf steigende Kurzfrist-Flips). Nach
-    Verkaufstermin + `SALE_GRACE` zählt der Handel gar nicht mehr — der Verkauf ist dann
-    gescheitert, und ein noch laufendes Handelsgebot würde gewonnen sofort ein solcher
-    Handelsspieler (Codex-Review 02.10.2026); die Deckung muss ohne den Handel stehen.
-    Gemeinsame Rechnung für Autopilot, Ergebnis-Wächter und Pfand-Einlöser (sonst warnt der
-    eine, was der andere plant)."""
+    Handelsgebote mit 100 % ihres Marktwerts (optional gedämpft um den Freitags-Haircut aus dem
+    Regelwerk je verbleibendem 22:00-Update). Nach Verkaufstermin + `SALE_GRACE` zählt der
+    Handel gar nicht mehr — der Verkauf ist dann gescheitert, und ein noch laufendes
+    Handelsgebot würde gewonnen sofort ein solcher Handelsspieler (Codex-Review 02.10.2026);
+    die Deckung muss ohne den Handel stehen. Gemeinsame Rechnung für Autopilot, Ergebnis-Wächter
+    und Pfand-Einlöser (sonst warnt der eine, was der andere plant)."""
     if sale_overdue(now, sale_by):
         return 0
-    return (sum(trade_sale_proceeds(int(mv)) for mv in held_mv)
-            + sum(trade_sale_proceeds(int(mv)) for mv in bid_target_mv))
+    updates = (
+        remaining_updates_until_friday(now, sale_by)
+        if updates_until_friday is None
+        else int(updates_until_friday)
+    )
+    if haircut_per_update_pct is None:
+        rules = load_agent_rules()
+        haircut = rules.friday_buffer_haircut_pct if rules.is_custom_active() else 0.0
+    else:
+        haircut = float(haircut_per_update_pct)
+    return (
+        sum(
+            trade_sale_proceeds(
+                int(mv),
+                updates_until_friday=updates,
+                haircut_per_update_pct=haircut,
+            )
+            for mv in held_mv
+        )
+        + sum(
+            trade_sale_proceeds(
+                int(mv),
+                updates_until_friday=updates,
+                haircut_per_update_pct=haircut,
+            )
+            for mv in bid_target_mv
+        )
+    )
 
 
 @dataclass(frozen=True)

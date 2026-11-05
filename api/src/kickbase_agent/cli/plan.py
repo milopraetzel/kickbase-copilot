@@ -20,6 +20,7 @@ from kickbase_agent.agent.executor import (
     abandoned_bid_ids,
     confirmed_autonomous_bid,
 )
+from kickbase_agent.agent.rules import load_agent_rules
 from kickbase_agent.config import get_settings
 from kickbase_agent.db.models import PlayerHistory, TransferAction
 from kickbase_agent.db.session import SessionLocal
@@ -74,6 +75,7 @@ from kickbase_agent.trading.competition import load_competition, predict_probabi
 from kickbase_agent.trading.trade_book import (
     is_trade,
     load_trade_book,
+    remaining_updates_until_friday,
     sale_deadline,
     trade_sale_proceeds,
 )
@@ -123,6 +125,44 @@ STARTER_PROTECT_MIN_FIXTURE_MULT_2 = 0.96
 #: Starter-Prior für verifizierte Comeback-/Breakout-Kandidaten ohne Saisonminuten.
 COMEBACK_EXPECTED_POINTS = 75.0
 COMEBACK_HORIZON_POINTS = 300.0
+
+
+def _comeback_expected_points(market_value_eur: int) -> float:
+    """Marktwert-skalierter Starter-Prior (55 bis 125 Pkt/Spieltag) statt Pauschale."""
+    mv_m = max(0.5, float(market_value_eur or 0) / 1_000_000.0)
+    if mv_m <= 6.0:
+        return max(55.0, min(COMEBACK_EXPECTED_POINTS, round(45.0 + mv_m * 5.0, 1)))
+    return min(125.0, round(COMEBACK_EXPECTED_POINTS + (mv_m - 6.0) * 2.0, 1))
+
+
+def estimate_rival_scarcity(
+    market_listings: list,
+    *,
+    position: int,
+    rival_squads: list[dict] | None = None,
+) -> int:
+    """Schätzt die Anzahl der Mitspieler mit akutem Bedarf auf ``position``."""
+    pos_min = {1: 1, 2: 3, 3: 2, 4: 1}.get(int(position), 1)
+    needy_rivals: set[str] = set()
+    for mgr in rival_squads or []:
+        if mgr.get("me"):
+            continue
+        uid = str(mgr.get("user_id") or mgr.get("id") or "")
+        players = mgr.get("spieler") or mgr.get("players") or []
+        pos_count = sum(
+            1
+            for p in players
+            if int(p.get("pos") or p.get("position") or 0) == int(position)
+            and int(p.get("prob") or p.get("lineup_prob") or 1) in {1, 2}
+        )
+        if uid and pos_count < pos_min:
+            needy_rivals.add(uid)
+    for mp in market_listings:
+        seller = str(getattr(mp, "seller_id", "") or "")
+        mp_pos = int(getattr(getattr(mp, "player", None), "position", 0) or 0)
+        if seller and mp_pos == int(position):
+            needy_rivals.add(seller)
+    return len(needy_rivals)
 #: Regel-ID für den gezielten Abbau von Nicht-Startern bei negativem Kontostand.
 DEFICIT_COVER_RULE = "sell_deficit_cover"
 #: Konto-heilender Downgrade-Tausch (25.10.2026): Wenn das Konto bei 11er-Kader im Minus
@@ -890,20 +930,44 @@ async def build_plan(
     # auf cash_plan); die 33-%-Grenze (`frame`) bleibt Obergrenze jedes Tauschs.
     dispo_active = overdraft_active(now, until=PLANNING_OVERDRAFT_UNTIL)
     frame = planning_overdraft(now, team_value, cash_frei, until=PLANNING_OVERDRAFT_UNTIL)
+    agent_rules = load_agent_rules()
+    custom_rules_active = agent_rules.is_custom_active()
     protected = protected_player_ids() | DEFAULT_GUARDRAILS.protected_player_ids
+    if custom_rules_active:
+        for p in squad_players:
+            full_name = f"{p.first_name} {p.last_name}".strip()
+            if (
+                agent_rules.is_player_protected(p.id, full_name)
+                or agent_rules.is_player_protected(p.id, p.last_name)
+            ):
+                protected = protected | {p.id}
     squad_by_id = {p.id: p for p in squad_players}
-    trade_held_cover = sum(
-        trade_sale_proceeds(squad_by_id[pid].market_value)
-        for pid in trade_ids
-        if pid in squad_by_id
-    ) + sum(
-        trade_sale_proceeds(raw_market_by_id[pid].player.market_value)
-        for pid in firm_trade_bids
-        if pid in raw_market_by_id
-    )
     reserve = risk_budget = pledge_dropped = 0
     deadline_pair = matchday_deadline(fixtures, now)
     deadline = deadline_pair[1] if deadline_pair else None
+    updates_until_friday = remaining_updates_until_friday(
+        now, sale_deadline(deadline, 11)
+    )
+    haircut_pct = (
+        float(agent_rules.friday_buffer_haircut_pct) if custom_rules_active else 0.0
+    )
+    trade_held_cover = sum(
+        trade_sale_proceeds(
+            squad_by_id[pid].market_value,
+            updates_until_friday=updates_until_friday,
+            haircut_per_update_pct=haircut_pct,
+        )
+        for pid in trade_ids
+        if pid in squad_by_id
+    ) + sum(
+        trade_sale_proceeds(
+            raw_market_by_id[pid].player.market_value,
+            updates_until_friday=updates_until_friday,
+            haircut_per_update_pct=haircut_pct,
+        )
+        for pid in firm_trade_bids
+        if pid in raw_market_by_id
+    )
     li_bench_ids = (
         {a.player_id for a in squad_scout.availabilities if a.status is Status.BENCH}
         if squad_scout.availabilities
@@ -1026,6 +1090,19 @@ async def build_plan(
     projections: dict[str, dict] = {}
     profiteur_ids = {pr.player_id for pr in profiteurs if pr.same_position}
 
+    def observed(r) -> bool:
+        return (
+            r.minutes > 0
+            and r.minutes_observed is not False
+            and r.is_finished is not False
+            and (r.match_date is None or r.match_date <= now)
+        )
+
+    observed_matchdays = sorted(
+        {(r.season, r.matchday) for rows in perf.values() for r in rows if observed(r)},
+        reverse=True,
+    )[:ROLE_PROOF_MATCHDAYS]
+
     def project(player) -> dict:
         if forecast_player is _DEFAULT_FORECAST_PLAYER:
             forecast = forecast_player(
@@ -1056,23 +1133,63 @@ async def build_plan(
             and li_status.get(player.id) is Status.STARTER
             and (player.id in comeback_ids or player.id in profiteur_ids)
         ):
+            comeback_pts = _comeback_expected_points(
+                int(getattr(player, "market_value", 0) or 0)
+            )
             forecast = {
                 **forecast,
                 "expected_points": max(
-                    float(forecast.get("expected_points") or 0.0), COMEBACK_EXPECTED_POINTS
+                    float(forecast.get("expected_points") or 0.0), comeback_pts
                 ),
                 "horizon_points": max(
-                    float(forecast.get("horizon_points") or 0.0), COMEBACK_HORIZON_POINTS
+                    float(forecast.get("horizon_points") or 0.0), comeback_pts * 4.0
                 ),
                 "reasons": [
                     *forecast["reasons"],
-                    "Comeback-/Breakout-Prior: KB-Stufe 1 + LI STARTER + News/Profiteur.",
+                    "Comeback-/Breakout-Prior: KB-Stufe 1 + LI STARTER + News/Profiteur "
+                    f"({comeback_pts:.1f} Pkt/Spieltag).",
                 ],
             }
         if (
             forecast_player is _DEFAULT_FORECAST_PLAYER
             and float(forecast.get("horizon_points") or 0.0) > 0
         ):
+            kb_prob = int(getattr(player, "lineup_prob", 1) or 1)
+            li_st = li_status.get(player.id)
+            role_factor = 1.0
+            if kb_prob == 2 and li_st is not Status.STARTER:
+                role_factor = 0.92
+            elif kb_prob == 3:
+                role_factor = 0.88 if li_st is Status.STARTER else 0.72
+            if (
+                int(forecast.get("observations") or 0) > 0
+                and observed_matchdays
+                and kb_prob >= 2
+                and li_st is not Status.STARTER
+                and int(getattr(player, "fitness_status", 0) or 0) == 0
+            ):
+                played_mds = {
+                    (r.season, r.matchday) for r in perf.get(player.id, []) if observed(r)
+                }
+                missed_recent = sum(1 for md in observed_matchdays if md not in played_mds)
+                if missed_recent > 0:
+                    role_factor *= 0.85**missed_recent
+            cand = candidates.get(player.id)
+            raw_factor = 1.0
+            if cand is not None:
+                base_sig = next(
+                    (s for s in getattr(cand, "signals", ()) if s.name == "base_points"),
+                    None,
+                )
+                if base_sig is not None:
+                    raw_factor = 0.90 + 0.20 * float(base_sig.score)
+            combined_factor = role_factor * raw_factor
+            if abs(combined_factor - 1.0) >= 0.01:
+                forecast = {
+                    **forecast,
+                    "expected_points": float(forecast["expected_points"]) * combined_factor,
+                    "horizon_points": float(forecast["horizon_points"]) * combined_factor,
+                }
             mult = fixture_horizon_multiplier(str(getattr(player, "team_id", "") or ""), fixtures)
             if abs(mult - 1.0) >= 0.005:
                 forecast = {
@@ -1110,26 +1227,8 @@ async def build_plan(
         else DEFAULT_GUARDRAILS.max_bid_pct_of_budget
     )
     single_limit = int(max(0, cash_plan) * bid_fraction)
-    # Rollenbeleg (P0-5): die beiden jüngsten beobachteten Spieltage im Datenbestand.
-    # Bewusst NICHT „die letzten zwei Zeilen des Spielers": wer an Spieltag 1/2
-    # spielte und seither fehlt, hätte sonst einen veralteten Beleg.
-    # Beobachtet = gespielte Zeile (`load_performance` liefert nur Minuten > 0), deren
-    # Anstoß nicht in der Zukunft liegt. NICHT `is_finished`/`minutes_observed`:
-    # `MatchdayPerformance.from_api` setzt `is_finished` nie, in der DB sind beide
-    # Spalten durchgehend NULL — der Beleg hätte sonst nie bestehen können
-    # (Review-Befund 21.09.2026). Nur ein ausdrückliches False schließt aus.
-    def observed(r) -> bool:
-        return (
-            r.minutes > 0
-            and r.minutes_observed is not False
-            and r.is_finished is not False
-            and (r.match_date is None or r.match_date <= now)
-        )
-
-    observed_matchdays = sorted(
-        {(r.season, r.matchday) for rows in perf.values() for r in rows if observed(r)},
-        reverse=True,
-    )[:ROLE_PROOF_MATCHDAYS]
+    if custom_rules_active:
+        single_limit = min(single_limit, int(float(agent_rules.max_bid_million) * 1_000_000))
 
     def role_proof_gap(player, *, force_full_proof: bool = False) -> str | None:
         minutes = {
@@ -1220,6 +1319,9 @@ async def build_plan(
         if completion
         else DEFAULT_GUARDRAILS.max_bid_premium
     )
+    if custom_rules_active:
+        user_overpay_factor = 1.0 + max(0.0, float(agent_rules.max_overpay_pct)) / 100.0
+        premium_limit = min(premium_limit, user_overpay_factor)
     notes: list[str] = []
     if held:
         squad_names = {p.id: p.last_name for p in squad_players}
@@ -1265,6 +1367,8 @@ async def build_plan(
         )
         if row.seller_id and player.id not in swap_links:
             return MANAGER_LISTING_REJECTION
+        if custom_rules_active and not agent_rules.allow_bids and player.id not in commitments:
+            return "Gebote laut persönlichem KI-Regelwerk deaktiviert."
         if player.id in blocked_target_ids and player.id not in commitments:
             return "Ziel heute gesperrt (Veto oder Fehlschlag); kein neuer Platz darauf geplant."
         if (
@@ -1646,11 +1750,24 @@ async def build_plan(
                 else {}
             )
         )
+        slot_gain_horizon = (
+            float(projection["horizon_points"])
+            if loss_plan.filled_slots < result.filled_slots
+            else max(0.0, float(result.horizon_points - loss_plan.horizon_points))
+        )
+        starter_gain_pts = slot_gain_horizon / 4.0
+        rival_scarcity = estimate_rival_scarcity(
+            alive,
+            position=int(fresh.position),
+            rival_squads=getattr(client, "rival_squads", None),
+        )
         premium = (
             bid_premium(
                 fresh.market_value,
                 fresh.mv_change_24h,
                 fresh.mv_change_24h_observed,
+                rival_scarcity_count=rival_scarcity,
+                starter_gain_points=starter_gain_pts,
                 **premium_kwargs,
             )
             if listing_type == "kickbase" and pid not in commitments
@@ -1856,6 +1973,10 @@ async def build_plan(
         )
         if (
             not dispo_active
+            or (
+                custom_rules_active
+                and (not agent_rules.allow_bids or agent_rules.allow_sells == "none")
+            )
             # Höchstens EIN offenes Dispo-Paar (Review 23.09.2026, Befund 3): Solange
             # ein Tausch-Verkauf wartet (Gebot live oder schon gewonnen), entsteht kein
             # zweites Paar; ein noch ungebotenes (`planned`) Paar darf nur durch ein
@@ -1885,6 +2006,8 @@ async def build_plan(
             p for p in sale_candidates
             if not is_verified_starter(p.id, p.lineup_prob, li_status, p.fitness_status)
         ]
+        if custom_rules_active and agent_rules.allow_sells == "bench_only":
+            sale_candidates = list(non_starter_sales)
         sale_side = (
             [
                 p for p in sale_candidates
@@ -2374,6 +2497,17 @@ async def build_plan(
                     else {}
                 )
             )
+            swap_gain_horizon = max(
+                0.0,
+                float(option.horizon_points)
+                - float(projections[sold_id]["horizon_points"]),
+            )
+            swap_starter_gain_pts = swap_gain_horizon / 4.0
+            swap_rival_scarcity = estimate_rival_scarcity(
+                alive,
+                position=int(fresh.position),
+                rival_squads=getattr(client, "rival_squads", None),
+            )
             premium = (
                 None
                 if is_mgr
@@ -2381,6 +2515,8 @@ async def build_plan(
                     fresh.market_value,
                     fresh.mv_change_24h,
                     fresh.mv_change_24h_observed,
+                    rival_scarcity_count=swap_rival_scarcity,
+                    starter_gain_points=swap_starter_gain_pts,
                     **swap_premium_kwargs,
                 )
             )
@@ -2414,7 +2550,11 @@ async def build_plan(
                 continue
             gain = won.horizon_points - pair_loss.points
             premium_eur = max(0, decision.amount - int(fresh.market_value))
-            mv_advantage = max(0, _observed_24h_change(fresh) - _observed_24h_change(sold_p)) * 4
+            mv_advantage = (
+                max(0, _observed_24h_change(fresh) - _observed_24h_change(sold_p))
+                if _observed_24h_change(sold_p) < 0
+                else 0
+            )
             if won.filled_slots <= pair_loss.filled_slots and not swap_pays_off(
                 gain_points=gain,
                 premium_eur=premium_eur,
@@ -2833,7 +2973,12 @@ async def build_plan(
     # 100 % ihres Marktwerts (der Autopilot verkauft sie spätestens am Verkaufstermin) — sonst
     # gäbe die Engine für ein geplantes Minus aus dem Handel ihre eigenen Gebote auf.
     funding_budget = budget + sum(
-        trade_sale_proceeds(squad_by_id[pid].market_value) for pid in trade_ids
+        trade_sale_proceeds(
+            squad_by_id[pid].market_value,
+            updates_until_friday=updates_until_friday,
+            haircut_per_update_pct=haircut_pct,
+        )
+        for pid in trade_ids
     )
     recovery = build_funding_recovery(
         league_id=lg, plan_id=plan_id, budget=funding_budget, owned_player_ids=squad_ids,
@@ -3154,10 +3299,23 @@ async def build_plan(
         if c.player_id in baseline.lineup_ids
         and c.player_id not in result.lineup_ids
         and c.player_id not in DEFAULT_GUARDRAILS.all_protected_ids
+        and c.player_id not in protected
         and c.player_id not in swap_pairs.values()
         and c.player_id not in held  # Tauschbremse: frisch Gekaufte gehen nicht per Tausch
+        and not (
+            custom_rules_active
+            and agent_rules.allow_sells == "bench_only"
+            and is_verified_starter(
+                c.player_id,
+                squad_by_id[c.player_id].lineup_prob,
+                li_status,
+                squad_by_id[c.player_id].fitness_status,
+            )
+        )
     ]
-    if deadline is not None:
+    if deadline is not None and not (
+        custom_rules_active and agent_rules.allow_sells == "none"
+    ):
         for proposal in list(buys):
             pid = str(proposal.action.player_id)
             if pid in new_swaps:
@@ -3196,22 +3354,54 @@ async def build_plan(
         | set(trade_ids)
         | set(new_swaps.values())
         | set(swap_links.values())
+        | set(protected)
     )
+    sell_guardrails = replace(DEFAULT_GUARDRAILS, protected_player_ids=frozenset(protected))
     sells = (
         []
-        if trades_blocked(trades_used, trade_limit, count_saturated=usage.count_saturated)
+        if (
+            trades_blocked(trades_used, trade_limit, count_saturated=usage.count_saturated)
+            or (custom_rules_active and agent_rules.allow_sells == "none")
+        )
         else [
             proposal
             for proposal in propose_sells(
                 squad_cands,
                 lg,
-                DEFAULT_GUARDRAILS,
+                sell_guardrails,
                 list_slots=DEFAULT_GUARDRAILS.daily_list_cap,
                 bench_ids=li_bench_ids,
                 showcase_bench=True,
                 showcase_exclude_ids=showcase_excluded,
             )
             if str(proposal.action.player_id) not in protected_lineup
+            and str(proposal.action.player_id) not in protected
+            and not (
+                proposal.rule_id == "sell_low_score"
+                and str(proposal.action.player_id) in squad_by_id
+                and is_verified_starter(
+                    str(proposal.action.player_id),
+                    squad_by_id[str(proposal.action.player_id)].lineup_prob,
+                    li_status,
+                    squad_by_id[str(proposal.action.player_id)].fitness_status,
+                )
+                and float(
+                    projections.get(str(proposal.action.player_id), {}).get("horizon_points")
+                    or 0.0
+                )
+                >= 160.0
+            )
+            and not (
+                custom_rules_active
+                and agent_rules.allow_sells == "bench_only"
+                and str(proposal.action.player_id) in squad_by_id
+                and is_verified_starter(
+                    str(proposal.action.player_id),
+                    squad_by_id[str(proposal.action.player_id)].lineup_prob,
+                    li_status,
+                    squad_by_id[str(proposal.action.player_id)].fitness_status,
+                )
+            )
         ]
     )
     # Konto-Deckung aus Nicht-Startern (Hebel C): Wenn das freie Geld unter dem
@@ -3221,6 +3411,10 @@ async def build_plan(
     # eine vollständige 11er-Formation besetzbar bleibt.
     if (
         not trades_blocked(trades_used, trade_limit, count_saturated=usage.count_saturated)
+        and not (
+            custom_rules_active
+            and (agent_rules.allow_sells == "none" or not agent_rules.allow_friday_rescue)
+        )
         and cash_frei - KICKOFF_MIN_BALANCE < 0
     ):
         deficit_left = -(cash_frei - KICKOFF_MIN_BALANCE)

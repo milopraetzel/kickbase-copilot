@@ -1648,6 +1648,7 @@ async def collect() -> dict[str, Any]:
         "running_matchday": running,
         "locked_for_current_matchday": running is not None,
     }
+    from kickbase_agent.agent.rules import load_agent_rules
     from kickbase_agent.intel.action_plan import build_action_plan
 
     strategy["action_plan"] = build_action_plan(
@@ -1657,6 +1658,7 @@ async def collect() -> dict[str, Any]:
     )
     return {
         "strategy": strategy,
+        "rules": load_agent_rules().to_dict(),
         "stand": datetime.now().astimezone(ZoneInfo("Europe/Berlin")).strftime("%d.%m.%Y %H:%M"),
         "kickoff": _kickoff_text(kickoff),
         "budget": plan.budget,

@@ -37,6 +37,14 @@ class LineupRecommendation:
     points_basis: str = "legacy_index"
 
 
+def _candidate_mv(c: ExplosionCandidate) -> int:
+    return int(
+        getattr(c, "current_market_value", 0)
+        or getattr(c, "market_value", 0)
+        or 0
+    )
+
+
 def _forecast_lineup(candidates: list[ExplosionCandidate], forecasts: dict[str, dict]) -> Lineup:
     """Ohne Käufe/Kosten genügt ein exakter Vergleich aller neun Formationen."""
     own = [c for c in candidates if c.player_id in forecasts]
@@ -45,24 +53,34 @@ def _forecast_lineup(candidates: list[ExplosionCandidate], forecasts: dict[str, 
             (c for c in own if c.position == pos),
             key=lambda c: (
                 -forecasts[c.player_id]["expected_points"],
-                -getattr(c, "lineup_score", 0.0),
-                -getattr(c, "market_value", 0),
+                -float(getattr(c, "lineup_score", 0.0) or 0.0),
+                -_candidate_mv(c),
                 c.player_id,
             ),
         )
         for pos in (1, 2, 3, 4)
     }
     best = None
+    best_rank: tuple[float, float, int] | None = None
     for formation in _FORMATIONS:
         needs = dict(enumerate((1, *formation), start=1))
         if any(len(by_position[pos]) < need for pos, need in needs.items()):
             continue
         starters = [c for pos, need in needs.items() for c in by_position[pos][:need]]
         score = sum(forecasts[c.player_id]["expected_points"] for c in starters)
-        if best is None or score > best.expected_score:
+        rank_key = (
+            round(score, 6),
+            round(
+                sum(float(getattr(c, "lineup_score", 0.0) or 0.0) for c in starters),
+                6,
+            ),
+            sum(_candidate_mv(c) for c in starters),
+        )
+        if best is None or best_rank is None or rank_key > best_rank:
             ids = {c.player_id for c in starters}
             best = Lineup("-".join(map(str, formation)), starters,
                           [c for c in own if c.player_id not in ids], score)
+            best_rank = rank_key
     # Unvollständige Kader ergeben hier keine Elf; `recommend_lineup` setzt dann
     # die Teil-Elf. Vorhandene Prognosen werden nie durch den alten Index ersetzt.
     return best or Lineup("", [], own, 0.0)

@@ -51,8 +51,19 @@ def protected_player_ids() -> frozenset[str]:
         except Exception:  # noqa: BLE001 — im Zweifel geschützt, nie freigegeben
             return DEFAULT_PROTECTED_PLAYER_IDS
     if raw is None:
-        return DEFAULT_PROTECTED_PLAYER_IDS
-    return frozenset(part.strip() for part in str(raw).split(",") if part.strip())
+        base = DEFAULT_PROTECTED_PLAYER_IDS
+    else:
+        base = frozenset(part.strip() for part in str(raw).split(",") if part.strip())
+    try:
+        from kickbase_agent.agent.rules import load_agent_rules
+
+        rules = load_agent_rules()
+        if rules.is_custom_active():
+            extra = frozenset(p.strip() for p in rules.protected_players if p.strip())
+            return base | extra
+    except Exception:  # noqa: BLE001
+        pass
+    return base
 
 
 @dataclass(frozen=True)
@@ -99,7 +110,7 @@ class Guardrails:
     # 120 % MW springt die Zuschlag-Erwartung (trading/expectation.py) von 0.45
     # auf 0.60 — darunter zu bieten heißt, überwiegend Geld zu binden statt
     # Spieler zu bekommen. Beleg: Ljubičić-Listing 26.08., wir 2,93 M (108 % MW)
-    # und laut API alleiniger Bieter; Zuschlag ging an Lukas M. mit 157 % MW.
+    # und laut API alleiniger Bieter; Zuschlag ging an SKY Experte mit 157 % MW.
     bid_overpay_need: float = 0.20
     # Interne Liga-Regel BASE: max 200 Transfers je Halbserie (mündlich vereinbart).
     league_trade_limit_per_half: int = 200

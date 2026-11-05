@@ -44,6 +44,7 @@ from __future__ import annotations
 
 from datetime import UTC, datetime, timedelta
 
+from kickbase_agent.agent.rules import load_agent_rules
 from kickbase_agent.decision.guardrails import protected_player_ids
 from kickbase_agent.decision.kickoff_freeze import KICKOFF_MIN_BALANCE
 from kickbase_agent.kickbase.errors import KickbaseDataError
@@ -214,6 +215,7 @@ def build_purge_cascade(
     die Zeit, die für den nächsten — wirksamen — Verkauf fehlt.
     """
     mom = momentum_by_id or {}
+    rules = load_agent_rules()
     protected = protected_player_ids() if protected_ids is None else protected_ids
     bench_set = frozenset(li_bench_ids) if li_bench_ids else frozenset()
     pos_counts: dict[int, int] = {}
@@ -223,7 +225,12 @@ def build_purge_cascade(
     trading, bench, fielded, keeper = [], [], [], []
     for sp in squad:
         p = sp.player
-        if p.id in protected:
+        full_name = f"{p.first_name} {p.last_name}".strip()
+        if p.id in protected or (
+            protected_ids is None
+            and rules.is_custom_active()
+            and rules.is_player_protected(p.id, full_name)
+        ):
             continue
         row = (p.id, p.last_name or p.first_name, p.market_value, p.lineup_prob)
         if p.id in trading_ids and p.id not in lineup_ids:

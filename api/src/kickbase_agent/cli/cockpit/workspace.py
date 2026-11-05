@@ -7,6 +7,7 @@ import json
 import math
 from typing import Any
 
+from kickbase_agent.agent.rules import load_agent_rules
 from kickbase_agent.cli.cockpit.workspace_theme import CSS, JS
 from kickbase_agent.scouts.ligainsider.teams import TEAMS
 
@@ -109,6 +110,11 @@ def _payload(d: dict) -> str:
         "kader", "market", "news", "bids", "formation", "detail_coverage", "strategy",
     )
     selected = {key: d.get(key) for key in fields}
+    selected["rules"] = (
+        d.get("rules")
+        if isinstance(d.get("rules"), dict)
+        else load_agent_rules().to_dict()
+    )
     selected["fair"] = _compact_fair(d.get("fair"))
     selected["jev"] = _compact_jev(d.get("jev"))
     selected["intents"] = _compact_intents(d.get("intents"))

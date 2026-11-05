@@ -67,6 +67,7 @@ from zoneinfo import ZoneInfo
 
 from sqlalchemy import select
 
+from kickbase_agent.agent.rules import load_agent_rules
 from kickbase_agent.config import get_settings
 from kickbase_agent.db.models import Intent, Report
 from kickbase_agent.db.session import SessionLocal
@@ -83,6 +84,7 @@ from kickbase_agent.trading.finance import overdraft_floor
 from kickbase_agent.trading.trade_book import (
     load_trade_book,
     regular_fill,
+    remaining_updates_until_friday,
     sale_cover,
     sale_deadline,
 )
@@ -326,24 +328,38 @@ def regular_squad(state: GuardState) -> tuple[SquadEntry, ...]:
 def trade_cover(state: GuardState) -> int:
     """Was der Handel bis zum Verkaufstermin zurückbringt (`trade_book.sale_cover`, dieselbe
     Rechnung wie Autopilot und Pfand-Einlöser): Handelsspieler und Ziele laufender
-    Handelsgebote mit Marktwert × 0,90 — Marktwert, nicht Listingpreis (Codex-Review
-    02.10.2026). Nach Verkaufstermin + Karenz zählen Handelsspieler nicht mehr: Ihr Verkauf
-    ist gescheitert, die Deckung muss ohne sie stehen (Review 02.10.2026)."""
+    Handelsgebote mit Marktwert (ggf. abzgl. konfiguriertem Freitags-Haircut) — Marktwert,
+    nicht Listingpreis (Codex-Review 02.10.2026). Nach Verkaufstermin + Karenz zählen
+    Handelsspieler nicht mehr: Ihr Verkauf ist gescheitert, die Deckung muss ohne sie stehen
+    (Review 02.10.2026)."""
     targets = {item.player_id: int(item.market_value) for item in state.market
                if item.market_value is not None}
+    rules = load_agent_rules()
+    haircut = rules.friday_buffer_haircut_pct if rules.is_custom_active() else 0.0
+    updates = remaining_updates_until_friday(state.now, state.sale_by)
     return sale_cover(
         held_mv=[int(e.market_value) for e in state.squad if e.player_id in state.trade_ids],
         bid_target_mv=[targets[b.player_id] for b in state.own_bids
                        if b.player_id in state.trade_bid_ids and b.player_id in targets],
-        now=state.now, sale_by=state.sale_by,
+        now=state.now,
+        sale_by=state.sale_by,
+        updates_until_friday=updates,
+        haircut_per_update_pct=haircut,
     )
 
 
 def effective_balance(state: GuardState) -> int:
     """Konto nach dem Verkauf der Handelsspieler (ohne Handel: das Konto)."""
+    rules = load_agent_rules()
+    haircut = rules.friday_buffer_haircut_pct if rules.is_custom_active() else 0.0
+    updates = remaining_updates_until_friday(state.now, state.sale_by)
     return state.budget + sale_cover(
         held_mv=[int(e.market_value) for e in state.squad if e.player_id in state.trade_ids],
-        bid_target_mv=[], now=state.now, sale_by=state.sale_by,
+        bid_target_mv=[],
+        now=state.now,
+        sale_by=state.sale_by,
+        updates_until_friday=updates,
+        haircut_per_update_pct=haircut,
     )
 
 
