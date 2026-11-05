@@ -1,0 +1,503 @@
+[
+  {
+    "i": "12321188923",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "slr": "emil",
+      "pi": "2261",
+      "pn": "Neuhaus",
+      "tid": "15",
+      "t": 2,
+      "trp": 1961947,
+      "pim": "content/file/0244f54c08f14d5e98d1ec66bd2bca77.png",
+      "tim": "content/file/7178ef92ad0747a5ad1a05d0783f5088.svg"
+    },
+    "dt": "2026-08-19T14:28:18Z"
+  },
+  {
+    "i": "12321188968",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "slr": "emil",
+      "pi": "12293",
+      "pn": "Arévalo",
+      "tid": "9",
+      "t": 2,
+      "trp": 3905842,
+      "pim": "content/file/7237c08d471f43358fb271abcdf961e9.png",
+      "tim": "content/file/9a1bb78d0ccf45f895797c0c6d8c4d40.svg"
+    },
+    "dt": "2026-08-19T14:28:20Z"
+  },
+  {
+    "i": "12329644480",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "byr": "emil",
+      "pi": "8351",
+      "pn": "Højlund",
+      "tid": "4",
+      "t": 1,
+      "trp": 3620000,
+      "pim": "content/file/9f25f3c48efd47488db3f0fea31226bc.png",
+      "tim": "content/file/422de82bee3b47eb898699d6d27095ba.svg"
+    },
+    "dt": "2026-08-20T07:50:23Z"
+  },
+  {
+    "i": "12348183850",
+    "t": 15,
+    "coc": 1,
+    "data": {
+      "slr": "Felix K. ",
+      "byr": "emil",
+      "pi": "3492",
+      "pn": "Hoffmeier",
+      "tid": "29",
+      "t": 1,
+      "trp": 8700000,
+      "pim": "content/file/b4ad73b6a3334bf8a2efdbe5b1d7e19c.png",
+      "tim": "content/file/ce455adfd794457f9ab90f7bab522812.svg"
+    },
+    "dt": "2026-08-21T21:43:27Z"
+  },
+  {
+    "i": "12371920348",
+    "t": 15,
+    "coc": 1,
+    "data": {
+      "byr": "emil",
+      "pi": "8329",
+      "pn": "Olise",
+      "tid": "2",
+      "t": 1,
+      "trp": 68017197,
+      "pim": "content/file/2d1bffc491014bb582c5d1c622b0ee37.png",
+      "tim": "content/file/ff70df040a9f4179a7b45219225a2273.svg"
+    },
+    "dt": "2026-08-23T20:24:26Z"
+  },
+  {
+    "i": "12380283781",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "slr": "emil",
+      "pi": "11955",
+      "pn": "El Khannouss",
+      "tid": "9",
+      "t": 2,
+      "trp": 22172376,
+      "pim": "content/file/5647309665b04428a87e221756ac45de.png",
+      "tim": "content/file/9a1bb78d0ccf45f895797c0c6d8c4d40.svg"
+    },
+    "dt": "2026-08-24T12:19:59Z"
+  },
+  {
+    "i": "12395414422",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "slr": "emil",
+      "pi": "12314",
+      "pn": "Ndiaye",
+      "tid": "2",
+      "t": 2,
+      "trp": 2337169,
+      "pim": "content/file/68a7688ebea44fc49865d84afbf17a38.png",
+      "tim": "content/file/ff70df040a9f4179a7b45219225a2273.svg"
+    },
+    "dt": "2026-08-25T16:19:37Z"
+  },
+  {
+    "i": "12395414863",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "slr": "emil",
+      "pi": "4576",
+      "pn": "Hanche-Olsen",
+      "tid": "18",
+      "t": 2,
+      "trp": 3051141,
+      "pim": "content/file/2c7595de1b0144fd91c7fbfc20c6dd2f.png",
+      "tim": "content/file/d4ac9675b44944039d463837f888cb1c.svg"
+    },
+    "dt": "2026-08-25T16:19:41Z"
+  },
+  {
+    "i": "12395414926",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "slr": "emil",
+      "pi": "2722",
+      "pn": "Osterhage",
+      "tid": "5",
+      "t": 2,
+      "trp": 4012852,
+      "pim": "content/file/60fae74949d64f7dbfc181f788ffc48c.png",
+      "tim": "content/file/6c1a9f14b668493283f966834891aa70.svg"
+    },
+    "dt": "2026-08-25T16:19:45Z"
+  },
+  {
+    "i": "12395421805",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "slr": "emil",
+      "pi": "2941",
+      "pn": "Scally",
+      "tid": "15",
+      "t": 2,
+      "trp": 4151452,
+      "pim": "content/file/d6ec0ce09dc940e7ae1e339aba844c03.png",
+      "tim": "content/file/7178ef92ad0747a5ad1a05d0783f5088.svg"
+    },
+    "dt": "2026-08-25T16:19:49Z"
+  },
+  {
+    "i": "12408846793",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "byr": "emil",
+      "pi": "10134",
+      "pn": "Schmetgens",
+      "tid": "10",
+      "t": 1,
+      "trp": 9578351,
+      "pim": "content/file/cbb89b4949af4997a53ca8ecc1ce7c78.png",
+      "tim": "content/file/82f8ba6f2d9e46119e4deac25a0b5480.svg"
+    },
+    "dt": "2026-08-26T18:06:59Z"
+  },
+  {
+    "i": "12408944938",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "byr": "emil",
+      "pi": "7282",
+      "pn": "Deman",
+      "tid": "10",
+      "t": 1,
+      "trp": 10642821,
+      "pim": "content/file/581d084f390f47a38c3d2d35085fb1e4.png",
+      "tim": "content/file/82f8ba6f2d9e46119e4deac25a0b5480.svg"
+    },
+    "dt": "2026-08-26T18:18:43Z"
+  },
+  {
+    "i": "12409031335",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "slr": "emil",
+      "pi": "1954",
+      "pn": "Bernardo",
+      "tid": "14",
+      "t": 2,
+      "trp": 7077515,
+      "pim": "content/file/2e01b620f1354d0f9383cc0003c49d97.png",
+      "tim": "content/file/5212904732a04199aab426e44067347c.svg"
+    },
+    "dt": "2026-08-26T18:29:27Z"
+  },
+  {
+    "i": "12417580528",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "slr": "emil",
+      "pi": "3492",
+      "pn": "Hoffmeier",
+      "tid": "29",
+      "t": 2,
+      "trp": 6526611,
+      "pim": "content/file/b4ad73b6a3334bf8a2efdbe5b1d7e19c.png",
+      "tim": "content/file/ce455adfd794457f9ab90f7bab522812.svg"
+    },
+    "dt": "2026-08-27T10:05:01Z"
+  },
+  {
+    "i": "12437177157",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "slr": "emil",
+      "pi": "13472",
+      "pn": "Reggiani",
+      "tid": "3",
+      "t": 2,
+      "trp": 3396495,
+      "pim": "content/file/8250a085897d474a87bd2a15e5558528.png",
+      "tim": "content/file/dc3d63ae79bf4282a4107bafcd572b99.svg"
+    },
+    "dt": "2026-08-28T17:26:02Z"
+  },
+  {
+    "i": "12437217264",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "slr": "Felix K. ",
+      "byr": "emil",
+      "pi": "4333",
+      "pn": "Ullrich",
+      "tid": "15",
+      "t": 1,
+      "trp": 9400000,
+      "pim": "content/file/27f19d9713034a05b1a7dedcb527f48d.png",
+      "tim": "content/file/7178ef92ad0747a5ad1a05d0783f5088.svg"
+    },
+    "dt": "2026-08-28T17:29:34Z"
+  },
+  {
+    "i": "12526561928",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "slr": "emil",
+      "pi": "7282",
+      "pn": "Deman",
+      "tid": "10",
+      "t": 2,
+      "trp": 9588216,
+      "pim": "content/file/581d084f390f47a38c3d2d35085fb1e4.png",
+      "tim": "content/file/82f8ba6f2d9e46119e4deac25a0b5480.svg"
+    },
+    "dt": "2026-09-02T06:35:01Z"
+  },
+  {
+    "i": "12526562078",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "slr": "emil",
+      "pi": "10134",
+      "pn": "Schmetgens",
+      "tid": "10",
+      "t": 2,
+      "trp": 7422546,
+      "pim": "content/file/cbb89b4949af4997a53ca8ecc1ce7c78.png",
+      "tim": "content/file/82f8ba6f2d9e46119e4deac25a0b5480.svg"
+    },
+    "dt": "2026-09-02T06:35:04Z"
+  },
+  {
+    "i": "12533434535",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "byr": "emil",
+      "pi": "89",
+      "pn": "Günter",
+      "tid": "5",
+      "t": 1,
+      "trp": 5064699,
+      "pim": "content/file/6cf382255517427e83824869e5a182d9.png",
+      "tim": "content/file/6c1a9f14b668493283f966834891aa70.svg"
+    },
+    "dt": "2026-09-02T18:26:21Z"
+  },
+  {
+    "i": "12533472821",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "slr": "emil",
+      "pi": "51",
+      "pn": "Khedira",
+      "tid": "40",
+      "t": 2,
+      "trp": 8233478,
+      "pim": "content/file/9ecae4fccb2648b8b2bd92c4cac3f955.png",
+      "tim": "content/file/8f4c7c08ee9b4dca85c28260fc5917bd.svg"
+    },
+    "dt": "2026-09-02T18:30:02Z"
+  },
+  {
+    "i": "12544110575",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "byr": "emil",
+      "pi": "15472",
+      "pn": "Daka",
+      "tid": "6",
+      "t": 1,
+      "trp": 12886667,
+      "pim": "content/file/218db4a2d0cb4f89be008597b2e2d9a7.png",
+      "tim": "content/file/c9b7d8772f324f9badeb285af4c5810a.svg"
+    },
+    "dt": "2026-09-03T11:40:02Z"
+  },
+  {
+    "i": "12547951547",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "byr": "emil",
+      "pi": "7320",
+      "pn": "Scheller",
+      "tid": "29",
+      "t": 1,
+      "trp": 7976663,
+      "pim": "content/file/06f63d14a0f4493faf04f78ea6aa5f10.png",
+      "tim": "content/file/ce455adfd794457f9ab90f7bab522812.svg"
+    },
+    "dt": "2026-09-03T18:14:54Z"
+  },
+  {
+    "i": "12572972096",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "slr": "Osei",
+      "byr": "emil",
+      "pi": "2855",
+      "pn": "Ache",
+      "tid": "28",
+      "t": 1,
+      "trp": 15915792,
+      "pim": "content/file/659aab812d23451ba8e47f520a7d0754.png",
+      "tim": "content/file/dca70c4089fd4623932b245c0e81eaba.svg"
+    },
+    "dt": "2026-09-05T07:55:24Z"
+  },
+  {
+    "i": "12588175136",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "slr": "Osei",
+      "byr": "emil",
+      "pi": "3081",
+      "pn": "Vidović",
+      "tid": "29",
+      "t": 1,
+      "trp": 8554338,
+      "pim": "content/file/cbf9ad550a164e0392e43ae723e2d83d.png",
+      "tim": "content/file/ce455adfd794457f9ab90f7bab522812.svg"
+    },
+    "dt": "2026-09-06T09:04:28Z"
+  },
+  {
+    "i": "12592262819",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "slr": "Osei",
+      "byr": "emil",
+      "pi": "4406",
+      "pn": "Dina Ebimbe",
+      "tid": "8",
+      "t": 1,
+      "trp": 5548095,
+      "pim": "content/file/afbea634b0e842279a632beb83f7cfbd.png",
+      "tim": "content/file/fed743ec085c41a9b2453875157257fe.svg"
+    },
+    "dt": "2026-09-06T15:55:56Z"
+  },
+  {
+    "i": "12602258984",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "slr": "emil",
+      "pi": "15472",
+      "pn": "Daka",
+      "tid": "6",
+      "t": 2,
+      "trp": 9787642,
+      "pim": "content/file/218db4a2d0cb4f89be008597b2e2d9a7.png",
+      "tim": "content/file/c9b7d8772f324f9badeb285af4c5810a.svg"
+    },
+    "dt": "2026-09-07T07:50:19Z"
+  },
+  {
+    "i": "12602259134",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "slr": "emil",
+      "pi": "14890",
+      "pn": "Vogt",
+      "tid": "14",
+      "t": 2,
+      "trp": 1625348,
+      "pim": "content/file/f000809ea32444ceabe7838240fcf51a.png",
+      "tim": "content/file/5212904732a04199aab426e44067347c.svg"
+    },
+    "dt": "2026-09-07T07:50:22Z"
+  },
+  {
+    "i": "12602259239",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "slr": "emil",
+      "pi": "8351",
+      "pn": "Højlund",
+      "tid": "4",
+      "t": 2,
+      "trp": 4639845,
+      "pim": "content/file/9f25f3c48efd47488db3f0fea31226bc.png",
+      "tim": "content/file/422de82bee3b47eb898699d6d27095ba.svg"
+    },
+    "dt": "2026-09-07T07:50:25Z"
+  },
+  {
+    "i": "12676936631",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "slr": "emil",
+      "pi": "15181",
+      "pn": "Leszczynski",
+      "tid": "15",
+      "t": 2,
+      "trp": 3973085,
+      "pim": "content/file/43eddfa24a0f4db3a737bf045f96d849.png",
+      "tim": "content/file/7178ef92ad0747a5ad1a05d0783f5088.svg"
+    },
+    "dt": "2026-09-11T18:15:04Z"
+  },
+  {
+    "i": "12676937258",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "slr": "emil",
+      "pi": "89",
+      "pn": "Günter",
+      "tid": "5",
+      "t": 2,
+      "trp": 3646808,
+      "pim": "content/file/6cf382255517427e83824869e5a182d9.png",
+      "tim": "content/file/6c1a9f14b668493283f966834891aa70.svg"
+    },
+    "dt": "2026-09-11T18:15:07Z"
+  },
+  {
+    "i": "12676937639",
+    "t": 15,
+    "coc": 0,
+    "data": {
+      "slr": "emil",
+      "pi": "3187",
+      "pn": "Schäfer",
+      "tid": "40",
+      "t": 2,
+      "trp": 3898704,
+      "pim": "content/file/433f8b676b6b4b898ad3ede98e20f79d.png",
+      "tim": "content/file/8f4c7c08ee9b4dca85c28260fc5917bd.svg"
+    },
+    "dt": "2026-09-11T18:15:10Z"
+  }
+]

@@ -1,0 +1,44 @@
+# Isolierte Staging- & Entwickler-Umgebung (http://localhost:8081)
+# Startet das komplette System im sicheren Dry-Run-Modus mit realistischen
+# Bundesliga-Demo-Daten (kein echter Kickbase-Login nötig).
+#
+# Starten:
+#   docker compose -f docker-compose.staging.yml up -d --build
+
+services:
+  api-staging:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: kickbase-api-staging
+    restart: unless-stopped
+    environment:
+      AGENT_DATA_DIR: /app/data
+      AGENT_DRY_RUN: "true"
+      AGENT_AUTO_INTENTS: "false"
+      AGENT_TRADE_AUTOPILOT: "false"
+      KBA_API_WRITE_TOKEN: ""
+    volumes:
+      - kba-staging-data:/app/data
+    command:
+      - sh
+      - -c
+      - |
+        alembic upgrade head &&
+        kba staging-seed --out /app/data/cockpit/index.html &&
+        uvicorn kickbase_agent.server.app:app --host 0.0.0.0 --port 8000
+
+  cockpit-staging:
+    image: nginx:1.27-alpine
+    container_name: kickbase-cockpit-staging
+    restart: unless-stopped
+    depends_on:
+      - api-staging
+    ports:
+      - "8081:80"
+    volumes:
+      - kba-staging-data:/app/data:ro
+      - ./deploy/cockpit-staging-nginx.conf:/etc/nginx/conf.d/default.conf:ro
+
+volumes:
+  kba-staging-data:

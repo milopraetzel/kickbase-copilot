@@ -1,0 +1,21 @@
+{
+  "url": "https://www.bundesliga.com/de/bundesliga/spieltag/2026-2027/4",
+  "status": 200,
+  "content_type": "text/html;charset=UTF-8",
+  "content_encoding": "br",
+  "wire_bytes": 114953,
+  "chunks": [
+    16377,
+    16384,
+    16384,
+    16384,
+    16384,
+    16384,
+    16384,
+    272
+  ],
+  "request_accept_encoding": "gzip, deflate, br",
+  "captured_date": "2026-09-14",
+  "sha256": "869b1874a630eeb31bb34c1effc092de28944ac0573f3c077f860e697c2627f1",
+  "purpose": "Real public response for HTTPX/brotlicffi streaming regression; not a player-role label."
+}

@@ -1,0 +1,80 @@
+{
+  "i": "13629",
+  "fn": "Linus",
+  "ln": "Güther",
+  "shn": 49,
+  "tid": "40",
+  "tn": "Union Berlin",
+  "oui": "0",
+  "st": 0,
+  "stl": [],
+  "pos": 3,
+  "iposl": false,
+  "ph": [
+    {
+      "hp": false
+    },
+    {
+      "hp": false
+    },
+    {
+      "hp": false
+    }
+  ],
+  "mv": 1246414,
+  "cv": 1900000,
+  "tfhmvt": -144727,
+  "mvt": 2,
+  "day": 3,
+  "mdsum": [
+    {
+      "t1": "7",
+      "t2": "40",
+      "t1g": 4,
+      "t2g": 0,
+      "day": 2,
+      "md": "2026-09-05T13:30:00Z",
+      "cur": false,
+      "mdst": 2,
+      "mdln": "2 Match Day",
+      "t1im": "content/file/e06a055a6eaf4fd7bebfadb35037f957.svg",
+      "t2im": "content/file/8f4c7c08ee9b4dca85c28260fc5917bd.svg"
+    },
+    {
+      "t1": "40",
+      "t2": "8",
+      "t1g": 1,
+      "t2g": 3,
+      "day": 3,
+      "md": "2026-09-11T18:30:00Z",
+      "cur": true,
+      "mdst": 2,
+      "mdln": "3 Match Day",
+      "t1im": "content/file/8f4c7c08ee9b4dca85c28260fc5917bd.svg",
+      "t2im": "content/file/fed743ec085c41a9b2453875157257fe.svg"
+    },
+    {
+      "t1": "2",
+      "t2": "40",
+      "t1g": 0,
+      "t2g": 0,
+      "day": 4,
+      "md": "2026-09-18T18:30:00Z",
+      "cur": false,
+      "mdst": 0,
+      "mdln": "4 Match Day",
+      "t1im": "content/file/ff70df040a9f4179a7b45219225a2273.svg",
+      "t2im": "content/file/8f4c7c08ee9b4dca85c28260fc5917bd.svg"
+    }
+  ],
+  "smdc": 3,
+  "sl": true,
+  "plpt": "Ligainsider",
+  "plpurl": "content/file/ef187fece16544febb50bd330706fd7d.png",
+  "opl": [],
+  "pim": "content/file/d92375c9bb9640858ef3fa4deebadf84.png",
+  "tim": "content/file/8f4c7c08ee9b4dca85c28260fc5917bd.svg",
+  "prob": 5,
+  "plpim": "content/file/ec60319449e14cec96fbbba034437ee0.png",
+  "ts": "2026-09-11T08:13:37Z"
+}

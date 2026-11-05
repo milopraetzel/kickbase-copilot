@@ -1,0 +1,38 @@
+name: CI & Guardrails
+
+on:
+  push:
+    branches: [main, staging]
+  pull_request:
+    branches: [main, staging]
+
+jobs:
+  lint-and-test:
+    name: Ruff, Guardrail-Siegel & Pytest (Python 3.12)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: api
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          python-version: "3.12"
+
+      - name: Sync Dependencies
+        run: uv sync --extra dev
+
+      - name: Ruff Linter (100 Spalten & Code-Hygiene)
+        run: uv run --extra dev ruff check src/ tests/
+
+      - name: Guardrail-Lock Siegel prüfen
+        run: uv run kba guardrails-check
+
+      - name: Staging-Seed Smoke-Test
+        run: uv run kba staging-seed --out /tmp/staging-cockpit.html
+
+      - name: Unit & Integration Tests
+        run: uv run --extra dev pytest -q -k "not compose"

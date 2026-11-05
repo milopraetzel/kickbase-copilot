@@ -1,0 +1,6 @@
+# AGENTS.md — Kurzanleitung für KI-Agenten (Claude Code, Cursor, Codex, Antigravity)
+
+1. **First-Principles Architektur:** Ein einziges Web-Cockpit (`api/src/kickbase_agent/cli/cockpit/workspace.py` mit 6 Haupt-Tabs inkl. `⚙ Regelwerk`), eine einzige Schreibstelle nach Kickbase (`api/src/kickbase_agent/agent/executor.py`) und ein zentrales Regelwerk (`api/src/kickbase_agent/agent/rules.py` → `data/agent_rules.json`).
+2. **Interaktives 5-Schritte-Onboarding (`ONBOARDING.md`):** Wenn der Nutzer den Agenten einrichten oder Regeln ändern möchte, lies [`ONBOARDING.md`](./ONBOARDING.md), führe das 5-Schritte-Interview durch und speichere die Antworten via `uv --directory api run kba rules set ...` (synchron mit der Web-App).
+3. **Staging-Environment (`http://localhost:8081`):** Entwickler und Mitwirkende testen Änderungen immer zuerst gegen die isolierte Staging-Umgebung (`make staging` bzw. `docker compose -f docker-compose.staging.yml up -d --build` oder `uv --directory api run kba staging-seed`), niemals direkt gegen einen fremden Live-Account.
+4. **Qualität & Guardrails:** Vor jedem Commit `make lint` (`ruff check src/ tests/` + `kba guardrails-check`) und `make test` (`pytest -q`) ausführen.

@@ -1,0 +1,5266 @@
+{
+  "schema_version": 1,
+  "source": "existing_worker_read_only_export",
+  "captured_started_at": "2026-09-14T12:46:37.372624+00:00",
+  "captured_at": "2026-09-14T12:47:16.153108+00:00",
+  "consistent": true,
+  "league_id": "1234567",
+  "manager_id": "2663242",
+  "budget_eur": 3220437,
+  "rules": {
+    "max_players_per_club": 8,
+    "is_admin": false
+  },
+  "protected_ids": [
+    "8329"
+  ],
+  "squad_limit": 18,
+  "squad": [
+    {
+      "player": {
+        "id": "4333",
+        "first_name": "",
+        "last_name": "Ullrich",
+        "position": 2,
+        "market_value": 4706568,
+        "market_value_trend": 2,
+        "points": 80,
+        "team_id": "15",
+        "image_path": "content/file/27f19d9713034a05b1a7dedcb527f48d.png",
+        "lineup_prob": 3,
+        "fitness_status": 0,
+        "mv_change_24h": -365328,
+        "mv_change_24h_observed": true
+      },
+      "is_starter": false,
+      "fitness_status": 0,
+      "lineup_order": 4
+    },
+    {
+      "player": {
+        "id": "2855",
+        "first_name": "",
+        "last_name": "Ache",
+        "position": 4,
+        "market_value": 12370310,
+        "market_value_trend": 2,
+        "points": 147,
+        "team_id": "28",
+        "image_path": "content/file/659aab812d23451ba8e47f520a7d0754.png",
+        "lineup_prob": 3,
+        "fitness_status": 0,
+        "mv_change_24h": -626177,
+        "mv_change_24h_observed": true
+      },
+      "is_starter": false,
+      "fitness_status": 0,
+      "lineup_order": 10
+    },
+    {
+      "player": {
+        "id": "1580",
+        "first_name": "",
+        "last_name": "Schwäbe",
+        "position": 1,
+        "market_value": 15810240,
+        "market_value_trend": 2,
+        "points": 388,
+        "team_id": "28",
+        "image_path": "content/file/2708fddc28474a2299885f3eb69be6bc.png",
+        "lineup_prob": 1,
+        "fitness_status": 0,
+        "mv_change_24h": 2128,
+        "mv_change_24h_observed": true
+      },
+      "is_starter": false,
+      "fitness_status": 0,
+      "lineup_order": 0
+    },
+    {
+      "player": {
+        "id": "6668",
+        "first_name": "",
+        "last_name": "Minjae",
+        "position": 2,
+        "market_value": 13139172,
+        "market_value_trend": 1,
+        "points": 241,
+        "team_id": "2",
+        "image_path": "content/file/4df81f5e57ca4e278fb6bc229ed6e05d.png",
+        "lineup_prob": 3,
+        "fitness_status": 0,
+        "mv_change_24h": 77053,
+        "mv_change_24h_observed": true
+      },
+      "is_starter": false,
+      "fitness_status": 0,
+      "lineup_order": 1
+    },
+    {
+      "player": {
+        "id": "3081",
+        "first_name": "",
+        "last_name": "Vidović",
+        "position": 3,
+        "market_value": 5851555,
+        "market_value_trend": 2,
+        "points": 101,
+        "team_id": "29",
+        "image_path": "content/file/cbf9ad550a164e0392e43ae723e2d83d.png",
+        "lineup_prob": 1,
+        "fitness_status": 0,
+        "mv_change_24h": -336781,
+        "mv_change_24h_observed": true
+      },
+      "is_starter": false,
+      "fitness_status": 0,
+      "lineup_order": 7
+    },
+    {
+      "player": {
+        "id": "8329",
+        "first_name": "",
+        "last_name": "Olise",
+        "position": 3,
+        "market_value": 65078782,
+        "market_value_trend": 1,
+        "points": 634,
+        "team_id": "2",
+        "image_path": "content/file/2d1bffc491014bb582c5d1c622b0ee37.png",
+        "lineup_prob": 2,
+        "fitness_status": 0,
+        "mv_change_24h": 5360,
+        "mv_change_24h_observed": true
+      },
+      "is_starter": false,
+      "fitness_status": 0,
+      "lineup_order": 6
+    },
+    {
+      "player": {
+        "id": "7320",
+        "first_name": "",
+        "last_name": "Scheller",
+        "position": 2,
+        "market_value": 9023756,
+        "market_value_trend": 2,
+        "points": 204,
+        "team_id": "29",
+        "image_path": "content/file/06f63d14a0f4493faf04f78ea6aa5f10.png",
+        "lineup_prob": 2,
+        "fitness_status": 0,
+        "mv_change_24h": -284219,
+        "mv_change_24h_observed": true
+      },
+      "is_starter": false,
+      "fitness_status": 0,
+      "lineup_order": 2
+    },
+    {
+      "player": {
+        "id": "4406",
+        "first_name": "",
+        "last_name": "Dina Ebimbe",
+        "position": 3,
+        "market_value": 4904731,
+        "market_value_trend": 1,
+        "points": 114,
+        "team_id": "8",
+        "image_path": "content/file/afbea634b0e842279a632beb83f7cfbd.png",
+        "lineup_prob": 2,
+        "fitness_status": 0,
+        "mv_change_24h": 108934,
+        "mv_change_24h_observed": true
+      },
+      "is_starter": false,
+      "fitness_status": 0,
+      "lineup_order": 9
+    }
+  ],
+  "market": [
+    {
+      "player": {
+        "id": "43",
+        "first_name": "Mitchell",
+        "last_name": "Weiser",
+        "position": 2,
+        "market_value": 4579987,
+        "market_value_trend": 1,
+        "points": 13,
+        "team_id": "10",
+        "image_path": "content/file/d4075d101f5c49f88113a719ed8f34e5.png",
+        "lineup_prob": 5,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 4392268,
+      "expires_at": "2026-09-13T13:16:13Z",
+      "seller_id": "2464959",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "357",
+        "first_name": "Jens",
+        "last_name": "Grahl",
+        "position": 1,
+        "market_value": 500000,
+        "market_value_trend": 0,
+        "points": 0,
+        "team_id": "4",
+        "image_path": "content/file/e76a9805862d4c849883f4035d7912a7.png",
+        "lineup_prob": 5,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 500000,
+      "expires_at": "2026-09-14T13:21:10.158338Z",
+      "seller_id": "",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "737",
+        "first_name": "Luca",
+        "last_name": "Waldschmidt",
+        "position": 3,
+        "market_value": 2122937,
+        "market_value_trend": 2,
+        "points": 0,
+        "team_id": "28",
+        "image_path": "content/file/c6c99717a5834cacbb3161877ca3f29f.png",
+        "lineup_prob": 5,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 2122937,
+      "expires_at": "2026-09-15T11:31:52.158369Z",
+      "seller_id": "",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "1223",
+        "first_name": "Marvin",
+        "last_name": "Friedrich",
+        "position": 2,
+        "market_value": 956639,
+        "market_value_trend": 2,
+        "points": 0,
+        "team_id": "40",
+        "image_path": "content/file/0e7e99776b0c460eaaf8702878b90869.png",
+        "lineup_prob": 5,
+        "fitness_status": 2,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 956639,
+      "expires_at": "2026-09-14T13:46:14.158384Z",
+      "seller_id": "",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "1540",
+        "first_name": "Danny",
+        "last_name": "Da Costa",
+        "position": 2,
+        "market_value": 9165047,
+        "market_value_trend": 2,
+        "points": 174,
+        "team_id": "18",
+        "image_path": "content/file/d7479cd684eb4636932e2e5651e92411.png",
+        "lineup_prob": 3,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 10465144,
+      "expires_at": "2026-09-11T17:52:21Z",
+      "seller_id": "2465197",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "1580",
+        "first_name": "Marvin",
+        "last_name": "Schwäbe",
+        "position": 1,
+        "market_value": 15810240,
+        "market_value_trend": 2,
+        "points": 388,
+        "team_id": "28",
+        "image_path": "content/file/2708fddc28474a2299885f3eb69be6bc.png",
+        "lineup_prob": 1,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 16116107,
+      "expires_at": "2026-09-07T07:00:01Z",
+      "seller_id": "2663242",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "1811",
+        "first_name": "Jeffrey",
+        "last_name": "Gouweleeuw",
+        "position": 2,
+        "market_value": 5398008,
+        "market_value_trend": 2,
+        "points": 52,
+        "team_id": "13",
+        "image_path": "content/file/12102af2b43f4161bfaeb1a6d0172ad2.png",
+        "lineup_prob": 5,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 5398008,
+      "expires_at": "2026-09-15T00:32:19.158428Z",
+      "seller_id": "",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "1863",
+        "first_name": "Daniel",
+        "last_name": "Heuer Fernandes",
+        "position": 1,
+        "market_value": 11641458,
+        "market_value_trend": 2,
+        "points": 151,
+        "team_id": "6",
+        "image_path": "content/file/25bb5ce570244f8296d6e817316ad707.png",
+        "lineup_prob": 1,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 11641458,
+      "expires_at": "2026-09-15T14:21:33.158442Z",
+      "seller_id": "",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "2300",
+        "first_name": "Josip",
+        "last_name": "Stanišić",
+        "position": 2,
+        "market_value": 16726810,
+        "market_value_trend": 2,
+        "points": 153,
+        "team_id": "2",
+        "image_path": "content/file/e5f36d7812254f3cb4534802eb6cd7e9.png",
+        "lineup_prob": 4,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 16726810,
+      "expires_at": "2026-09-15T15:04:00.158453Z",
+      "seller_id": "",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "2471",
+        "first_name": "Markus",
+        "last_name": "Schubert",
+        "position": 1,
+        "market_value": 883130,
+        "market_value_trend": 2,
+        "points": 0,
+        "team_id": "29",
+        "image_path": "content/file/1602a8ef777540f4ac5390f258ed237c.png",
+        "lineup_prob": 5,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 883130,
+      "expires_at": "2026-09-15T01:24:58.158464Z",
+      "seller_id": "",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "2855",
+        "first_name": "Ragnar",
+        "last_name": "Ache",
+        "position": 4,
+        "market_value": 12370310,
+        "market_value_trend": 2,
+        "points": 147,
+        "team_id": "28",
+        "image_path": "content/file/659aab812d23451ba8e47f520a7d0754.png",
+        "lineup_prob": 3,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 15549752,
+      "expires_at": "2026-09-07T07:55:24Z",
+      "seller_id": "2663242",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "2887",
+        "first_name": "Ritsu",
+        "last_name": "Dōan",
+        "position": 3,
+        "market_value": 16307914,
+        "market_value_trend": 1,
+        "points": 176,
+        "team_id": "4",
+        "image_path": "content/file/8ad9394d1b4e4df9b692dad3a7539c1d.png",
+        "lineup_prob": 2,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 16307914,
+      "expires_at": "2026-09-15T12:24:56.158485Z",
+      "seller_id": "",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "3027",
+        "first_name": "Marvin",
+        "last_name": "Pieringer",
+        "position": 4,
+        "market_value": 4328247,
+        "market_value_trend": 2,
+        "points": 74,
+        "team_id": "29",
+        "image_path": "content/file/599aac2ada574e618a4b2ef6956cd9b3.png",
+        "lineup_prob": 1,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 4429813,
+      "expires_at": "2026-09-13T16:06:59Z",
+      "seller_id": "2465162",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "3081",
+        "first_name": "Gabriel",
+        "last_name": "Vidović",
+        "position": 3,
+        "market_value": 5851555,
+        "market_value_trend": 2,
+        "points": 101,
+        "team_id": "29",
+        "image_path": "content/file/cbf9ad550a164e0392e43ae723e2d83d.png",
+        "lineup_prob": 1,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 8485482,
+      "expires_at": "2026-09-07T07:55:33Z",
+      "seller_id": "2663242",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "3183",
+        "first_name": "Anton",
+        "last_name": "Kade",
+        "position": 4,
+        "market_value": 12021770,
+        "market_value_trend": 2,
+        "points": 273,
+        "team_id": "13",
+        "image_path": "content/file/023539a6ce2b4b2d971d98593d7ce584.png",
+        "lineup_prob": 5,
+        "fitness_status": 1,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 12663475,
+      "expires_at": "2026-09-13T08:45:37Z",
+      "seller_id": "2465609",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "3190",
+        "first_name": "Jeff",
+        "last_name": "Chabot",
+        "position": 2,
+        "market_value": 22225497,
+        "market_value_trend": 2,
+        "points": 264,
+        "team_id": "9",
+        "image_path": "content/file/ee6e1ec0b942485d99b3293e1c9d42f9.png",
+        "lineup_prob": 1,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 22225497,
+      "expires_at": "2026-09-14T21:47:55.158523Z",
+      "seller_id": "",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "3281",
+        "first_name": "Ludovit",
+        "last_name": "Reis",
+        "position": 3,
+        "market_value": 9901588,
+        "market_value_trend": 1,
+        "points": 184,
+        "team_id": "10",
+        "image_path": "content/file/4b8927aad68d467b96d281d272a77f35.png",
+        "lineup_prob": 1,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 9901588,
+      "expires_at": "2026-09-13T20:24:52Z",
+      "seller_id": "2467172",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "4333",
+        "first_name": "Lukas",
+        "last_name": "Ullrich",
+        "position": 2,
+        "market_value": 4706568,
+        "market_value_trend": 2,
+        "points": 80,
+        "team_id": "15",
+        "image_path": "content/file/27f19d9713034a05b1a7dedcb527f48d.png",
+        "lineup_prob": 3,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 6656740,
+      "expires_at": "2026-09-02T17:35:01Z",
+      "seller_id": "2663242",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "4406",
+        "first_name": "Éric",
+        "last_name": "Dina Ebimbe",
+        "position": 3,
+        "market_value": 4904731,
+        "market_value_trend": 1,
+        "points": 114,
+        "team_id": "8",
+        "image_path": "content/file/afbea634b0e842279a632beb83f7cfbd.png",
+        "lineup_prob": 2,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 5333859,
+      "expires_at": "2026-09-07T07:55:39Z",
+      "seller_id": "2663242",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "4446",
+        "first_name": "Aljoscha",
+        "last_name": "Kemlein",
+        "position": 3,
+        "market_value": 6322683,
+        "market_value_trend": 2,
+        "points": 73,
+        "team_id": "40",
+        "image_path": "content/file/2dc45e5315ff4262a38925af69a6e745.png",
+        "lineup_prob": 2,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 6322683,
+      "expires_at": "2026-09-15T05:50:07.158569Z",
+      "seller_id": "",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "6199",
+        "first_name": "Shuto",
+        "last_name": "Machino",
+        "position": 4,
+        "market_value": 2058590,
+        "market_value_trend": 2,
+        "points": 0,
+        "team_id": "15",
+        "image_path": "content/file/cefff6eb5d884a94b7d3b2ffb53b760c.png",
+        "lineup_prob": 3,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 2058590,
+      "expires_at": "2026-09-14T14:58:53.158579Z",
+      "seller_id": "",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "6300",
+        "first_name": "Assan",
+        "last_name": "Ouédraogo",
+        "position": 3,
+        "market_value": 10228388,
+        "market_value_trend": 1,
+        "points": 68,
+        "team_id": "43",
+        "image_path": "content/file/44f5198b463047fc88626d9698f3a2d0.png",
+        "lineup_prob": 5,
+        "fitness_status": 2,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 10228388,
+      "expires_at": "2026-09-14T10:12:21Z",
+      "seller_id": "2464959",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "6668",
+        "first_name": "Kim",
+        "last_name": "Minjae",
+        "position": 2,
+        "market_value": 13139172,
+        "market_value_trend": 1,
+        "points": 241,
+        "team_id": "2",
+        "image_path": "content/file/4df81f5e57ca4e278fb6bc229ed6e05d.png",
+        "lineup_prob": 3,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 12740207,
+      "expires_at": "2026-09-07T07:00:04Z",
+      "seller_id": "2663242",
+      "offer_count": 1
+    },
+    {
+      "player": {
+        "id": "7275",
+        "first_name": "Kauã",
+        "last_name": "Santos",
+        "position": 1,
+        "market_value": 3426517,
+        "market_value_trend": 2,
+        "points": 0,
+        "team_id": "4",
+        "image_path": "content/file/aa2d99e5647f41be9c144d86afcdde54.png",
+        "lineup_prob": 5,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 3426517,
+      "expires_at": "2026-09-15T07:28:15.158607Z",
+      "seller_id": "",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "7320",
+        "first_name": "Tjark",
+        "last_name": "Scheller",
+        "position": 2,
+        "market_value": 9023756,
+        "market_value_trend": 2,
+        "points": 204,
+        "team_id": "29",
+        "image_path": "content/file/06f63d14a0f4493faf04f78ea6aa5f10.png",
+        "lineup_prob": 2,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 8555393,
+      "expires_at": "2026-09-07T07:00:07Z",
+      "seller_id": "2663242",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "7441",
+        "first_name": "Cole",
+        "last_name": "Campbell",
+        "position": 3,
+        "market_value": 9273253,
+        "market_value_trend": 2,
+        "points": 164,
+        "team_id": "77",
+        "image_path": "content/file/669458754d454557bed29bb138f25294.png",
+        "lineup_prob": 2,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 9273253,
+      "expires_at": "2026-09-13T20:24:49Z",
+      "seller_id": "2467172",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "7721",
+        "first_name": "Marco",
+        "last_name": "Grüll",
+        "position": 3,
+        "market_value": 9497747,
+        "market_value_trend": 1,
+        "points": 473,
+        "team_id": "10",
+        "image_path": "content/file/73071b81354346399a14dd6431d4e823.png",
+        "lineup_prob": 1,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 9497747,
+      "expires_at": "2026-09-15T13:20:27.158637Z",
+      "seller_id": "",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "8247",
+        "first_name": "Ramon",
+        "last_name": "Hendriks",
+        "position": 2,
+        "market_value": 7897242,
+        "market_value_trend": 2,
+        "points": 61,
+        "team_id": "9",
+        "image_path": "content/file/105193e4d2f8459290802db43899091e.png",
+        "lineup_prob": 3,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 7897242,
+      "expires_at": "2026-09-14T20:21:38.158647Z",
+      "seller_id": "",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "8872",
+        "first_name": "Jonah",
+        "last_name": "Sticker",
+        "position": 2,
+        "market_value": 2497159,
+        "market_value_trend": 2,
+        "points": 15,
+        "team_id": "29",
+        "image_path": "content/file/74f3dad539cd4e30aabca849e8e8bc64.png",
+        "lineup_prob": 5,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 2497159,
+      "expires_at": "2026-09-15T04:21:41.158657Z",
+      "seller_id": "",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "9615",
+        "first_name": "Ameen",
+        "last_name": "Al Dakhil",
+        "position": 2,
+        "market_value": 1284590,
+        "market_value_trend": 1,
+        "points": 0,
+        "team_id": "9",
+        "image_path": "content/file/4aee2e4168564f5e94d30aa4876c1170.png",
+        "lineup_prob": 5,
+        "fitness_status": 256,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 1074561,
+      "expires_at": "2026-09-13T13:15:57Z",
+      "seller_id": "2464959",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "9776",
+        "first_name": "Andrija",
+        "last_name": "Maksimovic",
+        "position": 3,
+        "market_value": 5782516,
+        "market_value_trend": 1,
+        "points": 84,
+        "team_id": "43",
+        "image_path": "content/file/4b987894fd8842a69a0341460d5ebc51.png",
+        "lineup_prob": 4,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 5782516,
+      "expires_at": "2026-09-14T06:35:39Z",
+      "seller_id": "394535",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "11161",
+        "first_name": "Koki",
+        "last_name": "Machida",
+        "position": 2,
+        "market_value": 4399091,
+        "market_value_trend": 1,
+        "points": 49,
+        "team_id": "14",
+        "image_path": "content/file/80f0a50727b54ea5a90a99a754cc7a6c.png",
+        "lineup_prob": 3,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 4191198,
+      "expires_at": "2026-09-13T08:42:19Z",
+      "seller_id": "2465609",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "11512",
+        "first_name": "Nicolás",
+        "last_name": "Capaldo",
+        "position": 2,
+        "market_value": 8010527,
+        "market_value_trend": 2,
+        "points": 54,
+        "team_id": "6",
+        "image_path": "content/file/bb8ff3d0932d47bd9d7fa4a4f38068ef.png",
+        "lineup_prob": 2,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 8010527,
+      "expires_at": "2026-09-15T01:51:33.158752Z",
+      "seller_id": "",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "11513",
+        "first_name": "Christian",
+        "last_name": "Kofane",
+        "position": 4,
+        "market_value": 10015113,
+        "market_value_trend": 2,
+        "points": 286,
+        "team_id": "7",
+        "image_path": "content/file/ce8356c51b154a87a40a56f723f2e3e3.png",
+        "lineup_prob": 3,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 10015113,
+      "expires_at": "2026-09-14T23:50:20.158764Z",
+      "seller_id": "",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "11665",
+        "first_name": "Kacper",
+        "last_name": "Potulski",
+        "position": 2,
+        "market_value": 8360542,
+        "market_value_trend": 1,
+        "points": 156,
+        "team_id": "18",
+        "image_path": "content/file/b1ee33c0ce864060a4d44adf70936760.png",
+        "lineup_prob": 3,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 8360542,
+      "expires_at": "2026-09-14T13:40:45.158773Z",
+      "seller_id": "",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "12314",
+        "first_name": "Bara Sapoko",
+        "last_name": "Ndiaye",
+        "position": 3,
+        "market_value": 918425,
+        "market_value_trend": 2,
+        "points": 0,
+        "team_id": "2",
+        "image_path": "content/file/68a7688ebea44fc49865d84afbf17a38.png",
+        "lineup_prob": 5,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 918425,
+      "expires_at": "2026-09-13T20:26:36Z",
+      "seller_id": "2465609",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "12368",
+        "first_name": "Sander",
+        "last_name": "Tangvik",
+        "position": 1,
+        "market_value": 500000,
+        "market_value_trend": 2,
+        "points": 0,
+        "team_id": "6",
+        "image_path": "content/file/3d7ab89b5e874e77bbb6b1fb6724745f.png",
+        "lineup_prob": 5,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 500000,
+      "expires_at": "2026-09-15T12:44:05.158792Z",
+      "seller_id": "",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "12763",
+        "first_name": "Emmanuel",
+        "last_name": "Latte Lath",
+        "position": 4,
+        "market_value": 7670366,
+        "market_value_trend": 2,
+        "points": 88,
+        "team_id": "40",
+        "image_path": "content/file/d94f619b8cda4f03a559f3b3b10c2ffc.png",
+        "lineup_prob": 3,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 7670366,
+      "expires_at": "2026-09-15T02:33:01.158803Z",
+      "seller_id": "",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "15202",
+        "first_name": "Zento",
+        "last_name": "Uno",
+        "position": 3,
+        "market_value": 2526576,
+        "market_value_trend": 1,
+        "points": 0,
+        "team_id": "15",
+        "image_path": "content/file/9c1b0bb28e67413dad79f8a99c4eda88.png",
+        "lineup_prob": 5,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 2507703,
+      "expires_at": "2026-09-13T08:51:18Z",
+      "seller_id": "2465609",
+      "offer_count": 0
+    },
+    {
+      "player": {
+        "id": "15313",
+        "first_name": "Paul",
+        "last_name": "Erevbenagie",
+        "position": 4,
+        "market_value": 3128269,
+        "market_value_trend": 2,
+        "points": 49,
+        "team_id": "10",
+        "image_path": "content/file/6e29480ac28c4af59908453b181e813c.png",
+        "lineup_prob": 5,
+        "fitness_status": 0,
+        "mv_change_24h": 0,
+        "mv_change_24h_observed": false
+      },
+      "price": 3128269,
+      "expires_at": "2026-09-15T09:40:35.158822Z",
+      "seller_id": "",
+      "offer_count": 0
+    }
+  ],
+  "bids": [],
+  "team_plan": {
+    "observed_at": "2026-09-14T12:46:39.537894+00:00",
+    "matchday_deadline": "2026-09-18T18:30:00+00:00",
+    "open_bids": [],
+    "forecasts": {
+      "4333": {
+        "expected_points": 0.0,
+        "horizon_points": 0.0,
+        "expected_minutes": 72.4,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Aktueller LI-Bank-/Ausfallstatus: konservative Nullbasis."
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 8,
+        "conditional_expected_points": 47.666666666666664,
+        "conditional_expected_minutes": 72.4,
+        "availability_adjustment": {
+          "factor": 1.0,
+          "basis": "appearance_assumption"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-13",
+          "market_value_eur": 4706568,
+          "age_days": 1,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-09-14",
+              "change_eur": -365328,
+              "change_pct": -7.76208906362343,
+              "projected_market_value_eur": 4341240,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -412639,
+                  -330363
+                ],
+                "sample_size": 115,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-09-16",
+              "change_eur": -1095984,
+              "change_pct": -23.28626719087029,
+              "projected_market_value_eur": 3610584,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -1330356,
+                  -929499
+                ],
+                "sample_size": 113,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-20",
+              "change_eur": -2557296,
+              "change_pct": -54.33462344536401,
+              "projected_market_value_eur": 2149272,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -3479598,
+                  -2039840
+                ],
+                "sample_size": 109,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "2855": {
+        "expected_points": 59.46666666666667,
+        "horizon_points": 237.86666666666667,
+        "expected_minutes": 69.4,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Unklare, künftige oder noch nicht abgeschlossene Zeilen: {'unfinished_or_unsettled': 1}"
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 8,
+        "conditional_expected_points": 59.46666666666667,
+        "conditional_expected_minutes": 69.4,
+        "availability_adjustment": {
+          "factor": 1.0,
+          "basis": "appearance_assumption"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-13",
+          "market_value_eur": 12370310,
+          "age_days": 1,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-09-14",
+              "change_eur": -626177,
+              "change_pct": -5.061934583692729,
+              "projected_market_value_eur": 11744133,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -655768,
+                  -597614
+                ],
+                "sample_size": 101,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-09-16",
+              "change_eur": -1878531,
+              "change_pct": -15.185803751078186,
+              "projected_market_value_eur": 10491779,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -2034670,
+                  -1758521
+                ],
+                "sample_size": 99,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-20",
+              "change_eur": -4383239,
+              "change_pct": -35.433542085849105,
+              "projected_market_value_eur": 7987071,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -4762818,
+                  -4060892
+                ],
+                "sample_size": 95,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "1580": {
+        "expected_points": 105.46666666666667,
+        "horizon_points": 421.8666666666667,
+        "expected_minutes": 97.26666666666667,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Unklare, künftige oder noch nicht abgeschlossene Zeilen: {'unfinished_or_unsettled': 1}"
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 8,
+        "conditional_expected_points": 105.46666666666667,
+        "conditional_expected_minutes": 97.26666666666667,
+        "availability_adjustment": {
+          "factor": 1.0,
+          "basis": "appearance_assumption"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-13",
+          "market_value_eur": 15810240,
+          "age_days": 1,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-09-14",
+              "change_eur": 2128,
+              "change_pct": 0.013459631226344445,
+              "projected_market_value_eur": 15812368,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -39855,
+                  48823
+                ],
+                "sample_size": 115,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-09-16",
+              "change_eur": 6384,
+              "change_pct": 0.040378893679033336,
+              "projected_market_value_eur": 15816624,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -205632,
+                  185765
+                ],
+                "sample_size": 113,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-20",
+              "change_eur": 14896,
+              "change_pct": 0.09421741858441111,
+              "projected_market_value_eur": 15825136,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -739595,
+                  719934
+                ],
+                "sample_size": 109,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "6668": {
+        "expected_points": 144.06666666666666,
+        "horizon_points": 576.2666666666667,
+        "expected_minutes": 81.93333333333334,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Unklare, künftige oder noch nicht abgeschlossene Zeilen: {'unfinished_or_unsettled': 1}"
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 8,
+        "conditional_expected_points": 144.06666666666666,
+        "conditional_expected_minutes": 81.93333333333334,
+        "availability_adjustment": {
+          "factor": 1.0,
+          "basis": "appearance_assumption"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-13",
+          "market_value_eur": 13139172,
+          "age_days": 1,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-09-14",
+              "change_eur": 77053,
+              "change_pct": 0.5864372579946439,
+              "projected_market_value_eur": 13216225,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  22764,
+                  124139
+                ],
+                "sample_size": 115,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-09-16",
+              "change_eur": 231159,
+              "change_pct": 1.7593117739839315,
+              "projected_market_value_eur": 13370331,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -30736,
+                  546652
+                ],
+                "sample_size": 113,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-20",
+              "change_eur": 539371,
+              "change_pct": 4.105060805962506,
+              "projected_market_value_eur": 13678543,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -190440,
+                  1481844
+                ],
+                "sample_size": 109,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "3081": {
+        "expected_points": 25.333333333333332,
+        "horizon_points": 101.33333333333333,
+        "expected_minutes": 95.33333333333333,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Unklare, künftige oder noch nicht abgeschlossene Zeilen: {'unfinished_or_unsettled': 1}"
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 2,
+        "conditional_expected_points": 25.333333333333332,
+        "conditional_expected_minutes": 95.33333333333333,
+        "availability_adjustment": {
+          "factor": 1.0,
+          "basis": "appearance_assumption"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-13",
+          "market_value_eur": 5851555,
+          "age_days": 1,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-09-14",
+              "change_eur": -336781,
+              "change_pct": -5.7554103140105495,
+              "projected_market_value_eur": 5514774,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -336781,
+                  -336781
+                ],
+                "sample_size": 98,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-09-16",
+              "change_eur": -1010343,
+              "change_pct": -17.266230942031648,
+              "projected_market_value_eur": 4841212,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -1010343,
+                  -1010343
+                ],
+                "sample_size": 94,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-20",
+              "change_eur": -2357467,
+              "change_pct": -40.28787219807384,
+              "projected_market_value_eur": 3494088,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -2357467,
+                  -2357467
+                ],
+                "sample_size": 86,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "8329": {
+        "expected_points": 188.13333333333333,
+        "horizon_points": 752.5333333333333,
+        "expected_minutes": 61.6,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Unklare, künftige oder noch nicht abgeschlossene Zeilen: {'unfinished_or_unsettled': 1}"
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 8,
+        "conditional_expected_points": 188.13333333333333,
+        "conditional_expected_minutes": 61.6,
+        "availability_adjustment": {
+          "factor": 1.0,
+          "basis": "appearance_assumption"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-13",
+          "market_value_eur": 65078782,
+          "age_days": 1,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-09-14",
+              "change_eur": 5360,
+              "change_pct": 0.008236171353053288,
+              "projected_market_value_eur": 65084142,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  2627,
+                  8263
+                ],
+                "sample_size": 112,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-09-16",
+              "change_eur": 16080,
+              "change_pct": 0.024708514059159865,
+              "projected_market_value_eur": 65094862,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  2781,
+                  26563
+                ],
+                "sample_size": 110,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-20",
+              "change_eur": 37520,
+              "change_pct": 0.05765319947137302,
+              "projected_market_value_eur": 65116302,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -4512,
+                  76469
+                ],
+                "sample_size": 106,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "7320": {
+        "expected_points": 95.0,
+        "horizon_points": 380.0,
+        "expected_minutes": 95.33333333333333,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Unklare, künftige oder noch nicht abgeschlossene Zeilen: {'unfinished_or_unsettled': 1}"
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 2,
+        "conditional_expected_points": 95.0,
+        "conditional_expected_minutes": 95.33333333333333,
+        "availability_adjustment": {
+          "factor": 1.0,
+          "basis": "appearance_assumption"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-13",
+          "market_value_eur": 9023756,
+          "age_days": 1,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-09-14",
+              "change_eur": -284219,
+              "change_pct": -3.149675146358124,
+              "projected_market_value_eur": 8739537,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -334021,
+                  -232404
+                ],
+                "sample_size": 101,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-09-16",
+              "change_eur": -852657,
+              "change_pct": -9.449025439074372,
+              "projected_market_value_eur": 8171099,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -1142609,
+                  -478595
+                ],
+                "sample_size": 99,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-20",
+              "change_eur": -1989533,
+              "change_pct": -22.04772602450687,
+              "projected_market_value_eur": 7034223,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -3132025,
+                  -315852
+                ],
+                "sample_size": 95,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "4406": {
+        "expected_points": 13.0,
+        "horizon_points": 52.0,
+        "expected_minutes": 55.333333333333336,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Unklare, künftige oder noch nicht abgeschlossene Zeilen: {'unfinished_or_unsettled': 1}"
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 2,
+        "conditional_expected_points": 13.0,
+        "conditional_expected_minutes": 55.333333333333336,
+        "availability_adjustment": {
+          "factor": 1.0,
+          "basis": "appearance_assumption"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-13",
+          "market_value_eur": 4904731,
+          "age_days": 1,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-09-14",
+              "change_eur": 108934,
+              "change_pct": 2.220998460466028,
+              "projected_market_value_eur": 5013665,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  82700,
+                  156549
+                ],
+                "sample_size": 97,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-09-16",
+              "change_eur": 326802,
+              "change_pct": 6.6629953813980825,
+              "projected_market_value_eur": 5231533,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  92045,
+                  681083
+                ],
+                "sample_size": 95,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-20",
+              "change_eur": 762538,
+              "change_pct": 15.546989223262193,
+              "projected_market_value_eur": 5667269,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -480470,
+                  2394963
+                ],
+                "sample_size": 91,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "11161": {
+        "expected_points": 0.0,
+        "horizon_points": 0.0,
+        "expected_minutes": null,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "insufficient",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Unklare, künftige oder noch nicht abgeschlossene Zeilen: {'unfinished_or_unsettled': 1}",
+          "Keine jüngere belegte Leistung; Null ist eine konservative Planungsbasis."
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": false,
+        "observations": 0,
+        "conditional_expected_points": 0.0,
+        "conditional_expected_minutes": null,
+        "availability_adjustment": {
+          "factor": 1.0,
+          "basis": "appearance_assumption"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-13",
+          "market_value_eur": 4399091,
+          "age_days": 1,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-09-14",
+              "change_eur": 207893,
+              "change_pct": 4.725817219966579,
+              "projected_market_value_eur": 4606984,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  182982,
+                  254239
+                ],
+                "sample_size": 90,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-09-16",
+              "change_eur": 623679,
+              "change_pct": 14.177451659899738,
+              "projected_market_value_eur": 5022770,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  387822,
+                  843423
+                ],
+                "sample_size": 88,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-20",
+              "change_eur": 1455251,
+              "change_pct": 33.080720539766055,
+              "projected_market_value_eur": 5854342,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  966014,
+                  2302068
+                ],
+                "sample_size": 84,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "11512": {
+        "expected_points": 58.4,
+        "horizon_points": 233.6,
+        "expected_minutes": 97.8,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Unklare, künftige oder noch nicht abgeschlossene Zeilen: {'unfinished_or_unsettled': 1}"
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 8,
+        "conditional_expected_points": 58.4,
+        "conditional_expected_minutes": 97.8,
+        "availability_adjustment": {
+          "factor": 1.0,
+          "basis": "appearance_assumption"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "insufficient",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-13",
+          "market_value_eur": 8010527,
+          "age_days": 1,
+          "horizons": {},
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "11513": {
+        "expected_points": 43.2,
+        "horizon_points": 172.8,
+        "expected_minutes": 48.0,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Unklare, künftige oder noch nicht abgeschlossene Zeilen: {'ambiguous_points': 1}"
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 8,
+        "conditional_expected_points": 43.2,
+        "conditional_expected_minutes": 48.0,
+        "availability_adjustment": {
+          "factor": 1.0,
+          "basis": "appearance_assumption"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "stale_baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-08-26",
+          "market_value_eur": 9081557,
+          "age_days": 19,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-08-27",
+              "change_eur": -207383,
+              "change_pct": -2.2835621689100227,
+              "projected_market_value_eur": 8874174,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -236164,
+                  -185198
+                ],
+                "sample_size": 91,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-08-29",
+              "change_eur": -622149,
+              "change_pct": -6.850686506730068,
+              "projected_market_value_eur": 8459408,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -737976,
+                  -512859
+                ],
+                "sample_size": 89,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-02",
+              "change_eur": -1451681,
+              "change_pct": -15.98493518237016,
+              "projected_market_value_eur": 7629876,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -1906763,
+                  -1126457
+                ],
+                "sample_size": 85,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "11665": {
+        "expected_points": 92.73333333333333,
+        "horizon_points": 370.93333333333334,
+        "expected_minutes": 71.93333333333334,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Unklare, künftige oder noch nicht abgeschlossene Zeilen: {'unfinished_or_unsettled': 1}"
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 8,
+        "conditional_expected_points": 92.73333333333333,
+        "conditional_expected_minutes": 71.93333333333334,
+        "availability_adjustment": {
+          "factor": 1.0,
+          "basis": "appearance_assumption"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "insufficient",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-13",
+          "market_value_eur": 8360542,
+          "age_days": 1,
+          "horizons": {},
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "1223": {
+        "expected_points": 0.0,
+        "horizon_points": 0.0,
+        "expected_minutes": 0.0,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Bank-/Fitnessrisiko: Nullbasis als Heuristik, keine gelernte Chance.",
+          "Aktueller LI-Bank-/Ausfallstatus: konservative Nullbasis."
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 6,
+        "conditional_expected_points": 21.733333333333334,
+        "conditional_expected_minutes": 15.8,
+        "availability_adjustment": {
+          "factor": 0.0,
+          "basis": "conservative_role_heuristic"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "insufficient",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-13",
+          "market_value_eur": 956639,
+          "age_days": 1,
+          "horizons": {},
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "12314": {
+        "expected_points": 0.0,
+        "horizon_points": 0.0,
+        "expected_minutes": 0.0,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Bank-/Fitnessrisiko: Nullbasis als Heuristik, keine gelernte Chance.",
+          "Aktueller LI-Bank-/Ausfallstatus: konservative Nullbasis."
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 4,
+        "conditional_expected_points": 48.4,
+        "conditional_expected_minutes": 48.0,
+        "availability_adjustment": {
+          "factor": 0.0,
+          "basis": "conservative_role_heuristic"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "insufficient",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-11",
+          "market_value_eur": 1075824,
+          "age_days": 3,
+          "horizons": {},
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "12368": {
+        "expected_points": 0.0,
+        "horizon_points": 0.0,
+        "expected_minutes": 0.0,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Bank-/Fitnessrisiko: Nullbasis als Heuristik, keine gelernte Chance.",
+          "Aktueller LI-Bank-/Ausfallstatus: konservative Nullbasis."
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 1,
+        "conditional_expected_points": 220.0,
+        "conditional_expected_minutes": 101.0,
+        "availability_adjustment": {
+          "factor": 0.0,
+          "basis": "conservative_role_heuristic"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "insufficient",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-13",
+          "market_value_eur": 500000,
+          "age_days": 1,
+          "horizons": {},
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "12763": {
+        "expected_points": 21.333333333333332,
+        "horizon_points": 85.33333333333333,
+        "expected_minutes": 65.33333333333333,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Unklare, künftige oder noch nicht abgeschlossene Zeilen: {'unfinished_or_unsettled': 1}"
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 2,
+        "conditional_expected_points": 21.333333333333332,
+        "conditional_expected_minutes": 65.33333333333333,
+        "availability_adjustment": {
+          "factor": 1.0,
+          "basis": "appearance_assumption"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "insufficient",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-13",
+          "market_value_eur": 7670366,
+          "age_days": 1,
+          "horizons": {},
+          "excluded": {
+            "invalid": 71,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "15202": {
+        "expected_points": 0.0,
+        "horizon_points": 0.0,
+        "expected_minutes": null,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "insufficient",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Keine jüngere belegte Leistung; Null ist eine konservative Planungsbasis.",
+          "Bank-/Fitnessrisiko: Nullbasis als Heuristik, keine gelernte Chance.",
+          "Aktueller LI-Bank-/Ausfallstatus: konservative Nullbasis."
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": false,
+        "observations": 0,
+        "conditional_expected_points": 0.0,
+        "conditional_expected_minutes": null,
+        "availability_adjustment": {
+          "factor": 0.0,
+          "basis": "conservative_role_heuristic"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-13",
+          "market_value_eur": 2526576,
+          "age_days": 1,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-09-14",
+              "change_eur": 18873,
+              "change_pct": 0.7469793111309535,
+              "projected_market_value_eur": 2545449,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -16036,
+                  46361
+                ],
+                "sample_size": 57,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-09-16",
+              "change_eur": 56619,
+              "change_pct": 2.2409379333928605,
+              "projected_market_value_eur": 2583195,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -136405,
+                  175554
+                ],
+                "sample_size": 55,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-20",
+              "change_eur": 132111,
+              "change_pct": 5.2288551779166745,
+              "projected_market_value_eur": 2658687,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -942981,
+                  461314
+                ],
+                "sample_size": 51,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 34,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "15313": {
+        "expected_points": 0.0,
+        "horizon_points": 0.0,
+        "expected_minutes": null,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "insufficient",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Keine jüngere belegte Leistung; Null ist eine konservative Planungsbasis.",
+          "Bank-/Fitnessrisiko: Nullbasis als Heuristik, keine gelernte Chance."
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": false,
+        "observations": 0,
+        "conditional_expected_points": 0.0,
+        "conditional_expected_minutes": null,
+        "availability_adjustment": {
+          "factor": 0.0,
+          "basis": "conservative_role_heuristic"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "stale_baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-08-26",
+          "market_value_eur": 6178485,
+          "age_days": 19,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-08-27",
+              "change_eur": 81115,
+              "change_pct": 1.3128622955303768,
+              "projected_market_value_eur": 6259600,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  36906,
+                  132260
+                ],
+                "sample_size": 33,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-08-29",
+              "change_eur": 243345,
+              "change_pct": 3.93858688659113,
+              "projected_market_value_eur": 6421830,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  47524,
+                  565608
+                ],
+                "sample_size": 31,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-02",
+              "change_eur": 567805,
+              "change_pct": 9.190036068712638,
+              "projected_market_value_eur": 6746290,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  107439,
+                  2177333
+                ],
+                "sample_size": 27,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 60,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "1811": {
+        "expected_points": 0.0,
+        "horizon_points": 0.0,
+        "expected_minutes": 0.0,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Bank-/Fitnessrisiko: Nullbasis als Heuristik, keine gelernte Chance.",
+          "Aktueller LI-Bank-/Ausfallstatus: konservative Nullbasis."
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 8,
+        "conditional_expected_points": 66.73333333333333,
+        "conditional_expected_minutes": 90.66666666666667,
+        "availability_adjustment": {
+          "factor": 0.0,
+          "basis": "conservative_role_heuristic"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "stale_baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-08-21",
+          "market_value_eur": 10979930,
+          "age_days": 24,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-08-22",
+              "change_eur": 65204,
+              "change_pct": 0.593847137458982,
+              "projected_market_value_eur": 11045134,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  28370,
+                  103533
+                ],
+                "sample_size": 90,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-08-24",
+              "change_eur": 195612,
+              "change_pct": 1.781541412376946,
+              "projected_market_value_eur": 11175542,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  6480,
+                  401612
+                ],
+                "sample_size": 88,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-08-28",
+              "change_eur": 456428,
+              "change_pct": 4.156929962212874,
+              "projected_market_value_eur": 11436358,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -348075,
+                  1152124
+                ],
+                "sample_size": 84,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "1863": {
+        "expected_points": 100.73333333333333,
+        "horizon_points": 402.93333333333334,
+        "expected_minutes": 101.93333333333334,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell."
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 8,
+        "conditional_expected_points": 100.73333333333333,
+        "conditional_expected_minutes": 101.93333333333334,
+        "availability_adjustment": {
+          "factor": 1.0,
+          "basis": "appearance_assumption"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "stale_baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-08-26",
+          "market_value_eur": 15170394,
+          "age_days": 19,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-08-27",
+              "change_eur": 81397,
+              "change_pct": 0.536551654492296,
+              "projected_market_value_eur": 15251791,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  56327,
+                  107863
+                ],
+                "sample_size": 91,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-08-29",
+              "change_eur": 244191,
+              "change_pct": 1.609654963476888,
+              "projected_market_value_eur": 15414585,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  139062,
+                  400801
+                ],
+                "sample_size": 89,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-02",
+              "change_eur": 569779,
+              "change_pct": 3.755861581446072,
+              "projected_market_value_eur": 15740173,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  25427,
+                  1298679
+                ],
+                "sample_size": 85,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "2300": {
+        "expected_points": 0.0,
+        "horizon_points": 0.0,
+        "expected_minutes": 0.0,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Bank-/Fitnessrisiko: Nullbasis als Heuristik, keine gelernte Chance."
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 8,
+        "conditional_expected_points": 95.0,
+        "conditional_expected_minutes": 64.13333333333334,
+        "availability_adjustment": {
+          "factor": 0.0,
+          "basis": "conservative_role_heuristic"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "stale_baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-08-27",
+          "market_value_eur": 22255655,
+          "age_days": 18,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-08-28",
+              "change_eur": 36406,
+              "change_pct": 0.16358089663054176,
+              "projected_market_value_eur": 22292061,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  20886,
+                  50573
+                ],
+                "sample_size": 90,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-08-30",
+              "change_eur": 109218,
+              "change_pct": 0.4907426898916253,
+              "projected_market_value_eur": 22364873,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  49945,
+                  195412
+                ],
+                "sample_size": 88,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-03",
+              "change_eur": 254842,
+              "change_pct": 1.1450662764137924,
+              "projected_market_value_eur": 22510497,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -131490,
+                  610045
+                ],
+                "sample_size": 84,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "2471": {
+        "expected_points": 0.0,
+        "horizon_points": 0.0,
+        "expected_minutes": null,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "insufficient",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Keine jüngere belegte Leistung; Null ist eine konservative Planungsbasis.",
+          "Bank-/Fitnessrisiko: Nullbasis als Heuristik, keine gelernte Chance.",
+          "Aktueller LI-Bank-/Ausfallstatus: konservative Nullbasis."
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": false,
+        "observations": 0,
+        "conditional_expected_points": 0.0,
+        "conditional_expected_minutes": null,
+        "availability_adjustment": {
+          "factor": 0.0,
+          "basis": "conservative_role_heuristic"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-13",
+          "market_value_eur": 883130,
+          "age_days": 1,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-09-14",
+              "change_eur": -151269,
+              "change_pct": -17.128735293784608,
+              "projected_market_value_eur": 731861,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -178882,
+                  -128733
+                ],
+                "sample_size": 90,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-09-16",
+              "change_eur": -453807,
+              "change_pct": -51.386205881353824,
+              "projected_market_value_eur": 429323,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -594439,
+                  -283886
+                ],
+                "sample_size": 88,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-20",
+              "change_eur": -883130,
+              "change_pct": -100.0,
+              "projected_market_value_eur": 0,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -883130,
+                  -368816
+                ],
+                "sample_size": 84,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "2887": {
+        "expected_points": 72.93333333333334,
+        "horizon_points": 291.73333333333335,
+        "expected_minutes": 80.73333333333333,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell."
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 8,
+        "conditional_expected_points": 72.93333333333334,
+        "conditional_expected_minutes": 80.73333333333333,
+        "availability_adjustment": {
+          "factor": 1.0,
+          "basis": "appearance_assumption"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "stale_baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-08-25",
+          "market_value_eur": 20414882,
+          "age_days": 20,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-08-26",
+              "change_eur": -559437,
+              "change_pct": -2.74033913103196,
+              "projected_market_value_eur": 19855445,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -581738,
+                  -543203
+                ],
+                "sample_size": 90,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-08-28",
+              "change_eur": -1678311,
+              "change_pct": -8.22101739309588,
+              "projected_market_value_eur": 18736571,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -1758514,
+                  -1593020
+                ],
+                "sample_size": 88,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-01",
+              "change_eur": -3916059,
+              "change_pct": -19.18237391722372,
+              "projected_market_value_eur": 16498823,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -4135364,
+                  -3574626
+                ],
+                "sample_size": 84,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "3027": {
+        "expected_points": 27.8,
+        "horizon_points": 111.2,
+        "expected_minutes": 79.26666666666667,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Unklare, künftige oder noch nicht abgeschlossene Zeilen: {'unfinished_or_unsettled': 1}"
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 8,
+        "conditional_expected_points": 27.8,
+        "conditional_expected_minutes": 79.26666666666667,
+        "availability_adjustment": {
+          "factor": 1.0,
+          "basis": "appearance_assumption"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "insufficient",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-13",
+          "market_value_eur": 4328247,
+          "age_days": 1,
+          "horizons": {},
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "3183": {
+        "expected_points": 0.0,
+        "horizon_points": 0.0,
+        "expected_minutes": 0.0,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Bank-/Fitnessrisiko: Nullbasis als Heuristik, keine gelernte Chance.",
+          "Aktueller LI-Bank-/Ausfallstatus: konservative Nullbasis."
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 8,
+        "conditional_expected_points": 177.33333333333334,
+        "conditional_expected_minutes": 96.13333333333334,
+        "availability_adjustment": {
+          "factor": 0.0,
+          "basis": "conservative_role_heuristic"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-13",
+          "market_value_eur": 12021770,
+          "age_days": 1,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-09-14",
+              "change_eur": -641705,
+              "change_pct": -5.337857902788025,
+              "projected_market_value_eur": 11380065,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -682234,
+                  -590842
+                ],
+                "sample_size": 90,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-09-16",
+              "change_eur": -1925115,
+              "change_pct": -16.013573708364078,
+              "projected_market_value_eur": 10096655,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -2142673,
+                  -1688238
+                ],
+                "sample_size": 88,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-20",
+              "change_eur": -4491935,
+              "change_pct": -37.36500531951618,
+              "projected_market_value_eur": 7529835,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -4994951,
+                  -3658480
+                ],
+                "sample_size": 84,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "3190": {
+        "expected_points": 97.46666666666667,
+        "horizon_points": 389.8666666666667,
+        "expected_minutes": 91.66666666666667,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell."
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 8,
+        "conditional_expected_points": 97.46666666666667,
+        "conditional_expected_minutes": 91.66666666666667,
+        "availability_adjustment": {
+          "factor": 1.0,
+          "basis": "appearance_assumption"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "stale_baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-08-23",
+          "market_value_eur": 24727729,
+          "age_days": 22,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-08-24",
+              "change_eur": -361612,
+              "change_pct": -1.4623744865531323,
+              "projected_market_value_eur": 24366117,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -414999,
+                  -338047
+                ],
+                "sample_size": 90,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-08-26",
+              "change_eur": -1084836,
+              "change_pct": -4.387123459659397,
+              "projected_market_value_eur": 23642893,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -1257607,
+                  -932456
+                ],
+                "sample_size": 88,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-08-30",
+              "change_eur": -2531284,
+              "change_pct": -10.236621405871926,
+              "projected_market_value_eur": 22196445,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -3245008,
+                  -1791355
+                ],
+                "sample_size": 84,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "3281": {
+        "expected_points": 74.33333333333333,
+        "horizon_points": 297.3333333333333,
+        "expected_minutes": 94.66666666666667,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell."
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 2,
+        "conditional_expected_points": 74.33333333333333,
+        "conditional_expected_minutes": 94.66666666666667,
+        "availability_adjustment": {
+          "factor": 1.0,
+          "basis": "appearance_assumption"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "stale_baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-10",
+          "market_value_eur": 9890605,
+          "age_days": 4,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-09-11",
+              "change_eur": 202431,
+              "change_pct": 2.0466998732635666,
+              "projected_market_value_eur": 10093036,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  202431,
+                  227095
+                ],
+                "sample_size": 91,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-09-13",
+              "change_eur": 607293,
+              "change_pct": 6.140099619790701,
+              "projected_market_value_eur": 10497898,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  448486,
+                  643249
+                ],
+                "sample_size": 91,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-17",
+              "change_eur": 1417017,
+              "change_pct": 14.326899112844968,
+              "projected_market_value_eur": 11307622,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  758235,
+                  1417017
+                ],
+                "sample_size": 87,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "357": {
+        "expected_points": 0.0,
+        "horizon_points": 0.0,
+        "expected_minutes": null,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "insufficient",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Keine jüngere belegte Leistung; Null ist eine konservative Planungsbasis.",
+          "Bank-/Fitnessrisiko: Nullbasis als Heuristik, keine gelernte Chance.",
+          "Aktueller LI-Bank-/Ausfallstatus: konservative Nullbasis."
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": false,
+        "observations": 0,
+        "conditional_expected_points": 0.0,
+        "conditional_expected_minutes": null,
+        "availability_adjustment": {
+          "factor": 0.0,
+          "basis": "conservative_role_heuristic"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-13",
+          "market_value_eur": 500000,
+          "age_days": 1,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-09-14",
+              "change_eur": 0,
+              "change_pct": 0.0,
+              "projected_market_value_eur": 500000,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  0,
+                  0
+                ],
+                "sample_size": 91,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-09-16",
+              "change_eur": 0,
+              "change_pct": 0.0,
+              "projected_market_value_eur": 500000,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  0,
+                  0
+                ],
+                "sample_size": 89,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-20",
+              "change_eur": 0,
+              "change_pct": 0.0,
+              "projected_market_value_eur": 500000,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  0,
+                  0
+                ],
+                "sample_size": 85,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "43": {
+        "expected_points": 0.0,
+        "horizon_points": 0.0,
+        "expected_minutes": null,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "insufficient",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Unklare, künftige oder noch nicht abgeschlossene Zeilen: {'unfinished_or_unsettled': 1}",
+          "Keine jüngere belegte Leistung; Null ist eine konservative Planungsbasis.",
+          "Bank-/Fitnessrisiko: Nullbasis als Heuristik, keine gelernte Chance."
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": false,
+        "observations": 0,
+        "conditional_expected_points": 0.0,
+        "conditional_expected_minutes": null,
+        "availability_adjustment": {
+          "factor": 0.0,
+          "basis": "conservative_role_heuristic"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "insufficient",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-13",
+          "market_value_eur": 4579987,
+          "age_days": 1,
+          "horizons": {},
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "4446": {
+        "expected_points": 68.2,
+        "horizon_points": 272.8,
+        "expected_minutes": 84.0,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Unklare, künftige oder noch nicht abgeschlossene Zeilen: {'unfinished_or_unsettled': 1}"
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 8,
+        "conditional_expected_points": 68.2,
+        "conditional_expected_minutes": 84.0,
+        "availability_adjustment": {
+          "factor": 1.0,
+          "basis": "appearance_assumption"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-13",
+          "market_value_eur": 6322683,
+          "age_days": 1,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-09-14",
+              "change_eur": -337347,
+              "change_pct": -5.335503930847079,
+              "projected_market_value_eur": 5985336,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -398673,
+                  -289931
+                ],
+                "sample_size": 90,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-09-16",
+              "change_eur": -1012041,
+              "change_pct": -16.006511792541236,
+              "projected_market_value_eur": 5310642,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -1292000,
+                  -790275
+                ],
+                "sample_size": 88,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-20",
+              "change_eur": -2361429,
+              "change_pct": -37.348527515929554,
+              "projected_market_value_eur": 3961254,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -3503468,
+                  -1745604
+                ],
+                "sample_size": 84,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "6199": {
+        "expected_points": 11.266666666666667,
+        "horizon_points": 45.06666666666667,
+        "expected_minutes": 33.4,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Unklare, künftige oder noch nicht abgeschlossene Zeilen: {'unfinished_or_unsettled': 1}"
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 8,
+        "conditional_expected_points": 11.266666666666667,
+        "conditional_expected_minutes": 33.4,
+        "availability_adjustment": {
+          "factor": 1.0,
+          "basis": "appearance_assumption"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "insufficient",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-13",
+          "market_value_eur": 2058590,
+          "age_days": 1,
+          "horizons": {},
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "6300": {
+        "expected_points": 0.0,
+        "horizon_points": 0.0,
+        "expected_minutes": 0.0,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Bank-/Fitnessrisiko: Nullbasis als Heuristik, keine gelernte Chance."
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 8,
+        "conditional_expected_points": 73.86666666666666,
+        "conditional_expected_minutes": 70.26666666666667,
+        "availability_adjustment": {
+          "factor": 0.0,
+          "basis": "conservative_role_heuristic"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "stale_baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-07",
+          "market_value_eur": 8979149,
+          "age_days": 7,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-09-08",
+              "change_eur": 258632,
+              "change_pct": 2.8803620476728917,
+              "projected_market_value_eur": 9237781,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  238772,
+                  294695
+                ],
+                "sample_size": 90,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-09-10",
+              "change_eur": 775896,
+              "change_pct": 8.641086143018676,
+              "projected_market_value_eur": 9755045,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  700429,
+                  950236
+                ],
+                "sample_size": 88,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-14",
+              "change_eur": 1810424,
+              "change_pct": 20.162534333710244,
+              "projected_market_value_eur": 10789573,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  1568551,
+                  2445876
+                ],
+                "sample_size": 84,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "7275": {
+        "expected_points": 0.0,
+        "horizon_points": 0.0,
+        "expected_minutes": 0.0,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Bank-/Fitnessrisiko: Nullbasis als Heuristik, keine gelernte Chance.",
+          "Aktueller LI-Bank-/Ausfallstatus: konservative Nullbasis."
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 8,
+        "conditional_expected_points": 91.93333333333334,
+        "conditional_expected_minutes": 69.13333333333334,
+        "availability_adjustment": {
+          "factor": 0.0,
+          "basis": "conservative_role_heuristic"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "stale_baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-08-27",
+          "market_value_eur": 7521854,
+          "age_days": 18,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-08-28",
+              "change_eur": -171135,
+              "change_pct": -2.2751704566453963,
+              "projected_market_value_eur": 7350719,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -203759,
+                  -140809
+                ],
+                "sample_size": 90,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-08-30",
+              "change_eur": -513405,
+              "change_pct": -6.825511369936189,
+              "projected_market_value_eur": 7008449,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -639206,
+                  -339064
+                ],
+                "sample_size": 88,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-03",
+              "change_eur": -1197945,
+              "change_pct": -15.926193196517774,
+              "projected_market_value_eur": 6323909,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -1753205,
+                  -809596
+                ],
+                "sample_size": 84,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "737": {
+        "expected_points": 0.0,
+        "horizon_points": 0.0,
+        "expected_minutes": 0.0,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Unklare, künftige oder noch nicht abgeschlossene Zeilen: {'ambiguous_points': 2}",
+          "Bank-/Fitnessrisiko: Nullbasis als Heuristik, keine gelernte Chance.",
+          "Aktueller LI-Bank-/Ausfallstatus: konservative Nullbasis."
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 8,
+        "conditional_expected_points": 88.13333333333334,
+        "conditional_expected_minutes": 40.2,
+        "availability_adjustment": {
+          "factor": 0.0,
+          "basis": "conservative_role_heuristic"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "stale_baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-08-28",
+          "market_value_eur": 4176910,
+          "age_days": 17,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-08-29",
+              "change_eur": -129700,
+              "change_pct": -3.105166259268215,
+              "projected_market_value_eur": 4047210,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -161458,
+                  -86992
+                ],
+                "sample_size": 90,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-08-31",
+              "change_eur": -389100,
+              "change_pct": -9.315498777804645,
+              "projected_market_value_eur": 3787810,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -565628,
+                  -139267
+                ],
+                "sample_size": 88,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-04",
+              "change_eur": -907900,
+              "change_pct": -21.736163814877504,
+              "projected_market_value_eur": 3269010,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -1722296,
+                  -134143
+                ],
+                "sample_size": 84,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "7441": {
+        "expected_points": 0.0,
+        "horizon_points": 0.0,
+        "expected_minutes": null,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "insufficient",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Keine jüngere belegte Leistung; Null ist eine konservative Planungsbasis."
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": false,
+        "observations": 0,
+        "conditional_expected_points": 0.0,
+        "conditional_expected_minutes": null,
+        "availability_adjustment": {
+          "factor": 1.0,
+          "basis": "appearance_assumption"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "insufficient",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": null,
+          "market_value_eur": null,
+          "age_days": null,
+          "horizons": {},
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "7721": {
+        "expected_points": 17.666666666666668,
+        "horizon_points": 70.66666666666667,
+        "expected_minutes": 33.2,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell."
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 8,
+        "conditional_expected_points": 17.666666666666668,
+        "conditional_expected_minutes": 33.2,
+        "availability_adjustment": {
+          "factor": 1.0,
+          "basis": "appearance_assumption"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "stale_baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-08-23",
+          "market_value_eur": 7092311,
+          "age_days": 22,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-08-24",
+              "change_eur": 158724,
+              "change_pct": 2.237972925891152,
+              "projected_market_value_eur": 7251035,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  135885,
+                  196320
+                ],
+                "sample_size": 94,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-08-26",
+              "change_eur": 476172,
+              "change_pct": 6.713918777673455,
+              "projected_market_value_eur": 7568483,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  356006,
+                  634857
+                ],
+                "sample_size": 92,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-08-30",
+              "change_eur": 1111068,
+              "change_pct": 15.665810481238061,
+              "projected_market_value_eur": 8203379,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  751007,
+                  1764336
+                ],
+                "sample_size": 88,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "8247": {
+        "expected_points": 21.933333333333334,
+        "horizon_points": 87.73333333333333,
+        "expected_minutes": 71.46666666666667,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Unklare, künftige oder noch nicht abgeschlossene Zeilen: {'unfinished_or_unsettled': 1}"
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 8,
+        "conditional_expected_points": 21.933333333333334,
+        "conditional_expected_minutes": 71.46666666666667,
+        "availability_adjustment": {
+          "factor": 1.0,
+          "basis": "appearance_assumption"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "insufficient",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-13",
+          "market_value_eur": 7897242,
+          "age_days": 1,
+          "horizons": {},
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "8872": {
+        "expected_points": 0.0,
+        "horizon_points": 0.0,
+        "expected_minutes": 0.0,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Bank-/Fitnessrisiko: Nullbasis als Heuristik, keine gelernte Chance.",
+          "Aktueller LI-Bank-/Ausfallstatus: konservative Nullbasis."
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 2,
+        "conditional_expected_points": 3.0,
+        "conditional_expected_minutes": 14.666666666666666,
+        "availability_adjustment": {
+          "factor": 0.0,
+          "basis": "conservative_role_heuristic"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-13",
+          "market_value_eur": 2497159,
+          "age_days": 1,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-09-14",
+              "change_eur": -144581,
+              "change_pct": -5.789819550937685,
+              "projected_market_value_eur": 2352578,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -207659,
+                  -90630
+                ],
+                "sample_size": 71,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-09-16",
+              "change_eur": -433743,
+              "change_pct": -17.369458652813055,
+              "projected_market_value_eur": 2063416,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -713577,
+                  -171954
+                ],
+                "sample_size": 69,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-20",
+              "change_eur": -1012067,
+              "change_pct": -40.528736856563796,
+              "projected_market_value_eur": 1485092,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  -2497159,
+                  119680
+                ],
+                "sample_size": 65,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 19,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "9615": {
+        "expected_points": 0.0,
+        "horizon_points": 0.0,
+        "expected_minutes": 0.0,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Bank-/Fitnessrisiko: Nullbasis als Heuristik, keine gelernte Chance.",
+          "Aktueller LI-Bank-/Ausfallstatus: konservative Nullbasis."
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 8,
+        "conditional_expected_points": 41.733333333333334,
+        "conditional_expected_minutes": 44.666666666666664,
+        "availability_adjustment": {
+          "factor": 0.0,
+          "basis": "conservative_role_heuristic"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-13",
+          "market_value_eur": 1284590,
+          "age_days": 1,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-09-14",
+              "change_eur": 210029,
+              "change_pct": 16.349885955830263,
+              "projected_market_value_eur": 1494619,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  177689,
+                  244476
+                ],
+                "sample_size": 90,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-09-16",
+              "change_eur": 630087,
+              "change_pct": 49.049657867490794,
+              "projected_market_value_eur": 1914677,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  503568,
+                  804552
+                ],
+                "sample_size": 88,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-20",
+              "change_eur": 1470203,
+              "change_pct": 114.44920169081186,
+              "projected_market_value_eur": 2754793,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  1170833,
+                  2026236
+                ],
+                "sample_size": 84,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      },
+      "9776": {
+        "expected_points": 0.0,
+        "horizon_points": 0.0,
+        "expected_minutes": 0.0,
+        "play_probability": null,
+        "start_probability": null,
+        "model_version": "baseline-recency-v1",
+        "confidence": "low",
+        "reasons": [
+          "Punkte und Minuten bedingt auf einen Einsatz; Einsatzwahrscheinlichkeit unbekannt.",
+          "Vier Spieltage = konstante Formprojektion, kein separat trainiertes Horizontmodell.",
+          "Bank-/Fitnessrisiko: Nullbasis als Heuristik, keine gelernte Chance.",
+          "Aktueller LI-Bank-/Ausfallstatus: konservative Nullbasis."
+        ],
+        "points_basis": "conditional_on_appearance",
+        "horizon_basis": "constant_form_projection",
+        "forecast_available": true,
+        "observations": 8,
+        "conditional_expected_points": 35.93333333333333,
+        "conditional_expected_minutes": 14.866666666666667,
+        "availability_adjustment": {
+          "factor": 0.0,
+          "basis": "conservative_role_heuristic"
+        },
+        "market_value": {
+          "method": "last_observed_daily_change",
+          "status": "stale_baseline",
+          "as_of": "2026-09-14T12:46:39.537894+00:00",
+          "anchor_date": "2026-09-09",
+          "market_value_eur": 4326481,
+          "age_days": 5,
+          "horizons": {
+            "1": {
+              "days": 1,
+              "target_date": "2026-09-10",
+              "change_eur": 374018,
+              "change_pct": 8.644854790764134,
+              "projected_market_value_eur": 4700499,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  352203,
+                  413017
+                ],
+                "sample_size": 90,
+                "calibrated": false
+              }
+            },
+            "3": {
+              "days": 3,
+              "target_date": "2026-09-12",
+              "change_eur": 1122054,
+              "change_pct": 25.9345643722924,
+              "projected_market_value_eur": 5448535,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  999223,
+                  1426115
+                ],
+                "sample_size": 88,
+                "calibrated": false
+              }
+            },
+            "7": {
+              "days": 7,
+              "target_date": "2026-09-16",
+              "change_eur": 2618126,
+              "change_pct": 60.513983535348935,
+              "projected_market_value_eur": 6944607,
+              "uncertainty": {
+                "kind": "historical_residual_p10_p90",
+                "change_eur": [
+                  2024123,
+                  3528578
+                ],
+                "sample_size": 84,
+                "calibrated": false
+              }
+            }
+          },
+          "excluded": {
+            "invalid": 0,
+            "current_or_future_day": 0,
+            "conflicting_days": 0
+          },
+          "limitations": [
+            "Tageswerte ohne belegte Intraday-Veröffentlichungszeit.",
+            "Horizonte ab letztem abgeschlossenen Beobachtungstag.",
+            "Historische Fehlerbereiche sind keine garantierten Intervalle."
+          ]
+        }
+      }
+    },
+    "forecast_inputs": {
+      "1580": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "1580",
+          "first_name": "",
+          "last_name": "Schwäbe",
+          "position": 1,
+          "market_value": 15810240,
+          "market_value_trend": 2,
+          "points": 388,
+          "team_id": "28",
+          "image_path": "content/file/2708fddc28474a2299885f3eb69be6bc.png",
+          "lineup_prob": 1,
+          "fitness_status": 0,
+          "mv_change_24h": 2128,
+          "mv_change_24h_observed": true
+        },
+        "ligainsider_status": "starter"
+      },
+      "2855": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "2855",
+          "first_name": "",
+          "last_name": "Ache",
+          "position": 4,
+          "market_value": 12370310,
+          "market_value_trend": 2,
+          "points": 147,
+          "team_id": "28",
+          "image_path": "content/file/659aab812d23451ba8e47f520a7d0754.png",
+          "lineup_prob": 3,
+          "fitness_status": 0,
+          "mv_change_24h": -626177,
+          "mv_change_24h_observed": true
+        },
+        "ligainsider_status": "starter"
+      },
+      "3081": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "3081",
+          "first_name": "",
+          "last_name": "Vidović",
+          "position": 3,
+          "market_value": 5851555,
+          "market_value_trend": 2,
+          "points": 101,
+          "team_id": "29",
+          "image_path": "content/file/cbf9ad550a164e0392e43ae723e2d83d.png",
+          "lineup_prob": 1,
+          "fitness_status": 0,
+          "mv_change_24h": -336781,
+          "mv_change_24h_observed": true
+        },
+        "ligainsider_status": "starter"
+      },
+      "4333": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "4333",
+          "first_name": "",
+          "last_name": "Ullrich",
+          "position": 2,
+          "market_value": 4706568,
+          "market_value_trend": 2,
+          "points": 80,
+          "team_id": "15",
+          "image_path": "content/file/27f19d9713034a05b1a7dedcb527f48d.png",
+          "lineup_prob": 3,
+          "fitness_status": 0,
+          "mv_change_24h": -365328,
+          "mv_change_24h_observed": true
+        },
+        "ligainsider_status": "bench"
+      },
+      "4406": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "4406",
+          "first_name": "",
+          "last_name": "Dina Ebimbe",
+          "position": 3,
+          "market_value": 4904731,
+          "market_value_trend": 1,
+          "points": 114,
+          "team_id": "8",
+          "image_path": "content/file/afbea634b0e842279a632beb83f7cfbd.png",
+          "lineup_prob": 2,
+          "fitness_status": 0,
+          "mv_change_24h": 108934,
+          "mv_change_24h_observed": true
+        },
+        "ligainsider_status": "starter"
+      },
+      "6199": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "6199",
+          "first_name": "Shuto",
+          "last_name": "Machino",
+          "position": 4,
+          "market_value": 2058590,
+          "market_value_trend": 2,
+          "points": 0,
+          "team_id": "15",
+          "image_path": "content/file/cefff6eb5d884a94b7d3b2ffb53b760c.png",
+          "lineup_prob": 3,
+          "fitness_status": 0,
+          "mv_change_24h": -132278,
+          "mv_change_24h_observed": true
+        },
+        "ligainsider_status": "starter"
+      },
+      "6668": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "6668",
+          "first_name": "",
+          "last_name": "Minjae",
+          "position": 2,
+          "market_value": 13139172,
+          "market_value_trend": 1,
+          "points": 241,
+          "team_id": "2",
+          "image_path": "content/file/4df81f5e57ca4e278fb6bc229ed6e05d.png",
+          "lineup_prob": 3,
+          "fitness_status": 0,
+          "mv_change_24h": 77053,
+          "mv_change_24h_observed": true
+        },
+        "ligainsider_status": "starter"
+      },
+      "7320": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "7320",
+          "first_name": "",
+          "last_name": "Scheller",
+          "position": 2,
+          "market_value": 9023756,
+          "market_value_trend": 2,
+          "points": 204,
+          "team_id": "29",
+          "image_path": "content/file/06f63d14a0f4493faf04f78ea6aa5f10.png",
+          "lineup_prob": 2,
+          "fitness_status": 0,
+          "mv_change_24h": -284219,
+          "mv_change_24h_observed": true
+        },
+        "ligainsider_status": "starter"
+      },
+      "8329": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "8329",
+          "first_name": "",
+          "last_name": "Olise",
+          "position": 3,
+          "market_value": 65078782,
+          "market_value_trend": 1,
+          "points": 634,
+          "team_id": "2",
+          "image_path": "content/file/2d1bffc491014bb582c5d1c622b0ee37.png",
+          "lineup_prob": 2,
+          "fitness_status": 0,
+          "mv_change_24h": 5360,
+          "mv_change_24h_observed": true
+        },
+        "ligainsider_status": "starter"
+      },
+      "11161": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "11161",
+          "first_name": "Koki",
+          "last_name": "Machida",
+          "position": 2,
+          "market_value": 4399091,
+          "market_value_trend": 1,
+          "points": 49,
+          "team_id": "14",
+          "image_path": "content/file/80f0a50727b54ea5a90a99a754cc7a6c.png",
+          "lineup_prob": 3,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "starter"
+      },
+      "11512": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "11512",
+          "first_name": "Nicolás",
+          "last_name": "Capaldo",
+          "position": 2,
+          "market_value": 8010527,
+          "market_value_trend": 2,
+          "points": 54,
+          "team_id": "6",
+          "image_path": "content/file/bb8ff3d0932d47bd9d7fa4a4f38068ef.png",
+          "lineup_prob": 2,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "unknown"
+      },
+      "11513": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "11513",
+          "first_name": "Christian",
+          "last_name": "Kofane",
+          "position": 4,
+          "market_value": 10015113,
+          "market_value_trend": 2,
+          "points": 286,
+          "team_id": "7",
+          "image_path": "content/file/ce8356c51b154a87a40a56f723f2e3e3.png",
+          "lineup_prob": 3,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "starter"
+      },
+      "11665": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "11665",
+          "first_name": "Kacper",
+          "last_name": "Potulski",
+          "position": 2,
+          "market_value": 8360542,
+          "market_value_trend": 1,
+          "points": 156,
+          "team_id": "18",
+          "image_path": "content/file/b1ee33c0ce864060a4d44adf70936760.png",
+          "lineup_prob": 3,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "starter"
+      },
+      "1223": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "1223",
+          "first_name": "Marvin",
+          "last_name": "Friedrich",
+          "position": 2,
+          "market_value": 956639,
+          "market_value_trend": 2,
+          "points": 0,
+          "team_id": "40",
+          "image_path": "content/file/0e7e99776b0c460eaaf8702878b90869.png",
+          "lineup_prob": 5,
+          "fitness_status": 2,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "bench"
+      },
+      "12314": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "12314",
+          "first_name": "Bara Sapoko",
+          "last_name": "Ndiaye",
+          "position": 3,
+          "market_value": 918425,
+          "market_value_trend": 2,
+          "points": 0,
+          "team_id": "2",
+          "image_path": "content/file/68a7688ebea44fc49865d84afbf17a38.png",
+          "lineup_prob": 5,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "bench"
+      },
+      "12368": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "12368",
+          "first_name": "Sander",
+          "last_name": "Tangvik",
+          "position": 1,
+          "market_value": 500000,
+          "market_value_trend": 2,
+          "points": 0,
+          "team_id": "6",
+          "image_path": "content/file/3d7ab89b5e874e77bbb6b1fb6724745f.png",
+          "lineup_prob": 5,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "bench"
+      },
+      "12763": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "12763",
+          "first_name": "Emmanuel",
+          "last_name": "Latte Lath",
+          "position": 4,
+          "market_value": 7670366,
+          "market_value_trend": 2,
+          "points": 88,
+          "team_id": "40",
+          "image_path": "content/file/d94f619b8cda4f03a559f3b3b10c2ffc.png",
+          "lineup_prob": 3,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "starter"
+      },
+      "15202": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "15202",
+          "first_name": "Zento",
+          "last_name": "Uno",
+          "position": 3,
+          "market_value": 2526576,
+          "market_value_trend": 1,
+          "points": 0,
+          "team_id": "15",
+          "image_path": "content/file/9c1b0bb28e67413dad79f8a99c4eda88.png",
+          "lineup_prob": 5,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "bench"
+      },
+      "15313": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "15313",
+          "first_name": "Paul",
+          "last_name": "Erevbenagie",
+          "position": 4,
+          "market_value": 3128269,
+          "market_value_trend": 2,
+          "points": 49,
+          "team_id": "10",
+          "image_path": "content/file/6e29480ac28c4af59908453b181e813c.png",
+          "lineup_prob": 5,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "starter"
+      },
+      "1811": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "1811",
+          "first_name": "Jeffrey",
+          "last_name": "Gouweleeuw",
+          "position": 2,
+          "market_value": 5398008,
+          "market_value_trend": 2,
+          "points": 52,
+          "team_id": "13",
+          "image_path": "content/file/12102af2b43f4161bfaeb1a6d0172ad2.png",
+          "lineup_prob": 5,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "bench"
+      },
+      "1863": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "1863",
+          "first_name": "Daniel",
+          "last_name": "Heuer Fernandes",
+          "position": 1,
+          "market_value": 11641458,
+          "market_value_trend": 2,
+          "points": 151,
+          "team_id": "6",
+          "image_path": "content/file/25bb5ce570244f8296d6e817316ad707.png",
+          "lineup_prob": 1,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "starter"
+      },
+      "2300": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "2300",
+          "first_name": "Josip",
+          "last_name": "Stanišić",
+          "position": 2,
+          "market_value": 16726810,
+          "market_value_trend": 2,
+          "points": 153,
+          "team_id": "2",
+          "image_path": "content/file/e5f36d7812254f3cb4534802eb6cd7e9.png",
+          "lineup_prob": 4,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "starter"
+      },
+      "2471": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "2471",
+          "first_name": "Markus",
+          "last_name": "Schubert",
+          "position": 1,
+          "market_value": 883130,
+          "market_value_trend": 2,
+          "points": 0,
+          "team_id": "29",
+          "image_path": "content/file/1602a8ef777540f4ac5390f258ed237c.png",
+          "lineup_prob": 5,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "bench"
+      },
+      "2887": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "2887",
+          "first_name": "Ritsu",
+          "last_name": "Dōan",
+          "position": 3,
+          "market_value": 16307914,
+          "market_value_trend": 1,
+          "points": 176,
+          "team_id": "4",
+          "image_path": "content/file/8ad9394d1b4e4df9b692dad3a7539c1d.png",
+          "lineup_prob": 2,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "starter"
+      },
+      "3027": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "3027",
+          "first_name": "Marvin",
+          "last_name": "Pieringer",
+          "position": 4,
+          "market_value": 4328247,
+          "market_value_trend": 2,
+          "points": 74,
+          "team_id": "29",
+          "image_path": "content/file/599aac2ada574e618a4b2ef6956cd9b3.png",
+          "lineup_prob": 1,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "starter"
+      },
+      "3183": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "3183",
+          "first_name": "Anton",
+          "last_name": "Kade",
+          "position": 4,
+          "market_value": 12021770,
+          "market_value_trend": 2,
+          "points": 273,
+          "team_id": "13",
+          "image_path": "content/file/023539a6ce2b4b2d971d98593d7ce584.png",
+          "lineup_prob": 5,
+          "fitness_status": 1,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "out"
+      },
+      "3190": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "3190",
+          "first_name": "Jeff",
+          "last_name": "Chabot",
+          "position": 2,
+          "market_value": 22225497,
+          "market_value_trend": 2,
+          "points": 264,
+          "team_id": "9",
+          "image_path": "content/file/ee6e1ec0b942485d99b3293e1c9d42f9.png",
+          "lineup_prob": 1,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "starter"
+      },
+      "3281": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "3281",
+          "first_name": "Ludovit",
+          "last_name": "Reis",
+          "position": 3,
+          "market_value": 9901588,
+          "market_value_trend": 1,
+          "points": 184,
+          "team_id": "10",
+          "image_path": "content/file/4b8927aad68d467b96d281d272a77f35.png",
+          "lineup_prob": 1,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "starter"
+      },
+      "357": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "357",
+          "first_name": "Jens",
+          "last_name": "Grahl",
+          "position": 1,
+          "market_value": 500000,
+          "market_value_trend": 0,
+          "points": 0,
+          "team_id": "4",
+          "image_path": "content/file/e76a9805862d4c849883f4035d7912a7.png",
+          "lineup_prob": 5,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "bench"
+      },
+      "43": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "43",
+          "first_name": "Mitchell",
+          "last_name": "Weiser",
+          "position": 2,
+          "market_value": 4579987,
+          "market_value_trend": 1,
+          "points": 13,
+          "team_id": "10",
+          "image_path": "content/file/d4075d101f5c49f88113a719ed8f34e5.png",
+          "lineup_prob": 5,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "starter"
+      },
+      "4446": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "4446",
+          "first_name": "Aljoscha",
+          "last_name": "Kemlein",
+          "position": 3,
+          "market_value": 6322683,
+          "market_value_trend": 2,
+          "points": 73,
+          "team_id": "40",
+          "image_path": "content/file/2dc45e5315ff4262a38925af69a6e745.png",
+          "lineup_prob": 2,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "unknown"
+      },
+      "6300": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "6300",
+          "first_name": "Assan",
+          "last_name": "Ouédraogo",
+          "position": 3,
+          "market_value": 10228388,
+          "market_value_trend": 1,
+          "points": 68,
+          "team_id": "43",
+          "image_path": "content/file/44f5198b463047fc88626d9698f3a2d0.png",
+          "lineup_prob": 5,
+          "fitness_status": 2,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "starter"
+      },
+      "7275": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "7275",
+          "first_name": "Kauã",
+          "last_name": "Santos",
+          "position": 1,
+          "market_value": 3426517,
+          "market_value_trend": 2,
+          "points": 0,
+          "team_id": "4",
+          "image_path": "content/file/aa2d99e5647f41be9c144d86afcdde54.png",
+          "lineup_prob": 5,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "bench"
+      },
+      "737": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "737",
+          "first_name": "Luca",
+          "last_name": "Waldschmidt",
+          "position": 3,
+          "market_value": 2122937,
+          "market_value_trend": 2,
+          "points": 0,
+          "team_id": "28",
+          "image_path": "content/file/c6c99717a5834cacbb3161877ca3f29f.png",
+          "lineup_prob": 5,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "bench"
+      },
+      "7441": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "7441",
+          "first_name": "Cole",
+          "last_name": "Campbell",
+          "position": 3,
+          "market_value": 9273253,
+          "market_value_trend": 2,
+          "points": 164,
+          "team_id": "77",
+          "image_path": "content/file/669458754d454557bed29bb138f25294.png",
+          "lineup_prob": 2,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "starter"
+      },
+      "7721": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "7721",
+          "first_name": "Marco",
+          "last_name": "Grüll",
+          "position": 3,
+          "market_value": 9497747,
+          "market_value_trend": 1,
+          "points": 473,
+          "team_id": "10",
+          "image_path": "content/file/73071b81354346399a14dd6431d4e823.png",
+          "lineup_prob": 1,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "starter"
+      },
+      "8247": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "8247",
+          "first_name": "Ramon",
+          "last_name": "Hendriks",
+          "position": 2,
+          "market_value": 7897242,
+          "market_value_trend": 2,
+          "points": 61,
+          "team_id": "9",
+          "image_path": "content/file/105193e4d2f8459290802db43899091e.png",
+          "lineup_prob": 3,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "starter"
+      },
+      "8872": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "8872",
+          "first_name": "Jonah",
+          "last_name": "Sticker",
+          "position": 2,
+          "market_value": 2497159,
+          "market_value_trend": 2,
+          "points": 15,
+          "team_id": "29",
+          "image_path": "content/file/74f3dad539cd4e30aabca849e8e8bc64.png",
+          "lineup_prob": 5,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "bench"
+      },
+      "9615": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "9615",
+          "first_name": "Ameen",
+          "last_name": "Al Dakhil",
+          "position": 2,
+          "market_value": 1284590,
+          "market_value_trend": 1,
+          "points": 0,
+          "team_id": "9",
+          "image_path": "content/file/4aee2e4168564f5e94d30aa4876c1170.png",
+          "lineup_prob": 5,
+          "fitness_status": 256,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "bench"
+      },
+      "9776": {
+        "captured_at": "2026-09-14T12:46:39.537894+00:00",
+        "player": {
+          "id": "9776",
+          "first_name": "Andrija",
+          "last_name": "Maksimovic",
+          "position": 3,
+          "market_value": 5782516,
+          "market_value_trend": 1,
+          "points": 84,
+          "team_id": "43",
+          "image_path": "content/file/4b987894fd8842a69a0341460d5ebc51.png",
+          "lineup_prob": 4,
+          "fitness_status": 0,
+          "mv_change_24h": 0,
+          "mv_change_24h_observed": false
+        },
+        "ligainsider_status": "bench"
+      }
+    },
+    "technical_limits": {
+      "single_bid_budget_fraction": 0.7,
+      "market_value_factor": 1.35,
+      "daily_buy_cap": 8,
+      "squad_limit": 18,
+      "new_package_capacity": 8,
+      "daily_used": null,
+      "daily_quota_rechecked_by_executor": true
+    },
+    "baseline_filled_slots": 8
+  },
+  "purchase_reviews": {
+    "11161": {
+      "eligible": false,
+      "reasons": [
+        "Mindestpreis über dem verfügbaren technischen Einzelrahmen."
+      ]
+    },
+    "11512": {
+      "eligible": false,
+      "reasons": [
+        "Mindestpreis über dem verfügbaren technischen Einzelrahmen."
+      ]
+    },
+    "11513": {
+      "eligible": false,
+      "reasons": [
+        "Mindestpreis über dem verfügbaren technischen Einzelrahmen."
+      ]
+    },
+    "11665": {
+      "eligible": false,
+      "reasons": [
+        "Mindestpreis über dem verfügbaren technischen Einzelrahmen."
+      ]
+    },
+    "1223": {
+      "eligible": false,
+      "reasons": [
+        "Fitness oder bekannte Einsatzrolle fehlt."
+      ]
+    },
+    "12314": {
+      "eligible": false,
+      "reasons": [
+        "Bankrolle nur als Notbesetzung in den letzten 24 Stunden vor der Frist."
+      ]
+    },
+    "12368": {
+      "eligible": false,
+      "reasons": [
+        "Bankrolle nur als Notbesetzung in den letzten 24 Stunden vor der Frist."
+      ]
+    },
+    "12763": {
+      "eligible": false,
+      "reasons": [
+        "Mindestpreis über dem verfügbaren technischen Einzelrahmen."
+      ]
+    },
+    "15202": {
+      "eligible": false,
+      "reasons": [
+        "Bankrolle nur als Notbesetzung in den letzten 24 Stunden vor der Frist."
+      ]
+    },
+    "15313": {
+      "eligible": false,
+      "reasons": [
+        "Bankrolle nur als Notbesetzung in den letzten 24 Stunden vor der Frist."
+      ]
+    },
+    "1811": {
+      "eligible": false,
+      "reasons": [
+        "Bankrolle nur als Notbesetzung in den letzten 24 Stunden vor der Frist."
+      ]
+    },
+    "1863": {
+      "eligible": false,
+      "reasons": [
+        "Mindestpreis über dem verfügbaren technischen Einzelrahmen."
+      ]
+    },
+    "2300": {
+      "eligible": false,
+      "reasons": [
+        "Bankrolle nur als Notbesetzung in den letzten 24 Stunden vor der Frist."
+      ]
+    },
+    "2471": {
+      "eligible": false,
+      "reasons": [
+        "Bankrolle nur als Notbesetzung in den letzten 24 Stunden vor der Frist."
+      ]
+    },
+    "2887": {
+      "eligible": false,
+      "reasons": [
+        "Mindestpreis über dem verfügbaren technischen Einzelrahmen."
+      ]
+    },
+    "3027": {
+      "eligible": false,
+      "reasons": [
+        "Mindestpreis über dem verfügbaren technischen Einzelrahmen."
+      ]
+    },
+    "3183": {
+      "eligible": false,
+      "reasons": [
+        "Fitness oder bekannte Einsatzrolle fehlt."
+      ]
+    },
+    "3190": {
+      "eligible": false,
+      "reasons": [
+        "Mindestpreis über dem verfügbaren technischen Einzelrahmen."
+      ]
+    },
+    "3281": {
+      "eligible": false,
+      "reasons": [
+        "Mindestpreis über dem verfügbaren technischen Einzelrahmen."
+      ]
+    },
+    "357": {
+      "eligible": false,
+      "reasons": [
+        "Bankrolle nur als Notbesetzung in den letzten 24 Stunden vor der Frist."
+      ]
+    },
+    "43": {
+      "eligible": false,
+      "reasons": [
+        "Bankrolle nur als Notbesetzung in den letzten 24 Stunden vor der Frist."
+      ]
+    },
+    "4446": {
+      "eligible": false,
+      "reasons": [
+        "Mindestpreis über dem verfügbaren technischen Einzelrahmen."
+      ]
+    },
+    "6199": {
+      "eligible": true,
+      "reasons": [
+        "Mannschaft: 8 → 9 besetzbare Plätze; 2566.9 bedingte Punkte über vier Spieltage.",
+        "Alle Verpflichtungen 2,058,590 € bei 3,220,437 € Konto.",
+        "Kleinster sinnvoller Einstieg; zusätzliche Zuschlagschance noch nicht kalibriert."
+      ]
+    },
+    "6300": {
+      "eligible": false,
+      "reasons": [
+        "Fitness oder bekannte Einsatzrolle fehlt."
+      ]
+    },
+    "7275": {
+      "eligible": false,
+      "reasons": [
+        "Bankrolle nur als Notbesetzung in den letzten 24 Stunden vor der Frist."
+      ]
+    },
+    "737": {
+      "eligible": false,
+      "reasons": [
+        "Bankrolle nur als Notbesetzung in den letzten 24 Stunden vor der Frist."
+      ]
+    },
+    "7441": {
+      "eligible": false,
+      "reasons": [
+        "Mindestpreis über dem verfügbaren technischen Einzelrahmen."
+      ]
+    },
+    "7721": {
+      "eligible": false,
+      "reasons": [
+        "Mindestpreis über dem verfügbaren technischen Einzelrahmen."
+      ]
+    },
+    "8247": {
+      "eligible": false,
+      "reasons": [
+        "Mindestpreis über dem verfügbaren technischen Einzelrahmen."
+      ]
+    },
+    "8872": {
+      "eligible": false,
+      "reasons": [
+        "Bankrolle nur als Notbesetzung in den letzten 24 Stunden vor der Frist."
+      ]
+    },
+    "9615": {
+      "eligible": false,
+      "reasons": [
+        "Fitness oder bekannte Einsatzrolle fehlt."
+      ]
+    },
+    "9776": {
+      "eligible": false,
+      "reasons": [
+        "Bankrolle nur als Notbesetzung in den letzten 24 Stunden vor der Frist."
+      ]
+    }
+  },
+  "trades": {
+    "used": 28,
+    "limit": 200,
+    "count_saturated": false
+  },
+  "sale_quotes": [],
+  "limitations": [
+    "Kein atomarer Kickbase-Snapshot; Konto, Kader und Gebote nachgelesen.",
+    "Marktwert ist nur Verkaufsszenario, kein bestätigter Verkaufserlös.",
+    "Manager-Listing-Zeitpunkt ist keine garantierte Zuschlagsfrist."
+  ],
+  "cancellations": [
+    {
+      "action_id": 40,
+      "player_id": "15589",
+      "created_at": "2026-08-25T16:19:30.910489",
+      "status": "executed",
+      "funding_review": null
+    },
+    {
+      "action_id": 95,
+      "player_id": "14914",
+      "created_at": "2026-09-03T12:50:00.046815",
+      "status": "executed",
+      "funding_review": null
+    },
+    {
+      "action_id": 96,
+      "player_id": "14899",
+      "created_at": "2026-09-03T12:55:00.006606",
+      "status": "executed",
+      "funding_review": null
+    },
+    {
+      "action_id": 98,
+      "player_id": "7320",
+      "created_at": "2026-09-03T13:05:00.048263",
+      "status": "executed",
+      "funding_review": null
+    },
+    {
+      "action_id": 105,
+      "player_id": "11186",
+      "created_at": "2026-09-03T22:50:00.043256",
+      "status": "executed",
+      "funding_review": null
+    },
+    {
+      "action_id": 108,
+      "player_id": "11186",
+      "created_at": "2026-09-04T10:20:00.018408",
+      "status": "executed",
+      "funding_review": null
+    },
+    {
+      "action_id": 136,
+      "player_id": "17285",
+      "created_at": "2026-09-07T03:15:00.014741",
+      "status": "executed",
+      "funding_review": null
+    },
+    {
+      "action_id": 156,
+      "player_id": "3284",
+      "created_at": "2026-09-07T15:50:00.030709",
+      "status": "executed",
+      "funding_review": null
+    },
+    {
+      "action_id": 157,
+      "player_id": "3281",
+      "created_at": "2026-09-07T15:50:00.030709",
+      "status": "executed",
+      "funding_review": null
+    },
+    {
+      "action_id": 166,
+      "player_id": "8252",
+      "created_at": "2026-09-07T20:20:00.039290",
+      "status": "executed",
+      "funding_review": null
+    },
+    {
+      "action_id": 180,
+      "player_id": "2172",
+      "created_at": "2026-09-11T20:25:00.039171",
+      "status": "executed",
+      "funding_review": null
+    },
+    {
+      "action_id": 185,
+      "player_id": "2941",
+      "created_at": "2026-09-12T17:25:00.016124",
+      "status": "executed",
+      "funding_review": null
+    },
+    {
+      "action_id": 188,
+      "player_id": "11006",
+      "created_at": "2026-09-12T20:30:00.031906",
+      "status": "executed",
+      "funding_review": null
+    },
+    {
+      "action_id": 191,
+      "player_id": "11665",
+      "created_at": "2026-09-13T09:50:00.043006",
+      "status": "executed",
+      "funding_review": null
+    }
+  ]
+}

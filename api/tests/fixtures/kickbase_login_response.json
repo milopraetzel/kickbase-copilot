@@ -1,0 +1,8 @@
+{
+  "tkn": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.fake.signature",
+  "u": "user-123",
+  "srvl": [
+    {"id": "42", "n": "Kickbase Mit Kumpels", "b": 50000000},
+    {"id": "84", "n": "Zweite Liga", "b": 30000000}
+  ]
+}

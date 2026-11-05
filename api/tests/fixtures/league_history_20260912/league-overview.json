@@ -1,0 +1,49 @@
+{
+  "i": "1234567",
+  "lnm": "BASE",
+  "cpi": "1",
+  "cpn": "Bundesliga",
+  "dt": "2026-08-10T08:31:42Z",
+  "isr": true,
+  "mgc": 12,
+  "mid": [
+    "394535",
+    "1300403",
+    "2227102",
+    "2464959"
+  ],
+  "m": [
+    {
+      "ui": "394535",
+      "uim": "user/7ca6f3610ba840089f0fbf03e357ab9c.jpeg"
+    },
+    {
+      "ui": "1300403",
+      "uim": "user/a74500bfbad44a1fb516fc227a6a141c.png"
+    },
+    {
+      "ui": "2227102",
+      "uim": "user/02d69d765c304b81904cb220e3acc0dc.jpe"
+    },
+    {
+      "ui": "2464959",
+      "uim": "user/41085e34ab9e46ecb0afb5cf1d7d6d3f.jpeg"
+    }
+  ],
+  "gpm": 1,
+  "b": 50000000.0,
+  "mppu": 0,
+  "mpst": 0,
+  "amd": false,
+  "isp": false,
+  "mgm": 18,
+  "hum": false,
+  "ism": true,
+  "adm": false,
+  "clpc": 11,
+  "rnkm": 1,
+  "cpte": false,
+  "upe": false,
+  "isvf": false,
+  "vft": 0
+}

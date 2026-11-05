@@ -1,0 +1,2724 @@
+{
+  "version": 1,
+  "league_id": "1234567",
+  "players": {
+    "2395": {
+      "performance": [
+        {
+          "season": "2024/2025",
+          "matchday": 1,
+          "points": 131,
+          "minutes": 96,
+          "match_date": "2024-08-24T16:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 2,
+          "points": 57,
+          "minutes": 96,
+          "match_date": "2024-08-31T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 3,
+          "points": 161,
+          "minutes": 98,
+          "match_date": "2024-09-13T18:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 4,
+          "points": -6,
+          "minutes": 48,
+          "match_date": "2024-09-22T15:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 5,
+          "points": 87,
+          "minutes": 76,
+          "match_date": "2024-09-27T18:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 6,
+          "points": 146,
+          "minutes": 89,
+          "match_date": "2024-10-05T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 7,
+          "points": 122,
+          "minutes": 100,
+          "match_date": "2024-10-18T18:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 8,
+          "points": -3,
+          "minutes": 71,
+          "match_date": "2024-10-26T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 9,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2024-11-02T17:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 10,
+          "points": 19,
+          "minutes": 77,
+          "match_date": "2024-11-09T14:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 11,
+          "points": 131,
+          "minutes": 83,
+          "match_date": "2024-11-23T14:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 12,
+          "points": 45,
+          "minutes": 76,
+          "match_date": "2024-11-30T17:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 13,
+          "points": 85,
+          "minutes": 100,
+          "match_date": "2024-12-07T17:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 14,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2024-12-15T16:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 15,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2024-12-22T16:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 16,
+          "points": 47,
+          "minutes": 91,
+          "match_date": "2025-01-10T19:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 17,
+          "points": 26,
+          "minutes": 50,
+          "match_date": "2025-01-14T17:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 18,
+          "points": 60,
+          "minutes": 88,
+          "match_date": "2025-01-17T19:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 19,
+          "points": 78,
+          "minutes": 99,
+          "match_date": "2025-01-25T14:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 20,
+          "points": 170,
+          "minutes": 96,
+          "match_date": "2025-02-01T14:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 21,
+          "points": 24,
+          "minutes": 90,
+          "match_date": "2025-02-08T14:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 22,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2025-02-15T14:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 23,
+          "points": 188,
+          "minutes": 85,
+          "match_date": "2025-02-22T17:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 24,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2025-03-01T14:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 25,
+          "points": 44,
+          "minutes": 36,
+          "match_date": "2025-03-08T14:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 26,
+          "points": 25,
+          "minutes": 74,
+          "match_date": "2025-03-15T17:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 27,
+          "points": 78,
+          "minutes": 97,
+          "match_date": "2025-03-30T15:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 28,
+          "points": 130,
+          "minutes": 97,
+          "match_date": "2025-04-05T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 29,
+          "points": 98,
+          "minutes": 96,
+          "match_date": "2025-04-12T16:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 30,
+          "points": 57,
+          "minutes": 35,
+          "match_date": "2025-04-20T15:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 31,
+          "points": 83,
+          "minutes": 81,
+          "match_date": "2025-04-26T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 32,
+          "points": 133,
+          "minutes": 95,
+          "match_date": "2025-05-03T16:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 33,
+          "points": 187,
+          "minutes": 91,
+          "match_date": "2025-05-11T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 34,
+          "points": 181,
+          "minutes": 95,
+          "match_date": "2025-05-17T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 1,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2025-08-23T16:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 2,
+          "points": 64,
+          "minutes": 18,
+          "match_date": "2025-08-31T15:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 3,
+          "points": 208,
+          "minutes": 80,
+          "match_date": "2025-09-13T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 4,
+          "points": 183,
+          "minutes": 99,
+          "match_date": "2025-09-21T17:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 5,
+          "points": 24,
+          "minutes": 27,
+          "match_date": "2025-09-27T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 6,
+          "points": 14,
+          "minutes": 35,
+          "match_date": "2025-10-04T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 7,
+          "points": 103,
+          "minutes": 96,
+          "match_date": "2025-10-18T16:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 8,
+          "points": 146,
+          "minutes": 100,
+          "match_date": "2025-10-25T16:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 9,
+          "points": 51,
+          "minutes": 23,
+          "match_date": "2025-10-31T19:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 10,
+          "points": 73,
+          "minutes": 100,
+          "match_date": "2025-11-08T14:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 11,
+          "points": 40,
+          "minutes": 101,
+          "match_date": "2025-11-22T14:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 12,
+          "points": 78,
+          "minutes": 81,
+          "match_date": "2025-11-29T17:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 13,
+          "points": 19,
+          "minutes": 2,
+          "match_date": "2025-12-07T16:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 14,
+          "points": 25,
+          "minutes": 100,
+          "match_date": "2025-12-14T14:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 15,
+          "points": 92,
+          "minutes": 84,
+          "match_date": "2025-12-19T19:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 16,
+          "points": 158,
+          "minutes": 99,
+          "match_date": "2026-01-09T19:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 17,
+          "points": 126,
+          "minutes": 68,
+          "match_date": "2026-01-13T19:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 18,
+          "points": 50,
+          "minutes": 74,
+          "match_date": "2026-01-17T14:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 19,
+          "points": 161,
+          "minutes": 96,
+          "match_date": "2026-01-24T17:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 20,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-02-01T16:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 21,
+          "points": 121,
+          "minutes": 72,
+          "match_date": "2026-02-07T14:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 22,
+          "points": 396,
+          "minutes": 98,
+          "match_date": "2026-02-13T19:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 23,
+          "points": 103,
+          "minutes": 101,
+          "match_date": "2026-02-21T17:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 24,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-02-28T17:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 25,
+          "points": 33,
+          "minutes": 67,
+          "match_date": "2026-03-07T17:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 26,
+          "points": 222,
+          "minutes": 96,
+          "match_date": "2026-03-14T14:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 27,
+          "points": 114,
+          "minutes": 99,
+          "match_date": "2026-03-21T17:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 28,
+          "points": 72,
+          "minutes": 99,
+          "match_date": "2026-04-04T16:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 29,
+          "points": 87,
+          "minutes": 76,
+          "match_date": "2026-04-11T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 30,
+          "points": 3,
+          "minutes": 109,
+          "match_date": "2026-04-18T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 31,
+          "points": 171,
+          "minutes": 97,
+          "match_date": "2026-04-26T15:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 32,
+          "points": 41,
+          "minutes": 85,
+          "match_date": "2026-05-03T15:40:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 33,
+          "points": 127,
+          "minutes": 98,
+          "match_date": "2026-05-08T18:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 34,
+          "points": 141,
+          "minutes": 87,
+          "match_date": "2026-05-16T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 1,
+          "points": 80,
+          "minutes": 76,
+          "match_date": "2026-08-29T16:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 2,
+          "points": 118,
+          "minutes": 99,
+          "match_date": "2026-09-05T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 3,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-09-12T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 4,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-09-19T16:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 5,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-10-09T18:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 6,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-10-17T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 7,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-10-24T16:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 8,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-10-31T17:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 9,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-11-07T14:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 10,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-11-21T14:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 11,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-11-29T18:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 12,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-12-05T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 13,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-12-12T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 14,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-12-19T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 15,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-01-09T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 16,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-01-13T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 17,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-01-16T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 18,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-01-23T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 19,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-01-30T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 20,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-02-06T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 21,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-02-13T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 22,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-02-20T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 23,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-02-27T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 24,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-03-03T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 25,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-03-06T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 26,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-03-13T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 27,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-03-20T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 28,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-04-03T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 29,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-04-10T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 30,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-04-17T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 31,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-04-24T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 32,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-05-08T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 33,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-05-15T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 34,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-05-22T13:30:00Z",
+          "player_id": "2395",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T22:19:40.627456+00:00"
+        }
+      ],
+      "performance_fetched_at": "2026-09-11T22:19:40.627456+00:00",
+      "performance_attempted_at": "2026-09-11T22:19:40.627456+00:00"
+    },
+    "8329": {
+      "performance": [
+        {
+          "season": "2024/2025",
+          "matchday": 1,
+          "points": 124,
+          "minutes": 78,
+          "match_date": "2024-08-25T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 2,
+          "points": 95,
+          "minutes": 62,
+          "match_date": "2024-09-01T15:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 3,
+          "points": 178,
+          "minutes": 49,
+          "match_date": "2024-09-14T16:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 4,
+          "points": 504,
+          "minutes": 71,
+          "match_date": "2024-09-21T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 5,
+          "points": 71,
+          "minutes": 78,
+          "match_date": "2024-09-28T16:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 6,
+          "points": 240,
+          "minutes": 92,
+          "match_date": "2024-10-06T15:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 7,
+          "points": 99,
+          "minutes": 68,
+          "match_date": "2024-10-19T16:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 8,
+          "points": 244,
+          "minutes": 63,
+          "match_date": "2024-10-27T14:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 9,
+          "points": 174,
+          "minutes": 71,
+          "match_date": "2024-11-02T14:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 10,
+          "points": 22,
+          "minutes": 12,
+          "match_date": "2024-11-09T14:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 11,
+          "points": 149,
+          "minutes": 79,
+          "match_date": "2024-11-22T19:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 12,
+          "points": 91,
+          "minutes": 16,
+          "match_date": "2024-11-30T17:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 13,
+          "points": 241,
+          "minutes": 71,
+          "match_date": "2024-12-07T14:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 14,
+          "points": 109,
+          "minutes": 97,
+          "match_date": "2024-12-14T14:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 15,
+          "points": 252,
+          "minutes": 84,
+          "match_date": "2024-12-20T19:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 16,
+          "points": 262,
+          "minutes": 96,
+          "match_date": "2025-01-11T17:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 17,
+          "points": 47,
+          "minutes": 26,
+          "match_date": "2025-01-15T19:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 18,
+          "points": 317,
+          "minutes": 100,
+          "match_date": "2025-01-18T14:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 19,
+          "points": 44,
+          "minutes": 33,
+          "match_date": "2025-01-25T14:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 20,
+          "points": 181,
+          "minutes": 48,
+          "match_date": "2025-02-01T14:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 21,
+          "points": 267,
+          "minutes": 98,
+          "match_date": "2025-02-07T19:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 22,
+          "points": 13,
+          "minutes": 70,
+          "match_date": "2025-02-15T17:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 23,
+          "points": 299,
+          "minutes": 90,
+          "match_date": "2025-02-23T16:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 24,
+          "points": 228,
+          "minutes": 91,
+          "match_date": "2025-02-28T19:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 25,
+          "points": 33,
+          "minutes": 33,
+          "match_date": "2025-03-08T14:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 26,
+          "points": 257,
+          "minutes": 83,
+          "match_date": "2025-03-15T14:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 27,
+          "points": 353,
+          "minutes": 98,
+          "match_date": "2025-03-29T14:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 28,
+          "points": 192,
+          "minutes": 69,
+          "match_date": "2025-04-04T18:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 29,
+          "points": 103,
+          "minutes": 96,
+          "match_date": "2025-04-12T16:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 30,
+          "points": 179,
+          "minutes": 75,
+          "match_date": "2025-04-19T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 31,
+          "points": 324,
+          "minutes": 96,
+          "match_date": "2025-04-26T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 32,
+          "points": 312,
+          "minutes": 98,
+          "match_date": "2025-05-03T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 33,
+          "points": 375,
+          "minutes": 93,
+          "match_date": "2025-05-10T16:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2024/2025",
+          "matchday": 34,
+          "points": 354,
+          "minutes": 93,
+          "match_date": "2025-05-17T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 1,
+          "points": 356,
+          "minutes": 102,
+          "match_date": "2025-08-22T18:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 2,
+          "points": 290,
+          "minutes": 107,
+          "match_date": "2025-08-30T16:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 3,
+          "points": 264,
+          "minutes": 98,
+          "match_date": "2025-09-13T16:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 4,
+          "points": 84,
+          "minutes": 38,
+          "match_date": "2025-09-20T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 5,
+          "points": 223,
+          "minutes": 80,
+          "match_date": "2025-09-26T18:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 6,
+          "points": 118,
+          "minutes": 97,
+          "match_date": "2025-10-04T16:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 7,
+          "points": 264,
+          "minutes": 96,
+          "match_date": "2025-10-18T16:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 8,
+          "points": 269,
+          "minutes": 102,
+          "match_date": "2025-10-25T13:45:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 9,
+          "points": 86,
+          "minutes": 34,
+          "match_date": "2025-11-01T17:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 10,
+          "points": 57,
+          "minutes": 101,
+          "match_date": "2025-11-08T14:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 11,
+          "points": 686,
+          "minutes": 99,
+          "match_date": "2025-11-22T14:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 12,
+          "points": 120,
+          "minutes": 54,
+          "match_date": "2025-11-29T14:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 13,
+          "points": 287,
+          "minutes": 103,
+          "match_date": "2025-12-06T14:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 14,
+          "points": 193,
+          "minutes": 102,
+          "match_date": "2025-12-14T16:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 15,
+          "points": 284,
+          "minutes": 92,
+          "match_date": "2025-12-21T16:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 16,
+          "points": 530,
+          "minutes": 86,
+          "match_date": "2026-01-11T16:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 17,
+          "points": 142,
+          "minutes": 94,
+          "match_date": "2026-01-14T19:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 18,
+          "points": 407,
+          "minutes": 39,
+          "match_date": "2026-01-17T17:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 19,
+          "points": 152,
+          "minutes": 98,
+          "match_date": "2026-01-24T14:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 20,
+          "points": 155,
+          "minutes": 106,
+          "match_date": "2026-01-31T17:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 21,
+          "points": 160,
+          "minutes": 66,
+          "match_date": "2026-02-08T16:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 22,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-02-14T14:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 23,
+          "points": 177,
+          "minutes": 97,
+          "match_date": "2026-02-21T14:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 24,
+          "points": 106,
+          "minutes": 99,
+          "match_date": "2026-02-28T17:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 25,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-03-06T19:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 26,
+          "points": 177,
+          "minutes": 92,
+          "match_date": "2026-03-14T14:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 27,
+          "points": 320,
+          "minutes": 95,
+          "match_date": "2026-03-21T14:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 28,
+          "points": 99,
+          "minutes": 45,
+          "match_date": "2026-04-04T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 29,
+          "points": 156,
+          "minutes": 60,
+          "match_date": "2026-04-11T16:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 30,
+          "points": 152,
+          "minutes": 49,
+          "match_date": "2026-04-19T15:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 31,
+          "points": 166,
+          "minutes": 54,
+          "match_date": "2026-04-25T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 32,
+          "points": 290,
+          "minutes": 57,
+          "match_date": "2026-05-02T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 33,
+          "points": 334,
+          "minutes": 98,
+          "match_date": "2026-05-09T16:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 34,
+          "points": 81,
+          "minutes": 34,
+          "match_date": "2026-05-16T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 1,
+          "points": 249,
+          "minutes": 96,
+          "match_date": "2026-08-28T18:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 2,
+          "points": 125,
+          "minutes": 37,
+          "match_date": "2026-09-05T16:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 3,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-09-13T15:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 4,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-09-18T18:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 5,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-10-10T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 6,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-10-17T16:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 7,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-10-25T16:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 8,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-10-31T17:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 9,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-11-07T14:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 10,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-11-20T19:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 11,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-11-28T14:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 12,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-12-05T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 13,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-12-12T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 14,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-12-19T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 15,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-01-09T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 16,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-01-13T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 17,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-01-16T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 18,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-01-23T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 19,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-01-30T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 20,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-02-06T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 21,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-02-13T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 22,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-02-20T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 23,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-02-27T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 24,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-03-03T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 25,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-03-06T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 26,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-03-13T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 27,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-03-20T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 28,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-04-03T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 29,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-04-10T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 30,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-04-17T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 31,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-04-24T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 32,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-05-08T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 33,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-05-15T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 34,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-05-22T13:30:00Z",
+          "player_id": "8329",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T20:59:38.216918+00:00"
+        }
+      ],
+      "performance_fetched_at": "2026-09-11T20:59:38.216918+00:00"
+    },
+    "11955": {
+      "performance_attempted_at": "2026-09-11T21:24:53.200756+00:00",
+      "performance": [
+        {
+          "season": "2025/2026",
+          "matchday": 3,
+          "points": 28,
+          "minutes": 102,
+          "match_date": "2025-09-13T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 4,
+          "points": 248,
+          "minutes": 97,
+          "match_date": "2025-09-19T18:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 5,
+          "points": 123,
+          "minutes": 91,
+          "match_date": "2025-09-28T15:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 6,
+          "points": 244,
+          "minutes": 90,
+          "match_date": "2025-10-05T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 7,
+          "points": 217,
+          "minutes": 86,
+          "match_date": "2025-10-18T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 8,
+          "points": 40,
+          "minutes": 26,
+          "match_date": "2025-10-26T16:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 9,
+          "points": 72,
+          "minutes": 98,
+          "match_date": "2025-11-01T14:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 10,
+          "points": 127,
+          "minutes": 80,
+          "match_date": "2025-11-09T16:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 11,
+          "points": 126,
+          "minutes": 101,
+          "match_date": "2025-11-22T14:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 12,
+          "points": 121,
+          "minutes": 99,
+          "match_date": "2025-11-30T14:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 13,
+          "points": 24,
+          "minutes": 82,
+          "match_date": "2025-12-06T14:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 14,
+          "points": 241,
+          "minutes": 79,
+          "match_date": "2025-12-14T18:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 15,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2025-12-20T14:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 16,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-01-10T17:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 17,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-01-13T17:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 18,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-01-18T14:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 19,
+          "points": 41,
+          "minutes": 17,
+          "match_date": "2026-01-25T14:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 20,
+          "points": 132,
+          "minutes": 77,
+          "match_date": "2026-02-01T14:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 21,
+          "points": 16,
+          "minutes": 46,
+          "match_date": "2026-02-07T14:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 22,
+          "points": 34,
+          "minutes": 26,
+          "match_date": "2026-02-14T17:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 23,
+          "points": 93,
+          "minutes": 73,
+          "match_date": "2026-02-22T18:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 24,
+          "points": 159,
+          "minutes": 89,
+          "match_date": "2026-03-01T14:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 25,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-03-07T14:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 26,
+          "points": 99,
+          "minutes": 70,
+          "match_date": "2026-03-15T18:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 27,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-03-22T18:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 28,
+          "points": -6,
+          "minutes": 25,
+          "match_date": "2026-04-04T16:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 29,
+          "points": 149,
+          "minutes": 25,
+          "match_date": "2026-04-12T15:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 30,
+          "points": 149,
+          "minutes": 96,
+          "match_date": "2026-04-19T15:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 31,
+          "points": 178,
+          "minutes": 98,
+          "match_date": "2026-04-26T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 32,
+          "points": 37,
+          "minutes": 78,
+          "match_date": "2026-05-02T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 33,
+          "points": 21,
+          "minutes": 20,
+          "match_date": "2026-05-09T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2025/2026",
+          "matchday": 34,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-05-16T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 1,
+          "points": -60,
+          "minutes": 21,
+          "match_date": "2026-08-28T18:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 2,
+          "points": 229,
+          "minutes": 79,
+          "match_date": "2026-09-04T18:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 3,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-09-12T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 4,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-09-19T16:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 5,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-10-10T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 6,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-10-17T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 7,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-10-23T18:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 8,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-10-31T14:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 9,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-11-07T17:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 10,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-11-21T17:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 11,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-11-28T17:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 12,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-12-05T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 13,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-12-12T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 14,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2026-12-19T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 15,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-01-09T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 16,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-01-13T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 17,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-01-16T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 18,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-01-23T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 19,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-01-30T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 20,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-02-06T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 21,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-02-13T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 22,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-02-20T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 23,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-02-27T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 24,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-03-03T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 25,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-03-06T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 26,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-03-13T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 27,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-03-20T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 28,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-04-03T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 29,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-04-10T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 30,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-04-17T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 31,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-04-24T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 32,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-05-08T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 33,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-05-15T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        },
+        {
+          "season": "2026/2027",
+          "matchday": 34,
+          "points": 0,
+          "minutes": 0,
+          "match_date": "2027-05-22T13:30:00Z",
+          "player_id": "11955",
+          "source": "api_performance",
+          "captured_at": "2026-09-11T21:24:53.200756+00:00"
+        }
+      ],
+      "performance_fetched_at": "2026-09-11T21:24:53.200756+00:00"
+    }
+  },
+  "fixture_source": "/Users/emil/Documents/ChatGPT/Kickbase agent/analysis/manager-overview-2026-09-12/sources/strategy-sources-1234567.json"
+}

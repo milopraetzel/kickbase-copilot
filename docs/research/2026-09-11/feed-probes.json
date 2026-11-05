@@ -1,0 +1,177 @@
+[
+  {
+    "id": "kicker-bundesliga",
+    "publisher": "kicker",
+    "url": "https://newsfeed.kicker.de/news/bundesliga",
+    "checked_at": "2026-09-11T20:49:58.287159+00:00",
+    "status": "verified",
+    "http_status": 200,
+    "content_type": "text/xml",
+    "etag": null,
+    "last_modified": null,
+    "final_url": "https://newsfeed.kicker.de/news/bundesliga",
+    "root_tag": "rss",
+    "version": "2.0",
+    "item_count": 20,
+    "response_sha256": "3a9c5f5c16376719e370af5ec139df3d68c3ad10a262ff18776cc84c82741e4a",
+    "channel_title": "kicker Bundesliga News",
+    "item_fields": [
+      "category",
+      "description",
+      "guid",
+      "link",
+      "pubDate",
+      "title",
+      "{http://purl.org/rss/1.0/modules/content/}encoded",
+      "{http://www.w3.org/2005/Atom}updated"
+    ],
+    "sample_items": [
+      {
+        "title": "Gosens leitet ein: Schalke feiert bei Union den ersten Sieg",
+        "link": "https://www.kicker.de/gosens-leitet-ein-schalke-feiert-bei-union-den-ersten-sieg-1251358/artikel#omrss",
+        "guid": "https://www.kicker.de/gosens-leitet-ein-schalke-feiert-bei-union-den-ersten-sieg-1251358/artikel#omrss",
+        "pubDate": "Fri, 11 Sep 2026 20:34:00 GMT"
+      },
+      {
+        "title": "Als Haaland den SCP im zweiten Anlauf ausschaltete",
+        "link": "https://www.kicker.de/als-haaland-den-scp-im-zweiten-anlauf-ausschaltete-1250793/artikel#omrss",
+        "guid": "https://www.kicker.de/als-haaland-den-scp-im-zweiten-anlauf-ausschaltete-1250793/artikel#omrss",
+        "pubDate": "Fri, 11 Sep 2026 15:41:10 GMT"
+      },
+      {
+        "title": "HSV startet mit Teenager Nandja statt Bornauw",
+        "link": "https://www.kicker.de/hsv-startet-mit-teenager-nandja-statt-bornauw-1251806/artikel#omrss",
+        "guid": "https://www.kicker.de/hsv-startet-mit-teenager-nandja-statt-bornauw-1251806/artikel#omrss",
+        "pubDate": "Fri, 11 Sep 2026 15:10:42 GMT"
+      }
+    ],
+    "adapter_mapping": {
+      "id": "guid; fallback hash(link,title,pubDate)",
+      "title": "title",
+      "url": "link",
+      "published_at": "pubDate parsed RFC2822",
+      "summary": "description (optional, sanitized; never assumed to be full article)",
+      "source": "kicker",
+      "fetched_at": "UTC ingestion time"
+    },
+    "recommended_refresh_seconds": 1800,
+    "notes": "RSS discovery only; do not infer confirmed availability or starter status from headline sentiment. Keep title+link, fetch selected relevant articles separately."
+  },
+  {
+    "id": "sportschau-bundesliga",
+    "publisher": "Sportschau",
+    "url": "https://www.sportschau.de/fussball/bundesliga/index~rss2.xml",
+    "checked_at": "2026-09-11T20:49:58.426878+00:00",
+    "status": "verified",
+    "http_status": 200,
+    "content_type": "application/xml;charset=UTF-8",
+    "etag": null,
+    "last_modified": null,
+    "final_url": "https://www.sportschau.de/fussball/bundesliga/index~rss2.xml",
+    "root_tag": "rss",
+    "version": "2.0",
+    "item_count": 46,
+    "response_sha256": "b87f8265bb5a2964d85119e52b4b1aee60cfa355dd0b044e2f0ff15bc63b0f03",
+    "channel_title": "Bundesliga: Alle Fußball-News, Highlights und Spiele",
+    "item_fields": [
+      "description",
+      "guid",
+      "link",
+      "pubDate",
+      "title",
+      "{http://purl.org/dc/elements/1.1/}date",
+      "{http://purl.org/rss/1.0/modules/content/}encoded"
+    ],
+    "sample_items": [
+      {
+        "title": "Schalke erkämpft sich bei Union Berlin ersten Bundesliga-Sieg",
+        "link": "https://www.sportschau.de/fussball/bundesliga/schalke-04-erkaempft-sich-ersten-saisonsieg-bei-union-berlin,spielbericht-union-berlin-schalke-04-100.html",
+        "guid": "4d03bb25-2ab9-4f7e-876e-1fb6d5e5327b",
+        "pubDate": "Fri, 11 Sep 2026 22:33:19 +0200"
+      },
+      {
+        "title": "Livestream - Bundesliga-Highlights: Die Sportschau am Freitag mit Union Berlin gegen Schalke 04",
+        "link": "https://www.sportschau.de/fussball/die-sportschau-am-freitag-mit-union-gegen-schalke,livestream-sportschau-am-freitag-166.html",
+        "guid": "3b6c6c65-e5ba-4e6f-8824-fb7cfb8b7d96",
+        "pubDate": "Wed, 26 Aug 2026 12:47:00 +0200"
+      },
+      {
+        "title": "Gegen den Angstgegner und die Angst vorm Abstiegskampf",
+        "link": "https://www.sportschau.de/regional/wdr/wdr-gegen-den-angstgegner-und-die-angst-vorm-abstiegskampf-100.html",
+        "guid": "sportschau_fm-story-WDR-376c29f5-03b3-4d94-959c-3df5eec0eef7",
+        "pubDate": "Fri, 11 Sep 2026 18:45:21 +0200"
+      }
+    ],
+    "adapter_mapping": {
+      "id": "guid; fallback hash(link,title,pubDate)",
+      "title": "title",
+      "url": "link",
+      "published_at": "pubDate parsed RFC2822",
+      "summary": "description (optional, sanitized; never assumed to be full article)",
+      "source": "Sportschau",
+      "fetched_at": "UTC ingestion time"
+    },
+    "recommended_refresh_seconds": 1800,
+    "notes": "RSS discovery only; do not infer confirmed availability or starter status from headline sentiment. Keep title+link, fetch selected relevant articles separately."
+  },
+  {
+    "id": "geissblog",
+    "publisher": "GEISSBLOG",
+    "url": "https://geissblog.koeln/feed/",
+    "checked_at": "2026-09-11T20:49:58.522934+00:00",
+    "status": "verified",
+    "http_status": 200,
+    "content_type": "application/rss+xml; charset=UTF-8",
+    "etag": "\"980c37089e2e70b64b69ed9c3c8608de\"",
+    "last_modified": "Fri, 11 Sep 2026 20:31:21 GMT",
+    "final_url": "https://geissblog.koeln/feed/",
+    "root_tag": "rss",
+    "version": "2.0",
+    "item_count": 10,
+    "response_sha256": "b49809311b77f77955869c454ca6a6b5588703d08c620413acf30bbf8c520435",
+    "channel_title": "GEISSBLOG",
+    "item_fields": [
+      "category",
+      "comments",
+      "description",
+      "guid",
+      "link",
+      "pubDate",
+      "title",
+      "{http://purl.org/dc/elements/1.1/}creator",
+      "{http://purl.org/rss/1.0/modules/slash/}comments",
+      "{http://wellformedweb.org/CommentAPI/}commentRss"
+    ],
+    "sample_items": [
+      {
+        "title": "„Dafür haben wir ihn geholt!“ Hilft dieser Wechsel bei zwei FC-Baustellen?",
+        "link": "https://geissblog.koeln/2026/09/dafuer-haben-wir-ihn-geholt-hilft-dieser-wechsel-bei-zwei-fc-baustellen/",
+        "guid": "https://geissblog.koeln/?p=183740",
+        "pubDate": "Fri, 11 Sep 2026 17:00:00 +0000"
+      },
+      {
+        "title": "Wagner über Moore: „Wer in der Premier League startet, kann auch bei uns starten“",
+        "link": "https://geissblog.koeln/2026/09/pressekonferenz-1-fc-koeln-vor-werdern-bremen-rene-wagner/",
+        "guid": "https://geissblog.koeln/?p=183738",
+        "pubDate": "Fri, 11 Sep 2026 15:00:00 +0000"
+      },
+      {
+        "title": "Wer fliegt aus dem Kader? Wagners „schwerste Entscheidung“ – El Mala ausgebremst",
+        "link": "https://geissblog.koeln/2026/09/wer-fliegt-aus-dem-kader-wagners-schwerste-entscheidung-abwarten-bei-el-mala/",
+        "guid": "https://geissblog.koeln/?p=183725",
+        "pubDate": "Fri, 11 Sep 2026 12:45:00 +0000"
+      }
+    ],
+    "adapter_mapping": {
+      "id": "guid; fallback hash(link,title,pubDate)",
+      "title": "title",
+      "url": "link",
+      "published_at": "pubDate parsed RFC2822",
+      "summary": "description (optional, sanitized; never assumed to be full article)",
+      "source": "GEISSBLOG",
+      "fetched_at": "UTC ingestion time"
+    },
+    "recommended_refresh_seconds": 1800,
+    "notes": "RSS discovery only; do not infer confirmed availability or starter status from headline sentiment. Keep title+link, fetch selected relevant articles separately."
+  }
+]

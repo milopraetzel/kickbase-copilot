@@ -1,0 +1,1216 @@
+{
+ "_quelle": "Echte TypeSafe-Antwort (jev-1.13.0) vom 29.09.2026: 26 echte kicker-Anreisser (news_items, 30.08.-28.09.2026; 8 davon mit Namensvettern oder Alltagswoertern wie 'neuer', 'stark', 'Nicolas Kuehn') gegen 22 echte Kickbase-Spieler (fn/ln/tid aus player/team_profile und der players-Tabelle). Eine Choice-Frage je Paar wie in intel/role_judge.py, alle 33 Paare in einer Anfrage (0,48 s). Fuenfter Lauf nach Laenderspiel-, Namensvettern- und Pokal-Klarstellung. Rauschmessung je 10 Abfragen (gebuendelt und einzeln): echte Ausfaelle 0,95-1,00, Fehlwerte hoechstens 0,83 (siehe Decision-Record plan.news_role_check, L-114).",
+ "players": [
+  {
+   "pid": "9605",
+   "first": "Albert",
+   "last": "Grønbæk",
+   "team": "6"
+  },
+  {
+   "pid": "3277",
+   "first": "Miro",
+   "last": "Muheim",
+   "team": "6"
+  },
+  {
+   "pid": "1645",
+   "first": "Maximilian",
+   "last": "Eggestein",
+   "team": "5"
+  },
+  {
+   "pid": "14251",
+   "first": "Ismael",
+   "last": "Saibari",
+   "team": "2"
+  },
+  {
+   "pid": "7226",
+   "first": "Harry",
+   "last": "Kane",
+   "team": "2"
+  },
+  {
+   "pid": "8329",
+   "first": "Michael",
+   "last": "Olise",
+   "team": "2"
+  },
+  {
+   "pid": "1815",
+   "first": "Andrej",
+   "last": "Kramarić",
+   "team": "14"
+  },
+  {
+   "pid": "3158",
+   "first": "Fisnik",
+   "last": "Asllani",
+   "team": "14"
+  },
+  {
+   "pid": "493",
+   "first": "Michael",
+   "last": "Gregoritsch",
+   "team": "13"
+  },
+  {
+   "pid": "9684",
+   "first": "Alexis",
+   "last": "Claude-Maurice",
+   "team": "13"
+  },
+  {
+   "pid": "9754",
+   "first": "Juma",
+   "last": "Bah",
+   "team": "13"
+  },
+  {
+   "pid": "2400",
+   "first": "Christopher",
+   "last": "Trimmel",
+   "team": "40"
+  },
+  {
+   "pid": "13888",
+   "first": "Guéla",
+   "last": "Doué",
+   "team": "7"
+  },
+  {
+   "pid": "2261",
+   "first": "Florian",
+   "last": "Neuhaus",
+   "team": "15"
+  },
+  {
+   "pid": "1012",
+   "first": "Edin",
+   "last": "Džeko",
+   "team": "8"
+  },
+  {
+   "pid": "1639",
+   "first": "Nadiem",
+   "last": "Amiri",
+   "team": "18"
+  },
+  {
+   "pid": "1883",
+   "first": "Moritz",
+   "last": "Nicolas",
+   "team": "15"
+  },
+  {
+   "pid": "2126",
+   "first": "Nicolas",
+   "last": "Kühn",
+   "team": "15"
+  },
+  {
+   "pid": "1704",
+   "first": "Waldemar",
+   "last": "Anton",
+   "team": "3"
+  },
+  {
+   "pid": "3183",
+   "first": "Anton",
+   "last": "Kade",
+   "team": "13"
+  },
+  {
+   "pid": "237",
+   "first": "Manuel",
+   "last": "Neuer",
+   "team": "2"
+  },
+  {
+   "pid": "157",
+   "first": "Niklas",
+   "last": "Stark",
+   "team": "10"
+  }
+ ],
+ "teams": {
+  "2": "Bayern",
+  "3": "Dortmund",
+  "5": "Freiburg",
+  "6": "Hamburg",
+  "7": "Leverkusen",
+  "8": "Schalke",
+  "10": "Bremen",
+  "13": "Augsburg",
+  "14": "Hoffenheim",
+  "15": "M'gladbach",
+  "18": "Mainz",
+  "40": "Union Berlin"
+ },
+ "articles": [
+  {
+   "url": "https://www.kicker.de/meijer-im-interview-die-klubs-investieren-lieber-in-kreativitaet-1255953/artikel#omrss",
+   "title": "Meijer im Interview: \"Die Klubs investieren lieber in Kreativität\"",
+   "text": "Ex-Stürmer Erik Meijer erklärt, warum die Torflut im deutschen Fußball nichts mit schwächeren Abwehrreihen zu tun haben muss. Der Trend gefällt ihm - mit einer Einschränkung.",
+   "published_at": "2026-09-28T16:41:56+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/sonnige-lage-und-eggesteins-bisschen-nervige-plaene-im-urlaub-1256734/video#omrss",
+   "title": "Sonnige Lage und Eggesteins \"bisschen nervige Pläne\" im Urlaub",
+   "text": "In der Länderspielphase gab Julian Schuster den Freiburger Profis eine gesamte Woche frei, was Maximilian Eggestein für einen Heimatbesuch nutzte. Der Sechser erklärt die Anforderungen im Heimtraining, das zu seiner Anfangszeit noch ganz anders aussah.",
+   "published_at": "2026-09-28T16:41:41+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/hsv-deshalb-ist-fuer-muheim-alles-anders-1256239/artikel#omrss",
+   "title": "HSV: Deshalb ist für Muheim alles anders",
+   "text": "Die aktuelle Länderspielpause verläuft für Miro Muheim ganz und gar anders als normal. Hamburgs Linksverteidiger ist nicht wie üblich bei der Schweizer Nationalelf, sondern hat die vergangene Woche genutzt, um seinen körperlichen Rückstand aufzuholen - denn beim HSV ist er auf seiner Position aktuell nur die Nummer 3.",
+   "published_at": "2026-09-28T12:44:19+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/kanes-vierjaehrige-serie-reisst-olise-vor-rekord-und-warum-saibari-gesperrt-fehlte-1256310/artikel#omrss",
+   "title": "Kanes vierjährige Serie reißt, Olise vor Rekord - und warum Saibari gesperrt fehlte",
+   "text": "Während beim FC Bayern der Betrieb ruht, treiben sich die Münchner Profis in der Fußballwelt herum. So lief es bislang bei ihren Nationalmannschaften - ein Youngster schrieb sogar Geschichte.",
+   "published_at": "2026-09-27T11:14:21+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/kramaric-durchlebt-die-schlimmste-durststrecke-seiner-hoffenheimer-zeit-1256312/artikel#omrss",
+   "title": "Kramaric durchlebt die schlimmste Durststrecke seiner Hoffenheimer Zeit",
+   "text": "Über lange Jahre war Andrej Kramaric gesetzt in der Hoffenheimer Startelf. Doch aktuell durchlebt der 35-Jährige ein hartnäckiges Karriere-Tief, das sich nun auch in der Nationalmannschaft fortsetzt.",
+   "published_at": "2026-09-27T10:52:51+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/bitter-fuer-den-hsv-top-scorer-groenbaek-faellt-vorerst-aus-1256074/artikel#omrss",
+   "title": "Bitter für den HSV: Top-Scorer Grönbaek fällt vorerst aus",
+   "text": "Seit Donnerstagabend zitterte der Hamburger SV um Mittelfeldspieler Albert Grönbaek, nun herrscht Gewissheit. Der HSV-Profi hat sich am Oberschenkel verletzt und fällt vorerst aus.",
+   "published_at": "2026-09-26T09:08:15+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/kein-laengerer-ausfall-augsburg-kann-nach-dem-gregoritsch-schreck-aufatmen-1255921/artikel#omrss",
+   "title": "Kein längerer Ausfall: Augsburg kann nach dem Gregoritsch-Schreck aufatmen",
+   "text": "Erstmals führte Michael Gregoritsch Österreich als Kapitän aufs Spielfeld, doch Augsburgs Angreifer musste beim 3:1 gegen Israel noch vor der Pause verletzt runter. Nun steht die Diagnose fest.",
+   "published_at": "2026-09-25T14:34:33+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/hsv-bangt-um-top-scorer-groenbaek-1255818/artikel#omrss",
+   "title": "HSV bangt um Top-Scorer Grönbaek",
+   "text": "Der Start des HSV in die Bundesliga gestaltete sich in allen Mannschaftsteilen schwierig. Wenn offensiv etwas ging, hatte zumeist Albert Grönbaek seine Füße im Spiel. Doch seit Donnerstagabend zittern die Hamburger um ihren Mittelfeldmann.",
+   "published_at": "2026-09-25T07:28:01+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/claude-maurice-und-bah-sind-zu-gut-fuer-die-fca-bank-1255291/artikel#omrss",
+   "title": "Claude-Maurice und Bah sind zu gut für die FCA-Bank",
+   "text": "Paradox: Der FC Augsburg ist mit sieben Punkten gut gestartet, muss sich aber ärgern, dass es nicht mindestens zehn sind. Die 2:3-Niederlage in Bremen bietet Trainer Manuel Baum die Chance für Änderungen an der Startelf. Wer bietet sich an?",
+   "published_at": "2026-09-24T11:47:23+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/bisher-kaum-spielzeit-union-kapitaen-trimmel-unter-lustrinelli-mit-neuer-rolle-1255396/artikel#omrss",
+   "title": "Bisher kaum Spielzeit: Union-Kapitän Trimmel unter Lustrinelli mit neuer Rolle",
+   "text": "Der Publikumsliebling stand in München erstmalig in dieser Saison in der Startelf. Im internen Ranking steht der Leader momentan jedoch hinter Konkurrent Juranovic.",
+   "published_at": "2026-09-23T15:45:29+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/comeback-in-ein-paar-wochen-doue-schreibt-mainz-spiel-ab-1255392/artikel#omrss",
+   "title": "Comeback \"in ein paar Wochen\": Doué schreibt Mainz-Spiel ab",
+   "text": "Direkt nach seinem Debüt verletzte sich Guela Doué an der Wade. Ein Comeback nach der Länderspielperiode in der Partie in Mainz schreibt Bayers neuer Rechtsverteidiger ab, der mit Leverkusen die Meisterschaft gewinnen will und zur Integration Spanisch lernt.",
+   "published_at": "2026-09-23T15:16:04+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/das-risiko-bei-asllani-und-kramaric-1255013/artikel#omrss",
+   "title": "Das Risiko bei Asllani und Kramaric",
+   "text": "Ausgerechnet jetzt muss Hoffenheims Trainer Christian Ilzer auf eine Rekordzahl an Nationalspielern (18) verzichten. Dabei hätte der Österreicher nach dem Fehlstart inhaltlich viel zu tun. Und hofft auf unversehrte Rückkehrer.",
+   "published_at": "2026-09-22T10:11:23+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/vor-elf-jahren-lewandowskis-fuenferpack-in-neun-minuten-1181914/video#omrss",
+   "title": "Vor elf Jahren: Lewandowskis Fünferpack in neun Minuten",
+   "text": "Gegen den VfL Wolfsburg kommt Robert Lewandowski im September 2015 beim Stand von 0:1 von der Bank, ist darüber laut eigener Aussage wütend und lässt diese Wut an den Wölfen raus. Beim 5:1-Sieg stellt der Pole gleich vier Weltrekorde auf.",
+   "published_at": "2026-09-22T05:51:21+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/heute-vor-elf-jahren-lewandowskis-fuenferpack-in-neun-minuten-1181914/video#omrss",
+   "title": "Heute vor elf Jahren: Lewandowskis Fünferpack in neun Minuten",
+   "text": "Gegen den VfL Wolfsburg kommt Robert Lewandowski im September 2015 beim Stand von 0:1 von der Bank, ist darüber laut eigener Aussage wütend und lässt diese Wut an den Wölfen raus. Beim 5:1-Sieg stellt der Pole gleich vier Weltrekorde auf.",
+   "published_at": "2026-09-22T05:51:21+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/angriff-statt-abgang-neuhaus-empfiehlt-sich-fuer-gladbachs-neuen-trainer-1254848/artikel#omrss",
+   "title": "Angriff statt Abgang: Neuhaus empfiehlt sich für Gladbachs neuen Trainer",
+   "text": "Den Großteil der Rückrunde verbrachte Florian Neuhaus auf der Bank, den Saisonstart gar auf der Tribüne. Gladbach hätte sich das Top-Gehalt des 29-Jährigen im letzten Vertragsjahr gern gespart. Doch in der Krise ergreift dieser seine Chance.",
+   "published_at": "2026-09-21T13:06:57+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/muslic-verteidigt-startelfeinsatz-von-dzeko-da-fehlen-zentimeter-1254805/video#omrss",
+   "title": "Muslic verteidigt Startelfeinsatz von Dzeko: \"Da fehlen Zentimeter\"",
+   "text": "Miron Muslic ist mit der bisherigen Leistung seiner Mannschaft in dieser Bundesliga-Saison sehr zufrieden. Zudem verteidigte der Schalke-Trainer den Startelfeinsatz und die Leistung von Edin Dzeko.",
+   "published_at": "2026-09-21T08:10:54+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/saibari-kommt-vor-dem-heissen-oktober-in-form-1254417/artikel#omrss",
+   "title": "Saibari kommt vor dem heißen Oktober in Form",
+   "text": "50 Millionen Euro investierte der FC Bayern in Marokkos WM-Star Ismael Saibari. Der 25-Jährige startete das neue Karriere-Kapitel mit dem Handicap einer Verletzung. Nun kommt er in Fahrt und gibt der Offensive des Rekordmeisters mehr Variabilität.",
+   "published_at": "2026-09-21T05:40:36+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/unsportlichkeit-in-gladbach-sollte-der-dfb-amiri-sperren-1254448/artikel#omrss",
+   "title": "Unsportlichkeit in Gladbach: Sollte der DFB Amiri sperren?",
+   "text": "Nadiem Amiri leistete sich am Samstag in Gladbach eine Unsportlichkeit. Sollte er dafür nachträglich gesperrt werden? Nimm hier an unserer Umfrage teil.",
+   "published_at": "2026-09-20T09:46:08+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/kovac-stellt-albert-viele-minuten-in-aussicht-1249457/artikel#omrss",
+   "title": "Kovac stellt Albert \"viele Minuten\" in Aussicht",
+   "text": "In seinem zweiten Pflichtspiel für die Profis durfte Mathis Albert gleich über die volle Spielzeit ran. Niko Kovac lobte den 17-Jährigen, der sich für weitere Einsätze bei den Profis empfahl. Doch auch sein neuer Konkurrent Ethan Nwaneri steht kurz nach der Ankunft schon bereit.",
+   "published_at": "2026-09-03T15:56:44+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/neuer-anlauf-am-bosporus-leipzig-gibt-bitshiabu-noch-ab-1247755/artikel#omrss",
+   "title": "Neuer Anlauf am Bosporus: Leipzig gibt Bitshiabu noch ab",
+   "text": "RB Leipzig suchte vor Transferende noch nach einem Abnehmer für El Chadaille Bitshiabu. Der angestrebte Verkauf wurde es nicht, doch per Leihe verlässt der Franzose die Sachsen nun in Richtung Türkei.",
+   "published_at": "2026-09-02T18:03:58+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/lemke-neuer-zweiter-die-juengsten-startelf-debuetanten-der-bundesliga-1248414/slideshow#omrss",
+   "title": "Lemke neuer Zweiter: Die jüngsten Startelf-Debütanten der Bundesliga",
+   "text": "Mit 16 Jahren und 325 Tagen avancierte Hamburgs Louis Lemke zum zweitjüngsten Startelf-Debütanten der Bundesligageschichte. Wer durfte ähnlich jung von Beginn an ran?",
+   "published_at": "2026-08-31T13:18:20+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/soll-ein-geheimnis-bleiben-faellt-kade-bei-augsburg-aus-1248859/artikel#omrss",
+   "title": "\"Soll ein Geheimnis bleiben\": Fällt Kade bei Augsburg aus?",
+   "text": "Am 1. Spieltag war Anton Kade für den FC Augsburg der entscheidende Mann. Nun könnte der formstarke Mittelfeldspieler direkt ausgebremst werden. Sein Trainer Manuel Baum machte nebulöse Andeutungen.",
+   "published_at": "2026-09-04T12:10:13+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/ist-anton-kade-einer-fuer-juergen-klopp-junger-augsburger-mit-gala-auftritt-1248298/video#omrss",
+   "title": "\"Ist Anton Kade einer für Jürgen Klopp?\": Junger Augsburger mit Gala-Auftritt",
+   "text": "Anton Kade hat den FC Augsburg mit der einer Gala-Vorstellung zum 3:0 gegen Schalke geführt. Passenderweise war Bundestrainer Jürgen Klopp im Stadion. Der könnte seine Augen auf den 22-jährigen Deutschen geworfen haben, sagt kicker-Reporter Mario Krischel.",
+   "published_at": "2026-08-30T19:28:51+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/naechster-rueckschlag-fuer-gladbach-kuehn-fehlt-wochenlang-1250653/artikel#omrss",
+   "title": "Nächster Rückschlag für Gladbach: Kühn fehlt wochenlang",
+   "text": "Mitten in der sportlichen Krise muss Borussia Mönchengladbach den nächsten Rückschlag hinnehmen: Neuzugang Nicolas Kühn hat sich verletzt und fällt wochenlang aus.",
+   "published_at": "2026-09-07T17:08:45+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/gladbach-macht-last-minute-coup-mit-kuehn-offiziell-1248778/artikel#omrss",
+   "title": "Gladbach macht Last-Minute-Coup mit Kühn offiziell",
+   "text": "Borussia Mönchengladbach hat eine prominente Deadline-Day-Verstärkung verkündet: Nicolas Kühn kehrt nach Deutschland zurück - und steht vor seinem Bundesliga-Debüt.",
+   "published_at": "2026-09-01T16:54:53+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/eine-lehre-aus-der-u-15-warum-sich-matanovic-kein-spezielles-ziel-setzt-1248684/artikel#omrss",
+   "title": "Eine Lehre aus der U 15: Warum sich Matanovic kein spezielles Ziel setzt",
+   "text": "1,95 Meter pure Glückseligkeit: Igor Matanovic strahlt in diesem Sommer eine schier grenzenlose Vorfreude aus - und ist dementsprechend stark in die Saison gestartet. Der Angreifer des SC Freiburg erklärt die Gründe.",
+   "published_at": "2026-09-02T20:08:29+00:00"
+  }
+ ],
+ "state": {
+  "source": "Teasers of German football news from kicker.de. Each pair names one Bundesliga player with his full name and club, and one teaser that contains a word matching his surname. That word may refer to another person or be an ordinary German word.",
+  "pairs": {
+   "p0": {
+    "player": "Maximilian Eggestein",
+    "club": "SC Freiburg",
+    "title": "Sonnige Lage und Eggesteins \"bisschen nervige Pläne\" im Urlaub",
+    "text": "In der Länderspielphase gab Julian Schuster den Freiburger Profis eine gesamte Woche frei, was Maximilian Eggestein für einen Heimatbesuch nutzte. Der Sechser erklärt die Anforderungen im Heimtraining, das zu seiner Anfangszeit noch ganz anders aussah."
+   },
+   "p1": {
+    "player": "Miro Muheim",
+    "club": "Hamburger SV",
+    "title": "HSV: Deshalb ist für Muheim alles anders",
+    "text": "Die aktuelle Länderspielpause verläuft für Miro Muheim ganz und gar anders als normal. Hamburgs Linksverteidiger ist nicht wie üblich bei der Schweizer Nationalelf, sondern hat die vergangene Woche genutzt, um seinen körperlichen Rückstand aufzuholen - denn beim HSV ist er auf seiner Position aktuell nur die Nummer 3."
+   },
+   "p2": {
+    "player": "Ismael Saibari",
+    "club": "FC Bayern München",
+    "title": "Kanes vierjährige Serie reißt, Olise vor Rekord - und warum Saibari gesperrt fehlte",
+    "text": "Während beim FC Bayern der Betrieb ruht, treiben sich die Münchner Profis in der Fußballwelt herum. So lief es bislang bei ihren Nationalmannschaften - ein Youngster schrieb sogar Geschichte."
+   },
+   "p3": {
+    "player": "Harry Kane",
+    "club": "FC Bayern München",
+    "title": "Kanes vierjährige Serie reißt, Olise vor Rekord - und warum Saibari gesperrt fehlte",
+    "text": "Während beim FC Bayern der Betrieb ruht, treiben sich die Münchner Profis in der Fußballwelt herum. So lief es bislang bei ihren Nationalmannschaften - ein Youngster schrieb sogar Geschichte."
+   },
+   "p4": {
+    "player": "Michael Olise",
+    "club": "FC Bayern München",
+    "title": "Kanes vierjährige Serie reißt, Olise vor Rekord - und warum Saibari gesperrt fehlte",
+    "text": "Während beim FC Bayern der Betrieb ruht, treiben sich die Münchner Profis in der Fußballwelt herum. So lief es bislang bei ihren Nationalmannschaften - ein Youngster schrieb sogar Geschichte."
+   },
+   "p5": {
+    "player": "Andrej Kramarić",
+    "club": "TSG Hoffenheim",
+    "title": "Kramaric durchlebt die schlimmste Durststrecke seiner Hoffenheimer Zeit",
+    "text": "Über lange Jahre war Andrej Kramaric gesetzt in der Hoffenheimer Startelf. Doch aktuell durchlebt der 35-Jährige ein hartnäckiges Karriere-Tief, das sich nun auch in der Nationalmannschaft fortsetzt."
+   },
+   "p6": {
+    "player": "Albert Grønbæk",
+    "club": "Hamburger SV",
+    "title": "Bitter für den HSV: Top-Scorer Grönbaek fällt vorerst aus",
+    "text": "Seit Donnerstagabend zitterte der Hamburger SV um Mittelfeldspieler Albert Grönbaek, nun herrscht Gewissheit. Der HSV-Profi hat sich am Oberschenkel verletzt und fällt vorerst aus."
+   },
+   "p7": {
+    "player": "Michael Gregoritsch",
+    "club": "FC Augsburg",
+    "title": "Kein längerer Ausfall: Augsburg kann nach dem Gregoritsch-Schreck aufatmen",
+    "text": "Erstmals führte Michael Gregoritsch Österreich als Kapitän aufs Spielfeld, doch Augsburgs Angreifer musste beim 3:1 gegen Israel noch vor der Pause verletzt runter. Nun steht die Diagnose fest."
+   },
+   "p8": {
+    "player": "Albert Grønbæk",
+    "club": "Hamburger SV",
+    "title": "HSV bangt um Top-Scorer Grönbaek",
+    "text": "Der Start des HSV in die Bundesliga gestaltete sich in allen Mannschaftsteilen schwierig. Wenn offensiv etwas ging, hatte zumeist Albert Grönbaek seine Füße im Spiel. Doch seit Donnerstagabend zittern die Hamburger um ihren Mittelfeldmann."
+   },
+   "p9": {
+    "player": "Alexis Claude-Maurice",
+    "club": "FC Augsburg",
+    "title": "Claude-Maurice und Bah sind zu gut für die FCA-Bank",
+    "text": "Paradox: Der FC Augsburg ist mit sieben Punkten gut gestartet, muss sich aber ärgern, dass es nicht mindestens zehn sind. Die 2:3-Niederlage in Bremen bietet Trainer Manuel Baum die Chance für Änderungen an der Startelf. Wer bietet sich an?"
+   },
+   "p10": {
+    "player": "Juma Bah",
+    "club": "FC Augsburg",
+    "title": "Claude-Maurice und Bah sind zu gut für die FCA-Bank",
+    "text": "Paradox: Der FC Augsburg ist mit sieben Punkten gut gestartet, muss sich aber ärgern, dass es nicht mindestens zehn sind. Die 2:3-Niederlage in Bremen bietet Trainer Manuel Baum die Chance für Änderungen an der Startelf. Wer bietet sich an?"
+   },
+   "p11": {
+    "player": "Christopher Trimmel",
+    "club": "1. FC Union Berlin",
+    "title": "Bisher kaum Spielzeit: Union-Kapitän Trimmel unter Lustrinelli mit neuer Rolle",
+    "text": "Der Publikumsliebling stand in München erstmalig in dieser Saison in der Startelf. Im internen Ranking steht der Leader momentan jedoch hinter Konkurrent Juranovic."
+   },
+   "p12": {
+    "player": "Manuel Neuer",
+    "club": "FC Bayern München",
+    "title": "Bisher kaum Spielzeit: Union-Kapitän Trimmel unter Lustrinelli mit neuer Rolle",
+    "text": "Der Publikumsliebling stand in München erstmalig in dieser Saison in der Startelf. Im internen Ranking steht der Leader momentan jedoch hinter Konkurrent Juranovic."
+   },
+   "p13": {
+    "player": "Guéla Doué",
+    "club": "Bayer 04 Leverkusen",
+    "title": "Comeback \"in ein paar Wochen\": Doué schreibt Mainz-Spiel ab",
+    "text": "Direkt nach seinem Debüt verletzte sich Guela Doué an der Wade. Ein Comeback nach der Länderspielperiode in der Partie in Mainz schreibt Bayers neuer Rechtsverteidiger ab, der mit Leverkusen die Meisterschaft gewinnen will und zur Integration Spanisch lernt."
+   },
+   "p14": {
+    "player": "Manuel Neuer",
+    "club": "FC Bayern München",
+    "title": "Comeback \"in ein paar Wochen\": Doué schreibt Mainz-Spiel ab",
+    "text": "Direkt nach seinem Debüt verletzte sich Guela Doué an der Wade. Ein Comeback nach der Länderspielperiode in der Partie in Mainz schreibt Bayers neuer Rechtsverteidiger ab, der mit Leverkusen die Meisterschaft gewinnen will und zur Integration Spanisch lernt."
+   },
+   "p15": {
+    "player": "Andrej Kramarić",
+    "club": "TSG Hoffenheim",
+    "title": "Das Risiko bei Asllani und Kramaric",
+    "text": "Ausgerechnet jetzt muss Hoffenheims Trainer Christian Ilzer auf eine Rekordzahl an Nationalspielern (18) verzichten. Dabei hätte der Österreicher nach dem Fehlstart inhaltlich viel zu tun. Und hofft auf unversehrte Rückkehrer."
+   },
+   "p16": {
+    "player": "Fisnik Asllani",
+    "club": "TSG Hoffenheim",
+    "title": "Das Risiko bei Asllani und Kramaric",
+    "text": "Ausgerechnet jetzt muss Hoffenheims Trainer Christian Ilzer auf eine Rekordzahl an Nationalspielern (18) verzichten. Dabei hätte der Österreicher nach dem Fehlstart inhaltlich viel zu tun. Und hofft auf unversehrte Rückkehrer."
+   },
+   "p17": {
+    "player": "Florian Neuhaus",
+    "club": "Borussia Mönchengladbach",
+    "title": "Angriff statt Abgang: Neuhaus empfiehlt sich für Gladbachs neuen Trainer",
+    "text": "Den Großteil der Rückrunde verbrachte Florian Neuhaus auf der Bank, den Saisonstart gar auf der Tribüne. Gladbach hätte sich das Top-Gehalt des 29-Jährigen im letzten Vertragsjahr gern gespart. Doch in der Krise ergreift dieser seine Chance."
+   },
+   "p18": {
+    "player": "Edin Džeko",
+    "club": "FC Schalke 04",
+    "title": "Muslic verteidigt Startelfeinsatz von Dzeko: \"Da fehlen Zentimeter\"",
+    "text": "Miron Muslic ist mit der bisherigen Leistung seiner Mannschaft in dieser Bundesliga-Saison sehr zufrieden. Zudem verteidigte der Schalke-Trainer den Startelfeinsatz und die Leistung von Edin Dzeko."
+   },
+   "p19": {
+    "player": "Ismael Saibari",
+    "club": "FC Bayern München",
+    "title": "Saibari kommt vor dem heißen Oktober in Form",
+    "text": "50 Millionen Euro investierte der FC Bayern in Marokkos WM-Star Ismael Saibari. Der 25-Jährige startete das neue Karriere-Kapitel mit dem Handicap einer Verletzung. Nun kommt er in Fahrt und gibt der Offensive des Rekordmeisters mehr Variabilität."
+   },
+   "p20": {
+    "player": "Nadiem Amiri",
+    "club": "1. FSV Mainz 05",
+    "title": "Unsportlichkeit in Gladbach: Sollte der DFB Amiri sperren?",
+    "text": "Nadiem Amiri leistete sich am Samstag in Gladbach eine Unsportlichkeit. Sollte er dafür nachträglich gesperrt werden? Nimm hier an unserer Umfrage teil."
+   },
+   "p21": {
+    "player": "Moritz Nicolas",
+    "club": "Borussia Mönchengladbach",
+    "title": "Nächster Rückschlag für Gladbach: Kühn fehlt wochenlang",
+    "text": "Mitten in der sportlichen Krise muss Borussia Mönchengladbach den nächsten Rückschlag hinnehmen: Neuzugang Nicolas Kühn hat sich verletzt und fällt wochenlang aus."
+   },
+   "p22": {
+    "player": "Nicolas Kühn",
+    "club": "Borussia Mönchengladbach",
+    "title": "Nächster Rückschlag für Gladbach: Kühn fehlt wochenlang",
+    "text": "Mitten in der sportlichen Krise muss Borussia Mönchengladbach den nächsten Rückschlag hinnehmen: Neuzugang Nicolas Kühn hat sich verletzt und fällt wochenlang aus."
+   },
+   "p23": {
+    "player": "Waldemar Anton",
+    "club": "Borussia Dortmund",
+    "title": "\"Soll ein Geheimnis bleiben\": Fällt Kade bei Augsburg aus?",
+    "text": "Am 1. Spieltag war Anton Kade für den FC Augsburg der entscheidende Mann. Nun könnte der formstarke Mittelfeldspieler direkt ausgebremst werden. Sein Trainer Manuel Baum machte nebulöse Andeutungen."
+   },
+   "p24": {
+    "player": "Anton Kade",
+    "club": "FC Augsburg",
+    "title": "\"Soll ein Geheimnis bleiben\": Fällt Kade bei Augsburg aus?",
+    "text": "Am 1. Spieltag war Anton Kade für den FC Augsburg der entscheidende Mann. Nun könnte der formstarke Mittelfeldspieler direkt ausgebremst werden. Sein Trainer Manuel Baum machte nebulöse Andeutungen."
+   },
+   "p25": {
+    "player": "Manuel Neuer",
+    "club": "FC Bayern München",
+    "title": "Kovac stellt Albert \"viele Minuten\" in Aussicht",
+    "text": "In seinem zweiten Pflichtspiel für die Profis durfte Mathis Albert gleich über die volle Spielzeit ran. Niko Kovac lobte den 17-Jährigen, der sich für weitere Einsätze bei den Profis empfahl. Doch auch sein neuer Konkurrent Ethan Nwaneri steht kurz nach der Ankunft schon bereit."
+   },
+   "p26": {
+    "player": "Niklas Stark",
+    "club": "SV Werder Bremen",
+    "title": "Eine Lehre aus der U 15: Warum sich Matanovic kein spezielles Ziel setzt",
+    "text": "1,95 Meter pure Glückseligkeit: Igor Matanovic strahlt in diesem Sommer eine schier grenzenlose Vorfreude aus - und ist dementsprechend stark in die Saison gestartet. Der Angreifer des SC Freiburg erklärt die Gründe."
+   },
+   "p27": {
+    "player": "Manuel Neuer",
+    "club": "FC Bayern München",
+    "title": "Neuer Anlauf am Bosporus: Leipzig gibt Bitshiabu noch ab",
+    "text": "RB Leipzig suchte vor Transferende noch nach einem Abnehmer für El Chadaille Bitshiabu. Der angestrebte Verkauf wurde es nicht, doch per Leihe verlässt der Franzose die Sachsen nun in Richtung Türkei."
+   },
+   "p28": {
+    "player": "Moritz Nicolas",
+    "club": "Borussia Mönchengladbach",
+    "title": "Gladbach macht Last-Minute-Coup mit Kühn offiziell",
+    "text": "Borussia Mönchengladbach hat eine prominente Deadline-Day-Verstärkung verkündet: Nicolas Kühn kehrt nach Deutschland zurück - und steht vor seinem Bundesliga-Debüt."
+   },
+   "p29": {
+    "player": "Nicolas Kühn",
+    "club": "Borussia Mönchengladbach",
+    "title": "Gladbach macht Last-Minute-Coup mit Kühn offiziell",
+    "text": "Borussia Mönchengladbach hat eine prominente Deadline-Day-Verstärkung verkündet: Nicolas Kühn kehrt nach Deutschland zurück - und steht vor seinem Bundesliga-Debüt."
+   },
+   "p30": {
+    "player": "Manuel Neuer",
+    "club": "FC Bayern München",
+    "title": "Lemke neuer Zweiter: Die jüngsten Startelf-Debütanten der Bundesliga",
+    "text": "Mit 16 Jahren und 325 Tagen avancierte Hamburgs Louis Lemke zum zweitjüngsten Startelf-Debütanten der Bundesligageschichte. Wer durfte ähnlich jung von Beginn an ran?"
+   },
+   "p31": {
+    "player": "Waldemar Anton",
+    "club": "Borussia Dortmund",
+    "title": "\"Ist Anton Kade einer für Jürgen Klopp?\": Junger Augsburger mit Gala-Auftritt",
+    "text": "Anton Kade hat den FC Augsburg mit der einer Gala-Vorstellung zum 3:0 gegen Schalke geführt. Passenderweise war Bundestrainer Jürgen Klopp im Stadion. Der könnte seine Augen auf den 22-jährigen Deutschen geworfen haben, sagt kicker-Reporter Mario Krischel."
+   },
+   "p32": {
+    "player": "Anton Kade",
+    "club": "FC Augsburg",
+    "title": "\"Ist Anton Kade einer für Jürgen Klopp?\": Junger Augsburger mit Gala-Auftritt",
+    "text": "Anton Kade hat den FC Augsburg mit der einer Gala-Vorstellung zum 3:0 gegen Schalke geführt. Passenderweise war Bundestrainer Jürgen Klopp im Stadion. Der könnte seine Augen auf den 22-jährigen Deutschen geworfen haben, sagt kicker-Reporter Mario Krischel."
+   }
+  }
+ },
+ "questions": {
+  "role_p0": {
+   "type": "choice",
+   "instructions": "`pairs.p0.title` and `pairs.p0.text` are a German football news teaser. What does it say about the role of `pairs.p0.player` (club: `pairs.p0.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p1": {
+   "type": "choice",
+   "instructions": "`pairs.p1.title` and `pairs.p1.text` are a German football news teaser. What does it say about the role of `pairs.p1.player` (club: `pairs.p1.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p2": {
+   "type": "choice",
+   "instructions": "`pairs.p2.title` and `pairs.p2.text` are a German football news teaser. What does it say about the role of `pairs.p2.player` (club: `pairs.p2.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p3": {
+   "type": "choice",
+   "instructions": "`pairs.p3.title` and `pairs.p3.text` are a German football news teaser. What does it say about the role of `pairs.p3.player` (club: `pairs.p3.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p4": {
+   "type": "choice",
+   "instructions": "`pairs.p4.title` and `pairs.p4.text` are a German football news teaser. What does it say about the role of `pairs.p4.player` (club: `pairs.p4.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p5": {
+   "type": "choice",
+   "instructions": "`pairs.p5.title` and `pairs.p5.text` are a German football news teaser. What does it say about the role of `pairs.p5.player` (club: `pairs.p5.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p6": {
+   "type": "choice",
+   "instructions": "`pairs.p6.title` and `pairs.p6.text` are a German football news teaser. What does it say about the role of `pairs.p6.player` (club: `pairs.p6.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p7": {
+   "type": "choice",
+   "instructions": "`pairs.p7.title` and `pairs.p7.text` are a German football news teaser. What does it say about the role of `pairs.p7.player` (club: `pairs.p7.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p8": {
+   "type": "choice",
+   "instructions": "`pairs.p8.title` and `pairs.p8.text` are a German football news teaser. What does it say about the role of `pairs.p8.player` (club: `pairs.p8.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p9": {
+   "type": "choice",
+   "instructions": "`pairs.p9.title` and `pairs.p9.text` are a German football news teaser. What does it say about the role of `pairs.p9.player` (club: `pairs.p9.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p10": {
+   "type": "choice",
+   "instructions": "`pairs.p10.title` and `pairs.p10.text` are a German football news teaser. What does it say about the role of `pairs.p10.player` (club: `pairs.p10.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p11": {
+   "type": "choice",
+   "instructions": "`pairs.p11.title` and `pairs.p11.text` are a German football news teaser. What does it say about the role of `pairs.p11.player` (club: `pairs.p11.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p12": {
+   "type": "choice",
+   "instructions": "`pairs.p12.title` and `pairs.p12.text` are a German football news teaser. What does it say about the role of `pairs.p12.player` (club: `pairs.p12.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p13": {
+   "type": "choice",
+   "instructions": "`pairs.p13.title` and `pairs.p13.text` are a German football news teaser. What does it say about the role of `pairs.p13.player` (club: `pairs.p13.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p14": {
+   "type": "choice",
+   "instructions": "`pairs.p14.title` and `pairs.p14.text` are a German football news teaser. What does it say about the role of `pairs.p14.player` (club: `pairs.p14.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p15": {
+   "type": "choice",
+   "instructions": "`pairs.p15.title` and `pairs.p15.text` are a German football news teaser. What does it say about the role of `pairs.p15.player` (club: `pairs.p15.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p16": {
+   "type": "choice",
+   "instructions": "`pairs.p16.title` and `pairs.p16.text` are a German football news teaser. What does it say about the role of `pairs.p16.player` (club: `pairs.p16.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p17": {
+   "type": "choice",
+   "instructions": "`pairs.p17.title` and `pairs.p17.text` are a German football news teaser. What does it say about the role of `pairs.p17.player` (club: `pairs.p17.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p18": {
+   "type": "choice",
+   "instructions": "`pairs.p18.title` and `pairs.p18.text` are a German football news teaser. What does it say about the role of `pairs.p18.player` (club: `pairs.p18.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p19": {
+   "type": "choice",
+   "instructions": "`pairs.p19.title` and `pairs.p19.text` are a German football news teaser. What does it say about the role of `pairs.p19.player` (club: `pairs.p19.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p20": {
+   "type": "choice",
+   "instructions": "`pairs.p20.title` and `pairs.p20.text` are a German football news teaser. What does it say about the role of `pairs.p20.player` (club: `pairs.p20.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p21": {
+   "type": "choice",
+   "instructions": "`pairs.p21.title` and `pairs.p21.text` are a German football news teaser. What does it say about the role of `pairs.p21.player` (club: `pairs.p21.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p22": {
+   "type": "choice",
+   "instructions": "`pairs.p22.title` and `pairs.p22.text` are a German football news teaser. What does it say about the role of `pairs.p22.player` (club: `pairs.p22.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p23": {
+   "type": "choice",
+   "instructions": "`pairs.p23.title` and `pairs.p23.text` are a German football news teaser. What does it say about the role of `pairs.p23.player` (club: `pairs.p23.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p24": {
+   "type": "choice",
+   "instructions": "`pairs.p24.title` and `pairs.p24.text` are a German football news teaser. What does it say about the role of `pairs.p24.player` (club: `pairs.p24.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p25": {
+   "type": "choice",
+   "instructions": "`pairs.p25.title` and `pairs.p25.text` are a German football news teaser. What does it say about the role of `pairs.p25.player` (club: `pairs.p25.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p26": {
+   "type": "choice",
+   "instructions": "`pairs.p26.title` and `pairs.p26.text` are a German football news teaser. What does it say about the role of `pairs.p26.player` (club: `pairs.p26.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p27": {
+   "type": "choice",
+   "instructions": "`pairs.p27.title` and `pairs.p27.text` are a German football news teaser. What does it say about the role of `pairs.p27.player` (club: `pairs.p27.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p28": {
+   "type": "choice",
+   "instructions": "`pairs.p28.title` and `pairs.p28.text` are a German football news teaser. What does it say about the role of `pairs.p28.player` (club: `pairs.p28.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p29": {
+   "type": "choice",
+   "instructions": "`pairs.p29.title` and `pairs.p29.text` are a German football news teaser. What does it say about the role of `pairs.p29.player` (club: `pairs.p29.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p30": {
+   "type": "choice",
+   "instructions": "`pairs.p30.title` and `pairs.p30.text` are a German football news teaser. What does it say about the role of `pairs.p30.player` (club: `pairs.p30.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p31": {
+   "type": "choice",
+   "instructions": "`pairs.p31.title` and `pairs.p31.text` are a German football news teaser. What does it say about the role of `pairs.p31.player` (club: `pairs.p31.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  },
+  "role_p32": {
+   "type": "choice",
+   "instructions": "`pairs.p32.title` and `pairs.p32.text` are a German football news teaser. What does it say about the role of `pairs.p32.player` (club: `pairs.p32.club`) in his club's next Bundesliga match? Only the club's Bundesliga matches count; national team, cup and European matches and international breaks do not.",
+   "criteria": {
+    "startet": "He is expected to start for his club: a regular starter, in or returning to the starting eleven, or too good for the bench.",
+    "bank": "He is expected to be only a substitute or backup for his club: he lost his starting place, sits on the bench, is behind a competitor in the pecking order, or rarely plays.",
+    "fehlt": "He will miss his club's next Bundesliga match: injury, illness, a Bundesliga suspension, or not in the squad. Missing national team, cup or European matches or being away with the national team does not count.",
+    "kein_hinweis": "The teaser is not about this player: it means another person with the same name (for example a coach or a teammate whose first name is his surname), or the word is an ordinary German word. Or it gives no clear sign of his role in his club's next Bundesliga match, for example interviews, history, private matters, or national team news only."
+   }
+  }
+ },
+ "response": {
+  "model": "jev-1.13.0",
+  "usage": {
+   "input_tokens": 14921,
+   "output_tokens": 1714
+  },
+  "answers": {
+   "role_p0": {
+    "type": "choice",
+    "choice": "kein_hinweis",
+    "confidence": 0.99,
+    "probabilities": {
+     "bank": 0.0,
+     "kein_hinweis": 1.0,
+     "startet": 0.0,
+     "fehlt": 0.0
+    }
+   },
+   "role_p1": {
+    "type": "choice",
+    "choice": "bank",
+    "confidence": 0.53,
+    "probabilities": {
+     "bank": 0.65,
+     "kein_hinweis": 0.34,
+     "startet": 0.01,
+     "fehlt": 0.0
+    }
+   },
+   "role_p2": {
+    "type": "choice",
+    "choice": "fehlt",
+    "confidence": 0.56,
+    "probabilities": {
+     "bank": 0.0,
+     "kein_hinweis": 0.32,
+     "startet": 0.0,
+     "fehlt": 0.68
+    }
+   },
+   "role_p3": {
+    "type": "choice",
+    "choice": "kein_hinweis",
+    "confidence": 0.98,
+    "probabilities": {
+     "bank": 0.0,
+     "kein_hinweis": 0.99,
+     "startet": 0.0,
+     "fehlt": 0.01
+    }
+   },
+   "role_p4": {
+    "type": "choice",
+    "choice": "kein_hinweis",
+    "confidence": 0.98,
+    "probabilities": {
+     "bank": 0.0,
+     "kein_hinweis": 0.99,
+     "startet": 0.01,
+     "fehlt": 0.0
+    }
+   },
+   "role_p5": {
+    "type": "choice",
+    "choice": "kein_hinweis",
+    "confidence": 0.66,
+    "probabilities": {
+     "bank": 0.19,
+     "kein_hinweis": 0.75,
+     "startet": 0.05,
+     "fehlt": 0.01
+    }
+   },
+   "role_p6": {
+    "type": "choice",
+    "choice": "fehlt",
+    "confidence": 0.99,
+    "probabilities": {
+     "bank": 0.0,
+     "kein_hinweis": 0.01,
+     "startet": 0.0,
+     "fehlt": 0.99
+    }
+   },
+   "role_p7": {
+    "type": "choice",
+    "choice": "kein_hinweis",
+    "confidence": 0.45,
+    "probabilities": {
+     "bank": 0.01,
+     "kein_hinweis": 0.58,
+     "startet": 0.34,
+     "fehlt": 0.07
+    }
+   },
+   "role_p8": {
+    "type": "choice",
+    "choice": "kein_hinweis",
+    "confidence": 0.33,
+    "probabilities": {
+     "bank": 0.0,
+     "kein_hinweis": 0.5,
+     "startet": 0.33,
+     "fehlt": 0.17
+    }
+   },
+   "role_p9": {
+    "type": "choice",
+    "choice": "startet",
+    "confidence": 0.83,
+    "probabilities": {
+     "bank": 0.05,
+     "kein_hinweis": 0.07,
+     "startet": 0.88,
+     "fehlt": 0.0
+    }
+   },
+   "role_p10": {
+    "type": "choice",
+    "choice": "startet",
+    "confidence": 0.88,
+    "probabilities": {
+     "bank": 0.02,
+     "kein_hinweis": 0.07,
+     "startet": 0.91,
+     "fehlt": 0.0
+    }
+   },
+   "role_p11": {
+    "type": "choice",
+    "choice": "bank",
+    "confidence": 0.8,
+    "probabilities": {
+     "bank": 0.85,
+     "kein_hinweis": 0.1,
+     "startet": 0.05,
+     "fehlt": 0.0
+    }
+   },
+   "role_p12": {
+    "type": "choice",
+    "choice": "kein_hinweis",
+    "confidence": 0.89,
+    "probabilities": {
+     "bank": 0.07,
+     "kein_hinweis": 0.91,
+     "startet": 0.02,
+     "fehlt": 0.0
+    }
+   },
+   "role_p13": {
+    "type": "choice",
+    "choice": "fehlt",
+    "confidence": 0.99,
+    "probabilities": {
+     "bank": 0.0,
+     "kein_hinweis": 0.01,
+     "startet": 0.0,
+     "fehlt": 0.99
+    }
+   },
+   "role_p14": {
+    "type": "choice",
+    "choice": "kein_hinweis",
+    "confidence": 0.93,
+    "probabilities": {
+     "bank": 0.0,
+     "kein_hinweis": 0.95,
+     "startet": 0.0,
+     "fehlt": 0.05
+    }
+   },
+   "role_p15": {
+    "type": "choice",
+    "choice": "kein_hinweis",
+    "confidence": 0.35,
+    "probabilities": {
+     "bank": 0.01,
+     "kein_hinweis": 0.51,
+     "startet": 0.02,
+     "fehlt": 0.46
+    }
+   },
+   "role_p16": {
+    "type": "choice",
+    "choice": "fehlt",
+    "confidence": 0.53,
+    "probabilities": {
+     "bank": 0.0,
+     "kein_hinweis": 0.34,
+     "startet": 0.01,
+     "fehlt": 0.65
+    }
+   },
+   "role_p17": {
+    "type": "choice",
+    "choice": "kein_hinweis",
+    "confidence": 0.3,
+    "probabilities": {
+     "bank": 0.27,
+     "kein_hinweis": 0.47,
+     "startet": 0.26,
+     "fehlt": 0.0
+    }
+   },
+   "role_p18": {
+    "type": "choice",
+    "choice": "startet",
+    "confidence": 0.88,
+    "probabilities": {
+     "bank": 0.0,
+     "kein_hinweis": 0.09,
+     "startet": 0.91,
+     "fehlt": 0.0
+    }
+   },
+   "role_p19": {
+    "type": "choice",
+    "choice": "kein_hinweis",
+    "confidence": 0.82,
+    "probabilities": {
+     "bank": 0.0,
+     "kein_hinweis": 0.87,
+     "startet": 0.13,
+     "fehlt": 0.0
+    }
+   },
+   "role_p20": {
+    "type": "choice",
+    "choice": "kein_hinweis",
+    "confidence": 0.82,
+    "probabilities": {
+     "bank": 0.0,
+     "kein_hinweis": 0.87,
+     "startet": 0.0,
+     "fehlt": 0.13
+    }
+   },
+   "role_p21": {
+    "type": "choice",
+    "choice": "fehlt",
+    "confidence": 0.41,
+    "probabilities": {
+     "bank": 0.0,
+     "kein_hinweis": 0.44,
+     "startet": 0.0,
+     "fehlt": 0.56
+    }
+   },
+   "role_p22": {
+    "type": "choice",
+    "choice": "fehlt",
+    "confidence": 1.0,
+    "probabilities": {
+     "bank": 0.0,
+     "kein_hinweis": 0.0,
+     "startet": 0.0,
+     "fehlt": 1.0
+    }
+   },
+   "role_p23": {
+    "type": "choice",
+    "choice": "kein_hinweis",
+    "confidence": 0.98,
+    "probabilities": {
+     "bank": 0.0,
+     "kein_hinweis": 0.99,
+     "startet": 0.0,
+     "fehlt": 0.01
+    }
+   },
+   "role_p24": {
+    "type": "choice",
+    "choice": "fehlt",
+    "confidence": 0.68,
+    "probabilities": {
+     "bank": 0.0,
+     "kein_hinweis": 0.23,
+     "startet": 0.01,
+     "fehlt": 0.76
+    }
+   },
+   "role_p25": {
+    "type": "choice",
+    "choice": "kein_hinweis",
+    "confidence": 0.95,
+    "probabilities": {
+     "bank": 0.02,
+     "kein_hinweis": 0.97,
+     "startet": 0.01,
+     "fehlt": 0.0
+    }
+   },
+   "role_p26": {
+    "type": "choice",
+    "choice": "kein_hinweis",
+    "confidence": 0.97,
+    "probabilities": {
+     "bank": 0.0,
+     "kein_hinweis": 0.98,
+     "startet": 0.02,
+     "fehlt": 0.0
+    }
+   },
+   "role_p27": {
+    "type": "choice",
+    "choice": "kein_hinweis",
+    "confidence": 0.98,
+    "probabilities": {
+     "bank": 0.0,
+     "kein_hinweis": 1.0,
+     "startet": 0.0,
+     "fehlt": 0.0
+    }
+   },
+   "role_p28": {
+    "type": "choice",
+    "choice": "kein_hinweis",
+    "confidence": 0.37,
+    "probabilities": {
+     "bank": 0.01,
+     "kein_hinweis": 0.54,
+     "startet": 0.44,
+     "fehlt": 0.01
+    }
+   },
+   "role_p29": {
+    "type": "choice",
+    "choice": "startet",
+    "confidence": 0.35,
+    "probabilities": {
+     "bank": 0.01,
+     "kein_hinweis": 0.47,
+     "startet": 0.51,
+     "fehlt": 0.01
+    }
+   },
+   "role_p30": {
+    "type": "choice",
+    "choice": "kein_hinweis",
+    "confidence": 0.99,
+    "probabilities": {
+     "bank": 0.0,
+     "kein_hinweis": 1.0,
+     "startet": 0.0,
+     "fehlt": 0.0
+    }
+   },
+   "role_p31": {
+    "type": "choice",
+    "choice": "kein_hinweis",
+    "confidence": 0.98,
+    "probabilities": {
+     "bank": 0.0,
+     "kein_hinweis": 0.98,
+     "startet": 0.02,
+     "fehlt": 0.0
+    }
+   },
+   "role_p32": {
+    "type": "choice",
+    "choice": "kein_hinweis",
+    "confidence": 0.94,
+    "probabilities": {
+     "bank": 0.0,
+     "kein_hinweis": 0.95,
+     "startet": 0.05,
+     "fehlt": 0.0
+    }
+   }
+  }
+ }
+}

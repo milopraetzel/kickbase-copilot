@@ -1,0 +1,7 @@
+{
+  "it": [
+    {"i": "1", "fn": "Manuel", "n": "Neuer", "pos": 1, "mv": 8500000, "st": 1, "tid": "2"},
+    {"i": "2", "fn": "Joshua", "n": "Kimmich", "pos": 3, "mv": 19000000, "st": 1, "tid": "2"},
+    {"i": "3", "fn": "Jamal", "n": "Musiala", "pos": 3, "mv": 25000000, "st": 0, "tid": "2"}
+  ]
+}

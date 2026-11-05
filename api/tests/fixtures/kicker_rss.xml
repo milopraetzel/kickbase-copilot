@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Kicker Bundesliga</title>
+    <link>https://kicker.de</link>
+    <description>Bundesliga News</description>
+    <item>
+      <title>Musiala verletzt sich im Training</title>
+      <link>https://kicker.de/musiala-verletzung-123</link>
+      <description>Jamal Musiala fällt für das kommende Bundesliga-Spiel aus.</description>
+      <pubDate>Thu, 24 Apr 2026 10:15:00 +0200</pubDate>
+      <guid>kicker-123</guid>
+    </item>
+    <item>
+      <title>Wirtz glänzt mit Doppelpack</title>
+      <link>https://kicker.de/wirtz-doppelpack-124</link>
+      <description>Florian Wirtz trifft doppelt für Leverkusen.</description>
+      <pubDate>Thu, 24 Apr 2026 09:00:00 +0200</pubDate>
+      <guid>kicker-124</guid>
+    </item>
+  </channel>
+</rss>

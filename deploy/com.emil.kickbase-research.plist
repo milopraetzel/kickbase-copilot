@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.emil.kickbase-research</string>
+
+  <!-- KI-Recherche via lokaler claude-CLI (Abo) → Discord. Einmal täglich 08:30. -->
+  <key>ProgramArguments</key>
+  <array>
+    <string>/opt/homebrew/bin/uv</string>
+    <string>run</string>
+    <string>kba</string>
+    <string>research</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/emil/Mein Claude /Kickbase-Agent/api</string>
+
+  <!-- claude liegt in ~/.local/bin, uv in /opt/homebrew/bin — beide müssen auf den PATH -->
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/Users/emil/.local/bin:/opt/homebrew/bin:/usr/bin:/bin</string>
+  </dict>
+
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key><integer>8</integer>
+    <key>Minute</key><integer>30</integer>
+  </dict>
+
+  <key>RunAtLoad</key>
+  <false/>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/kba-research.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/kba-research.err</string>
+</dict>
+</plist>

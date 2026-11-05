@@ -1,0 +1,12 @@
+{
+  "web": {
+    "backend": "ddgs",
+    "search_backend": "ddgs",
+    "extract_backend": "direct-http",
+    "use_gateway": false,
+    "keyless_fallback": false,
+    "keyless_rescue": false
+  },
+  "plugins_enabled_add": ["web-direct-http"],
+  "plugins_disabled_add": ["web-firecrawl", "browser-firecrawl"]
+}

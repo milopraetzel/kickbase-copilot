@@ -1,0 +1,807 @@
+{
+ "_quelle": "Echte TypeSafe-Antwort (jev-1.13.0) vom 30.09.2026: 20 echte kicker-Anreisser (news_items der Box, 01.-21.09.2026) mit Rueckkehrern, Transfer-'Rueckkehr', Besuchen beim Ex-Verein, Ausfaellen und dem Namensvetter Moritz Nicolas; 17 echte Kickbase-Spieler (fn/ln/tid aus player/team_profile und der players-Tabelle). Eine Choice-Frage je Paar wie in intel/news_signal.py, alle Paare in einer Anfrage.",
+ "players": [
+  {
+   "pid": "16378",
+   "first": "Konstantinos",
+   "last": "Karetsas",
+   "team": "3"
+  },
+  {
+   "pid": "2383",
+   "first": "Nico",
+   "last": "Schlotterbeck",
+   "team": "3"
+  },
+  {
+   "pid": "43",
+   "first": "Mitchell",
+   "last": "Weiser",
+   "team": "10"
+  },
+  {
+   "pid": "11161",
+   "first": "Koki",
+   "last": "Machida",
+   "team": "14"
+  },
+  {
+   "pid": "2804",
+   "first": "Jamal",
+   "last": "Musiala",
+   "team": "2"
+  },
+  {
+   "pid": "11957",
+   "first": "Eliesse",
+   "last": "Ben Seghir",
+   "team": "7"
+  },
+  {
+   "pid": "1671",
+   "first": "Grischa",
+   "last": "Prömel",
+   "team": "9"
+  },
+  {
+   "pid": "3318",
+   "first": "Ransford",
+   "last": "Königsdörffer",
+   "team": "18"
+  },
+  {
+   "pid": "2661",
+   "first": "Moussa",
+   "last": "Diaby",
+   "team": "7"
+  },
+  {
+   "pid": "2718",
+   "first": "Ellyes",
+   "last": "Skhiri",
+   "team": "28"
+  },
+  {
+   "pid": "11967",
+   "first": "Fábio",
+   "last": "Vieira",
+   "team": "6"
+  },
+  {
+   "pid": "2939",
+   "first": "Eren Sami",
+   "last": "Dinkçi",
+   "team": "10"
+  },
+  {
+   "pid": "7269",
+   "first": "Nathan",
+   "last": "Tella",
+   "team": "7"
+  },
+  {
+   "pid": "2069",
+   "first": "Timo",
+   "last": "Hübers",
+   "team": "28"
+  },
+  {
+   "pid": "13888",
+   "first": "Guéla",
+   "last": "Doué",
+   "team": "7"
+  },
+  {
+   "pid": "2126",
+   "first": "Nicolas",
+   "last": "Kühn",
+   "team": "15"
+  },
+  {
+   "pid": "1883",
+   "first": "Moritz",
+   "last": "Nicolas",
+   "team": "15"
+  }
+ ],
+ "teams": {
+  "2": "Bayern",
+  "3": "Dortmund",
+  "6": "Hamburg",
+  "7": "Leverkusen",
+  "9": "Stuttgart",
+  "10": "Bremen",
+  "14": "Hoffenheim",
+  "15": "M'gladbach",
+  "18": "Mainz",
+  "28": "Köln"
+ },
+ "articles": [
+  {
+   "url": "https://www.kicker.de/comeback-in-stuttgart-karetsas-zurueck-im-mannschaftstraining-1253230/artikel#omrss",
+   "title": "Comeback in Stuttgart? Karetsas zurück im Mannschaftstraining",
+   "text": "Gute Nachrichten für Borussia Dortmund. Wie erwartet trainierte Konstantinos Karetsas vor dem Gastspiel beim VfB Stuttgart wieder mit dem Team.",
+   "published_at": "2026-09-16T12:19:04+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/frohe-kunde-in-dortmund-schlotterbeck-kehrt-auf-den-rasen-zurueck-1249124/artikel#omrss",
+   "title": "Frohe Kunde in Dortmund: Schlotterbeck kehrt auf den Rasen zurück",
+   "text": "Nico Schlotterbeck nährt die Hoffnung auf seine Rückkehr auf den Rasen. Am Mittwoch kehrte der Nationalspieler auf den Trainingsplatz zurück und absolvierte erste individuelle Einheiten mit dem Ball.",
+   "published_at": "2026-09-02T14:13:02+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/kovac-ueber-schlotterbeck-vorsichtiger-zu-werke-gegangen-1252090/video#omrss",
+   "title": "Kovac über Schlotterbeck: \"Vorsichtiger zu Werke gegangen\"",
+   "text": "Nico Schlotterbeck feierte gegen Paderborn sein Comeback nach langer Verletzungspause. Nach der Partie fand Trainer Nico Kovac warme Worte für seinen Kapitän.",
+   "published_at": "2026-09-12T19:35:53+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/nach-14-monaten-weiser-unmittelbar-vor-der-rueckkehr-1251481/artikel#omrss",
+   "title": "Nach 14 Monaten: Weiser unmittelbar vor der Rückkehr",
+   "text": "Der Sieg über Leipzig hat Werder Bremen beflügelt - eine erfreuliche Nachricht tut dabei ihr Übriges: Nach quälend langen Monaten befindet sich Mitchell Weiser auf der Zielgeraden und könnte schon in seiner Heimat das Kader-Comeback feiern.",
+   "published_at": "2026-09-10T12:45:57+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/weisers-traumszenario-tritt-ein-und-verschafft-bremen-einen-magischen-moment-1254250/artikel#omrss",
+   "title": "Weisers \"Traumszenario\" tritt ein und verschafft Bremen einen \"magischen Moment\"",
+   "text": "Heim-Comeback, Tor, Sieg: Mitchell Weisers Rückkehr auf den Platz im Weserstadion war ein voller Erfolg. Und es war ausgerechnet er, der den entscheidenden Schlusspunkt setzte.",
+   "published_at": "2026-09-19T18:26:57+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/machida-draengt-nun-auch-in-die-startelf-1253117/artikel#omrss",
+   "title": "Machida drängt nun auch in die Startelf",
+   "text": "Nach über einem Jahr Zwangspause wegen eines Kreuzbandrisses feierte Hoffenheims Innenverteidiger Koki Machida gegen Stuttgart sein Comeback in der Bundesliga. Der Japaner scheint bereit für mehr.",
+   "published_at": "2026-09-17T07:14:45+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/geht-ihm-besser-kehrt-musiala-am-samstag-in-den-kader-zurueck-1249213/artikel#omrss",
+   "title": "\"Geht ihm besser\": Kehrt Musiala am Samstag in den Kader zurück?",
+   "text": "Jamal Musiala kam in dieser Saison noch nicht zum Einsatz, nachdem bekannt wurde, dass er an Absencen leidet. Am Samstag könnte er nun erstmals im Kader stehen.",
+   "published_at": "2026-09-02T18:42:19+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/naechster-rueckschlag-entwarnung-bei-ben-seghir-1254874/artikel#omrss",
+   "title": "Nächster Rückschlag? Entwarnung bei Ben Seghir",
+   "text": "Dem Kurz-Comeback in der Europa League gegen Celje folgte gleich ein Dämpfer. Gegen Leipzig gehörte Eliesse Ben Seghir wegen muskulärer Probleme nicht zum Leverkusener Aufgebot. Jetzt gibt es Entwarnung beim marokkanischen Nationalspieler, der auf seine direkten Konkurrenten aber dringend aufholen muss.",
+   "published_at": "2026-09-21T14:37:23+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/sprechchoere-und-prominente-gaeste-emotionale-vuskovic-rueckkehr-im-volkspark-1252919/video#omrss",
+   "title": "Sprechchöre und prominente Gäste: Emotionale Vuskovic-Rückkehr im Volkspark",
+   "text": "Bis zu 5000 HSV-Fans haben den Rückkehrer Mario Vuskovic beim Training am Dienstag im Stadion nach dessen fast vierjähriger Dopingsperre empfangen.",
+   "published_at": "2026-09-15T13:32:05+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/proemels-rueckkehr-ein-insider-im-aussendienst-1251483/artikel#omrss",
+   "title": "Prömels Rückkehr: Ein Insider im Außendienst",
+   "text": "Vier Monate nach seinem Abschied aus Hoffenheim kehrt der nach Stuttgart abgewanderte Grischa Prömel mit dem VfB zur TSG zurück. Diesmal als Gegner. Und als Champions-League-Spieler.",
+   "published_at": "2026-09-11T08:51:43+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/koenigsdoerffer-erklaert-torjubel-bin-ein-jahr-lang-beleidigt-worden-1251604/artikel#omrss",
+   "title": "Königsdörffer erklärt Torjubel: \"Bin ein Jahr lang beleidigt worden\"",
+   "text": "Der Mainzer Ransford Königsdörffer sorgte mit seinem aufreizenden Jubel bei seiner Rückkehr nach Hamburg für Aufsehen. Der Stürmer hat diese Aktion nun extrem offen erklärt und macht deutlich, dass es nichts mit seinem ehemaligen Arbeitgeber zu tun hat.",
+   "published_at": "2026-09-10T20:36:07+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/nervenspiel-beendet-diaby-kehrt-nach-leverkusen-zurueck-1241179/artikel#omrss",
+   "title": "Nervenspiel beendet: Diaby kehrt nach Leverkusen zurück",
+   "text": "Der Deal drohte zu platzen, nun hat die Hängepartie mit Al-Ittihad doch einen positiven Ausgang für Bayer 04 Leverkusen: Moussa Diaby (27) kehrt zurück in die Bundesliga.",
+   "published_at": "2026-09-01T13:33:35+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/anfuehrer-in-ansaetzen-skhiri-soll-das-vakuum-im-zentrum-schliessen-1252179/artikel#omrss",
+   "title": "Anführer in Ansätzen: Skhiri soll das Vakuum im Zentrum schließen",
+   "text": "Als Ellyes Skhiri zum 1. FC Köln zurückkehrte, war der Auftrag klar: Der 31-Jährige soll einer der Anführer auf dem Platz werden. Und so jemand wird auch dringend benötigt.",
+   "published_at": "2026-09-13T11:20:36+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/fabio-vieira-hsv-rueckkehr-in-der-startelf-1249745/artikel#omrss",
+   "title": "Fabio Vieira: HSV-Rückkehr in der Startelf?",
+   "text": "Drei Neulinge, allesamt mit Startelf-Potenzial, hat der Hamburger SV am Dienstag verpflichtet. Die meisten Fragen in der Öffentlichkeit und auch während der Pressekonferenz am Freitag aber drehen sich um einen: Fabio Vieira.",
+   "published_at": "2026-09-04T16:00:05+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/ich-bin-nicht-mehr-der-introvertierte-eren-dinkci-der-ich-mal-war-1252885/artikel#omrss",
+   "title": "\"Ich bin nicht mehr der introvertierte Eren Dinkci, der ich mal war\"",
+   "text": "Vor drei Jahren verließ er Werder: Eren Dinkci spricht über prägende Zeiten und erklärt, wie die \"schwere Situation\" um seine erkrankte Frau die Rückkehr nach Bremen beeinflusst hat.",
+   "published_at": "2026-09-15T12:41:51+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/vorsichtsmassnahme-mit-vier-wochen-pause-tella-verliert-bei-bayer-massiv-an-boden-1251763/artikel#omrss",
+   "title": "\"Vorsichtsmaßnahme\" mit vier Wochen Pause: Tella verliert bei Bayer massiv an Boden",
+   "text": "Trainer Carles Martinez rechnet erst nach der Länderspielperiode \"vielleicht\" mit der Rückkehr von Angreifer Nathan Tella. Angesichts der starken Konkurrenz droht Bayers zwölfter Mann, entscheidend an Boden zu verlieren.",
+   "published_at": "2026-09-11T14:21:08+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/nach-schwerer-verletzung-huebers-erneut-operiert-1253289/artikel#omrss",
+   "title": "Nach schwerer Verletzung: Hübers erneut operiert",
+   "text": "Nach seiner schweren Knieverletzung aus dem vergangenen Herbst muss Timo Hübers weiter auf sein Comeback warten. Der Innenverteidiger ist inzwischen sogar ein zweites Mal operiert worden.",
+   "published_at": "2026-09-16T16:06:45+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/leverkusens-doue-muss-noch-aussetzen-diaby-erhoeht-die-tor-wahrscheinlichkeit-1249699/artikel#omrss",
+   "title": "Leverkusens Doué muss noch aussetzen - Diaby \"erhöht die Tor-Wahrscheinlichkeit\"",
+   "text": "Nach der 2:3-Enttäuschung in Elversberg schlugen mit Moussa Diaby und Guela Doué zwei späte Verstärkungen in Leverkusen auf. Während Letzterer noch aussetzen muss, ist der Rückkehrer bereit. Zusätzlich zu Diaby könnte Carles Martinez weitere Optionen für die Offensive bekommen.",
+   "published_at": "2026-09-04T13:12:29+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/naechster-rueckschlag-fuer-gladbach-kuehn-fehlt-wochenlang-1250653/artikel#omrss",
+   "title": "Nächster Rückschlag für Gladbach: Kühn fehlt wochenlang",
+   "text": "Mitten in der sportlichen Krise muss Borussia Mönchengladbach den nächsten Rückschlag hinnehmen: Neuzugang Nicolas Kühn hat sich verletzt und fällt wochenlang aus.",
+   "published_at": "2026-09-07T17:08:45+00:00"
+  },
+  {
+   "url": "https://www.kicker.de/gladbach-macht-last-minute-coup-mit-kuehn-offiziell-1248778/artikel#omrss",
+   "title": "Gladbach macht Last-Minute-Coup mit Kühn offiziell",
+   "text": "Borussia Mönchengladbach hat eine prominente Deadline-Day-Verstärkung verkündet: Nicolas Kühn kehrt nach Deutschland zurück - und steht vor seinem Bundesliga-Debüt.",
+   "published_at": "2026-09-01T16:54:53+00:00"
+  }
+ ],
+ "state": {
+  "source": "Teasers of German football news from kicker.de. Each pair names one Bundesliga player with his full name and club, and one teaser that contains a word matching his surname. That word may refer to another person or be an ordinary German word.",
+  "pairs": {
+   "p0": {
+    "player": "Eliesse Ben Seghir",
+    "club": "Bayer 04 Leverkusen",
+    "title": "Nächster Rückschlag? Entwarnung bei Ben Seghir",
+    "text": "Dem Kurz-Comeback in der Europa League gegen Celje folgte gleich ein Dämpfer. Gegen Leipzig gehörte Eliesse Ben Seghir wegen muskulärer Probleme nicht zum Leverkusener Aufgebot. Jetzt gibt es Entwarnung beim marokkanischen Nationalspieler, der auf seine direkten Konkurrenten aber dringend aufholen muss."
+   },
+   "p1": {
+    "player": "Mitchell Weiser",
+    "club": "SV Werder Bremen",
+    "title": "Weisers \"Traumszenario\" tritt ein und verschafft Bremen einen \"magischen Moment\"",
+    "text": "Heim-Comeback, Tor, Sieg: Mitchell Weisers Rückkehr auf den Platz im Weserstadion war ein voller Erfolg. Und es war ausgerechnet er, der den entscheidenden Schlusspunkt setzte."
+   },
+   "p2": {
+    "player": "Koki Machida",
+    "club": "TSG Hoffenheim",
+    "title": "Machida drängt nun auch in die Startelf",
+    "text": "Nach über einem Jahr Zwangspause wegen eines Kreuzbandrisses feierte Hoffenheims Innenverteidiger Koki Machida gegen Stuttgart sein Comeback in der Bundesliga. Der Japaner scheint bereit für mehr."
+   },
+   "p3": {
+    "player": "Timo Hübers",
+    "club": "1. FC Köln",
+    "title": "Nach schwerer Verletzung: Hübers erneut operiert",
+    "text": "Nach seiner schweren Knieverletzung aus dem vergangenen Herbst muss Timo Hübers weiter auf sein Comeback warten. Der Innenverteidiger ist inzwischen sogar ein zweites Mal operiert worden."
+   },
+   "p4": {
+    "player": "Konstantinos Karetsas",
+    "club": "Borussia Dortmund",
+    "title": "Comeback in Stuttgart? Karetsas zurück im Mannschaftstraining",
+    "text": "Gute Nachrichten für Borussia Dortmund. Wie erwartet trainierte Konstantinos Karetsas vor dem Gastspiel beim VfB Stuttgart wieder mit dem Team."
+   },
+   "p5": {
+    "player": "Eren Sami Dinkçi",
+    "club": "SV Werder Bremen",
+    "title": "\"Ich bin nicht mehr der introvertierte Eren Dinkci, der ich mal war\"",
+    "text": "Vor drei Jahren verließ er Werder: Eren Dinkci spricht über prägende Zeiten und erklärt, wie die \"schwere Situation\" um seine erkrankte Frau die Rückkehr nach Bremen beeinflusst hat."
+   },
+   "p6": {
+    "player": "Ellyes Skhiri",
+    "club": "1. FC Köln",
+    "title": "Anführer in Ansätzen: Skhiri soll das Vakuum im Zentrum schließen",
+    "text": "Als Ellyes Skhiri zum 1. FC Köln zurückkehrte, war der Auftrag klar: Der 31-Jährige soll einer der Anführer auf dem Platz werden. Und so jemand wird auch dringend benötigt."
+   },
+   "p7": {
+    "player": "Nico Schlotterbeck",
+    "club": "Borussia Dortmund",
+    "title": "Kovac über Schlotterbeck: \"Vorsichtiger zu Werke gegangen\"",
+    "text": "Nico Schlotterbeck feierte gegen Paderborn sein Comeback nach langer Verletzungspause. Nach der Partie fand Trainer Nico Kovac warme Worte für seinen Kapitän."
+   },
+   "p8": {
+    "player": "Nathan Tella",
+    "club": "Bayer 04 Leverkusen",
+    "title": "\"Vorsichtsmaßnahme\" mit vier Wochen Pause: Tella verliert bei Bayer massiv an Boden",
+    "text": "Trainer Carles Martinez rechnet erst nach der Länderspielperiode \"vielleicht\" mit der Rückkehr von Angreifer Nathan Tella. Angesichts der starken Konkurrenz droht Bayers zwölfter Mann, entscheidend an Boden zu verlieren."
+   },
+   "p9": {
+    "player": "Grischa Prömel",
+    "club": "VfB Stuttgart",
+    "title": "Prömels Rückkehr: Ein Insider im Außendienst",
+    "text": "Vier Monate nach seinem Abschied aus Hoffenheim kehrt der nach Stuttgart abgewanderte Grischa Prömel mit dem VfB zur TSG zurück. Diesmal als Gegner. Und als Champions-League-Spieler."
+   },
+   "p10": {
+    "player": "Ransford Königsdörffer",
+    "club": "1. FSV Mainz 05",
+    "title": "Königsdörffer erklärt Torjubel: \"Bin ein Jahr lang beleidigt worden\"",
+    "text": "Der Mainzer Ransford Königsdörffer sorgte mit seinem aufreizenden Jubel bei seiner Rückkehr nach Hamburg für Aufsehen. Der Stürmer hat diese Aktion nun extrem offen erklärt und macht deutlich, dass es nichts mit seinem ehemaligen Arbeitgeber zu tun hat."
+   },
+   "p11": {
+    "player": "Mitchell Weiser",
+    "club": "SV Werder Bremen",
+    "title": "Nach 14 Monaten: Weiser unmittelbar vor der Rückkehr",
+    "text": "Der Sieg über Leipzig hat Werder Bremen beflügelt - eine erfreuliche Nachricht tut dabei ihr Übriges: Nach quälend langen Monaten befindet sich Mitchell Weiser auf der Zielgeraden und könnte schon in seiner Heimat das Kader-Comeback feiern."
+   },
+   "p12": {
+    "player": "Nicolas Kühn",
+    "club": "Borussia Mönchengladbach",
+    "title": "Nächster Rückschlag für Gladbach: Kühn fehlt wochenlang",
+    "text": "Mitten in der sportlichen Krise muss Borussia Mönchengladbach den nächsten Rückschlag hinnehmen: Neuzugang Nicolas Kühn hat sich verletzt und fällt wochenlang aus."
+   },
+   "p13": {
+    "player": "Moritz Nicolas",
+    "club": "Borussia Mönchengladbach",
+    "title": "Nächster Rückschlag für Gladbach: Kühn fehlt wochenlang",
+    "text": "Mitten in der sportlichen Krise muss Borussia Mönchengladbach den nächsten Rückschlag hinnehmen: Neuzugang Nicolas Kühn hat sich verletzt und fällt wochenlang aus."
+   },
+   "p14": {
+    "player": "Fábio Vieira",
+    "club": "Hamburger SV",
+    "title": "Fabio Vieira: HSV-Rückkehr in der Startelf?",
+    "text": "Drei Neulinge, allesamt mit Startelf-Potenzial, hat der Hamburger SV am Dienstag verpflichtet. Die meisten Fragen in der Öffentlichkeit und auch während der Pressekonferenz am Freitag aber drehen sich um einen: Fabio Vieira."
+   },
+   "p15": {
+    "player": "Moussa Diaby",
+    "club": "Bayer 04 Leverkusen",
+    "title": "Leverkusens Doué muss noch aussetzen - Diaby \"erhöht die Tor-Wahrscheinlichkeit\"",
+    "text": "Nach der 2:3-Enttäuschung in Elversberg schlugen mit Moussa Diaby und Guela Doué zwei späte Verstärkungen in Leverkusen auf. Während Letzterer noch aussetzen muss, ist der Rückkehrer bereit. Zusätzlich zu Diaby könnte Carles Martinez weitere Optionen für die Offensive bekommen."
+   },
+   "p16": {
+    "player": "Guéla Doué",
+    "club": "Bayer 04 Leverkusen",
+    "title": "Leverkusens Doué muss noch aussetzen - Diaby \"erhöht die Tor-Wahrscheinlichkeit\"",
+    "text": "Nach der 2:3-Enttäuschung in Elversberg schlugen mit Moussa Diaby und Guela Doué zwei späte Verstärkungen in Leverkusen auf. Während Letzterer noch aussetzen muss, ist der Rückkehrer bereit. Zusätzlich zu Diaby könnte Carles Martinez weitere Optionen für die Offensive bekommen."
+   },
+   "p17": {
+    "player": "Jamal Musiala",
+    "club": "FC Bayern München",
+    "title": "\"Geht ihm besser\": Kehrt Musiala am Samstag in den Kader zurück?",
+    "text": "Jamal Musiala kam in dieser Saison noch nicht zum Einsatz, nachdem bekannt wurde, dass er an Absencen leidet. Am Samstag könnte er nun erstmals im Kader stehen."
+   },
+   "p18": {
+    "player": "Nico Schlotterbeck",
+    "club": "Borussia Dortmund",
+    "title": "Frohe Kunde in Dortmund: Schlotterbeck kehrt auf den Rasen zurück",
+    "text": "Nico Schlotterbeck nährt die Hoffnung auf seine Rückkehr auf den Rasen. Am Mittwoch kehrte der Nationalspieler auf den Trainingsplatz zurück und absolvierte erste individuelle Einheiten mit dem Ball."
+   },
+   "p19": {
+    "player": "Nicolas Kühn",
+    "club": "Borussia Mönchengladbach",
+    "title": "Gladbach macht Last-Minute-Coup mit Kühn offiziell",
+    "text": "Borussia Mönchengladbach hat eine prominente Deadline-Day-Verstärkung verkündet: Nicolas Kühn kehrt nach Deutschland zurück - und steht vor seinem Bundesliga-Debüt."
+   },
+   "p20": {
+    "player": "Moritz Nicolas",
+    "club": "Borussia Mönchengladbach",
+    "title": "Gladbach macht Last-Minute-Coup mit Kühn offiziell",
+    "text": "Borussia Mönchengladbach hat eine prominente Deadline-Day-Verstärkung verkündet: Nicolas Kühn kehrt nach Deutschland zurück - und steht vor seinem Bundesliga-Debüt."
+   },
+   "p21": {
+    "player": "Moussa Diaby",
+    "club": "Bayer 04 Leverkusen",
+    "title": "Nervenspiel beendet: Diaby kehrt nach Leverkusen zurück",
+    "text": "Der Deal drohte zu platzen, nun hat die Hängepartie mit Al-Ittihad doch einen positiven Ausgang für Bayer 04 Leverkusen: Moussa Diaby (27) kehrt zurück in die Bundesliga."
+   }
+  }
+ },
+ "questions": {
+  "ev_p0": {
+   "type": "choice",
+   "instructions": "`pairs.p0.title` and `pairs.p0.text` are a German football news teaser. Which event does it report for `pairs.p0.player` (club: `pairs.p0.club`)?",
+   "criteria": {
+    "rueckkehr": "He has returned, or will return within days, to team training or matches after an injury, illness or suspension. Not a new signing's first matches and not a transfer back to a former club.",
+    "ausfall": "He is injured, ill or suspended and will miss one or more of his club's upcoming Bundesliga matches.",
+    "kein_ereignis": "Neither of these. Also: a new signing or a transfer back to a former club (even if he can play now), a visit to a former club, a club's promotion, another person with the same name, an ordinary German word, or national team, cup or European matches only."
+   }
+  },
+  "ev_p1": {
+   "type": "choice",
+   "instructions": "`pairs.p1.title` and `pairs.p1.text` are a German football news teaser. Which event does it report for `pairs.p1.player` (club: `pairs.p1.club`)?",
+   "criteria": {
+    "rueckkehr": "He has returned, or will return within days, to team training or matches after an injury, illness or suspension. Not a new signing's first matches and not a transfer back to a former club.",
+    "ausfall": "He is injured, ill or suspended and will miss one or more of his club's upcoming Bundesliga matches.",
+    "kein_ereignis": "Neither of these. Also: a new signing or a transfer back to a former club (even if he can play now), a visit to a former club, a club's promotion, another person with the same name, an ordinary German word, or national team, cup or European matches only."
+   }
+  },
+  "ev_p2": {
+   "type": "choice",
+   "instructions": "`pairs.p2.title` and `pairs.p2.text` are a German football news teaser. Which event does it report for `pairs.p2.player` (club: `pairs.p2.club`)?",
+   "criteria": {
+    "rueckkehr": "He has returned, or will return within days, to team training or matches after an injury, illness or suspension. Not a new signing's first matches and not a transfer back to a former club.",
+    "ausfall": "He is injured, ill or suspended and will miss one or more of his club's upcoming Bundesliga matches.",
+    "kein_ereignis": "Neither of these. Also: a new signing or a transfer back to a former club (even if he can play now), a visit to a former club, a club's promotion, another person with the same name, an ordinary German word, or national team, cup or European matches only."
+   }
+  },
+  "ev_p3": {
+   "type": "choice",
+   "instructions": "`pairs.p3.title` and `pairs.p3.text` are a German football news teaser. Which event does it report for `pairs.p3.player` (club: `pairs.p3.club`)?",
+   "criteria": {
+    "rueckkehr": "He has returned, or will return within days, to team training or matches after an injury, illness or suspension. Not a new signing's first matches and not a transfer back to a former club.",
+    "ausfall": "He is injured, ill or suspended and will miss one or more of his club's upcoming Bundesliga matches.",
+    "kein_ereignis": "Neither of these. Also: a new signing or a transfer back to a former club (even if he can play now), a visit to a former club, a club's promotion, another person with the same name, an ordinary German word, or national team, cup or European matches only."
+   }
+  },
+  "ev_p4": {
+   "type": "choice",
+   "instructions": "`pairs.p4.title` and `pairs.p4.text` are a German football news teaser. Which event does it report for `pairs.p4.player` (club: `pairs.p4.club`)?",
+   "criteria": {
+    "rueckkehr": "He has returned, or will return within days, to team training or matches after an injury, illness or suspension. Not a new signing's first matches and not a transfer back to a former club.",
+    "ausfall": "He is injured, ill or suspended and will miss one or more of his club's upcoming Bundesliga matches.",
+    "kein_ereignis": "Neither of these. Also: a new signing or a transfer back to a former club (even if he can play now), a visit to a former club, a club's promotion, another person with the same name, an ordinary German word, or national team, cup or European matches only."
+   }
+  },
+  "ev_p5": {
+   "type": "choice",
+   "instructions": "`pairs.p5.title` and `pairs.p5.text` are a German football news teaser. Which event does it report for `pairs.p5.player` (club: `pairs.p5.club`)?",
+   "criteria": {
+    "rueckkehr": "He has returned, or will return within days, to team training or matches after an injury, illness or suspension. Not a new signing's first matches and not a transfer back to a former club.",
+    "ausfall": "He is injured, ill or suspended and will miss one or more of his club's upcoming Bundesliga matches.",
+    "kein_ereignis": "Neither of these. Also: a new signing or a transfer back to a former club (even if he can play now), a visit to a former club, a club's promotion, another person with the same name, an ordinary German word, or national team, cup or European matches only."
+   }
+  },
+  "ev_p6": {
+   "type": "choice",
+   "instructions": "`pairs.p6.title` and `pairs.p6.text` are a German football news teaser. Which event does it report for `pairs.p6.player` (club: `pairs.p6.club`)?",
+   "criteria": {
+    "rueckkehr": "He has returned, or will return within days, to team training or matches after an injury, illness or suspension. Not a new signing's first matches and not a transfer back to a former club.",
+    "ausfall": "He is injured, ill or suspended and will miss one or more of his club's upcoming Bundesliga matches.",
+    "kein_ereignis": "Neither of these. Also: a new signing or a transfer back to a former club (even if he can play now), a visit to a former club, a club's promotion, another person with the same name, an ordinary German word, or national team, cup or European matches only."
+   }
+  },
+  "ev_p7": {
+   "type": "choice",
+   "instructions": "`pairs.p7.title` and `pairs.p7.text` are a German football news teaser. Which event does it report for `pairs.p7.player` (club: `pairs.p7.club`)?",
+   "criteria": {
+    "rueckkehr": "He has returned, or will return within days, to team training or matches after an injury, illness or suspension. Not a new signing's first matches and not a transfer back to a former club.",
+    "ausfall": "He is injured, ill or suspended and will miss one or more of his club's upcoming Bundesliga matches.",
+    "kein_ereignis": "Neither of these. Also: a new signing or a transfer back to a former club (even if he can play now), a visit to a former club, a club's promotion, another person with the same name, an ordinary German word, or national team, cup or European matches only."
+   }
+  },
+  "ev_p8": {
+   "type": "choice",
+   "instructions": "`pairs.p8.title` and `pairs.p8.text` are a German football news teaser. Which event does it report for `pairs.p8.player` (club: `pairs.p8.club`)?",
+   "criteria": {
+    "rueckkehr": "He has returned, or will return within days, to team training or matches after an injury, illness or suspension. Not a new signing's first matches and not a transfer back to a former club.",
+    "ausfall": "He is injured, ill or suspended and will miss one or more of his club's upcoming Bundesliga matches.",
+    "kein_ereignis": "Neither of these. Also: a new signing or a transfer back to a former club (even if he can play now), a visit to a former club, a club's promotion, another person with the same name, an ordinary German word, or national team, cup or European matches only."
+   }
+  },
+  "ev_p9": {
+   "type": "choice",
+   "instructions": "`pairs.p9.title` and `pairs.p9.text` are a German football news teaser. Which event does it report for `pairs.p9.player` (club: `pairs.p9.club`)?",
+   "criteria": {
+    "rueckkehr": "He has returned, or will return within days, to team training or matches after an injury, illness or suspension. Not a new signing's first matches and not a transfer back to a former club.",
+    "ausfall": "He is injured, ill or suspended and will miss one or more of his club's upcoming Bundesliga matches.",
+    "kein_ereignis": "Neither of these. Also: a new signing or a transfer back to a former club (even if he can play now), a visit to a former club, a club's promotion, another person with the same name, an ordinary German word, or national team, cup or European matches only."
+   }
+  },
+  "ev_p10": {
+   "type": "choice",
+   "instructions": "`pairs.p10.title` and `pairs.p10.text` are a German football news teaser. Which event does it report for `pairs.p10.player` (club: `pairs.p10.club`)?",
+   "criteria": {
+    "rueckkehr": "He has returned, or will return within days, to team training or matches after an injury, illness or suspension. Not a new signing's first matches and not a transfer back to a former club.",
+    "ausfall": "He is injured, ill or suspended and will miss one or more of his club's upcoming Bundesliga matches.",
+    "kein_ereignis": "Neither of these. Also: a new signing or a transfer back to a former club (even if he can play now), a visit to a former club, a club's promotion, another person with the same name, an ordinary German word, or national team, cup or European matches only."
+   }
+  },
+  "ev_p11": {
+   "type": "choice",
+   "instructions": "`pairs.p11.title` and `pairs.p11.text` are a German football news teaser. Which event does it report for `pairs.p11.player` (club: `pairs.p11.club`)?",
+   "criteria": {
+    "rueckkehr": "He has returned, or will return within days, to team training or matches after an injury, illness or suspension. Not a new signing's first matches and not a transfer back to a former club.",
+    "ausfall": "He is injured, ill or suspended and will miss one or more of his club's upcoming Bundesliga matches.",
+    "kein_ereignis": "Neither of these. Also: a new signing or a transfer back to a former club (even if he can play now), a visit to a former club, a club's promotion, another person with the same name, an ordinary German word, or national team, cup or European matches only."
+   }
+  },
+  "ev_p12": {
+   "type": "choice",
+   "instructions": "`pairs.p12.title` and `pairs.p12.text` are a German football news teaser. Which event does it report for `pairs.p12.player` (club: `pairs.p12.club`)?",
+   "criteria": {
+    "rueckkehr": "He has returned, or will return within days, to team training or matches after an injury, illness or suspension. Not a new signing's first matches and not a transfer back to a former club.",
+    "ausfall": "He is injured, ill or suspended and will miss one or more of his club's upcoming Bundesliga matches.",
+    "kein_ereignis": "Neither of these. Also: a new signing or a transfer back to a former club (even if he can play now), a visit to a former club, a club's promotion, another person with the same name, an ordinary German word, or national team, cup or European matches only."
+   }
+  },
+  "ev_p13": {
+   "type": "choice",
+   "instructions": "`pairs.p13.title` and `pairs.p13.text` are a German football news teaser. Which event does it report for `pairs.p13.player` (club: `pairs.p13.club`)?",
+   "criteria": {
+    "rueckkehr": "He has returned, or will return within days, to team training or matches after an injury, illness or suspension. Not a new signing's first matches and not a transfer back to a former club.",
+    "ausfall": "He is injured, ill or suspended and will miss one or more of his club's upcoming Bundesliga matches.",
+    "kein_ereignis": "Neither of these. Also: a new signing or a transfer back to a former club (even if he can play now), a visit to a former club, a club's promotion, another person with the same name, an ordinary German word, or national team, cup or European matches only."
+   }
+  },
+  "ev_p14": {
+   "type": "choice",
+   "instructions": "`pairs.p14.title` and `pairs.p14.text` are a German football news teaser. Which event does it report for `pairs.p14.player` (club: `pairs.p14.club`)?",
+   "criteria": {
+    "rueckkehr": "He has returned, or will return within days, to team training or matches after an injury, illness or suspension. Not a new signing's first matches and not a transfer back to a former club.",
+    "ausfall": "He is injured, ill or suspended and will miss one or more of his club's upcoming Bundesliga matches.",
+    "kein_ereignis": "Neither of these. Also: a new signing or a transfer back to a former club (even if he can play now), a visit to a former club, a club's promotion, another person with the same name, an ordinary German word, or national team, cup or European matches only."
+   }
+  },
+  "ev_p15": {
+   "type": "choice",
+   "instructions": "`pairs.p15.title` and `pairs.p15.text` are a German football news teaser. Which event does it report for `pairs.p15.player` (club: `pairs.p15.club`)?",
+   "criteria": {
+    "rueckkehr": "He has returned, or will return within days, to team training or matches after an injury, illness or suspension. Not a new signing's first matches and not a transfer back to a former club.",
+    "ausfall": "He is injured, ill or suspended and will miss one or more of his club's upcoming Bundesliga matches.",
+    "kein_ereignis": "Neither of these. Also: a new signing or a transfer back to a former club (even if he can play now), a visit to a former club, a club's promotion, another person with the same name, an ordinary German word, or national team, cup or European matches only."
+   }
+  },
+  "ev_p16": {
+   "type": "choice",
+   "instructions": "`pairs.p16.title` and `pairs.p16.text` are a German football news teaser. Which event does it report for `pairs.p16.player` (club: `pairs.p16.club`)?",
+   "criteria": {
+    "rueckkehr": "He has returned, or will return within days, to team training or matches after an injury, illness or suspension. Not a new signing's first matches and not a transfer back to a former club.",
+    "ausfall": "He is injured, ill or suspended and will miss one or more of his club's upcoming Bundesliga matches.",
+    "kein_ereignis": "Neither of these. Also: a new signing or a transfer back to a former club (even if he can play now), a visit to a former club, a club's promotion, another person with the same name, an ordinary German word, or national team, cup or European matches only."
+   }
+  },
+  "ev_p17": {
+   "type": "choice",
+   "instructions": "`pairs.p17.title` and `pairs.p17.text` are a German football news teaser. Which event does it report for `pairs.p17.player` (club: `pairs.p17.club`)?",
+   "criteria": {
+    "rueckkehr": "He has returned, or will return within days, to team training or matches after an injury, illness or suspension. Not a new signing's first matches and not a transfer back to a former club.",
+    "ausfall": "He is injured, ill or suspended and will miss one or more of his club's upcoming Bundesliga matches.",
+    "kein_ereignis": "Neither of these. Also: a new signing or a transfer back to a former club (even if he can play now), a visit to a former club, a club's promotion, another person with the same name, an ordinary German word, or national team, cup or European matches only."
+   }
+  },
+  "ev_p18": {
+   "type": "choice",
+   "instructions": "`pairs.p18.title` and `pairs.p18.text` are a German football news teaser. Which event does it report for `pairs.p18.player` (club: `pairs.p18.club`)?",
+   "criteria": {
+    "rueckkehr": "He has returned, or will return within days, to team training or matches after an injury, illness or suspension. Not a new signing's first matches and not a transfer back to a former club.",
+    "ausfall": "He is injured, ill or suspended and will miss one or more of his club's upcoming Bundesliga matches.",
+    "kein_ereignis": "Neither of these. Also: a new signing or a transfer back to a former club (even if he can play now), a visit to a former club, a club's promotion, another person with the same name, an ordinary German word, or national team, cup or European matches only."
+   }
+  },
+  "ev_p19": {
+   "type": "choice",
+   "instructions": "`pairs.p19.title` and `pairs.p19.text` are a German football news teaser. Which event does it report for `pairs.p19.player` (club: `pairs.p19.club`)?",
+   "criteria": {
+    "rueckkehr": "He has returned, or will return within days, to team training or matches after an injury, illness or suspension. Not a new signing's first matches and not a transfer back to a former club.",
+    "ausfall": "He is injured, ill or suspended and will miss one or more of his club's upcoming Bundesliga matches.",
+    "kein_ereignis": "Neither of these. Also: a new signing or a transfer back to a former club (even if he can play now), a visit to a former club, a club's promotion, another person with the same name, an ordinary German word, or national team, cup or European matches only."
+   }
+  },
+  "ev_p20": {
+   "type": "choice",
+   "instructions": "`pairs.p20.title` and `pairs.p20.text` are a German football news teaser. Which event does it report for `pairs.p20.player` (club: `pairs.p20.club`)?",
+   "criteria": {
+    "rueckkehr": "He has returned, or will return within days, to team training or matches after an injury, illness or suspension. Not a new signing's first matches and not a transfer back to a former club.",
+    "ausfall": "He is injured, ill or suspended and will miss one or more of his club's upcoming Bundesliga matches.",
+    "kein_ereignis": "Neither of these. Also: a new signing or a transfer back to a former club (even if he can play now), a visit to a former club, a club's promotion, another person with the same name, an ordinary German word, or national team, cup or European matches only."
+   }
+  },
+  "ev_p21": {
+   "type": "choice",
+   "instructions": "`pairs.p21.title` and `pairs.p21.text` are a German football news teaser. Which event does it report for `pairs.p21.player` (club: `pairs.p21.club`)?",
+   "criteria": {
+    "rueckkehr": "He has returned, or will return within days, to team training or matches after an injury, illness or suspension. Not a new signing's first matches and not a transfer back to a former club.",
+    "ausfall": "He is injured, ill or suspended and will miss one or more of his club's upcoming Bundesliga matches.",
+    "kein_ereignis": "Neither of these. Also: a new signing or a transfer back to a former club (even if he can play now), a visit to a former club, a club's promotion, another person with the same name, an ordinary German word, or national team, cup or European matches only."
+   }
+  }
+ },
+ "response": {
+  "model": "jev-1.13.0",
+  "usage": {
+   "input_tokens": 7785,
+   "output_tokens": 1072
+  },
+  "answers": {
+   "ev_p0": {
+    "type": "choice",
+    "choice": "rueckkehr",
+    "confidence": 0.4,
+    "probabilities": {
+     "kein_ereignis": 0.03,
+     "rueckkehr": 0.6,
+     "ausfall": 0.37
+    }
+   },
+   "ev_p1": {
+    "type": "choice",
+    "choice": "rueckkehr",
+    "confidence": 0.99,
+    "probabilities": {
+     "kein_ereignis": 0.0,
+     "rueckkehr": 1.0,
+     "ausfall": 0.0
+    }
+   },
+   "ev_p2": {
+    "type": "choice",
+    "choice": "rueckkehr",
+    "confidence": 1.0,
+    "probabilities": {
+     "kein_ereignis": 0.0,
+     "rueckkehr": 1.0,
+     "ausfall": 0.0
+    }
+   },
+   "ev_p3": {
+    "type": "choice",
+    "choice": "ausfall",
+    "confidence": 0.93,
+    "probabilities": {
+     "kein_ereignis": 0.04,
+     "rueckkehr": 0.01,
+     "ausfall": 0.95
+    }
+   },
+   "ev_p4": {
+    "type": "choice",
+    "choice": "rueckkehr",
+    "confidence": 0.99,
+    "probabilities": {
+     "kein_ereignis": 0.0,
+     "rueckkehr": 1.0,
+     "ausfall": 0.0
+    }
+   },
+   "ev_p5": {
+    "type": "choice",
+    "choice": "kein_ereignis",
+    "confidence": 0.62,
+    "probabilities": {
+     "kein_ereignis": 0.75,
+     "rueckkehr": 0.25,
+     "ausfall": 0.0
+    }
+   },
+   "ev_p6": {
+    "type": "choice",
+    "choice": "kein_ereignis",
+    "confidence": 0.67,
+    "probabilities": {
+     "kein_ereignis": 0.78,
+     "rueckkehr": 0.22,
+     "ausfall": 0.0
+    }
+   },
+   "ev_p7": {
+    "type": "choice",
+    "choice": "rueckkehr",
+    "confidence": 0.99,
+    "probabilities": {
+     "kein_ereignis": 0.01,
+     "rueckkehr": 0.99,
+     "ausfall": 0.0
+    }
+   },
+   "ev_p8": {
+    "type": "choice",
+    "choice": "ausfall",
+    "confidence": 0.99,
+    "probabilities": {
+     "kein_ereignis": 0.0,
+     "rueckkehr": 0.0,
+     "ausfall": 1.0
+    }
+   },
+   "ev_p9": {
+    "type": "choice",
+    "choice": "kein_ereignis",
+    "confidence": 0.85,
+    "probabilities": {
+     "kein_ereignis": 0.9,
+     "rueckkehr": 0.1,
+     "ausfall": 0.0
+    }
+   },
+   "ev_p10": {
+    "type": "choice",
+    "choice": "kein_ereignis",
+    "confidence": 0.83,
+    "probabilities": {
+     "kein_ereignis": 0.89,
+     "rueckkehr": 0.11,
+     "ausfall": 0.0
+    }
+   },
+   "ev_p11": {
+    "type": "choice",
+    "choice": "rueckkehr",
+    "confidence": 1.0,
+    "probabilities": {
+     "kein_ereignis": 0.0,
+     "rueckkehr": 1.0,
+     "ausfall": 0.0
+    }
+   },
+   "ev_p12": {
+    "type": "choice",
+    "choice": "ausfall",
+    "confidence": 0.99,
+    "probabilities": {
+     "kein_ereignis": 0.0,
+     "rueckkehr": 0.0,
+     "ausfall": 1.0
+    }
+   },
+   "ev_p13": {
+    "type": "choice",
+    "choice": "kein_ereignis",
+    "confidence": 0.55,
+    "probabilities": {
+     "kein_ereignis": 0.7,
+     "rueckkehr": 0.0,
+     "ausfall": 0.3
+    }
+   },
+   "ev_p14": {
+    "type": "choice",
+    "choice": "kein_ereignis",
+    "confidence": 0.8,
+    "probabilities": {
+     "kein_ereignis": 0.86,
+     "rueckkehr": 0.14,
+     "ausfall": 0.0
+    }
+   },
+   "ev_p15": {
+    "type": "choice",
+    "choice": "rueckkehr",
+    "confidence": 0.51,
+    "probabilities": {
+     "kein_ereignis": 0.32,
+     "rueckkehr": 0.67,
+     "ausfall": 0.01
+    }
+   },
+   "ev_p16": {
+    "type": "choice",
+    "choice": "ausfall",
+    "confidence": 0.89,
+    "probabilities": {
+     "kein_ereignis": 0.07,
+     "rueckkehr": 0.0,
+     "ausfall": 0.93
+    }
+   },
+   "ev_p17": {
+    "type": "choice",
+    "choice": "rueckkehr",
+    "confidence": 0.97,
+    "probabilities": {
+     "kein_ereignis": 0.0,
+     "rueckkehr": 0.98,
+     "ausfall": 0.02
+    }
+   },
+   "ev_p18": {
+    "type": "choice",
+    "choice": "rueckkehr",
+    "confidence": 1.0,
+    "probabilities": {
+     "kein_ereignis": 0.0,
+     "rueckkehr": 1.0,
+     "ausfall": 0.0
+    }
+   },
+   "ev_p19": {
+    "type": "choice",
+    "choice": "kein_ereignis",
+    "confidence": 0.97,
+    "probabilities": {
+     "kein_ereignis": 0.98,
+     "rueckkehr": 0.02,
+     "ausfall": 0.0
+    }
+   },
+   "ev_p20": {
+    "type": "choice",
+    "choice": "kein_ereignis",
+    "confidence": 0.97,
+    "probabilities": {
+     "kein_ereignis": 0.98,
+     "rueckkehr": 0.02,
+     "ausfall": 0.0
+    }
+   },
+   "ev_p21": {
+    "type": "choice",
+    "choice": "kein_ereignis",
+    "confidence": 0.68,
+    "probabilities": {
+     "kein_ereignis": 0.79,
+     "rueckkehr": 0.21,
+     "ausfall": 0.0
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,234 @@
+{
+  "u": "2227102",
+  "unm": "Niklas B.",
+  "it": [
+    {
+      "pi": "7676",
+      "pn": "Rieder",
+      "tid": "13",
+      "tty": 2,
+      "othnm": "Osei",
+      "trp": 18150000,
+      "dt": "2026-09-11T17:32:34Z",
+      "pim": "content/file/bdc22db52af641168bf48d012401bd6b.png"
+    },
+    {
+      "pi": "2366",
+      "pn": "Davies",
+      "tid": "2",
+      "tty": 2,
+      "othnm": "Maximilian",
+      "trp": 15250000,
+      "dt": "2026-09-11T17:26:45Z",
+      "pim": "content/file/1321be6fb58f47b592a91f17f6b2bf68.png"
+    },
+    {
+      "pi": "3543",
+      "pn": "Brown",
+      "tid": "2",
+      "tty": 1,
+      "othnm": "Leon",
+      "trp": 28000000,
+      "dt": "2026-09-11T17:18:09Z",
+      "pim": "content/file/4dd49322843644839bb43182b3a8b68b.png"
+    },
+    {
+      "pi": "2383",
+      "pn": "Schlotterbeck",
+      "tid": "3",
+      "tty": 2,
+      "trp": 24449613,
+      "dt": "2026-09-11T13:30:53Z",
+      "pim": "content/file/bc913364cbca4d48b0393c36b9f01728.png"
+    },
+    {
+      "pi": "8166",
+      "pn": "Chuki",
+      "tid": "10",
+      "tty": 1,
+      "trp": 9100000,
+      "dt": "2026-09-11T05:06:12Z",
+      "pim": "content/file/480d2ef5bfd94f57a5db7545d63b0828.png"
+    },
+    {
+      "pi": "8296",
+      "pn": "Schmahl",
+      "tid": "77",
+      "tty": 1,
+      "trp": 2281201,
+      "dt": "2026-09-11T00:11:37Z",
+      "pim": "content/file/4fee028433d344a29b6c94e9ee65fa19.png"
+    },
+    {
+      "pi": "2383",
+      "pn": "Schlotterbeck",
+      "tid": "3",
+      "tty": 1,
+      "trp": 23840000,
+      "dt": "2026-09-05T13:54:52Z",
+      "pim": "content/file/bc913364cbca4d48b0393c36b9f01728.png"
+    },
+    {
+      "pi": "7277",
+      "pn": "Chaïbi",
+      "tid": "4",
+      "tty": 2,
+      "trp": 8413247,
+      "dt": "2026-09-04T17:32:05Z",
+      "pim": "content/file/774d9ee4bd994b9dae8672fbf45215fe.png"
+    },
+    {
+      "pi": "2846",
+      "pn": "Tillman",
+      "tid": "7",
+      "tty": 2,
+      "trp": 15458499,
+      "dt": "2026-09-04T17:17:33Z",
+      "pim": "content/file/04966a0af0e2477db734c91fdd98d4e1.png"
+    },
+    {
+      "pi": "8381",
+      "pn": "Burcu",
+      "tid": "40",
+      "tty": 2,
+      "trp": 6813438,
+      "dt": "2026-09-04T17:17:24Z",
+      "pim": "content/file/9ee1048c9191462c82b58e23f1dbf647.png"
+    },
+    {
+      "pi": "3120",
+      "pn": "Bischof",
+      "tid": "2",
+      "tty": 2,
+      "trp": 19731020,
+      "dt": "2026-09-04T17:17:21Z",
+      "pim": "content/file/9d622fb218a14c90ad0a75266080e027.png"
+    },
+    {
+      "pi": "7277",
+      "pn": "Chaïbi",
+      "tid": "4",
+      "tty": 1,
+      "trp": 9298207,
+      "dt": "2026-09-03T12:41:26Z",
+      "pim": "content/file/774d9ee4bd994b9dae8672fbf45215fe.png"
+    },
+    {
+      "pi": "2846",
+      "pn": "Tillman",
+      "tid": "7",
+      "tty": 1,
+      "trp": 16347630,
+      "dt": "2026-09-02T15:48:01Z",
+      "pim": "content/file/04966a0af0e2477db734c91fdd98d4e1.png"
+    },
+    {
+      "pi": "16369",
+      "pn": "Onyedika",
+      "tid": "4",
+      "tty": 2,
+      "trp": 15542298,
+      "dt": "2026-09-01T14:55:44Z",
+      "pim": "content/file/4413ed18fac54a58a6e94d858ea72074.png"
+    },
+    {
+      "pi": "4606",
+      "pn": "Kuruçay",
+      "tid": "8",
+      "tty": 2,
+      "trp": 10264828,
+      "dt": "2026-09-01T14:52:48Z",
+      "pim": "content/file/6448b21aef9940588bd94029c6f79831.png"
+    },
+    {
+      "pi": "2366",
+      "pn": "Davies",
+      "tid": "2",
+      "tty": 1,
+      "trp": 15588480,
+      "dt": "2026-09-01T11:46:19Z",
+      "pim": "content/file/1321be6fb58f47b592a91f17f6b2bf68.png"
+    },
+    {
+      "pi": "3120",
+      "pn": "Bischof",
+      "tid": "2",
+      "tty": 1,
+      "trp": 25581499,
+      "dt": "2026-08-29T01:05:20Z",
+      "pim": "content/file/9d622fb218a14c90ad0a75266080e027.png"
+    },
+    {
+      "pi": "8381",
+      "pn": "Burcu",
+      "tid": "40",
+      "tty": 1,
+      "trp": 9835743,
+      "dt": "2026-08-29T00:17:25Z",
+      "pim": "content/file/9ee1048c9191462c82b58e23f1dbf647.png"
+    },
+    {
+      "pi": "72",
+      "pn": "Flekken",
+      "tid": "7",
+      "tty": 2,
+      "trp": 15642543,
+      "dt": "2026-08-28T18:00:13Z",
+      "pim": "content/file/98ea8901b970421b88f6a41a3137142f.png"
+    },
+    {
+      "pi": "1767",
+      "pn": "Huth",
+      "tid": "5",
+      "tty": 2,
+      "trp": 500000,
+      "dt": "2026-08-28T17:15:49Z",
+      "pim": "content/file/32936879ffa043938bf688dd5dbca746.png"
+    },
+    {
+      "pi": "2897",
+      "pn": "Reitz",
+      "tid": "43",
+      "tty": 2,
+      "trp": 13087545,
+      "dt": "2026-08-28T17:15:46Z",
+      "pim": "content/file/4186115eb899498fbec64508ec48475c.png"
+    },
+    {
+      "pi": "2237",
+      "pn": "Bredlow",
+      "tid": "9",
+      "tty": 1,
+      "trp": 11855291,
+      "dt": "2026-08-27T11:26:40Z",
+      "pim": "content/file/9c66b1c555ae45aea1e62e700f53f3e9.png"
+    },
+    {
+      "pi": "14911",
+      "pn": "Lippmann",
+      "tid": "29",
+      "tty": 1,
+      "trp": 1234250,
+      "dt": "2026-08-26T12:02:01Z",
+      "pim": "content/file/7462061e1e7843ffb7efaa2fe7e2b5f5.png"
+    },
+    {
+      "pi": "6319",
+      "pn": "Honorat",
+      "tid": "15",
+      "tty": 2,
+      "trp": 9064291,
+      "dt": "2026-08-26T05:28:43Z",
+      "pim": "content/file/ba369ac3889a4ce98a51468fb3f7c14b.png"
+    },
+    {
+      "pi": "72",
+      "pn": "Flekken",
+      "tid": "7",
+      "tty": 1,
+      "trp": 16265979,
+      "dt": "2026-08-25T01:36:01Z",
+      "pim": "content/file/98ea8901b970421b88f6a41a3137142f.png"
+    }
+  ]
+}

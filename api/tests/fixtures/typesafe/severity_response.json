@@ -1,0 +1,586 @@
+{
+ "_quelle": "Echte TypeSafe-Antwort (jev-1.13.0) vom 29.09.2026 auf die LigaInsider-Ausfallgruende dieses Tages plus neun Vergleichsgruende. Drei Fragen je Grund (Dauer, bestimmt, gesicherte Diagnose) wie in scouts/ligainsider/severity_judge.py.",
+ "reasons": [
+  "Achillessehnenverletzung",
+  "Ausfall",
+  "Bauchmuskelverletzung",
+  "Knieverletzung",
+  "Kreuzbandriss",
+  "Kreuzbandverletzung",
+  "Muskelbündelriss",
+  "Muskelverletzung",
+  "Muskelverletzung Wade",
+  "Nicht berücksichtigt",
+  "Schien- und Wadenbeinbruch",
+  "Schulterverletzung",
+  "Stoffwechselstörung",
+  "Muskelfaserriss",
+  "Oberschenkelzerrung",
+  "Gelbsperre",
+  "Rotsperre",
+  "Gehirnerschütterung",
+  "Aufbautraining",
+  "Erkältung",
+  "Kapselriss im Sprunggelenk",
+  "Sehnenriss Achillessehne"
+ ],
+ "response": {
+  "model": "jev-1.13.0",
+  "usage": {
+   "input_tokens": 6906,
+   "output_tokens": 1162
+  },
+  "answers": {
+   "dur_r0": {
+    "type": "score",
+    "score": 2.94,
+    "confidence": 0.94,
+    "legend": {
+     "0": "A few days or a single match: a minor knock, a cold or other short illness, a one-match suspension, rest or load management, or not selected by the coach",
+     "1": "About one to three weeks: for example a muscle strain, a bruise, or a stretched ligament",
+     "2": "About three to eight weeks: for example a torn muscle fibre, a torn ankle ligament, or a small bone fracture in the foot or hand",
+     "3": "Several months or the rest of the season: for example a ruptured cruciate ligament, a ruptured Achilles tendon, a broken leg, or an operation followed by long rehabilitation"
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.01,
+     "2": 0.03,
+     "3": 0.96
+    }
+   },
+   "spec_r0": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "dur_r1": {
+    "type": "score",
+    "score": 0.21,
+    "confidence": 0.79,
+    "legend": {
+     "0": "A few days or a single match: a minor knock, a cold or other short illness, a one-match suspension, rest or load management, or not selected by the coach",
+     "1": "About one to three weeks: for example a muscle strain, a bruise, or a stretched ligament",
+     "2": "About three to eight weeks: for example a torn muscle fibre, a torn ankle ligament, or a small bone fracture in the foot or hand",
+     "3": "Several months or the rest of the season: for example a ruptured cruciate ligament, a ruptured Achilles tendon, a broken leg, or an operation followed by long rehabilitation"
+    },
+    "probabilities": {
+     "0": 0.87,
+     "1": 0.07,
+     "2": 0.02,
+     "3": 0.04
+    }
+   },
+   "spec_r1": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "dur_r2": {
+    "type": "score",
+    "score": 1.11,
+    "confidence": 0.87,
+    "legend": {
+     "0": "A few days or a single match: a minor knock, a cold or other short illness, a one-match suspension, rest or load management, or not selected by the coach",
+     "1": "About one to three weeks: for example a muscle strain, a bruise, or a stretched ligament",
+     "2": "About three to eight weeks: for example a torn muscle fibre, a torn ankle ligament, or a small bone fracture in the foot or hand",
+     "3": "Several months or the rest of the season: for example a ruptured cruciate ligament, a ruptured Achilles tendon, a broken leg, or an operation followed by long rehabilitation"
+    },
+    "probabilities": {
+     "0": 0.01,
+     "1": 0.87,
+     "2": 0.12,
+     "3": 0.0
+    }
+   },
+   "spec_r2": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "dur_r3": {
+    "type": "score",
+    "score": 1.92,
+    "confidence": 0.67,
+    "legend": {
+     "0": "A few days or a single match: a minor knock, a cold or other short illness, a one-match suspension, rest or load management, or not selected by the coach",
+     "1": "About one to three weeks: for example a muscle strain, a bruise, or a stretched ligament",
+     "2": "About three to eight weeks: for example a torn muscle fibre, a torn ankle ligament, or a small bone fracture in the foot or hand",
+     "3": "Several months or the rest of the season: for example a ruptured cruciate ligament, a ruptured Achilles tendon, a broken leg, or an operation followed by long rehabilitation"
+    },
+    "probabilities": {
+     "0": 0.01,
+     "1": 0.2,
+     "2": 0.66,
+     "3": 0.13
+    }
+   },
+   "spec_r3": {
+    "type": "noul",
+    "noul": 0.84
+   },
+   "dur_r4": {
+    "type": "score",
+    "score": 3.0,
+    "confidence": 1.0,
+    "legend": {
+     "0": "A few days or a single match: a minor knock, a cold or other short illness, a one-match suspension, rest or load management, or not selected by the coach",
+     "1": "About one to three weeks: for example a muscle strain, a bruise, or a stretched ligament",
+     "2": "About three to eight weeks: for example a torn muscle fibre, a torn ankle ligament, or a small bone fracture in the foot or hand",
+     "3": "Several months or the rest of the season: for example a ruptured cruciate ligament, a ruptured Achilles tendon, a broken leg, or an operation followed by long rehabilitation"
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 1.0
+    }
+   },
+   "spec_r4": {
+    "type": "noul",
+    "noul": 0.99
+   },
+   "dur_r5": {
+    "type": "score",
+    "score": 2.86,
+    "confidence": 0.86,
+    "legend": {
+     "0": "A few days or a single match: a minor knock, a cold or other short illness, a one-match suspension, rest or load management, or not selected by the coach",
+     "1": "About one to three weeks: for example a muscle strain, a bruise, or a stretched ligament",
+     "2": "About three to eight weeks: for example a torn muscle fibre, a torn ankle ligament, or a small bone fracture in the foot or hand",
+     "3": "Several months or the rest of the season: for example a ruptured cruciate ligament, a ruptured Achilles tendon, a broken leg, or an operation followed by long rehabilitation"
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.02,
+     "2": 0.11,
+     "3": 0.87
+    }
+   },
+   "spec_r5": {
+    "type": "noul",
+    "noul": 0.97
+   },
+   "dur_r6": {
+    "type": "score",
+    "score": 1.97,
+    "confidence": 0.97,
+    "legend": {
+     "0": "A few days or a single match: a minor knock, a cold or other short illness, a one-match suspension, rest or load management, or not selected by the coach",
+     "1": "About one to three weeks: for example a muscle strain, a bruise, or a stretched ligament",
+     "2": "About three to eight weeks: for example a torn muscle fibre, a torn ankle ligament, or a small bone fracture in the foot or hand",
+     "3": "Several months or the rest of the season: for example a ruptured cruciate ligament, a ruptured Achilles tendon, a broken leg, or an operation followed by long rehabilitation"
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.02,
+     "2": 0.98,
+     "3": 0.0
+    }
+   },
+   "spec_r6": {
+    "type": "noul",
+    "noul": 0.97
+   },
+   "dur_r7": {
+    "type": "score",
+    "score": 1.04,
+    "confidence": 0.94,
+    "legend": {
+     "0": "A few days or a single match: a minor knock, a cold or other short illness, a one-match suspension, rest or load management, or not selected by the coach",
+     "1": "About one to three weeks: for example a muscle strain, a bruise, or a stretched ligament",
+     "2": "About three to eight weeks: for example a torn muscle fibre, a torn ankle ligament, or a small bone fracture in the foot or hand",
+     "3": "Several months or the rest of the season: for example a ruptured cruciate ligament, a ruptured Achilles tendon, a broken leg, or an operation followed by long rehabilitation"
+    },
+    "probabilities": {
+     "0": 0.01,
+     "1": 0.95,
+     "2": 0.04,
+     "3": 0.0
+    }
+   },
+   "spec_r7": {
+    "type": "noul",
+    "noul": 0.77
+   },
+   "dur_r8": {
+    "type": "score",
+    "score": 1.14,
+    "confidence": 0.82,
+    "legend": {
+     "0": "A few days or a single match: a minor knock, a cold or other short illness, a one-match suspension, rest or load management, or not selected by the coach",
+     "1": "About one to three weeks: for example a muscle strain, a bruise, or a stretched ligament",
+     "2": "About three to eight weeks: for example a torn muscle fibre, a torn ankle ligament, or a small bone fracture in the foot or hand",
+     "3": "Several months or the rest of the season: for example a ruptured cruciate ligament, a ruptured Achilles tendon, a broken leg, or an operation followed by long rehabilitation"
+    },
+    "probabilities": {
+     "0": 0.02,
+     "1": 0.83,
+     "2": 0.15,
+     "3": 0.0
+    }
+   },
+   "spec_r8": {
+    "type": "noul",
+    "noul": 0.96
+   },
+   "dur_r9": {
+    "type": "score",
+    "score": 0.06,
+    "confidence": 0.94,
+    "legend": {
+     "0": "A few days or a single match: a minor knock, a cold or other short illness, a one-match suspension, rest or load management, or not selected by the coach",
+     "1": "About one to three weeks: for example a muscle strain, a bruise, or a stretched ligament",
+     "2": "About three to eight weeks: for example a torn muscle fibre, a torn ankle ligament, or a small bone fracture in the foot or hand",
+     "3": "Several months or the rest of the season: for example a ruptured cruciate ligament, a ruptured Achilles tendon, a broken leg, or an operation followed by long rehabilitation"
+    },
+    "probabilities": {
+     "0": 0.97,
+     "1": 0.01,
+     "2": 0.0,
+     "3": 0.02
+    }
+   },
+   "spec_r9": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "dur_r10": {
+    "type": "score",
+    "score": 2.98,
+    "confidence": 0.98,
+    "legend": {
+     "0": "A few days or a single match: a minor knock, a cold or other short illness, a one-match suspension, rest or load management, or not selected by the coach",
+     "1": "About one to three weeks: for example a muscle strain, a bruise, or a stretched ligament",
+     "2": "About three to eight weeks: for example a torn muscle fibre, a torn ankle ligament, or a small bone fracture in the foot or hand",
+     "3": "Several months or the rest of the season: for example a ruptured cruciate ligament, a ruptured Achilles tendon, a broken leg, or an operation followed by long rehabilitation"
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.02,
+     "3": 0.98
+    }
+   },
+   "spec_r10": {
+    "type": "noul",
+    "noul": 0.99
+   },
+   "dur_r11": {
+    "type": "score",
+    "score": 1.64,
+    "confidence": 0.58,
+    "legend": {
+     "0": "A few days or a single match: a minor knock, a cold or other short illness, a one-match suspension, rest or load management, or not selected by the coach",
+     "1": "About one to three weeks: for example a muscle strain, a bruise, or a stretched ligament",
+     "2": "About three to eight weeks: for example a torn muscle fibre, a torn ankle ligament, or a small bone fracture in the foot or hand",
+     "3": "Several months or the rest of the season: for example a ruptured cruciate ligament, a ruptured Achilles tendon, a broken leg, or an operation followed by long rehabilitation"
+    },
+    "probabilities": {
+     "0": 0.01,
+     "1": 0.37,
+     "2": 0.59,
+     "3": 0.03
+    }
+   },
+   "spec_r11": {
+    "type": "noul",
+    "noul": 0.96
+   },
+   "dur_r12": {
+    "type": "score",
+    "score": 1.35,
+    "confidence": 0.0,
+    "legend": {
+     "0": "A few days or a single match: a minor knock, a cold or other short illness, a one-match suspension, rest or load management, or not selected by the coach",
+     "1": "About one to three weeks: for example a muscle strain, a bruise, or a stretched ligament",
+     "2": "About three to eight weeks: for example a torn muscle fibre, a torn ankle ligament, or a small bone fracture in the foot or hand",
+     "3": "Several months or the rest of the season: for example a ruptured cruciate ligament, a ruptured Achilles tendon, a broken leg, or an operation followed by long rehabilitation"
+    },
+    "probabilities": {
+     "0": 0.38,
+     "1": 0.22,
+     "2": 0.1,
+     "3": 0.3
+    }
+   },
+   "spec_r12": {
+    "type": "noul",
+    "noul": 0.89
+   },
+   "dur_r13": {
+    "type": "score",
+    "score": 1.94,
+    "confidence": 0.93,
+    "legend": {
+     "0": "A few days or a single match: a minor knock, a cold or other short illness, a one-match suspension, rest or load management, or not selected by the coach",
+     "1": "About one to three weeks: for example a muscle strain, a bruise, or a stretched ligament",
+     "2": "About three to eight weeks: for example a torn muscle fibre, a torn ankle ligament, or a small bone fracture in the foot or hand",
+     "3": "Several months or the rest of the season: for example a ruptured cruciate ligament, a ruptured Achilles tendon, a broken leg, or an operation followed by long rehabilitation"
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.06,
+     "2": 0.9400000000000001,
+     "3": 0.0
+    }
+   },
+   "spec_r13": {
+    "type": "noul",
+    "noul": 0.97
+   },
+   "dur_r14": {
+    "type": "score",
+    "score": 1.01,
+    "confidence": 0.98,
+    "legend": {
+     "0": "A few days or a single match: a minor knock, a cold or other short illness, a one-match suspension, rest or load management, or not selected by the coach",
+     "1": "About one to three weeks: for example a muscle strain, a bruise, or a stretched ligament",
+     "2": "About three to eight weeks: for example a torn muscle fibre, a torn ankle ligament, or a small bone fracture in the foot or hand",
+     "3": "Several months or the rest of the season: for example a ruptured cruciate ligament, a ruptured Achilles tendon, a broken leg, or an operation followed by long rehabilitation"
+    },
+    "probabilities": {
+     "0": 0.01,
+     "1": 0.97,
+     "2": 0.02,
+     "3": 0.0
+    }
+   },
+   "spec_r14": {
+    "type": "noul",
+    "noul": 0.97
+   },
+   "dur_r15": {
+    "type": "score",
+    "score": 0.16,
+    "confidence": 0.84,
+    "legend": {
+     "0": "A few days or a single match: a minor knock, a cold or other short illness, a one-match suspension, rest or load management, or not selected by the coach",
+     "1": "About one to three weeks: for example a muscle strain, a bruise, or a stretched ligament",
+     "2": "About three to eight weeks: for example a torn muscle fibre, a torn ankle ligament, or a small bone fracture in the foot or hand",
+     "3": "Several months or the rest of the season: for example a ruptured cruciate ligament, a ruptured Achilles tendon, a broken leg, or an operation followed by long rehabilitation"
+    },
+    "probabilities": {
+     "0": 0.88,
+     "1": 0.1,
+     "2": 0.01,
+     "3": 0.01
+    }
+   },
+   "spec_r15": {
+    "type": "noul",
+    "noul": 0.97
+   },
+   "dur_r16": {
+    "type": "score",
+    "score": 0.31,
+    "confidence": 0.69,
+    "legend": {
+     "0": "A few days or a single match: a minor knock, a cold or other short illness, a one-match suspension, rest or load management, or not selected by the coach",
+     "1": "About one to three weeks: for example a muscle strain, a bruise, or a stretched ligament",
+     "2": "About three to eight weeks: for example a torn muscle fibre, a torn ankle ligament, or a small bone fracture in the foot or hand",
+     "3": "Several months or the rest of the season: for example a ruptured cruciate ligament, a ruptured Achilles tendon, a broken leg, or an operation followed by long rehabilitation"
+    },
+    "probabilities": {
+     "0": 0.79,
+     "1": 0.14,
+     "2": 0.03,
+     "3": 0.04
+    }
+   },
+   "spec_r16": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "dur_r17": {
+    "type": "score",
+    "score": 0.64,
+    "confidence": 0.58,
+    "legend": {
+     "0": "A few days or a single match: a minor knock, a cold or other short illness, a one-match suspension, rest or load management, or not selected by the coach",
+     "1": "About one to three weeks: for example a muscle strain, a bruise, or a stretched ligament",
+     "2": "About three to eight weeks: for example a torn muscle fibre, a torn ankle ligament, or a small bone fracture in the foot or hand",
+     "3": "Several months or the rest of the season: for example a ruptured cruciate ligament, a ruptured Achilles tendon, a broken leg, or an operation followed by long rehabilitation"
+    },
+    "probabilities": {
+     "0": 0.39,
+     "1": 0.59,
+     "2": 0.02,
+     "3": 0.0
+    }
+   },
+   "spec_r17": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "dur_r18": {
+    "type": "score",
+    "score": 0.82,
+    "confidence": 0.18,
+    "legend": {
+     "0": "A few days or a single match: a minor knock, a cold or other short illness, a one-match suspension, rest or load management, or not selected by the coach",
+     "1": "About one to three weeks: for example a muscle strain, a bruise, or a stretched ligament",
+     "2": "About three to eight weeks: for example a torn muscle fibre, a torn ankle ligament, or a small bone fracture in the foot or hand",
+     "3": "Several months or the rest of the season: for example a ruptured cruciate ligament, a ruptured Achilles tendon, a broken leg, or an operation followed by long rehabilitation"
+    },
+    "probabilities": {
+     "0": 0.57,
+     "1": 0.18,
+     "2": 0.12,
+     "3": 0.13
+    }
+   },
+   "spec_r18": {
+    "type": "noul",
+    "noul": 0.15
+   },
+   "dur_r19": {
+    "type": "score",
+    "score": 0.0,
+    "confidence": 1.0,
+    "legend": {
+     "0": "A few days or a single match: a minor knock, a cold or other short illness, a one-match suspension, rest or load management, or not selected by the coach",
+     "1": "About one to three weeks: for example a muscle strain, a bruise, or a stretched ligament",
+     "2": "About three to eight weeks: for example a torn muscle fibre, a torn ankle ligament, or a small bone fracture in the foot or hand",
+     "3": "Several months or the rest of the season: for example a ruptured cruciate ligament, a ruptured Achilles tendon, a broken leg, or an operation followed by long rehabilitation"
+    },
+    "probabilities": {
+     "0": 1.0,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 0.0
+    }
+   },
+   "spec_r19": {
+    "type": "noul",
+    "noul": 0.97
+   },
+   "dur_r20": {
+    "type": "score",
+    "score": 1.95,
+    "confidence": 0.92,
+    "legend": {
+     "0": "A few days or a single match: a minor knock, a cold or other short illness, a one-match suspension, rest or load management, or not selected by the coach",
+     "1": "About one to three weeks: for example a muscle strain, a bruise, or a stretched ligament",
+     "2": "About three to eight weeks: for example a torn muscle fibre, a torn ankle ligament, or a small bone fracture in the foot or hand",
+     "3": "Several months or the rest of the season: for example a ruptured cruciate ligament, a ruptured Achilles tendon, a broken leg, or an operation followed by long rehabilitation"
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.06,
+     "2": 0.93,
+     "3": 0.01
+    }
+   },
+   "spec_r20": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "dur_r21": {
+    "type": "score",
+    "score": 2.99,
+    "confidence": 0.99,
+    "legend": {
+     "0": "A few days or a single match: a minor knock, a cold or other short illness, a one-match suspension, rest or load management, or not selected by the coach",
+     "1": "About one to three weeks: for example a muscle strain, a bruise, or a stretched ligament",
+     "2": "About three to eight weeks: for example a torn muscle fibre, a torn ankle ligament, or a small bone fracture in the foot or hand",
+     "3": "Several months or the rest of the season: for example a ruptured cruciate ligament, a ruptured Achilles tendon, a broken leg, or an operation followed by long rehabilitation"
+    },
+    "probabilities": {
+     "0": 0.0,
+     "1": 0.0,
+     "2": 0.0,
+     "3": 1.0
+    }
+   },
+   "spec_r21": {
+    "type": "noul",
+    "noul": 0.98
+   },
+   "diag_r0": {
+    "type": "noul",
+    "noul": 0.1
+   },
+   "diag_r1": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "diag_r2": {
+    "type": "noul",
+    "noul": 0.07
+   },
+   "diag_r3": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "diag_r4": {
+    "type": "noul",
+    "noul": 0.96
+   },
+   "diag_r5": {
+    "type": "noul",
+    "noul": 0.14
+   },
+   "diag_r6": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "diag_r7": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "diag_r8": {
+    "type": "noul",
+    "noul": 0.09
+   },
+   "diag_r9": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "diag_r10": {
+    "type": "noul",
+    "noul": 0.97
+   },
+   "diag_r11": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "diag_r12": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "diag_r13": {
+    "type": "noul",
+    "noul": 0.05
+   },
+   "diag_r14": {
+    "type": "noul",
+    "noul": 0.08
+   },
+   "diag_r15": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "diag_r16": {
+    "type": "noul",
+    "noul": 0.04
+   },
+   "diag_r17": {
+    "type": "noul",
+    "noul": 0.06
+   },
+   "diag_r18": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "diag_r19": {
+    "type": "noul",
+    "noul": 0.03
+   },
+   "diag_r20": {
+    "type": "noul",
+    "noul": 0.75
+   },
+   "diag_r21": {
+    "type": "noul",
+    "noul": 0.94
+   }
+  }
+ }
+}

@@ -1,0 +1,39 @@
+[Unit]
+Description=Kickbase-Agent Worker (Discord-Bot + Scheduler)
+Documentation=https://github.com/your-org/kickbase-copilot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=kbagent
+Group=kbagent
+WorkingDirectory=/opt/kickbase-agent/api
+# uv landet nach dem offiziellen Installer unter ~/.local/bin
+ExecStart=/home/kbagent/.local/bin/uv run kba-worker
+Restart=always
+RestartSec=10
+# Ungepufferte Logs → journalctl sieht API-WRITE-Zeilen sofort (22:15-Timeout-Debug)
+Environment=PYTHONUNBUFFERED=1
+# Interner APScheduler nutzt Europe/Berlin — Host-TZ konsistent halten
+Environment=TZ=Europe/Berlin
+
+# --- Co-Tenancy-Schutz: der Agent darf den Nachbardienst (Hermes) NIE aushungern ---
+# Harte RAM-Obergrenze (der Worker braucht real ~250-400MB); OOM trifft nur den Agent.
+MemoryMax=1G
+MemoryHigh=768M
+# Bei CPU-Konkurrenz bekommt der Nachbar Vorrang (Default-Weight ist 100).
+CPUWeight=40
+Nice=10
+# journald-Logs des Agenten deckeln (kein Volllaufen der geteilten Platte).
+LogRateLimitIntervalSec=30
+LogRateLimitBurst=200
+
+# Härtung: der Worker braucht nur sein eigenes Verzeichnis beschreibbar
+# (ProtectHome bewusst NICHT gesetzt — uv liegt unter /home/kbagent/.local/bin)
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/opt/kickbase-agent/api /home/kbagent
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,42 @@
+{
+  "it": [
+    {
+      "i": "43",
+      "fn": "Mitchell",
+      "n": "Weiser",
+      "tid": "10",
+      "pos": 2,
+      "st": 0,
+      "mvt": 2,
+      "mv": 4377529,
+      "ofc": 0,
+      "exs": 681,
+      "prc": 4377529,
+      "isn": false,
+      "iposl": false,
+      "dt": "2026-09-10T09:32:14Z",
+      "pim": "content/file/d4075d101f5c49f88113a719ed8f34e5.png",
+      "prob": 5
+    },
+    {
+      "i": "173",
+      "fn": "Jonathan",
+      "n": "Tah",
+      "tid": "2",
+      "pos": 2,
+      "st": 0,
+      "mvt": 2,
+      "mv": 30624820,
+      "p": 267,
+      "ap": 134,
+      "ofc": 0,
+      "exs": 66793,
+      "prc": 30624820,
+      "isn": false,
+      "iposl": false,
+      "dt": "2026-09-11T00:57:06Z",
+      "pim": "content/file/cd9c5cb89a074d1ea56f7d952e5074e4.png",
+      "prob": 3
+    }
+  ]
+}

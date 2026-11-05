@@ -1,0 +1,22 @@
+{
+  "note": "Stellschrauben der Engine. Aenderungen nur mit Grund UND Beleg (knowledge/tuning.set_tuning) — jede erzeugt einen Eintrag in parameter_history.json.",
+  "values": {
+    "expectation.calibration_tolerance": 0.15,
+    "expectation.kickbase_far_over_p": 0.8,
+    "expectation.kickbase_far_over_ratio": 1.35,
+    "expectation.kickbase_over_p": 0.6,
+    "expectation.kickbase_over_ratio": 1.2,
+    "expectation.kickbase_thin_p": 0.45,
+    "expectation.kickbase_underpay_p": 0.3,
+    "expectation.kickbase_underpay_ratio": 0.9,
+    "expectation.manager_premium_p": 0.55,
+    "expectation.manager_thin_p": 0.15,
+    "expectation.manager_thin_ratio": 1.15,
+    "expectation.manager_underpay_p": 0.02,
+    "expectation.min_sample": 5,
+    "freeze.daily_loss_limit": 10000000,
+    "freeze.unclear_write_limit": 2,
+    "surprise.high_p": 0.6,
+    "surprise.low_p": 0.2
+  }
+}

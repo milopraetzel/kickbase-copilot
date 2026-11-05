@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "files": {
+    "tests/agent/test_deploy_env.py": "ca865b40b11a3b14a34bfeb109264500ec116f7353fb3d4d6dc72eef022ed95f",
+    "tests/agent/test_executor.py": "979dfb8d4097dfa9086469decdb777d47d9a2cf2cb2345060cdaa66250169e29",
+    "tests/agent/test_freeze.py": "af2715f686854ad69b39185b926e0e17c44b2a877368b86274a7362c5393012f",
+    "tests/agent/test_guardrail_lock.py": "5065dd4b6c3e64d877f2fd36520b706e39eae821dce895cd0519776b506c1e99",
+    "tests/decision/test_kickoff_freeze.py": "312523a642679ad9d8f63e2b07241be56e901d035b9d33a09497257a0e056cb5",
+    "tests/decision/test_policies.py": "37f93caec9b03cfa534e433fb967cade474d7f7aa02df2739ebc42a1c2c9e09a",
+    "tests/trading/test_finance.py": "a35d1ba6a88dfa17aa06a4c4e32cf48a1c7d6f8eee711b4b76a85647bfcaf001",
+    "tests/trading/test_finance_cycle.py": "d0ab229100ffd6ab6078cbde258ff6e556317a6ddcd44558878a68a3cdc9dfd3",
+    "tests/worker/test_kickoff_guard.py": "ff23af68449f4cb8d68a3eca342eae46ba214b8313008450a200798005043893"
+  },
+  "reason": "Emils ausdrueckliche Live-Freigabe am 13.09.2026: vorbereitete frische Kaufpruefung im Interlock-Test; alle Schutzassertionen bleiben erhalten.",
+  "sealed_at": "2026-09-13T09:28:50+00:00"
+}

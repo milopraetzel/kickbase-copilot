@@ -1,0 +1,438 @@
+{
+  "u": "2227102",
+  "unm": "Niklas B.",
+  "st": 3,
+  "it": [
+    {
+      "sid": "34",
+      "sn": "2025/2026",
+      "pl": 0,
+      "ap": 934,
+      "tp": 31780,
+      "mdw": 3,
+      "it": [
+        {
+          "day": 1,
+          "cur": false,
+          "mdp": 1064,
+          "tw": false
+        },
+        {
+          "day": 2,
+          "cur": false,
+          "mdp": 837,
+          "tw": true
+        },
+        {
+          "day": 3,
+          "cur": true,
+          "mdp": 1247,
+          "tw": false
+        },
+        {
+          "day": 4,
+          "cur": false,
+          "mdp": 1162,
+          "tw": true
+        },
+        {
+          "day": 5,
+          "cur": false,
+          "mdp": 854,
+          "tw": false
+        },
+        {
+          "day": 6,
+          "cur": false,
+          "mdp": 693,
+          "tw": false
+        },
+        {
+          "day": 7,
+          "cur": false,
+          "mdp": 1270,
+          "tw": true
+        },
+        {
+          "day": 8,
+          "cur": false,
+          "mdp": 1244,
+          "tw": false
+        },
+        {
+          "day": 9,
+          "cur": false,
+          "mdp": 800,
+          "tw": false
+        },
+        {
+          "day": 10,
+          "cur": false,
+          "mdp": 1199,
+          "tw": false
+        },
+        {
+          "day": 11,
+          "cur": false,
+          "mdp": 1183,
+          "tw": false
+        },
+        {
+          "day": 12,
+          "cur": false,
+          "mdp": 779,
+          "tw": false
+        },
+        {
+          "day": 13,
+          "cur": false,
+          "mdp": 978,
+          "tw": false
+        },
+        {
+          "day": 14,
+          "cur": false,
+          "mdp": 567,
+          "tw": false
+        },
+        {
+          "day": 15,
+          "cur": false,
+          "mdp": 969,
+          "tw": false
+        },
+        {
+          "day": 16,
+          "cur": false,
+          "mdp": 938,
+          "tw": false
+        },
+        {
+          "day": 17,
+          "cur": false,
+          "mdp": 964,
+          "tw": false
+        },
+        {
+          "day": 18,
+          "cur": false,
+          "mdp": 489,
+          "tw": false
+        },
+        {
+          "day": 19,
+          "cur": false,
+          "mdp": 833,
+          "tw": false
+        },
+        {
+          "day": 20,
+          "cur": false,
+          "mdp": 582,
+          "tw": false
+        },
+        {
+          "day": 21,
+          "cur": false,
+          "mdp": 924,
+          "tw": false
+        },
+        {
+          "day": 22,
+          "cur": false,
+          "mdp": 1120,
+          "tw": false
+        },
+        {
+          "day": 23,
+          "cur": false,
+          "mdp": 669,
+          "tw": false
+        },
+        {
+          "day": 24,
+          "cur": false,
+          "mdp": 603,
+          "tw": false
+        },
+        {
+          "day": 25,
+          "cur": false,
+          "mdp": 1080,
+          "tw": false
+        },
+        {
+          "day": 26,
+          "cur": false,
+          "mdp": 911,
+          "tw": false
+        },
+        {
+          "day": 27,
+          "cur": false,
+          "mdp": 1198,
+          "tw": false
+        },
+        {
+          "day": 28,
+          "cur": false,
+          "mdp": 1090,
+          "tw": false
+        },
+        {
+          "day": 29,
+          "cur": false,
+          "mdp": 1022,
+          "tw": false
+        },
+        {
+          "day": 30,
+          "cur": false,
+          "mdp": 1056,
+          "tw": false
+        },
+        {
+          "day": 31,
+          "cur": false,
+          "mdp": 875,
+          "tw": false
+        },
+        {
+          "day": 32,
+          "cur": false,
+          "mdp": 868,
+          "tw": false
+        },
+        {
+          "day": 33,
+          "cur": false,
+          "mdp": 821,
+          "tw": false
+        },
+        {
+          "day": 34,
+          "cur": false,
+          "mdp": 891,
+          "tw": false
+        }
+      ]
+    },
+    {
+      "sid": "42",
+      "sn": "2026/2027",
+      "pl": 0,
+      "ap": 608,
+      "tp": 1825,
+      "mdw": 0,
+      "it": [
+        {
+          "day": 1,
+          "cur": false,
+          "mdp": 629,
+          "md": "2026-08-28T18:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 2,
+          "cur": false,
+          "mdp": 1196,
+          "md": "2026-09-04T18:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 3,
+          "cur": true,
+          "mdp": 0,
+          "md": "2026-09-11T18:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 4,
+          "cur": false,
+          "md": "2026-09-18T18:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 5,
+          "cur": false,
+          "md": "2026-10-09T18:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 6,
+          "cur": false,
+          "md": "2026-10-16T18:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 7,
+          "cur": false,
+          "md": "2026-10-23T18:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 8,
+          "cur": false,
+          "md": "2026-10-30T19:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 9,
+          "cur": false,
+          "md": "2026-11-06T19:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 10,
+          "cur": false,
+          "md": "2026-11-20T19:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 11,
+          "cur": false,
+          "md": "2026-11-27T19:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 12,
+          "cur": false,
+          "md": "2026-12-05T13:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 13,
+          "cur": false,
+          "md": "2026-12-12T13:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 14,
+          "cur": false,
+          "md": "2026-12-19T13:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 15,
+          "cur": false,
+          "md": "2027-01-09T13:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 16,
+          "cur": false,
+          "md": "2027-01-13T13:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 17,
+          "cur": false,
+          "md": "2027-01-16T13:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 18,
+          "cur": false,
+          "md": "2027-01-23T13:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 19,
+          "cur": false,
+          "md": "2027-01-30T13:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 20,
+          "cur": false,
+          "md": "2027-02-06T13:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 21,
+          "cur": false,
+          "md": "2027-02-13T13:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 22,
+          "cur": false,
+          "md": "2027-02-20T13:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 23,
+          "cur": false,
+          "md": "2027-02-27T13:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 24,
+          "cur": false,
+          "md": "2027-03-03T13:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 25,
+          "cur": false,
+          "md": "2027-03-06T13:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 26,
+          "cur": false,
+          "md": "2027-03-13T13:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 27,
+          "cur": false,
+          "md": "2027-03-20T13:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 28,
+          "cur": false,
+          "md": "2027-04-03T13:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 29,
+          "cur": false,
+          "md": "2027-04-10T13:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 30,
+          "cur": false,
+          "md": "2027-04-17T13:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 31,
+          "cur": false,
+          "md": "2027-04-24T13:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 32,
+          "cur": false,
+          "md": "2027-05-08T13:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 33,
+          "cur": false,
+          "md": "2027-05-15T13:30:00Z",
+          "tw": false
+        },
+        {
+          "day": 34,
+          "cur": false,
+          "md": "2027-05-22T13:30:00Z",
+          "tw": false
+        }
+      ]
+    }
+  ]
+}

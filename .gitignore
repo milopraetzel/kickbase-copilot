@@ -1,0 +1,16 @@
+.gstack/
+.playwright-mcp/
+.DS_Store
+__pycache__/
+*.pyc
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+.env
+.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+node_modules/
+.local-backups/

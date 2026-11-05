@@ -1,0 +1,22 @@
+[
+  {
+    "matchID": 70000,
+    "matchDateTime": "2026-04-26T15:30:00",
+    "group": {"groupOrderID": 30},
+    "team1": {"teamName": "FC Bayern München"},
+    "team2": {"teamName": "Borussia Dortmund"},
+    "matchIsFinished": false,
+    "matchResults": []
+  },
+  {
+    "matchID": 70001,
+    "matchDateTime": "2026-04-26T15:30:00",
+    "group": {"groupOrderID": 30},
+    "team1": {"teamName": "Bayer Leverkusen"},
+    "team2": {"teamName": "RB Leipzig"},
+    "matchIsFinished": true,
+    "matchResults": [
+      {"resultTypeID": 2, "pointsTeam1": 3, "pointsTeam2": 1}
+    ]
+  }
+]
