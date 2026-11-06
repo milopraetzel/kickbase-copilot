@@ -34,17 +34,16 @@ from kickbase_agent.trading.finance import overdraft_floor
 #: verlängert am 20.10.2026 nach Profi-Audit, damit der Tausch-Dispo nicht am 01.11.
 #: mitten in der Saison abreißt).
 PLANNING_OVERDRAFT_UNTIL = datetime(2027, 6, 1, 0, 0, tzinfo=ZoneInfo("Europe/Berlin"))
-#: Anrechnung des gekoppelten Sofortverkaufs in Prozent des Marktwerts (Abschlag für
-#: Marktwertdrift zwischen Plan und Verkauf). Ganzzahlig gerechnet, ohne Gleitkomma.
-SWAP_SALE_CREDIT_PERCENT = 90
-#: Unter-der-Woche-Upgrade-Brücke (Hebel F, 19./20.10.2026; am 25.10.2026 nach
-#: Karazor-Überziehung auf 1,5 M € begrenzt): Erlaubt vor der Spieltags-Frist beim
-#: gekoppelten Tausch eines Nicht-Starters oder fallenden Spielers höchstens 1,5 M €
-#: Netto-Überhang über dem freien Konto (entspricht dem organischen Wochen-Cashflow aus
-#: Login-Boni + Spieltagsprämie, damit ein 11er-Kader nie in ein mehrfaches Millionen-
-#: Defizit rutscht, das vor Anpfiff einen ersatzlosen Notverkauf erzwingt).
-MIDWEEK_SWAP_BRIDGE_EUR = 1_500_000
-MIDWEEK_SWAP_BRIDGE_MIN_LEAD = timedelta(hours=12)
+#: Anrechnung des gekoppelten Sofortverkaufs in Prozent des Marktwerts (95 % = 5 % Puffer
+#: gegen ein 22:00-Uhr-Marktwert-Update zwischen Gebot und Zuschlag bei Fallern; 06.11.2026).
+SWAP_SALE_CREDIT_PERCENT = 95
+#: Unter-der-Woche-Upgrade-Brücke (Hebel F, 19./20.10.2026; am 06.11.2026 auf 4,5 M € bei
+#: >= 48 h vor Anpfiff kalibriert): Erlaubt früh in der Woche (Sa–Mi, >= 48 h vor Frist)
+#: beim gekoppelten Tausch eines Nicht-Starters oder fallenden Spielers bis zu 4,5 M €
+#: Netto-Überhang über dem freien Konto innerhalb der 33-%-Grenze. Ab Donnerstag (< 48 h)
+#: ist die ungedeckte Brücke 0 €, damit kein spätes Freitags-Defizit entsteht.
+MIDWEEK_SWAP_BRIDGE_EUR = 4_500_000
+MIDWEEK_SWAP_BRIDGE_MIN_LEAD = timedelta(hours=48)
 
 
 def _aware(now: datetime) -> datetime:

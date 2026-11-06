@@ -142,7 +142,7 @@ async def test_better_starter_is_bought_on_overdraft_with_a_coupled_sale(monkeyp
     assert pair.faller.player_id == WEAK and pair.bid.action.player_id == "st"
     assert pair.sell_amount == 13_000_000
     assert review["swap_sale"] == {
-        "player_id": WEAK, "market_value_eur": 13_000_000, "proceeds_eur": 11_700_000,
+        "player_id": WEAK, "market_value_eur": 13_000_000, "proceeds_eur": 12_350_000,
     }
     team_plan = review["team_plan"]
     assert team_plan["swap_sales"] == [{**review["swap_sale"], "for_player_id": "st"}]
@@ -150,7 +150,7 @@ async def test_better_starter_is_bought_on_overdraft_with_a_coupled_sale(monkeyp
     amount = pair.bid.action.amount
     assert amount >= 12_000_000
     # Netto aus echtem Geld gedeckt (mit Puffer), brutto über dem Konto.
-    assert amount - 11_700_000 <= 2_000_000 - KICKOFF_MIN_BALANCE
+    assert amount - 12_350_000 <= 2_000_000 - KICKOFF_MIN_BALANCE
     assert team_plan["reserved_cash_eur"] > team_plan["budget_eur"]
     assert purchase_review_veto(
         review, player_id="st", amount=amount, now=datetime.now(UTC)
@@ -158,7 +158,7 @@ async def test_better_starter_is_bought_on_overdraft_with_a_coupled_sale(monkeyp
     limits = team_plan["technical_limits"]
     assert limits["planning_overdraft_eur"] == 11 * 13_000_000 // 3
     assert limits["overdraft_until"] == DISPO_AN.isoformat()
-    assert limits["swap_credit_eur"] == 11_700_000
+    assert limits["swap_credit_eur"] == 12_350_000
     assert WEAK not in team_plan["lineup_ids"] and "st" in team_plan["lineup_ids"]
     assert any("Tausch auf Planungs-Dispo" in r for r in review["reasons"])
 
@@ -359,7 +359,7 @@ async def test_a_live_coupled_bid_keeps_its_sale_credit_whatever_the_new_plan_sa
     plan = await plan_mod.build_plan()
 
     limits = plan.team_plan["technical_limits"]
-    assert limits["swap_credit_eur"] == 11_700_000
+    assert limits["swap_credit_eur"] == 12_350_000
     assert plan.team_plan["funding_recovery"]["status"] == "funded"
     assert plan.team_plan["funding_recovery"]["actions"] == []
     assert WEAK not in plan.team_plan["lineup_ids"]
@@ -1065,6 +1065,67 @@ async def test_held_trade_player_cover_keeps_swap_planned_and_replannable(monkey
     again = second.purchase_reviews["st"]
     assert again["selected"] is True
     assert second.team_plan["funding_recovery"]["released_pending_ids"] == []
+
+
+async def test_hundred_percent_proceeds_and_six_million_bridge_reach_top_segment_star(
+    monkeypatch,
+):
+    """Emil 05.11.2026: Mit 100 % Sofortverkaufs-Anrechnung (`SWAP_SALE_CREDIT_PERCENT = 100`),
+    6,0 M € Midweek-Brücke und KB-3+LI-STARTER-Rollenbeleg kann ein ~9,9-M-Spieler
+    (Karazor-Profil) unter der Woche direkt auf einen 14–16-M-Stammspieler hochgetauscht
+    werden."""
+    specs = [(pos, 10_000_000) for pos in [1, 2, 2, 2, 2, 3, 3, 3, 3, 4]] + [
+        (3, 9_890_000)
+    ]
+    client = await _prepare_dispo(monkeypatch, specs=specs, cash=1_050_000)
+    squad = await client.get_squad("L1")
+    for sp in squad:
+        if sp.player.id == WEAK:
+            sp.player = sp.player.model_copy(
+                update={
+                    "position": Position.MIDFIELDER,
+                    "lineup_prob": 3,
+                    "mv_change_24h": -8_000,
+                    "mv_change_24h_observed": True,
+                }
+            )
+
+    async def get_squad(_league_id):
+        return squad
+
+    client.get_squad = get_squad
+    _forecast(
+        monkeypatch,
+        {**{f"roster-{i}": 0.80 for i in range(10)}, WEAK: 0.45, "jeltsch": 0.88},
+    )
+    jeltsch_listing = _replacement(mv=14_190_000, pid="jeltsch").model_copy(
+        update={
+            "player": _replacement(mv=14_190_000, pid="jeltsch").player.model_copy(
+                update={
+                    "last_name": "Jeltsch",
+                    "position": Position.MIDFIELDER,
+                    "team_id": "club-jel",
+                    "lineup_prob": 3,
+                    "mv_change_24h": 92_000,
+                    "mv_change_24h_observed": True,
+                }
+            )
+        }
+    )
+    client.market = [jeltsch_listing]
+
+    plan = await plan_mod.build_plan()
+    pair, review = _only_swap(plan)
+    assert pair.faller.player_id == WEAK
+    assert pair.bid.action.player_id == "jeltsch"
+    assert review["swap_sale"]["proceeds_eur"] == 9_395_500
+    assert purchase_review_veto(
+        review,
+        player_id="jeltsch",
+        amount=pair.bid.action.amount,
+        now=datetime.now(UTC),
+    ) is None
+
 
 
 

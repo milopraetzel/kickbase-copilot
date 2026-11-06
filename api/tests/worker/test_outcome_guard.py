@@ -647,17 +647,17 @@ def test_gekoppelter_tauschverkauf_deckt_das_dispo_gebot():
 
 
 def test_tausch_netto_nicht_gedeckt_gibt_die_karte():
-    (finding,) = evaluate(_tausch(bids=(OwnBid("t", "Neuer Stürmer", 3_800_000),)),
+    (finding,) = evaluate(_tausch(bids=(OwnBid("t", "Neuer Stürmer", 3_950_000),)),
                           GuardMemory())
     assert finding.slo == SLO_COVERAGE
-    assert "Tausch-Deckung gerissen" in finding.text and "2,70 M" in finding.text
+    assert "Tausch-Deckung gerissen" in finding.text and "2,85 M" in finding.text
     assert NO_COVER_SALE_SENTENCE in finding.text
 
 
 def test_tausch_genau_am_puffer_ist_gruen():
-    # −2,69 M + 2,7 M = 10.000 € (Puffer) → grün; ein Euro mehr Gebot → rot.
-    assert evaluate(_tausch(bids=(OwnBid("t", "T", 3_690_000),)), GuardMemory()) == []
-    (finding,) = evaluate(_tausch(bids=(OwnBid("t", "T", 3_690_001),)), GuardMemory())
+    # −2,84 M + 2,85 M = 10.000 € (Puffer) → grün; ein Euro mehr Gebot → rot.
+    assert evaluate(_tausch(bids=(OwnBid("t", "T", 3_840_000),)), GuardMemory()) == []
+    (finding,) = evaluate(_tausch(bids=(OwnBid("t", "T", 3_840_001),)), GuardMemory())
     assert finding.slo == SLO_COVERAGE
 
 

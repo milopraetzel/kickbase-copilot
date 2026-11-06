@@ -176,9 +176,9 @@ def test_ohne_frische_zeit_nimmt_der_executorpfad_die_uhr(monkeypatch):
     lambda r: r["swap_sale"].update(player_id="o-2"),
     lambda r: r["swap_sale"].update(proceeds_eur=7_200_001),
     lambda r: r["team_plan"]["swap_sales"][0].update(proceeds_eur=7_300_000),
-    # Plan und Kaufbeleg einig, aber mehr als 90 % des Marktwerts angerechnet.
-    lambda r: (r["swap_sale"].update(proceeds_eur=7_200_001),
-               r["team_plan"]["swap_sales"][0].update(proceeds_eur=7_200_001)),
+    # Plan und Kaufbeleg einig, aber mehr als 95 % des Marktwerts angerechnet.
+    lambda r: (r["swap_sale"].update(proceeds_eur=7_600_001),
+               r["team_plan"]["swap_sales"][0].update(proceeds_eur=7_600_001)),
     lambda r: r["team_plan"]["swap_sales"][0].update(for_player_id="elsewhere"),
     lambda r: r["team_plan"]["swap_sales"][0].update(player_id=T),
     lambda r: r["team_plan"].update(swap_sales=[{"player_id": S}]),

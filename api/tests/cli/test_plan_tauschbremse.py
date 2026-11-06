@@ -130,7 +130,7 @@ async def test_a_live_swap_bid_on_a_fresh_purchase_keeps_its_credit(monkeypatch)
 
     plan = await plan_mod.build_plan()
 
-    assert plan.team_plan["technical_limits"]["swap_credit_eur"] == 11_700_000
+    assert plan.team_plan["technical_limits"]["swap_credit_eur"] == 12_350_000
 
 
 # ------------------------------------------------------------------ Punktgewinn gegen Aufschlag

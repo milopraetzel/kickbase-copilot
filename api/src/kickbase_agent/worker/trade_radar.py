@@ -100,8 +100,9 @@ MIN_RISE_3D_MITTEL = 0.015
 MIN_GAIN_3D_MITTEL_EUR = 150_000
 MIN_GAIN_1D_MITTEL_EUR = 50_000
 MIN_MV = 500_000
-#: Obergrenze der mittel-Klasse (20.10.2026: von 15 M auf 18,5 M angehoben, damit auch
-#: steigende Top-Spieler inkl. Gebotsaufschlag in den Handelsrahmen passen).
+#: Obergrenze der mittel-Klasse im Kurzfrist-Bank-Flipper (20.10.2026 / 06.11.2026: 18,5 M €,
+#: damit reine 3-Tage-Bank-Flips kein 30–40-M-Klumpenrisiko tragen und den Dispo für echte
+#: Startelf-Upgrades im Planer frei halten).
 MAX_MV = 18_500_000
 #: Grenze billig/mittel: darunter stiegen Steiger um ein Vielfaches stärker.
 CHEAP_LIMIT = 5_000_000
@@ -357,7 +358,12 @@ def class_stats(
 ) -> dict[str, ClassStats]:
     """Je Preisklasse (billig/mittel): Median-Anstieg nach einem Steiger-Signal (gleiche
     Auswahl wie die Kandidaten), ein Wert je Spieler; beide Klassen sind immer da."""
-    found = _rise_stats(history, today, lookback, lambda cls, m: cls)
+    found = _rise_stats(
+        history,
+        today,
+        lookback,
+        lambda cls, m: cls if m.r3 is not None and m.r3 >= MIN_RISE_3D else f"{cls}_1.5-5",
+    )
     return {cls: found.get(cls, ClassStats(None, 0, {h: (None, 0)
                                                      for h in range(1, FORWARD_DAYS + 1)}))
             for cls in ("billig", "mittel")}
