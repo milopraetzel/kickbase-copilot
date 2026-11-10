@@ -10,6 +10,9 @@ jobs:
   lint-and-test:
     name: Ruff, Guardrail-Siegel & Pytest (Python 3.12)
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: sqlite:////tmp/kba-ci-test.db
+      AGENT_DRY_RUN: "true"
     defaults:
       run:
         working-directory: api
