@@ -66,7 +66,7 @@ from zoneinfo import ZoneInfo
 from sqlalchemy import select
 
 from kickbase_agent.config import get_settings
-from kickbase_agent.db.models import Report
+from kickbase_agent.db.models import Intent, Report
 from kickbase_agent.db.session import SessionLocal
 from kickbase_agent.intel import role_judge
 from kickbase_agent.intel.role_judge import RoleVerdict, judge_roles, role_note
@@ -76,6 +76,7 @@ from kickbase_agent.scouts.ligainsider.teams import TEAMS
 from kickbase_agent.trading.trade_book import (
     TRADE_CAP_EUR,
     TradePosition,
+    live_swap_cover,
     load_trade_book,
     regular_fill,
     sale_deadline,
@@ -505,17 +506,22 @@ def positions(
 
 
 def account_summary(
-    *, budget: int, rows: Iterable[PositionRow], open_bids: int = 0, trade_bids: int = 0
+    *,
+    budget: int,
+    rows: Iterable[PositionRow],
+    open_bids: int = 0,
+    trade_bids: int = 0,
+    swap_cover: int = 0,
 ) -> dict[str, Any]:
     """Konto nach Verkauf aller Handelsspieler zum Marktwert — offene eigene Gebote
-    eingerechnet, als gewännen sie alle (Konto ≥ 0 beim Anpfiff, vorsichtig gerechnet).
-    Handelsrahmen = Kaufpreise der Handelsspieler + Handelsgebote (live und geplant)."""
+    eingerechnet, als gewännen sie alle (gekoppelte `swap_sell`-Erlöse gegengerechnet,
+    Konto ≥ 0 beim Anpfiff). Handelsrahmen = Kaufpreise der Handelsspieler + Handelsgebote."""
     rows = list(rows)
     exposure = sum(r.buy_price for r in rows) + trade_bids
-    after = budget - open_bids + sum(r.mv for r in rows)
+    after = budget - open_bids + swap_cover + sum(r.mv for r in rows)
     return {"budget": budget, "open_bids": open_bids, "trade_bids": trade_bids,
-            "after_sale": after, "exposure": exposure, "room": EXPOSURE_CAP - exposure,
-            "cap": EXPOSURE_CAP, "covered": after >= 0}
+            "swap_cover": swap_cover, "after_sale": after, "exposure": exposure,
+            "room": EXPOSURE_CAP - exposure, "cap": EXPOSURE_CAP, "covered": after >= 0}
 
 
 # ------------------------------------------------------------------ Texte
@@ -875,11 +881,19 @@ async def run_trade_radar(channel, *, now: datetime | None = None) -> str:
                  for b in own_bids if b.get("player_id")}
     squad_ids = {str(sp.player.id) for sp in squad}
 
+    squad_mv = {str(sp.player.id): int(sp.player.market_value) for sp in squad}
+
     with SessionLocal() as session:
         history = {pid: daily_values(points) for pid, points in
                    load_history(session, since=stamp - timedelta(days=HISTORY_DAYS)).items()}
         book = load_trade_book(session, now=stamp, squad_ids=squad_ids, live_bids=live_bids,
                                league_id=lg)
+        open_sells = list(session.scalars(select(Intent).where(
+            Intent.kind == "sell", Intent.status.in_(("planned", "executing"))
+        )))
+        swap_cover_eur, _ = live_swap_cover(
+            open_sells, squad_mv=squad_mv, live_bids=live_bids, now=stamp
+        )
 
     # Kandidat ist weder ein eigener Spieler noch einer mit laufendem Gebot (Engine-Ziel oder
     # schon platziertes Handelsgebot).
@@ -951,7 +965,7 @@ async def run_trade_radar(channel, *, now: datetime | None = None) -> str:
            for sp in squad]
     rows = positions(own, book.positions, stamp, sale_by)
     acc = account_summary(budget=budget, rows=rows, open_bids=open_bids,
-                          trade_bids=sum(book.bids.values()))
+                          trade_bids=sum(book.bids.values()), swap_cover=swap_cover_eur)
     found_buys, skipped = buy_candidates(listings, momentum, stats, own_ids=own_ids,
                                          jev_returns=jev_returns or set(), sale_by=sale_by,
                                          now=stamp, buckets=buckets,

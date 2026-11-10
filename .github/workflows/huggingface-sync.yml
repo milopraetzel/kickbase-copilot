@@ -1,0 +1,66 @@
+name: Sync Hugging Face Space
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "spaces/kickbase-ai/**"
+      - "api/src/kickbase_agent/hf/**"
+      - ".github/workflows/huggingface-sync.yml"
+  workflow_dispatch:
+
+jobs:
+  sync-space:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check Hugging Face credentials
+        id: creds
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_USERNAME: ${{ vars.HF_USERNAME || secrets.HF_USERNAME }}
+        run: |
+          if [ -z "$HF_TOKEN" ] || [ -z "$HF_USERNAME" ]; then
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::HF_TOKEN / HF_USERNAME noch nicht in GitHub Secrets hinterlegt — Sync uebersprungen."
+          else
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set up Python 3.12
+        if: steps.creds.outputs.enabled == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Push Space to Hugging Face Hub
+        if: steps.creds.outputs.enabled == 'true'
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_USERNAME: ${{ vars.HF_USERNAME || secrets.HF_USERNAME }}
+          HF_SPACE_NAME: ${{ vars.HF_SPACE_NAME || 'kickbase-ai' }}
+        run: |
+          pip install --quiet "huggingface_hub>=0.27.0"
+          python - <<'PY'
+          import os
+          from huggingface_hub import HfApi
+
+          api = HfApi(token=os.environ["HF_TOKEN"])
+          repo_id = f"{os.environ['HF_USERNAME']}/{os.environ['HF_SPACE_NAME']}"
+          api.create_repo(
+              repo_id=repo_id,
+              repo_type="space",
+              space_sdk="gradio",
+              exist_ok=True,
+              private=False,
+          )
+          api.upload_folder(
+              folder_path="spaces/kickbase-ai",
+              repo_id=repo_id,
+              repo_type="space",
+              commit_message="chore(sync): Update Kickbase-AI Space from GitHub main",
+          )
+          print(f"Synced Space successfully: https://huggingface.co/spaces/{repo_id}")
+          PY

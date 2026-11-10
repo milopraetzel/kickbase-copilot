@@ -34,6 +34,11 @@ Der Agent verbindet sich lokal mit deinem eigenen Kickbase-Account, liest im 10-
    - **Marktwert-Momentum & Mitspieler-Knappheit:** Erkennt Unter-der-Woche-Steiger für Dispo-Trading und berücksichtigt bei Auktionen, wie viele Mitspieler auf einer Position akuten Bedarf haben
 3. **Verzögerte Tausch-Ketten auf Dispo (`swap`):**
    Der Agent verkauft niemals blind zuerst deinen Stammspieler. Er bietet auf das berechnete Upgrade und hinterlegt den Verkauf des abgelösten Kaderspielers als **bedingtes Folge-Vorhaben** – erst wenn der Zuschlag wirklich da ist, wird der alte Spieler verkauft.
+4. **Neuro-Symbolisches Hugging-Face-Entscheidungsmodell (`kickbase_agent.hf` & `spaces/kickbase-ai`):**
+   Verbindet ein kontextbasiertes Open-Weight-Sprachmodell (`Qwen/Qwen2.5-7B-Instruct` bzw. eigener LoRA-Adapter über [`spaces/kickbase-ai/train_qwen_lora.py`](./spaces/kickbase-ai/train_qwen_lora.py)) mit unserem harten `-33 %`-Dispo- und Freitagsdeckungs-Prüfer (`verify_neuro_plan`):
+   - **Zero Brand-Bias:** Anonymisiert Spieler und Klubs im Modell-Prompt deterministisch (`Player_01`, `Club_A`), damit das Modell nach aktuellem Form-/News-Kontext statt alten Vereinsnamen entscheidet.
+   - **Event-Gate (`should_invoke_ai`) & Kapitalbindungs-Warnung:** Feuert nur bei neuen Markt-Listings, frischen News, nach dem 22:00-Uhr-Update oder kurz vor Auktionsende und erkennt überalterte Manager-Gebote.
+   - **Automatischer Hugging-Face-Space-Sync:** Sobald `HF_TOKEN` und `HF_USERNAME` in den GitHub-Repository-Secrets hinterlegt sind, veröffentlicht [`.github/workflows/huggingface-sync.yml`](./.github/workflows/huggingface-sync.yml) den interaktiven Arena-Space aus [`spaces/kickbase-ai/`](./spaces/kickbase-ai/) automatisch auf Hugging Face Spaces.
 
 ---
 

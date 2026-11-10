@@ -392,7 +392,12 @@ def swap_cover(state: GuardState) -> int:
 
     def executable(sale: SwapSale) -> bool:
         after_win = size + (0 if sale.for_player_id in values else 1)
-        return sale.after_squad_size is not None and after_win >= sale.after_squad_size
+        effective_need = (
+            min(sale.after_squad_size, 12)
+            if sale.after_squad_size is not None and sale.for_player_id
+            else sale.after_squad_size
+        )
+        return effective_need is not None and after_win >= effective_need
 
     sales = [
         sale for sale in state.swap_sales if sale.player_id in values and executable(sale)

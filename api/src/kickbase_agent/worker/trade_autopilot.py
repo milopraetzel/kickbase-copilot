@@ -49,6 +49,7 @@ from kickbase_agent.db.models import Intent, Report
 from kickbase_agent.db.session import SessionLocal
 from kickbase_agent.decision.guardrails import DEFAULT_GUARDRAILS
 from kickbase_agent.decision.kickoff_freeze import KICKOFF_MIN_BALANCE
+from kickbase_agent.decision.lineup import MIN_SQUAD_SIZE
 from kickbase_agent.decision.overdraft import MIDWEEK_SWAP_BRIDGE_EUR
 from kickbase_agent.decision.purchase_review import REVIEW_LIFETIME
 from kickbase_agent.kickbase.factory import make_kickbase_client
@@ -59,6 +60,7 @@ from kickbase_agent.trading.trade_book import (
     TRADE_CAP_EUR,
     TradeBook,
     is_trade,
+    live_swap_cover,
     load_trade_book,
     regular_fill,
     remaining_updates_until_friday,
@@ -388,7 +390,14 @@ def plan_bids(
         assert slot is not None
         amount = min(cand.max_bid, trade_cap(slot.mv))
         if rules.is_custom_active():
-            amount = min(amount, int(rules.max_bid_million * 1_000_000))
+            user_overpay_cap = int(
+                round(slot.mv * (1.0 + max(0.0, float(rules.max_overpay_pct)) / 100.0))
+            )
+            amount = min(
+                amount,
+                int(rules.max_bid_million * 1_000_000),
+                max(int(slot.price), user_overpay_cap),
+            )
         if capacity.exposure + kept_amount + amount > active_cap_eur:
             skipped[pid] = f"Handelsrahmen {_eur(active_cap_eur)} reicht nicht"
             continue
@@ -454,19 +463,29 @@ def plan_sales(
     """Verkaufspläne: am Verkaufstermin alle (angelegt `FORCED_SALE_LEAD` vorher, ausgeführt
     am Termin), sonst nach einem fallenden Update (`SELL_VETO` Veto)."""
     stamp = _utc(now)
+    rules = load_agent_rules()
+    if rules.is_custom_active() and (rules.allow_sells == "none" or rules.mode == "dry_run"):
+        return []
+    sell_veto = (
+        timedelta(minutes=max(5, int(rules.veto_minutes)))
+        if rules.is_custom_active()
+        else SELL_VETO
+    )
     window_end = _utc(deadline) - CASCADE_WINDOW if deadline is not None else None
     plans: list[SalePlan] = []
     for h in holdings:
+        if rules.is_custom_active() and rules.is_player_protected(h.player_id, h.name):
+            continue
         pnl = h.mv - h.buy_price
         sign = "+" if pnl >= 0 else ""
         money = f"MW {_eur(h.mv)}, gekauft {_eur(h.buy_price)}, {sign}{_eur(pnl)}"
         if sale_by is not None and stamp >= _utc(sale_by) - FORCED_SALE_LEAD:
-            execute_at = max(_utc(sale_by), stamp + SELL_VETO)
+            execute_at = max(_utc(sale_by), stamp + sell_veto)
             signal, end = "frist", window_end
             text = (f"Handels-Autopilot: Verkaufstermin vor der Spieltags-Frist "
                     f"({_when(sale_by)}) — Sofortverkauf zum Marktwert ({money}).")
         elif h.last_step is not None and h.last_step < 0:
-            execute_at = stamp + SELL_VETO
+            execute_at = stamp + sell_veto
             signal, end = "fallend", next_update(stamp)
             if window_end is not None:
                 end = min(end, window_end)
@@ -533,23 +552,45 @@ def _planned_swap_cash_need(row: Intent) -> int:
     return max(0, int(row.amount or 0) - proceeds - MIDWEEK_SWAP_BRIDGE_EUR)
 
 
-def engine_busy(session: Any, now: datetime) -> bool:
+def engine_busy(
+    session: Any, now: datetime, *, live_bids: Iterable[str] | None = None
+) -> bool:
     """Bindet die Engine Geld für ein Gebot? Ein Gebots-Vorhaben ohne Quelle `trade` ist
     geplant, gerade in Ausführung oder ausgeführt mit noch laufender Auktion. Dann entsteht kein
     neues Handelsgebot (Elf zuerst): Die Kaufprüfung der Engine zählt beim Ausführen frische
-    Livegebote mit, ein Handelsgebot dazwischen ließe das Elf-Gebot scheitern. Ausnahme: ein
-    noch ungebotener (`planned`) 1-zu-1-Dispo-Tausch mit gekoppeltem Sofortverkauf."""
+    Livegebote mit, ein Handelsgebot dazwischen ließe das Elf-Gebot scheitern. Ausnahmen:
+    1. Ein 1-zu-1-Dispo-Tausch mit gekoppeltem Sofortverkauf (geplant oder mit offenem `swap_sell`).
+    2. Bereits entschiedene `executed`-Gebote (insb. Manager-Listings mit `deadline` auf dem
+       Spieltags-Anpfiff), die laut Kickbase-`own_bids` (`live_bids`) nicht mehr offen sind."""
     stamp = _utc(now)
+    live_set = {str(pid) for pid in live_bids} if live_bids is not None else None
+    open_swap_targets = {
+        str((r.sources or {}).get("swap_for") or "")
+        for r in session.scalars(
+            select(Intent).where(
+                Intent.kind == "sell",
+                Intent.status.in_((wi.STATUS_PLANNED, wi.STATUS_EXECUTING)),
+            )
+        )
+        if isinstance(r.sources, Mapping)
+        and (r.sources.get("swap_dispo") or r.sources.get("rule_id") == "swap_sell")
+        and (r.sources or {}).get("swap_for")
+    }
     for row in session.scalars(select(Intent).where(
         Intent.kind == "bid",
         Intent.status.in_((wi.STATUS_PLANNED, wi.STATUS_EXECUTING, wi.STATUS_EXECUTED)),
     )):
         if is_trade(row.sources) or _is_planned_dispo_swap_bid(row):
             continue
-        if row.status != wi.STATUS_EXECUTED:
-            return True
-        if row.deadline is not None and wi._as_utc(row.deadline) > stamp:
-            return True
+        if row.status == wi.STATUS_EXECUTED:
+            if str(row.player_id) in open_swap_targets:
+                continue
+            if live_set is not None and str(row.player_id) not in live_set:
+                continue
+            if row.deadline is not None and wi._as_utc(row.deadline) > stamp:
+                return True
+            continue
+        return True
     return False
 
 
@@ -637,6 +678,7 @@ def sync_trade_intents(
     radar_report_id: int | None,
     sale_by: datetime | None,
     held: Iterable[str] = (),
+    live_bids: Iterable[str] | None = None,
 ) -> SyncStats:
     """Handelsvorhaben anlegen, erneuern und räumen — nur die eigenen (Quelle `trade`).
 
@@ -660,7 +702,7 @@ def sync_trade_intents(
     # Autopiloten ein Gebot oder läuft ihr Plan gerade (er rechnet ein neues Handelsgebot nicht
     # ein), entsteht kein neues Handelsgebot mehr; bestehende bleiben. Ebenso, wenn ihr jüngster
     # Plan inzwischen einen Kauf wählt (Befund 03.10.2026) — der Planer räumt die bestehenden.
-    busy = (engine_busy(session, stamp) or engine_cycle_running()
+    busy = (engine_busy(session, stamp, live_bids=live_bids) or engine_cycle_running()
             or engine_plan_reason(session, stamp, league_id) == ENGINE_PLAN_BUYING)
     frist_ok = _frist_unblocked(session, stamp)
 
@@ -858,7 +900,7 @@ async def run_trade_autopilot(channel=None, *, now: datetime | None = None) -> s
                    load_history(session, since=stamp - timedelta(days=5)).items()}
         open_rows = wi.open_intents(session)
         engine_bid_rows = [r for r in open_rows if r.kind == "bid" and not is_trade(r.sources)]
-        engine_planned = engine_busy(session, stamp)
+        engine_planned = engine_busy(session, stamp, live_bids=live_bids)
         plan_reason = engine_plan_reason(session, stamp, lg)
         existing = {r.player_id for r in open_rows if r.kind == "bid" and is_trade(r.sources)}
         taken = ({r.player_id for r in open_rows if not is_trade(r.sources)}
@@ -867,7 +909,12 @@ async def run_trade_autopilot(channel=None, *, now: datetime | None = None) -> s
         trade_bids_today = _trade_bids_today(session, stamp)
         buys_today = wi.today_intent_counts(session, stamp).buys
     regular = [sp for sp in squad if str(sp.player.id) not in book.positions]
-    sale_by = sale_deadline(deadline, regular_fill(int(sp.player.position) for sp in regular))
+    regular_filled = regular_fill(int(sp.player.position) for sp in regular)
+    sale_by = sale_deadline(deadline, regular_filled)
+    squad_mv = {str(sp.player.id): int(sp.player.market_value) for sp in squad}
+    swap_cover_eur, swap_bid_ids = live_swap_cover(
+        open_rows, squad_mv=squad_mv, live_bids=live_bids, now=stamp
+    )
 
     holdings = []
     for sp in squad:
@@ -904,8 +951,19 @@ async def run_trade_autopilot(channel=None, *, now: datetime | None = None) -> s
     # Elf zuerst: Engine-Vorhaben (auch mit laufender Auktion), ein laufender Engine-Zyklus,
     # ein eigenes Gebot, das kein Handelsgebot ist (Engine oder App), oder — seit dem Befund
     # vom 03.10.2026 — ein Mannschaftsplan, der einen Kauf wählt bzw. kein frischer Plan.
-    busy = (engine_planned or engine_cycle_running()
-            or bool(set(live_bids) - set(book.live_bids)) or plan_reason is not None)
+    # Ausnahme: Ein bereits laufendes 1-zu-1-Dispo-Swap-Gebot bei voller regulärer Elf (11/11),
+    # dessen gekoppelter Tausch-Verkauf offen wartet, blockiert den zinsfreien MW-Handel nicht.
+    blocking_live_bids = (
+        set(live_bids)
+        - set(book.live_bids)
+        - (swap_bid_ids if regular_filled >= MIN_SQUAD_SIZE else set())
+    )
+    busy = (
+        engine_planned
+        or engine_cycle_running()
+        or bool(blocking_live_bids)
+        or plan_reason is not None
+    )
     team_value = sum(int(sp.player.market_value) for sp in squad)
     held_mv = [int(sp.player.market_value) for sp in squad
                if str(sp.player.id) in book.positions]
@@ -930,7 +988,7 @@ async def run_trade_autopilot(channel=None, *, now: datetime | None = None) -> s
         engine_bid_intents=len(engine_bid_rows),
         after_bids=budget - sum(live_bids.values()) - engine_planned_amount,
         floor=overdraft_floor(team_value, budget),
-        coverage=budget - sum(live_bids.values()) - swap_cash_reserved
+        coverage=budget - sum(live_bids.values()) - swap_cash_reserved + swap_cover_eur
         + sale_cover(
             held_mv=held_mv,
             bid_target_mv=target_mv,
@@ -974,7 +1032,7 @@ async def run_trade_autopilot(channel=None, *, now: datetime | None = None) -> s
             stats = sync_trade_intents(
                 session, now=stamp, league_id=lg, bids=bids, sales=sales, skipped=skipped,
                 radar_report_id=radar.id if radar is not None else None, sale_by=sale_by,
-                held=book.positions,
+                held=book.positions, live_bids=live_bids,
             )
             if stats.changes:
                 saved = save_report(

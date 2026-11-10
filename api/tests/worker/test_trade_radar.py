@@ -427,6 +427,15 @@ def test_account_summary_shows_what_selling_everything_brings_back():
     assert account_summary(budget=-4_000_000, rows=rows)["covered"] is True  # Konto ≥ 0 reicht
     # Handelsgebote (live und geplant) belegen den Handelsrahmen schon jetzt.
     assert account_summary(budget=0, rows=rows, trade_bids=4_000_000)["exposure"] == 7_600_000
+    # Gekoppelter Dispo-Tausch-Verkauf deckt ein laufendes Engine-Tauschgebot am Freitag mit ab.
+    swap_acc = account_summary(
+        budget=1_320_297,
+        rows=positions([_own("gouweleeuw", 8_517_716, 587_716)], _book(gouweleeuw=7_930_000),
+                       NOW, SALE_BY),
+        open_bids=12_000_000,
+        swap_cover=4_188_604,
+    )
+    assert swap_acc["covered"] is True and swap_acc["after_sale"] == 2_026_617
 
 
 # ------------------------------------------------------------------ Texte

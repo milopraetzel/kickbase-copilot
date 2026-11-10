@@ -239,3 +239,36 @@ def test_regular_fill_counts_places_in_the_best_formation(positions, filled):
     from kickbase_agent.trading.trade_book import regular_fill
 
     assert regular_fill(positions) == filled
+
+
+def test_live_swap_cover_credits_waiting_swap_sell_for_live_bid(session):
+    from kickbase_agent.trading.trade_book import live_swap_cover
+
+    sell_row = Intent(
+        created_at=NOW,
+        updated_at=NOW,
+        kind="sell",
+        player_id="adeline",
+        player_name="Martin Adeline",
+        amount=4_409_573,
+        sources={
+            "rule_id": "swap_sell",
+            "swap_dispo": True,
+            "swap_for": "mohya",
+            "after_squad_size": 12,
+        },
+        listing_type="kickbase",
+        execute_at=NOW,
+        status="planned",
+    )
+    squad_mv = {f"p{i}": 10_000_000 for i in range(11)}
+    squad_mv["adeline"] = 4_409_573
+    cover_eur, covered_ids = live_swap_cover(
+        [sell_row],
+        squad_mv=squad_mv,
+        live_bids={"mohya": 12_000_000},
+        now=NOW,
+    )
+    assert covered_ids == {"mohya"}
+    assert cover_eur == int(4_409_573 * 0.95)
+

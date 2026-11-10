@@ -580,3 +580,133 @@ def test_dispo_sale_couples_when_planned_swap_target_upgrades():
         rev_ony, "onyedika", [sell_ony], {("sell", "rothe"): sell_row}, set()
     ) is False
 
+
+async def test_live_dispo_swap_bid_keeps_trading_into_deep_minus_when_covered(db, monkeypatch):
+    """Emil 10.11.2026: Sobald ein 1-zu-1-Dispo-Swap-Gebot (z. B. Mohya 12,00 M €) live steht
+    und der gekoppelte Tausch-Verkauf (z. B. Adeline 4,41 M €, after_squad_size=13 wegen eines
+    gehaltenen Handelsspielers Gouweleeuw 8,52 M €) offen wartet, darf `busy` nicht zuschlagen
+    und `Capacity.coverage` muss den 95-%-Tauscherlös anrechnen, damit der zinsfreie Dispo bis
+    zum 50-M-€-Rahmen für weitere Marktwert-Steiger genutzt wird."""
+    from kickbase_agent.db.models import TransferAction
+    from kickbase_agent.kickbase.models import SquadPlayer
+
+    expires = NOW + 9 * H
+    # Reguläre 11er-Elf inkl. Adeline (4,41 M €) + 1 Handelsspieler Gouweleeuw (8,52 M €) = 13.
+    squad = (
+        _eleven()
+        + [SquadPlayer(player=_player("adeline", "Adeline", 4_409_057))]
+        + [SquadPlayer(player=_player("gouweleeuw", "Gouweleeuw", 8_517_716))]
+    )
+    market = [
+        MarketPlayer(
+            player=_player("hack", "Robin Hack", 6_500_000),
+            price=6_500_000,
+            expires_at=expires,
+        )
+    ]
+    client = _ReadOnlyClient(
+        squad=squad,
+        market=market,
+        budget=1_320_297,
+        own_bids=[{"player_id": "mohya", "amount": 12_000_000}],
+    )
+    _world(monkeypatch, client)
+    _radar(db, NOW - 5 * MIN, _kauf("hack", 6_500_000, 7_150_000, expires))
+    _engine_plan(db, NOW - 5 * MIN, purchases=[])
+
+    with db() as s:
+        action = TransferAction(
+            league_id="L1",
+            action_type="bid",
+            player_id="gouweleeuw",
+            amount=7_930_000,
+            status="executed",
+            idempotency_key="gouweleeuw-buy",
+            rule_id="intent-bid",
+            dry_run=False,
+            created_at=NOW - 24 * H,
+        )
+        s.add(action)
+        s.flush()
+        s.add(
+            Intent(
+                created_at=NOW - 24 * H,
+                updated_at=NOW - 24 * H,
+                kind="bid",
+                player_id="gouweleeuw",
+                player_name="Gouweleeuw",
+                amount=7_930_000,
+                sources={"trade": True, "league_id": "L1"},
+                listing_type="kickbase",
+                deadline=NOW - 23 * H,
+                execute_at=NOW - 24 * H,
+                status="executed",
+                executed_action_id=action.id,
+            )
+        )
+        # Laufendes Dispo-Swap-Gebot (auch mit deadline > NOW für Kickbase-Auktionsfall):
+        s.add(
+            Intent(
+                created_at=NOW - 2 * H,
+                updated_at=NOW - 2 * H,
+                kind="bid",
+                player_id="mohya",
+                player_name="Wael Mohya",
+                amount=12_000_000,
+                sources={"league_id": "L1", "swap_out": "adeline"},
+                listing_type="manager",
+                deadline=NOW + 4 * H,
+                execute_at=NOW - 2 * H,
+                status="executed",
+            )
+        )
+        # Bereits erledigtes Manager-Listing-Gebot (z. B. Petkov/Behrens, nicht mehr in own_bids,
+        # aber deadline steht auf Spieltags-Anpfiff in 10 Tagen) darf NICHT mehr sperren:
+        s.add(
+            Intent(
+                created_at=NOW - 48 * H,
+                updated_at=NOW - 48 * H,
+                kind="bid",
+                player_id="petkov",
+                player_name="Lukas Petkov",
+                amount=3_500_000,
+                sources={"league_id": "L1"},
+                listing_type="manager",
+                deadline=NOW + 240 * H,
+                execute_at=NOW - 48 * H,
+                status="executed",
+            )
+        )
+        # Gekoppelter Tausch-Verkauf mit after_squad_size=13 (12 Reguläre + 1 Handelsspieler):
+        s.add(
+            Intent(
+                created_at=NOW - 2 * H,
+                updated_at=NOW - 2 * H,
+                kind="sell",
+                player_id="adeline",
+                player_name="Adeline",
+                amount=4_409_057,
+                sources={
+                    "league_id": "L1",
+                    "rule_id": "swap_sell",
+                    "after_squad_size": 13,
+                    "swap_for": "mohya",
+                    "swap_dispo": True,
+                },
+                listing_type="kickbase",
+                execute_at=NOW + 12 * H,
+                status="planned",
+            )
+        )
+        s.commit()
+        assert ta.engine_busy(s, NOW, live_bids=["mohya"]) is False
+
+    # Ohne `live_swap_cover` wäre Freitagsdeckung 1,32 M - 12,00 M + 8,52 M = -2,16 M € (< +10k €)
+    # und `busy` wäre True wegen `mohya` in `live_bids`. Mit `live_swap_cover` (+4,19 M €) liegt
+    # die Freitagsdeckung bei +2,03 M € und schaltet das 7,15-M-€-Gebot tief ins Minus frei!
+    assert await ta.run_trade_autopilot(now=NOW) == "ok:1/0/0"
+    with db() as s:
+        hack_bid = s.scalars(select(Intent).where(Intent.player_id == "hack")).one()
+    assert hack_bid.status == "planned" and hack_bid.amount == 7_150_000
+
+

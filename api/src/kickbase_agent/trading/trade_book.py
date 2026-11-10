@@ -30,7 +30,13 @@ from sqlalchemy import select
 
 from kickbase_agent.agent.rules import load_agent_rules
 from kickbase_agent.db.models import Intent, TransferAction
+from kickbase_agent.decision.guardrails import protected_player_ids
 from kickbase_agent.decision.lineup import _FORMATIONS, MIN_SQUAD_SIZE
+from kickbase_agent.decision.overdraft import (
+    PLANNING_OVERDRAFT_UNTIL,
+    overdraft_active,
+    swap_sale_proceeds,
+)
 
 _BERLIN = ZoneInfo("Europe/Berlin")
 
@@ -179,6 +185,71 @@ def sale_cover(
             for mv in bid_target_mv
         )
     )
+
+
+def _after_squad_size(raw: object) -> int | None:
+    if isinstance(raw, bool):
+        return None
+    try:
+        val = int(raw)  # type: ignore[call-overload]
+    except (TypeError, ValueError):
+        return None
+    return val if val >= 1 else None
+
+
+def live_swap_cover(
+    open_rows: Iterable[Any],
+    *,
+    squad_mv: Mapping[str, int],
+    live_bids: Mapping[str, int],
+    now: datetime,
+) -> tuple[int, set[str]]:
+    """Deckung und gekoppelte Ziel-IDs wartender Dispo-Tauschverkäufe für laufende Gebote.
+
+    Steht zu einem bereits bei Kickbase platzierten Live-Gebot (`live_bids`) der gekoppelte
+    `swap_sell`-Sofortverkauf eines ungeschützten eigenen Spielers bereit, bringt der Zuschlag
+    automatisch `swap_sale_proceeds(MW)` zurück (höchstens den Gebotsbetrag). Konsistent mit
+    `outcome_guard.swap_cover` und `worker.intents.squad_condition_unmet` (`min(need, 12)`).
+    """
+    if not overdraft_active(_utc(now), until=PLANNING_OVERDRAFT_UNTIL):
+        return 0, set()
+    protected = protected_player_ids()
+    squad_size = len(squad_mv)
+    cover_eur = 0
+    covered_targets: set[str] = set()
+    seen_sellers: set[str] = set()
+    for row in open_rows:
+        if getattr(row, "kind", None) != "sell":
+            continue
+        if getattr(row, "status", None) not in ("planned", "executing"):
+            continue
+        sources = getattr(row, "sources", None) or {}
+        if not isinstance(sources, Mapping):
+            continue
+        if not (sources.get("swap_dispo") or sources.get("rule_id") == "swap_sell"):
+            continue
+        sell_pid = str(getattr(row, "player_id", "") or "")
+        target_pid = str(sources.get("swap_for") or "")
+        if (
+            not sell_pid
+            or not target_pid
+            or sell_pid in seen_sellers
+            or sell_pid in protected
+            or sell_pid not in squad_mv
+            or target_pid not in live_bids
+            or target_pid in squad_mv
+        ):
+            continue
+        need = _after_squad_size(sources.get("after_squad_size"))
+        if need is None or squad_size + 1 < min(need, 12):
+            continue
+        seen_sellers.add(sell_pid)
+        covered_targets.add(target_pid)
+        cover_eur += min(
+            swap_sale_proceeds(int(squad_mv[sell_pid])),
+            int(live_bids[target_pid]),
+        )
+    return cover_eur, covered_targets
 
 
 @dataclass(frozen=True)
