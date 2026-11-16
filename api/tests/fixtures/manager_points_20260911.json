@@ -2,8 +2,8 @@
   "captured_at": "2026-09-11T21:42:38.226056+00:00",
   "source": "authenticated manager dashboard and squad read",
   "dashboard": {
-    "u": "2663242",
-    "unm": "emil",
+    "u": "9000010",
+    "unm": "manager_self",
     "tp": 827,
     "ph": [
       664,
@@ -12,8 +12,8 @@
     ]
   },
   "squad": {
-    "u": "2663242",
-    "unm": "emil",
+    "u": "9000010",
+    "unm": "manager_self",
     "it": [
       {
         "pi": "4333",

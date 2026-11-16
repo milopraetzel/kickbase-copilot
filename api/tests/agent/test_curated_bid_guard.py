@@ -141,7 +141,7 @@ async def test_team_purchase_role_rules_without_positive_market_drift(
     client.detail = client.detail.model_copy(update={
         "lineup_prob": probability, "mv_change_24h": -26065,
     })
-    result = await ActionExecutor(client, session, user_id="2663242").execute(
+    result = await ActionExecutor(client, session, user_id="9000010").execute(
         action(purchase_review=engine_review(purpose=purpose)), now=NOW,
     )
     assert (result.status == "executed") is allowed, result.message
@@ -207,7 +207,7 @@ async def test_live_financing_change_blocks_entire_remaining_package(session):
         return MV + 1_999_999
 
     client.get_budget = low_budget
-    result = await ActionExecutor(client, session, user_id="2663242").execute(
+    result = await ActionExecutor(client, session, user_id="9000010").execute(
         action(purchase_review=engine_review()), now=NOW,
     )
     assert result.status == "refused"
@@ -219,7 +219,7 @@ async def test_engine_reanchor_uses_evaluated_price_without_psycho_offset(sessio
     client = Client()
     client.detail = client.detail.model_copy(update={"market_value": MV + 1000})
     chosen = engine_review()
-    result = await ActionExecutor(client, session, user_id="2663242").execute(
+    result = await ActionExecutor(client, session, user_id="9000010").execute(
         action(purchase_review=chosen), now=NOW,
     )
     assert result.status == "executed", result.message
@@ -239,7 +239,7 @@ async def test_engine_large_market_rise_requests_new_plan_instead_of_bidding_bel
     chosen["bid_scenarios"].append(
         {"amount": increased, "win_probability": None, "selected": False},
     )
-    result = await ActionExecutor(client, session, user_id="2663242").execute(
+    result = await ActionExecutor(client, session, user_id="9000010").execute(
         action(purchase_review=chosen), now=NOW,
     )
     assert result.status == "refused" and client.writes == []
@@ -296,7 +296,7 @@ def test_review_lifetime_is_capped_from_observation_not_from_execution(required,
 
 async def test_selected_bid_reads_fresh_detail_before_dispatch_when_market_has_no_delta(session):
     client = Client()
-    result = await ActionExecutor(client, session, user_id="2663242").execute(
+    result = await ActionExecutor(client, session, user_id="9000010").execute(
         action(purchase_review=review()), now=NOW,
     )
     assert result.status == "executed", result.message
@@ -306,7 +306,7 @@ async def test_selected_bid_reads_fresh_detail_before_dispatch_when_market_has_n
 
 async def test_engine_staged_expectation_replaces_legacy_probability_with_review_evidence(session):
     client = Client()
-    executor = ActionExecutor(client, session, user_id="2663242")
+    executor = ActionExecutor(client, session, user_id="9000010")
     chosen = engine_review()
     chosen["bid_scenarios"][0]["win_probability"] = 0.31
     staged = await executor.stage(action(purchase_review=chosen), now=NOW)
@@ -336,7 +336,7 @@ async def test_engine_bank_filler_is_refused_when_live_squad_already_has_eleven(
                 for i in range(11)]
 
     client.get_squad = squad
-    result = await ActionExecutor(client, session, user_id="2663242").execute(
+    result = await ActionExecutor(client, session, user_id="9000010").execute(
         action(purchase_review=engine_review()), now=NOW,
     )
     assert result.status == "refused" and client.writes == []
@@ -352,7 +352,7 @@ async def test_engine_bank_filler_is_refused_when_live_squad_already_has_eleven(
 async def test_curated_bid_refuses_bad_or_unknown_fresh_player_fields(session, change):
     client = Client()
     client.detail = client.detail.model_copy(update=change)
-    result = await ActionExecutor(client, session, user_id="2663242").execute(
+    result = await ActionExecutor(client, session, user_id="9000010").execute(
         action(purchase_review=review()), now=NOW,
     )
     assert result.status == "refused"
@@ -373,7 +373,7 @@ async def test_reanchor_never_raises_or_exceeds_review_price_limit(session):
     client.detail = client.detail.model_copy(update={"market_value": MV + 1000})
     chosen = review()
     planned = action(purchase_review=chosen)
-    result = await ActionExecutor(client, session, user_id="2663242").execute(planned, now=NOW)
+    result = await ActionExecutor(client, session, user_id="9000010").execute(planned, now=NOW)
     assert result.status == "refused"
     assert "Preisobergrenze" in result.message
     assert client.writes == []
@@ -385,7 +385,7 @@ async def test_reanchor_within_review_limit_keeps_review_in_execution_audit(sess
     client = Client()
     client.detail = client.detail.model_copy(update={"market_value": MV + 1000})
     chosen = review(max_bid_eur=MV + 200_000)
-    result = await ActionExecutor(client, session, user_id="2663242").execute(
+    result = await ActionExecutor(client, session, user_id="9000010").execute(
         action(purchase_review=chosen), now=NOW,
     )
     assert result.status == "executed", result.message
@@ -398,7 +398,7 @@ async def test_reanchor_within_review_limit_keeps_review_in_execution_audit(sess
 
 async def test_manual_without_review_is_refused_without_detail_read(session):
     client = Client()
-    result = await ActionExecutor(client, session, user_id="2663242").execute(
+    result = await ActionExecutor(client, session, user_id="9000010").execute(
         action(rule_id="intent-bid-manual"), now=NOW,
     )
     assert result.status == "refused" and "Mannschaftsprüfung" in result.message
@@ -418,7 +418,7 @@ async def test_manual_bid_with_review_cannot_exceed_cap(session):
 
 async def test_staged_review_keeps_cap_after_later_price_change(session):
     client = Client()
-    executor = ActionExecutor(client, session, user_id="2663242")
+    executor = ActionExecutor(client, session, user_id="9000010")
     proposed = await executor.stage(action(purchase_review=review()), now=NOW)
     client.detail = client.detail.model_copy(update={"market_value": MV + 1000})
     result = await executor.execute_staged(proposed.action_id, now=NOW + timedelta(minutes=1))
@@ -429,7 +429,7 @@ async def test_staged_review_keeps_cap_after_later_price_change(session):
 
 async def test_staged_bid_audit_records_actual_reanchored_amount(session):
     client = Client()
-    executor = ActionExecutor(client, session, user_id="2663242")
+    executor = ActionExecutor(client, session, user_id="9000010")
     chosen = review(max_bid_eur=MV + 200_000)
     proposed = await executor.stage(action(purchase_review=chosen), now=NOW)
     client.detail = client.detail.model_copy(update={"market_value": MV + 1000})
@@ -444,7 +444,7 @@ async def test_review_expiring_during_fresh_reads_is_refused(session, monkeypatc
     elapsed = iter((0.0, 1800.0))
     monkeypatch.setattr(executor_module, "time", SimpleNamespace(monotonic=lambda: next(elapsed)))
     client = Client()
-    result = await ActionExecutor(client, session, user_id="2663242").execute(
+    result = await ActionExecutor(client, session, user_id="9000010").execute(
         action(purchase_review=review()), now=NOW,
     )
     assert result.status == "refused"
@@ -457,7 +457,7 @@ async def test_market_veto_is_not_overruled_by_positive_detail_snapshot(session,
     client = Client()
     player = client.market[0].player.model_copy(update=change)
     client.market[0] = client.market[0].model_copy(update={"player": player})
-    result = await ActionExecutor(client, session, user_id="2663242").execute(
+    result = await ActionExecutor(client, session, user_id="9000010").execute(
         action(purchase_review=review()), now=NOW,
     )
     assert result.status == "refused"
@@ -488,7 +488,7 @@ async def test_engine_bank_filler_allowed_when_eleven_heads_only_fill_ten_slots(
         ]
 
     client.get_squad = squad
-    result = await ActionExecutor(client, session, user_id="2663242").execute(
+    result = await ActionExecutor(client, session, user_id="9000010").execute(
         action(purchase_review=engine_review(purpose="lineup_completion")), now=NOW,
     )
     assert result.status == "executed", result.message
@@ -514,7 +514,7 @@ async def test_engine_deficit_swap_bank_filler_is_allowed_when_coupled_sale_open
             SimpleNamespace(
                 player=client.detail,
                 expires_at=NOW + timedelta(hours=4),
-                seller_id="2464959",
+                seller_id="9000004",
                 price=500_000,
             )
         ]
@@ -576,7 +576,7 @@ async def test_engine_deficit_swap_bank_filler_is_allowed_when_coupled_sale_open
             "proceeds_eur": 72_000_000,
         }
     ]
-    result = await ActionExecutor(client, session, user_id="2663242").execute(
+    result = await ActionExecutor(client, session, user_id="9000010").execute(
         action(amount=500_000, purchase_review=chosen), now=NOW,
     )
     assert result.status == "executed", result.message

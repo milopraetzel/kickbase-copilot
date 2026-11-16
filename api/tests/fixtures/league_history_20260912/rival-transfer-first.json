@@ -1,13 +1,13 @@
 {
-  "u": "2227102",
-  "unm": "Niklas B.",
+  "u": "9000003",
+  "unm": "Manager_03",
   "it": [
     {
       "pi": "7676",
       "pn": "Rieder",
       "tid": "13",
       "tty": 2,
-      "othnm": "Osei",
+      "othnm": "Manager_05",
       "trp": 18150000,
       "dt": "2026-09-11T17:32:34Z",
       "pim": "content/file/bdc22db52af641168bf48d012401bd6b.png"
@@ -17,7 +17,7 @@
       "pn": "Davies",
       "tid": "2",
       "tty": 2,
-      "othnm": "Maximilian",
+      "othnm": "Manager_12",
       "trp": 15250000,
       "dt": "2026-09-11T17:26:45Z",
       "pim": "content/file/1321be6fb58f47b592a91f17f6b2bf68.png"
@@ -27,7 +27,7 @@
       "pn": "Brown",
       "tid": "2",
       "tty": 1,
-      "othnm": "Leon",
+      "othnm": "Manager_07",
       "trp": 28000000,
       "dt": "2026-09-11T17:18:09Z",
       "pim": "content/file/4dd49322843644839bb43182b3a8b68b.png"

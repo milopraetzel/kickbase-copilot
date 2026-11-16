@@ -48,7 +48,7 @@ def _answer(**over) -> str:
         "erklaerung": "Die Formel war zu selbstsicher.",
         "mechanismus": None,
         "recherche": [{"quelle": "Activity-Feed", "datum": "2026-08-26",
-                       "aussage": "Lukas M. zahlte 157 % MW"}],
+                       "aussage": "Manager_02 zahlte 157 % MW"}],
         "stellschraube": "expectation.kickbase_thin_p",
         "neuer_wert": 0.40,
         "beleg": "surprise:action:1",
@@ -212,10 +212,10 @@ async def test_second_case_must_meet_the_real_surprise_thresholds(
 
 
 def test_context_names_the_winner_from_the_feed(session):
-    feed = [{"t": 15, "data": {"byr": "Lukas M.", "slr": "Kickbase",
+    feed = [{"t": 15, "data": {"byr": "Manager_02", "slr": "Kickbase",
                                "pi": "4711", "trp": 4_230_000}}]
     context = jd.build_context(session, _surprise(), now=NOW, feed=feed)
-    assert context["wirklichkeit"]["kaeufer"] == "Lukas M."
+    assert context["wirklichkeit"]["kaeufer"] == "Manager_02"
     assert context["wirklichkeit"]["preis"] == 4_230_000
 
 

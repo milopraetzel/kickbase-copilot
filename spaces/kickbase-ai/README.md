@@ -16,6 +16,8 @@ short_description: Neuro-Symbolischer KI-Co-Manager fuer die Fantasy-Bundesliga
 
 **Open-Source-Motor:** [`github.com/milopraetzel/kickbase-copilot`](https://github.com/milopraetzel/kickbase-copilot)
 
+> **Disclaimer:** Unabhängiges Forschungs- & Open-Source-Projekt (Neuro-Symbolische Entscheidungsoptimierung unter Budget-Nebenbedingungen) — nicht mit der Kickbase GmbH verbunden oder von ihr unterstützt. Dieser Space verarbeitet ausschließlich synthetische/anonymisierte Szenarien und fragt keine Account-Zugangsdaten ab.
+
 Dieses Projekt verbindet ein kontextbasiertes **Hugging-Face-Sprachmodell** (`Qwen/Qwen2.5-7B-Instruct` bzw. eigener LoRA-Fine-Tune via `train_qwen_lora.py`) mit einem **deterministischen Physik- & Dispo-Pruefer**:
 
 1. **Spieler-Anonymisierung (`Player_01`, `Club_A`):** Verhindert Markenname-Overfitting aus alten Trainingsdaten — das Modell urteilt ausschliesslich nach aktuellen Minuten, 3-Tage-Marktwert-Wellen, Quoten und News-Kontext.

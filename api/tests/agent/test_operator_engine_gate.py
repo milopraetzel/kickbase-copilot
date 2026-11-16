@@ -21,7 +21,7 @@ from .test_curated_bid_guard import (
 async def test_operator_buy_requires_full_engine_review(session, rule_id, proof):
     client = Client()
     checked = engine_review() if proof == "engine" else review() if proof == "legacy" else None
-    result = await ActionExecutor(client, session, user_id="2663242").execute(
+    result = await ActionExecutor(client, session, user_id="9000010").execute(
         action(rule_id=rule_id, purchase_review=checked), now=NOW,
     )
     assert (result.status == "executed") is (proof == "engine"), result.message

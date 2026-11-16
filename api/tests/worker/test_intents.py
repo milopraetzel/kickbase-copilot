@@ -213,7 +213,7 @@ def test_market_rows_from_raw_classifies_kickbase_and_manager_listings():
          "exs": 3600, "tid": "11", "prob": 1,
          "ofs": [{"u": "U1", "uop": 5_120_000, "uoid": "U1"}]},
         {"i": "88", "fn": "Cheap", "n": "Striker", "pos": 4, "mv": 3_000_000, "prc": 3_200_000,
-         "exs": 0, "tid": "5", "u": {"i": "U7", "n": "Felix K."}, "ofs": []},
+         "exs": 0, "tid": "5", "u": {"i": "U7", "n": "Manager_04"}, "ofs": []},
         {"i": "3", "fn": "Jamal", "n": "Musiala", "pos": 3, "mv": 25_000_000, "prc": 26_000_000,
          "exs": 0, "tid": "2", "u": {"i": "U1", "n": "emil"}},
     ]}
@@ -222,7 +222,7 @@ def test_market_rows_from_raw_classifies_kickbase_and_manager_listings():
     assert (kb.expires_in_s, kb.is_manager, kb.our_bid, kb.price) == (3600, False, 5_120_000,
                                                                       5_500_000)
     assert (kb.player_name, kb.team_id, kb.position, kb.kb_prob) == ("Hidden Gem", "11", 4, 1)
-    assert (mgr.is_manager, mgr.seller_name, mgr.our_bid, mgr.is_ours) == (True, "Felix K.",
+    assert (mgr.is_manager, mgr.seller_name, mgr.our_bid, mgr.is_ours) == (True, "Manager_04",
                                                                            None, False)
     assert mine.is_ours is True and mine.is_manager is True
 
@@ -251,9 +251,9 @@ def test_squad_need_marker_travels_from_planner_into_the_intent():
 
 def test_manager_listing_gets_default_two_hour_window():
     """Manager-Listing (Verkäufer-Objekt, kein Countdown): keine Deadline, jetzt + 2 h."""
-    [d] = plan_intents(_plan(buys=[_prop()]), [_row(exs=0, seller="Felix K.")], NOW)
+    [d] = plan_intents(_plan(buys=[_prop()]), [_row(exs=0, seller="Manager_04")], NOW)
     assert (d.listing_type, d.deadline, d.execute_at) == ("manager", None, NOW + 2 * H)
-    assert d.sources["seller"] == "Felix K." and d.sources["listing_price"] == 1_150_000
+    assert d.sources["seller"] == "Manager_04" and d.sources["listing_price"] == 1_150_000
 
 
 def test_sniper_under_30_min_is_due_immediately():
@@ -1192,7 +1192,7 @@ async def test_run_planner_end_to_end_creates_then_stays_quiet(monkeypatch, engi
         {"i": "B1", "fn": "Kauf", "n": "Mann", "pos": 4, "mv": 1_150_000, "prc": 1_150_000,
          "exs": 10 * 3600, "tid": "T1", "prob": 2, "ofs": []},
         {"i": "M1", "fn": "Manager", "n": "Ware", "pos": 2, "mv": 900_000, "prc": 950_000,
-         "exs": 0, "tid": "T2", "u": {"i": "U7", "n": "Felix K."}},
+         "exs": 0, "tid": "T2", "u": {"i": "U7", "n": "Manager_04"}},
     ]}
     plan = _plan(
         buys=[_prop(pid="B1"), _prop(pid="M1", amount=950_000, name="Ware")],
@@ -1211,7 +1211,7 @@ async def test_run_planner_end_to_end_creates_then_stays_quiet(monkeypatch, engi
     assert set(by) == {("bid", "B1"), ("bid", "M1"), ("list", "S1")}
     assert by[("bid", "B1")].listing_type == "kickbase" and by[("bid", "B1")].deadline
     assert by[("bid", "M1")].listing_type == "manager" and by[("bid", "M1")].deadline is None
-    assert by[("bid", "M1")].sources["seller"] == "Felix K."
+    assert by[("bid", "M1")].sources["seller"] == "Manager_04"
     msg = channel.sent[0]
     # Meldungs-Umbau 31.08.: je-Vorhaben-Zeilen sind raus — Details stehen
     # auf den Veto-Karten; der Post ist Bilanz + Unarmed-Hinweis.
@@ -1393,7 +1393,7 @@ def test_incoming_offers_from_raw_reads_own_listings_only():
              {"u": "BROKEN", "uop": 10_400_000},
          ]},
         {"i": "F1", "fn": "Fremd", "n": "Ling", "pos": 2, "mv": 5_000_000, "prc": 5_100_000,
-         "tid": "3", "u": {"i": "OTHER", "n": "Moritz W."},
+         "tid": "3", "u": {"i": "OTHER", "n": "Manager_01"},
          "ofs": [{"u": "ME", "uop": 5_200_000, "uoid": "ME"}]},
     ]}
     offers = wi.incoming_offers_from_raw(raw, "ME")

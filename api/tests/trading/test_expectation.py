@@ -62,7 +62,7 @@ def _bid(
 
 def test_kickbase_thin_bid_is_no_safe_bet_even_without_rivals():
     """Ljubičić-Lehre 26.08.: Wir boten 108 % und waren laut API einziger Bieter —
-    Lukas M. holte ihn beim Ablauf mit 157 %. „Allein" heißt nur „bisher allein".
+    Manager_02 holte ihn beim Ablauf mit 157 %. „Allein" heißt nur „bisher allein".
     """
     est = ex.estimate_bid_success(kind="kickbase", amount=8_600_000, market_value=8_000_000,
                                   listing_price=8_000_000)

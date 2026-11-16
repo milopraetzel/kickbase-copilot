@@ -26,7 +26,7 @@ FEED = [
     {"i": "1", "t": 15, "dt": (NOW - timedelta(hours=1)).isoformat(),
      "data": {"byr": "Emil", "pn": "Olise", "trp": 68_017_197}},
     {"i": "2", "t": 15, "dt": (NOW - timedelta(hours=2)).isoformat(),
-     "data": {"byr": "Osei", "pn": "Vozar", "trp": 1_280_015}},
+     "data": {"byr": "Manager_05", "pn": "Vozar", "trp": 1_280_015}},
     {"i": "3", "t": 22, "dt": (NOW - timedelta(hours=3)).isoformat(),
      "data": {"bn": 50_000, "day": 6}},
 ]
@@ -151,7 +151,7 @@ def test_transfer_and_league_entries_from_feed_cache(client, db):
     praemie = next(e for e in entries if e["status"] == "praemie")
     assert praemie["title"] == "Prämie kassiert (+50 k)"
     liga = next(e for e in entries if e["kind"] == "league")
-    assert liga["title"] == "Liga: Osei kauft Vozar für 1,28 M"
+    assert liga["title"] == "Liga: Manager_05 kauft Vozar für 1,28 M"
 
 
 def test_entries_sorted_newest_first_and_limit_applies(client, db):

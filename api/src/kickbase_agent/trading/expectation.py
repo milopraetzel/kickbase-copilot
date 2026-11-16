@@ -135,7 +135,7 @@ def estimate_bid_success(
             KICKBASE, ratio,
         )
     # Ljubičić-Lehre (26.08.), nachgemessen am selben Abend: Wir boten 108 % und
-    # galten „laut API als einziger Bieter" — beim Ablauf schnappte Lukas M.
+    # galten „laut API als einziger Bieter" — beim Ablauf schnappte Manager_02
     # ihn mit 157 % weg. Der Grund ist simpler als gedacht: `ofc` zählt gar keine
     # fremden Gebote, sondern nur unsere eigenen. Wir waren nie informiert, wir
     # waren blind. Deshalb entscheidet hier ausschließlich die Gebotshöhe.

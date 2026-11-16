@@ -39,7 +39,9 @@ async def test_league_state_reports_budget_phase_trade_budget_and_kickoff(world)
     assert state["kaufkraft_after_bids_eur"] == state["kaufkraft_eur"] - 5_120_000
     assert state["phase"] in ("invest", "purge", "hold")
     tb = state["trade_budget"]
-    assert (tb["used"], tb["limit"], tb["saturated"], tb["my_name"]) == (1, 200, False, "emil")
+    assert (tb["used"], tb["limit"], tb["saturated"], tb["my_name"]) == (
+        1, 200, False, "manager_self",
+    )
     assert tb["line"].startswith("🟢 Trade-Budget: 1/200")
     assert state["matchday_deadline"]["matchday"] == 1
     assert state["next_kickoff"] is not None
@@ -73,9 +75,9 @@ async def test_market_exposes_seller_expiry_own_bid_and_sorts(world):
     assert gem["listing_type"] == "kickbase" and striker["listing_type"] == "manager"
     assert (gem["bid_ours_eur"], gem["bid_ours_fmt"]) == (5_120_000, "5,12 M")
     assert gem["price_eur"] == 5_500_000 and gem["price_vs_mv_pct"] == 110.0
-    assert striker["seller"] == "Felix K." and striker["bid_ours_eur"] is None
+    assert striker["seller"] == "Manager_04" and striker["bid_ours_eur"] is None
     assert striker["club"] == "Freiburg" and striker["pos"] == "STU"
-    assert musiala["in_squad"] is True and musiala["seller"] == "emil"
+    assert musiala["in_squad"] is True and musiala["seller"] == "manager_self"
     assert [p["id"] for p in out["players"]] == ["3", "99", "88"]
     # expires: Kickbase-Countdowns zuerst, Manager-Listings (exs 0) zuletzt
     soon = await tools_read.market(limit=2, sort="expires")
@@ -138,7 +140,7 @@ async def test_feed_filters_types_and_summarises_known_events(world):
     out = await tools_read.feed(limit=10)
     assert out["count"] == 4
     first = out["items"][0]
-    assert first["t"] == 15 and first["summary"] == "emil kauft Hoffmeier für 8,70 M"
+    assert first["t"] == 15 and first["summary"] == "manager_self kauft Hoffmeier für 8,70 M"
     assert out["items"][1]["summary"] == "Prämie kassiert: +50 k (Tag 6)"
     assert out["items"][2]["summary"] == "Stefan verkauft Vozar für 1,28 M"
     assert out["items"][3]["summary"].startswith("Markt-Event: Listing")

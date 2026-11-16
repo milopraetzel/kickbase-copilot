@@ -531,7 +531,7 @@ verschenkt 250 k bis 2 Mio. €.
 
 **(f) Die Kappe `max_bid_premium_need = 1.35` ist an unserem Verlust kalibriert,
 nicht am Gewinnpreis.** Der einzige beobachtete Zuschlagspreis für einen begehrten
-Spieler auf einem Kickbase-Listing ist **157 %** (Ljubičić an Lukas M.). Wir haben
+Spieler auf einem Kickbase-Listing ist **157 %** (Ljubičić an Manager_02). Wir haben
 daraus 135 % gemacht — die höchste Stufe, die unsere eigene Erwartungsformel noch
 abbildet. Ehrlich benannt: Bei einem zweiten Ljubičić verlieren wir wieder, nur
 knapper. Es fehlt die Gegenrechnung, ab wann ein Overpay ökonomisch falsch ist

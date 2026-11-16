@@ -38,13 +38,13 @@ def _prop(pid: str, kind: str = "bid") -> Proposal:
 
 def test_build_briefing_picks_own_rank_and_sums_team_value():
     ranking = [
-        RankingEntry(user_id="2663242", name="emil", rank=10, points=0, team_value=0),
+        RankingEntry(user_id="9000010", name="manager_self", rank=10, points=0, team_value=0),
         RankingEntry(user_id="999", name="Rivale", rank=1, points=500, team_value=0),
     ]
     squad = [_sp("1", 20_000_000), _sp("2", 5_000_000)]
     plan = Plan(league_id="L", budget=53_800_000, buys=[_prop("3")], sells=[])
 
-    b = build_briefing("BASE", "2663242", ranking, squad, 53_800_000, 1_200_000, plan)
+    b = build_briefing("BASE", "9000010", ranking, squad, 53_800_000, 1_200_000, plan)
 
     assert b.rank == 10
     assert b.total_managers == 2

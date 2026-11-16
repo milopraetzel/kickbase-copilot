@@ -32,7 +32,7 @@ async def test_default_preflight_uses_execution_time_despite_different_system_cl
         return [SimpleNamespace(kickoff=deadline, matchday=4, is_finished=False)]
 
     client.get_matchdays = matchdays
-    executor = ActionExecutor(client, session, user_id="2663242")
+    executor = ActionExecutor(client, session, user_id="9000010")
     planned = action(purchase_review=engine_review())
     if staged:
         proposal = await executor.stage(planned, now=NOW)

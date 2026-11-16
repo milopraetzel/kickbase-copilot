@@ -5,7 +5,7 @@
   "captured_at": "2026-09-14T12:47:16.153108+00:00",
   "consistent": true,
   "league_id": "1234567",
-  "manager_id": "2663242",
+  "manager_id": "9000010",
   "budget_eur": 3220437,
   "rules": {
     "max_players_per_club": 8,
@@ -196,7 +196,7 @@
       },
       "price": 4392268,
       "expires_at": "2026-09-13T13:16:13Z",
-      "seller_id": "2464959",
+      "seller_id": "9000004",
       "offer_count": 0
     },
     {
@@ -280,7 +280,7 @@
       },
       "price": 10465144,
       "expires_at": "2026-09-11T17:52:21Z",
-      "seller_id": "2465197",
+      "seller_id": "9000006",
       "offer_count": 0
     },
     {
@@ -301,7 +301,7 @@
       },
       "price": 16116107,
       "expires_at": "2026-09-07T07:00:01Z",
-      "seller_id": "2663242",
+      "seller_id": "9000010",
       "offer_count": 0
     },
     {
@@ -406,7 +406,7 @@
       },
       "price": 15549752,
       "expires_at": "2026-09-07T07:55:24Z",
-      "seller_id": "2663242",
+      "seller_id": "9000010",
       "offer_count": 0
     },
     {
@@ -448,7 +448,7 @@
       },
       "price": 4429813,
       "expires_at": "2026-09-13T16:06:59Z",
-      "seller_id": "2465162",
+      "seller_id": "9000005",
       "offer_count": 0
     },
     {
@@ -469,7 +469,7 @@
       },
       "price": 8485482,
       "expires_at": "2026-09-07T07:55:33Z",
-      "seller_id": "2663242",
+      "seller_id": "9000010",
       "offer_count": 0
     },
     {
@@ -490,7 +490,7 @@
       },
       "price": 12663475,
       "expires_at": "2026-09-13T08:45:37Z",
-      "seller_id": "2465609",
+      "seller_id": "9000007",
       "offer_count": 0
     },
     {
@@ -532,7 +532,7 @@
       },
       "price": 9901588,
       "expires_at": "2026-09-13T20:24:52Z",
-      "seller_id": "2467172",
+      "seller_id": "9000008",
       "offer_count": 0
     },
     {
@@ -553,7 +553,7 @@
       },
       "price": 6656740,
       "expires_at": "2026-09-02T17:35:01Z",
-      "seller_id": "2663242",
+      "seller_id": "9000010",
       "offer_count": 0
     },
     {
@@ -574,7 +574,7 @@
       },
       "price": 5333859,
       "expires_at": "2026-09-07T07:55:39Z",
-      "seller_id": "2663242",
+      "seller_id": "9000010",
       "offer_count": 0
     },
     {
@@ -637,7 +637,7 @@
       },
       "price": 10228388,
       "expires_at": "2026-09-14T10:12:21Z",
-      "seller_id": "2464959",
+      "seller_id": "9000004",
       "offer_count": 0
     },
     {
@@ -658,7 +658,7 @@
       },
       "price": 12740207,
       "expires_at": "2026-09-07T07:00:04Z",
-      "seller_id": "2663242",
+      "seller_id": "9000010",
       "offer_count": 1
     },
     {
@@ -700,7 +700,7 @@
       },
       "price": 8555393,
       "expires_at": "2026-09-07T07:00:07Z",
-      "seller_id": "2663242",
+      "seller_id": "9000010",
       "offer_count": 0
     },
     {
@@ -721,7 +721,7 @@
       },
       "price": 9273253,
       "expires_at": "2026-09-13T20:24:49Z",
-      "seller_id": "2467172",
+      "seller_id": "9000008",
       "offer_count": 0
     },
     {
@@ -805,7 +805,7 @@
       },
       "price": 1074561,
       "expires_at": "2026-09-13T13:15:57Z",
-      "seller_id": "2464959",
+      "seller_id": "9000004",
       "offer_count": 0
     },
     {
@@ -826,7 +826,7 @@
       },
       "price": 5782516,
       "expires_at": "2026-09-14T06:35:39Z",
-      "seller_id": "394535",
+      "seller_id": "9000001",
       "offer_count": 0
     },
     {
@@ -847,7 +847,7 @@
       },
       "price": 4191198,
       "expires_at": "2026-09-13T08:42:19Z",
-      "seller_id": "2465609",
+      "seller_id": "9000007",
       "offer_count": 0
     },
     {
@@ -931,7 +931,7 @@
       },
       "price": 918425,
       "expires_at": "2026-09-13T20:26:36Z",
-      "seller_id": "2465609",
+      "seller_id": "9000007",
       "offer_count": 0
     },
     {
@@ -994,7 +994,7 @@
       },
       "price": 2507703,
       "expires_at": "2026-09-13T08:51:18Z",
-      "seller_id": "2465609",
+      "seller_id": "9000007",
       "offer_count": 0
     },
     {

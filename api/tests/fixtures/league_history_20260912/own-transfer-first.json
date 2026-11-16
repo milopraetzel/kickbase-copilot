@@ -1,6 +1,6 @@
 {
-  "u": "2663242",
-  "unm": "emil",
+  "u": "9000010",
+  "unm": "manager_self",
   "it": [
     {
       "pi": "3187",
@@ -61,7 +61,7 @@
       "pn": "Dina Ebimbe",
       "tid": "8",
       "tty": 1,
-      "othnm": "Osei",
+      "othnm": "Manager_05",
       "trp": 5548095,
       "dt": "2026-09-06T15:55:56Z",
       "pim": "content/file/afbea634b0e842279a632beb83f7cfbd.png"
@@ -71,7 +71,7 @@
       "pn": "Vidović",
       "tid": "29",
       "tty": 1,
-      "othnm": "Osei",
+      "othnm": "Manager_05",
       "trp": 8554338,
       "dt": "2026-09-06T09:04:28Z",
       "pim": "content/file/cbf9ad550a164e0392e43ae723e2d83d.png"
@@ -81,7 +81,7 @@
       "pn": "Ache",
       "tid": "28",
       "tty": 1,
-      "othnm": "Osei",
+      "othnm": "Manager_05",
       "trp": 15915792,
       "dt": "2026-09-05T07:55:24Z",
       "pim": "content/file/659aab812d23451ba8e47f520a7d0754.png"
@@ -145,7 +145,7 @@
       "pn": "Ullrich",
       "tid": "15",
       "tty": 1,
-      "othnm": "Felix K. ",
+      "othnm": "Manager_04 ",
       "trp": 9400000,
       "dt": "2026-08-28T17:29:34Z",
       "pim": "content/file/27f19d9713034a05b1a7dedcb527f48d.png"

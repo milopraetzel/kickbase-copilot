@@ -15,7 +15,7 @@ NOW = datetime(2026, 9, 13, 9, tzinfo=UTC)
 
 
 def bid(pid="11665", amount=8_074_347):
-    return {"player_id": pid, "offer_id": "2663242", "amount": amount,
+    return {"player_id": pid, "offer_id": "9000010", "amount": amount,
             "expires_in_s": 104_283, "seller": "", "funding_provenance": {
                 "original_bid_action_id": {"a": 1, "b": 2, "c": 3}.get(pid, 189),
                 "original_listing_expires_at": (NOW+timedelta(seconds=104_283)).isoformat(),
@@ -31,7 +31,7 @@ def recovery(bids=None, **changes):
 
 
 def veto(review, **changes):
-    values = dict(league_id="1234567", player_id="11665", offer_id="2663242",
+    values = dict(league_id="1234567", player_id="11665", offer_id="9000010",
                   amount=8_074_347, now=NOW, budget=3_120_437,
                   live_bids=[bid()], owned_player_ids=["owned"])
     values.update(changes)

@@ -20,8 +20,8 @@ REAL = json.loads(r'''
       "feed_id": "12329644480",
       "player_id": "8351",
       "name": "Højlund",
-      "manager": "emil",
-      "buyer": "emil",
+      "manager": "manager_self",
+      "buyer": "manager_self",
       "seller": "",
       "buyer_id": "",
       "seller_id": "",
@@ -43,8 +43,8 @@ REAL = json.loads(r'''
       "feed_id": "12544110575",
       "player_id": "15472",
       "name": "Daka",
-      "manager": "emil",
-      "buyer": "emil",
+      "manager": "manager_self",
+      "buyer": "manager_self",
       "seller": "",
       "buyer_id": "",
       "seller_id": "",
@@ -66,9 +66,9 @@ REAL = json.loads(r'''
       "feed_id": "12588175136",
       "player_id": "3081",
       "name": "Vidović",
-      "manager": "emil",
-      "buyer": "emil",
-      "seller": "Osei",
+      "manager": "manager_self",
+      "buyer": "manager_self",
+      "seller": "Manager_05",
       "buyer_id": "",
       "seller_id": "",
       "source": "activity_feed",
@@ -89,9 +89,9 @@ REAL = json.loads(r'''
       "feed_id": "12602258984",
       "player_id": "15472",
       "name": "Daka",
-      "manager": "emil",
+      "manager": "manager_self",
       "buyer": "",
-      "seller": "emil",
+      "seller": "manager_self",
       "buyer_id": "",
       "seller_id": "",
       "source": "activity_feed",
@@ -112,9 +112,9 @@ REAL = json.loads(r'''
       "feed_id": "12602259134",
       "player_id": "14890",
       "name": "Vogt",
-      "manager": "emil",
+      "manager": "manager_self",
       "buyer": "",
-      "seller": "emil",
+      "seller": "manager_self",
       "buyer_id": "",
       "seller_id": "",
       "source": "activity_feed",
@@ -135,9 +135,9 @@ REAL = json.loads(r'''
       "feed_id": "12602259239",
       "player_id": "8351",
       "name": "Højlund",
-      "manager": "emil",
+      "manager": "manager_self",
       "buyer": "",
-      "seller": "emil",
+      "seller": "manager_self",
       "buyer_id": "",
       "seller_id": "",
       "source": "activity_feed",
@@ -161,9 +161,9 @@ REAL = json.loads(r'''
       "name": "Bischof",
       "at": "2025-08-11T19:11:45Z",
       "amount": 20888981,
-      "buyer_id": "2227102",
+      "buyer_id": "9000003",
       "seller_id": "",
-      "buyer": "Niklas B.",
+      "buyer": "Manager_03",
       "seller": "",
       "market_value": null,
       "mw_source": null,
@@ -175,9 +175,9 @@ REAL = json.loads(r'''
       "at": "2025-08-21T10:50:08Z",
       "amount": 17062715,
       "buyer_id": "",
-      "seller_id": "2227102",
+      "seller_id": "9000003",
       "buyer": "",
-      "seller": "Niklas B.",
+      "seller": "Manager_03",
       "market_value": null,
       "mw_source": null,
       "update_boundary": false
@@ -187,9 +187,9 @@ REAL = json.loads(r'''
       "name": "Bischof",
       "at": "2025-10-04T10:32:43Z",
       "amount": 14100000,
-      "buyer_id": "2227102",
+      "buyer_id": "9000003",
       "seller_id": "",
-      "buyer": "Niklas B.",
+      "buyer": "Manager_03",
       "seller": "",
       "market_value": null,
       "mw_source": null,
@@ -201,9 +201,9 @@ REAL = json.loads(r'''
       "at": "2025-10-16T14:56:29Z",
       "amount": 9643659,
       "buyer_id": "",
-      "seller_id": "2227102",
+      "seller_id": "9000003",
       "buyer": "",
-      "seller": "Niklas B.",
+      "seller": "Manager_03",
       "market_value": null,
       "mw_source": null,
       "update_boundary": false
@@ -268,9 +268,9 @@ REAL = json.loads(r'''
     }
   ],
   "performance": {
-    "2663242": {
-      "u": "2663242",
-      "unm": "emil",
+    "9000010": {
+      "u": "9000010",
+      "unm": "manager_self",
       "st": 3,
       "it": [
         {
@@ -312,9 +312,9 @@ REAL = json.loads(r'''
         }
       ]
     },
-    "2227102": {
-      "u": "2227102",
-      "unm": "Niklas B.",
+    "9000003": {
+      "u": "9000003",
+      "unm": "Manager_03",
       "st": 3,
       "it": [
         {
@@ -580,10 +580,10 @@ def build(**overrides):
     inputs = {
         "trades": deepcopy(REAL["trades"]),
         "manager_rows": [
-            {"user_id": "2663242", "name": "emil", "rank": 12},
-            {"user_id": "2227102", "name": "Niklas B.", "rank": 7},
+            {"user_id": "9000010", "name": "manager_self", "rank": 12},
+            {"user_id": "9000003", "name": "Manager_03", "rank": 7},
         ],
-        "user_id": "2663242", "user_name": "emil", "budget": REAL["budget"],
+        "user_id": "9000010", "user_name": "manager_self", "budget": REAL["budget"],
         "own_squad_rows": deepcopy(REAL["own_squad"]),
         "manager_performance": deepcopy(REAL["performance"]),
         "generated_at": "2026-09-11T22:00:00Z", "season_start": "2026-08-10T08:31:42Z",
@@ -593,7 +593,7 @@ def build(**overrides):
 
 
 def test_observed_profit_cashflow_and_current_cost_basis_are_separate():
-    own = build()["2663242"]
+    own = build()["9000010"]
     summary = own["summary"]
     assert summary["realized_pnl_eur"] == -2079180
     assert summary["purchase_spend_eur"] == 25061005
@@ -617,7 +617,7 @@ def test_observed_profit_cashflow_and_current_cost_basis_are_separate():
 
 
 def test_realized_loss_decomposes_into_market_drift_and_execution_premiums():
-    own = build()["2663242"]
+    own = build()["9000010"]
     daka = next(r for r in own["round_trips"] if r["player_id"] == "15472")
     assert daka["buy_premium_eur"] == 1274091
     assert daka["market_value_change_eur"] == -1824934
@@ -633,7 +633,7 @@ def test_realized_loss_decomposes_into_market_drift_and_execution_premiums():
 
 def test_repeated_ownership_pairs_in_chronological_order_for_rival_too():
     trades = deepcopy(REAL["repeated_trades"])
-    rival = build(trades=list(reversed(trades)), season_start=None)["2227102"]
+    rival = build(trades=list(reversed(trades)), season_start=None)["9000003"]
     assert [r["pnl_eur"] for r in rival["round_trips"]] == [-3826266, -4456341]
     assert rival["summary"]["realized_pnl_eur"] == -8282607
     assert rival["summary"]["purchases"] == 2
@@ -647,9 +647,9 @@ def test_current_holding_uses_second_purchase_not_closed_first_purchase():
     rival = build(
         trades=REAL["repeated_trades"], season_start=None,
         generated_at="2025-10-10T12:00:00Z",
-        manager_rows=[{"user_id": "2227102", "name": "Niklas B.",
+        manager_rows=[{"user_id": "9000003", "name": "Manager_03",
                        "spieler": [{"pid": "3120", "name": "Bischof", "mv": None}]}],
-    )["2227102"]
+    )["9000003"]
     assert rival["holdings"][0]["buy_amount"] == 14100000
     assert rival["holdings"][0]["bought_at"] == "2025-10-04T10:32:43+00:00"
     assert rival["holdings"][0]["unrealized_pnl_eur"] is None
@@ -659,7 +659,7 @@ def test_current_holding_uses_second_purchase_not_closed_first_purchase():
 def test_reset_boundary_prevents_old_buy_from_becoming_new_season_cost_basis():
     rival = build(
         trades=REAL["repeated_trades"], season_start="2025-10-10T00:00:00Z",
-    )["2227102"]
+    )["9000003"]
     assert rival["summary"]["purchases"] == 0
     assert rival["summary"]["sales"] == 1
     assert rival["summary"]["realized_pnl_eur"] is None
@@ -671,8 +671,8 @@ def test_unknown_cost_basis_never_uses_api_gain_or_current_market_value():
     sale = next(t for t in REAL["trades"] if t["player_id"] == "14890")
     own = build(
         trades=[sale], own_squad_rows=None,
-        manager_rows=[{"user_id": "2663242", "name": "emil", "gewinn": 7415988}],
-    )["2663242"]
+        manager_rows=[{"user_id": "9000010", "name": "manager_self", "gewinn": 7415988}],
+    )["9000010"]
     assert own["summary"]["realized_pnl_eur"] is None
     assert own["summary"]["sale_proceeds_eur"] == 1625348
     assert own["summary"]["squad_value_eur"] is None
@@ -685,7 +685,7 @@ def test_unknown_cost_basis_never_uses_api_gain_or_current_market_value():
 def test_historical_observed_sources_count_as_priced_purchase(source):
     trade = deepcopy(next(t for t in REAL["trades"] if t["player_id"] == "3081"))
     trade["mw_source"] = source
-    own = build(trades=[trade])["2663242"]
+    own = build(trades=[trade])["9000010"]
     assert own["summary"]["priced_purchases"] == 1
     assert own["summary"]["premium_eur"] == 180807
 
@@ -697,7 +697,7 @@ def test_historical_observed_sources_count_as_priced_purchase(source):
 def test_unobserved_or_ambiguous_market_value_never_becomes_premium(change):
     trade = deepcopy(next(t for t in REAL["trades"] if t["player_id"] == "3081"))
     trade.update(change)
-    own = build(trades=[trade])["2663242"]
+    own = build(trades=[trade])["9000010"]
     assert own["summary"]["priced_purchases"] == 0
     assert own["summary"]["premium_eur"] is None
     holding = next(h for h in own["holdings"] if h["player_id"] == "3081")
@@ -707,21 +707,22 @@ def test_unobserved_or_ambiguous_market_value_never_becomes_premium(change):
 
 def test_stable_ids_win_over_renames_and_legacy_names_are_trimmed():
     trade = deepcopy(next(t for t in REAL["trades"] if t["player_id"] == "3081"))
-    trade.update(buyer_id="2227102", buyer="emil")
+    trade.update(buyer_id="9000003", buyer="manager_self")
     profiles = build(trades=[trade])
-    assert profiles["2227102"]["summary"]["purchases"] == 1
-    assert profiles["2663242"]["summary"]["purchases"] == 0
+    assert profiles["9000003"]["summary"]["purchases"] == 1
+    assert profiles["9000010"]["summary"]["purchases"] == 0
     trade.pop("buyer_id")
-    trade["buyer"] = " emil  "
+    trade["buyer"] = " manager_self  "
     profiles = build(trades=[trade])
-    assert profiles["2663242"]["summary"]["purchases"] == 1
-    assert profiles["2663242"]["coverage"]["name_fallback_trades"] == 1
+    assert profiles["9000010"]["summary"]["purchases"] == 1
+    assert profiles["9000010"]["coverage"]["name_fallback_trades"] == 1
 
 
 def test_ambiguous_legacy_name_is_not_assigned_to_either_manager():
     own = build(manager_rows=[
-        {"user_id": "2663242", "name": "emil"}, {"user_id": "2227102", "name": "emil"},
-    ])["2663242"]
+        {"user_id": "9000010", "name": "manager_self"},
+        {"user_id": "9000003", "name": "manager_self"},
+    ])["9000010"]
     assert own["summary"]["purchases"] == 0
     assert own["summary"]["sales"] == 0
 
@@ -729,7 +730,7 @@ def test_ambiguous_legacy_name_is_not_assigned_to_either_manager():
 def test_duplicate_events_do_not_duplicate_profit_and_inputs_stay_unchanged():
     trades = deepcopy(REAL["trades"])
     before = deepcopy(trades)
-    own = build(trades=trades + trades)["2663242"]
+    own = build(trades=trades + trades)["9000010"]
     assert trades == before
     assert own["summary"]["realized_pnl_eur"] == -2079180
     assert own["summary"]["purchases"] == 3
@@ -737,7 +738,7 @@ def test_duplicate_events_do_not_duplicate_profit_and_inputs_stay_unchanged():
 
 def test_performance_scopes_current_season_and_keeps_live_zero():
     profiles = build()
-    own, rival = profiles["2663242"], profiles["2227102"]
+    own, rival = profiles["9000010"], profiles["9000003"]
     assert own["live_points"] == 827
     assert own["completed_points"] == 1023
     assert [r["points"] for r in own["matchday_history"]] == [664, 359, -196]
@@ -755,9 +756,9 @@ def test_performance_scopes_current_season_and_keeps_live_zero():
 
 def test_zero_on_completed_matchday_is_included_not_treated_as_missing():
     perf = deepcopy(REAL["performance"])
-    current = perf["2227102"]["it"][-1]
+    current = perf["9000003"]["it"][-1]
     current["it"][2]["cur"] = False  # derselbe echte Nullwert nach Abschluss
-    rival = build(manager_performance=perf)["2227102"]
+    rival = build(manager_performance=perf)["9000003"]
     assert rival["completed_points"] == 1825
     assert rival["matchday_history"][2]["points"] == 0
     assert rival["coverage"]["missing_matchday_points"] == 0
@@ -766,12 +767,12 @@ def test_zero_on_completed_matchday_is_included_not_treated_as_missing():
 @pytest.mark.parametrize("missing_row", [False, True])
 def test_missing_completed_matchday_breaks_cumulative_and_completed_sum(missing_row):
     perf = deepcopy(REAL["performance"])
-    rows = perf["2663242"]["it"][0]["it"]
+    rows = perf["9000010"]["it"][0]["it"]
     if missing_row:
         rows.pop(1)
     else:
         rows[1].pop("mdp")
-    own = build(manager_performance=perf)["2663242"]
+    own = build(manager_performance=perf)["9000010"]
     assert own["completed_points"] is None
     assert own["live_points"] == 827  # separat belegte API-Gesamtsumme bleibt erhalten
     assert [r["cumulative_points"] for r in own["matchday_history"]] == [664, None, None]
@@ -780,9 +781,9 @@ def test_missing_completed_matchday_breaks_cumulative_and_completed_sum(missing_
 
 def test_missing_performance_does_not_infer_completed_points_from_dashboard():
     own = build(manager_performance=None, manager_rows=[{
-        "user_id": "2663242", "name": "emil", "dashboard_points": 827,
+        "user_id": "9000010", "name": "manager_self", "dashboard_points": 827,
         "matchday_history": [664, 359, -196],
-    }])["2663242"]
+    }])["9000010"]
     assert own["live_points"] == 827
     assert own["completed_points"] is None
     assert own["matchday_history"] == []
@@ -799,9 +800,9 @@ def test_fresh_ranking_and_dashboard_precede_cached_performance(
     ranking, dashboard, expected, source,
 ):
     own = build(manager_rows=[{
-        "user_id": "2663242", "name": "emil",
+        "user_id": "9000010", "name": "manager_self",
         "punkte_saison": ranking, "dashboard_points": dashboard,
-    }])["2663242"]
+    }])["9000010"]
     assert own["live_points"] == expected
     assert own["coverage"]["live_points_source"] == source
     assert own["completed_points"] == 1023
@@ -810,10 +811,10 @@ def test_fresh_ranking_and_dashboard_precede_cached_performance(
 
 def test_fresh_total_never_fills_unknown_current_matchday():
     perf = deepcopy(REAL["performance"])
-    perf["2663242"]["it"][0]["it"][2].pop("mdp")
+    perf["9000010"]["it"][0]["it"][2].pop("mdp")
     own = build(manager_performance=perf, manager_rows=[{
-        "user_id": "2663242", "name": "emil", "punkte_saison": 827,
-    }])["2663242"]
+        "user_id": "9000010", "name": "manager_self", "punkte_saison": 827,
+    }])["9000010"]
     assert own["live_points"] == 827
     assert own["completed_points"] == 1023
     assert own["matchday_history"][-1]["points"] is None

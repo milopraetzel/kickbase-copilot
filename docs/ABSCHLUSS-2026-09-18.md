@@ -91,7 +91,7 @@ muss im Entwurf beantwortet sein, nicht als nachträglicher Patch an einem Tor.
 - Geschützte Spieler: Liste ist seit 16.09. leer, Olise steht zu 100 M am Markt.
 - Flags auf der Box (14:24 gelesen): `DRY_RUN=0`, `ALLOW_LIVE=1`,
   `AUTO_INTENTS=1`, `AUTO_LINEUP=1`, `AUTO_BONUS=1`, `AUTO_PURGE=1`.
-- Offenes Gebot: Tigges 2,98 M bei Osei (Manager-Listing, 100 % MW).
+- Offenes Gebot: Tigges 2,98 M bei Manager_05 (Manager-Listing, 100 % MW).
 - Nicht gemergte Branches, bewusst NICHT nach main geholt (alt, 8–116 Commits
   hinter main, ungeprüft): `betrieb/box-stand-2026-09-16` (1 Datei),
   `claude/nice-dijkstra-2f5008` (LEARNINGS-Umbruch, 26.08.),

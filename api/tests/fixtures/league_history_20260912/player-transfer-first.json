@@ -1,17 +1,17 @@
 {
   "it": [
     {
-      "u": "2465162",
-      "uim": "user/aeff3c378c5441399f302d015ca36327.jpe",
-      "unm": "Osei",
+      "u": "9000005",
+      "uim": "user/avatar_07.jpe",
+      "unm": "Manager_05",
       "dt": "2025-08-30T10:46:39Z",
       "trp": 70076850,
       "t": 2
     },
     {
-      "u": "2681921",
-      "uim": "user/1a1ca3a1f97c4e6498109fbc65386c83.jpe",
-      "unm": "Stefan",
+      "u": "9000011",
+      "uim": "user/avatar_03.jpe",
+      "unm": "Manager_11",
       "dt": "2025-12-24T02:45:20Z",
       "trp": 72555666,
       "t": 2
@@ -22,9 +22,9 @@
       "t": 2
     },
     {
-      "u": "2465162",
-      "uim": "user/aeff3c378c5441399f302d015ca36327.jpe",
-      "unm": "Osei",
+      "u": "9000005",
+      "uim": "user/avatar_07.jpe",
+      "unm": "Manager_05",
       "dt": "2026-05-05T22:02:56Z",
       "trp": 67500000,
       "t": 2
@@ -35,9 +35,9 @@
       "t": 4
     },
     {
-      "u": "2663242",
-      "uim": "user/0efb0f246b0b42d883fa02d77e28b65e.jpeg",
-      "unm": "emil",
+      "u": "9000010",
+      "uim": "user/avatar_02.jpeg",
+      "unm": "manager_self",
       "dt": "2026-08-23T20:24:26Z",
       "trp": 68017197,
       "t": 2

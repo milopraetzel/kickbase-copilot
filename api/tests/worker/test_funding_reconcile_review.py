@@ -15,7 +15,7 @@ def funding_action(**changes):
         "purpose": "funding_abandon_bid",
         "player_id": "99",
         "league_id": "L1",
-        "offer_id": "2663242",
+        "offer_id": "9000010",
         "amount_eur": 1_000_000,
         "observed_at": (NOW - timedelta(minutes=1)).isoformat(),
         "valid_until": (NOW + timedelta(hours=1)).isoformat(),
@@ -24,19 +24,19 @@ def funding_action(**changes):
         "original_bid_action_id": 1,
         **changes,
     }
-    return _action("cancel_bid", payload={"offer_id": "2663242", "funding_review": review})
+    return _action("cancel_bid", payload={"offer_id": "9000010", "funding_review": review})
 
 
 def test_same_offer_id_on_another_player_is_not_the_target_bid():
     status, note = classify(
-        funding_action(), [_bid_entry("other", "2663242")], set(), set(), now=NOW
+        funding_action(), [_bid_entry("other", "9000010")], set(), set(), now=NOW
     )
     assert status == "executed"
     assert "source=observed_state" in note and "kein API" in note
 
 
 def test_exact_player_and_offer_id_still_present_proves_no_abandonment():
-    status, note = classify(funding_action(), [_bid_entry("99", "2663242")], set(), set(), now=NOW)
+    status, note = classify(funding_action(), [_bid_entry("99", "9000010")], set(), set(), now=NOW)
     assert status == "failed" and "besteht" in note
 
 
@@ -65,7 +65,7 @@ def test_ambiguous_disappearance_never_becomes_a_confirmed_cancel(case):
     elif case == "different_target_offer":
         bids = [_bid_entry("99", "different")]
     else:
-        bids = [{"offer_id": "2663242"}]
+        bids = [{"offer_id": "9000010"}]
     assert classify(action, bids, owned, set(), now=now)[0] is None
 
 

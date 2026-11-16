@@ -43,9 +43,9 @@ def _cancel(**over):
         "kind": "cancel_bid",
         "player_id": "3350",
         "amount": 0,
-        "rationale": "Keidel: Moritz W. nimmt seit 24 h nicht an — Konto freimachen für Daka",
+        "rationale": "Keidel: Manager_01 nimmt seit 24 h nicht an — Konto freimachen für Daka",
         "player_name": "Keidel",
-        "offer_id": "2663242",
+        "offer_id": "9000010",
         "via": "claude-session",  # Paket 1 (P0-8): hermes ist kein Absender mehr
     }
     base.update(over)
@@ -57,7 +57,7 @@ def test_rueckzug_ohne_emil_go_mit_offer_id_in_sources(client, db):
     assert r.status_code == 200, r.text
     assert r.json()["intent"]["kind"] == "cancel_bid"
     row = db.execute(select(Intent)).scalars().one()
-    assert row.kind == "cancel_bid" and row.sources["offer_id"] == "2663242"
+    assert row.kind == "cancel_bid" and row.sources["offer_id"] == "9000010"
     assert row.sources["manual"] is True and row.sources["via"] == "claude-session"
 
 

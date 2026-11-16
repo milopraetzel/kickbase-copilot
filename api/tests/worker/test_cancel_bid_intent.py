@@ -12,12 +12,12 @@ from kickbase_agent.worker.intents import _kind_label, action_for
 
 def test_action_for_traegt_offer_id_und_manuellen_rule_id() -> None:
     it = SimpleNamespace(
-        kind="cancel_bid", player_id="3350", amount=0, rationale="Moritz W. hängt",
+        kind="cancel_bid", player_id="3350", amount=0, rationale="Manager_01 hängt",
         adjusted_from=None, emil_note=None,
-        sources={"manual": True, "offer_id": "2663242", "via": "hermes"},
+        sources={"manual": True, "offer_id": "9000010", "via": "hermes"},
     )
     a = action_for(it, "L1")
-    assert a.action_type == "cancel_bid" and a.offer_id == "2663242"
+    assert a.action_type == "cancel_bid" and a.offer_id == "9000010"
     assert a.rule_id == "intent-cancel_bid-manual" and a.amount is None
     assert a.swap is False
 

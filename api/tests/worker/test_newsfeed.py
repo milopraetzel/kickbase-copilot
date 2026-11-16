@@ -26,7 +26,7 @@ def _feed_event(ln: str, mv: int, hours_ago: int = 1) -> dict:
 
 def test_split_feed_separates_and_filters_old():
     feed = [
-        _feed_transfer("Niklas B.", "Maza", 31_100_000),
+        _feed_transfer("Manager_03", "Maza", 31_100_000),
         _feed_event("Rieder", 13_547_610),
         _feed_transfer("Alt", "Uralt", 1, hours_ago=90),   # zu alt → raus
     ]
@@ -37,14 +37,14 @@ def test_split_feed_separates_and_filters_old():
 
 def test_format_update_renders_all_blocks():
     b = NewsBundle(
-        transfers=[_feed_transfer("Niklas B.", "Maza", 31_100_000)],
+        transfers=[_feed_transfer("Manager_03", "Maza", 31_100_000)],
         market_events=[_feed_event("Rieder", 13_547_610)],
         injuries=[InjuryEntry("3", "Emre Can", "Kreuzbandriss")],
         news=[NewsArticle(source="kicker", url="", title="Musiala vor Comeback",
                           body="", published_at=_NOW)],
     )
     text = format_update(b)
-    assert "Niklas B." in text and "31.1M" in text
+    assert "Manager_03" in text and "31.1M" in text
     assert "Rieder" in text
     assert "Emre Can" in text
     assert "Musiala vor Comeback" in text

@@ -7,6 +7,8 @@ Ein selbstgehosteter **KI-Co-Pilot und autonomer Handels-Agent für Kickbase** (
 Der Agent verbindet sich lokal mit deinem eigenen Kickbase-Account, liest im 10-Minuten-Takt deinen Kader, den Transfermarkt, 160-Tage-Marktwert-Kurven, Verletzungs-/Aufstellungs-Meldungen sowie alle Mitspieler-Kader deiner Liga aus – und berechnet daraus eine **4-Säulen-Strategie (AI-Faktor 0–100)** inklusive kompletter Tausch-Ketten auf Dispo.
 
 > **100 % Self-Hosted & volle Kontrolle:** Deine Kickbase-Zugangsdaten verlassen niemals deinen eigenen Rechner oder Server. Über das **integrierte Regelwerk (6. Haupt-Tab `⚙ Regelwerk` in der Web-App + 5-Schritte-Onboarding im KI-Chat)** bestimmst du exakt, ob der Agent nur als **stiller Berater (`dry_run`)**, als **Co-Pilot mit Veto-Countdown (`veto_copilot`)** oder als **Voll-Autopilot (`full_autopilot`)** arbeitet.
+>
+> **Rechtlicher Hinweis / Disclaimer:** Dies ist ein unabhängiges, inoffizielles Open-Source- und Forschungsprojekt und steht in **keinerlei Verbindung zur Kickbase GmbH** (nicht von Kickbase gesponsert, unterstützt oder autorisiert). Standardmäßig läuft das System im reinen Lese-/Beratermodus (`AGENT_DRY_RUN=1`). Automatisierte Schreibzugriffe (Gebote/Verkäufe) können gegen die Nutzungsbedingungen (AGB) von Kickbase verstoßen — jede Aktivierung von Live-Schreibfunktionen erfolgt ausdrücklich auf eigene Verantwortung. *(Unofficial community project — not affiliated with or endorsed by Kickbase GmbH. Read-only `dry_run` mode is enabled by default; enabling automated actions may conflict with Kickbase Terms of Service and is strictly at your own risk.)*
 
 ---
 

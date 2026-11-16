@@ -27,11 +27,11 @@ BIDS_RAW = [
     {"player_id": "99", "name": "Hidden Gem", "team_id": "11", "amount": 5_120_000,
      "offer_id": "o-1", "expires_in_s": 3600, "seller": "", "listing_price": 5_500_000},
     {"player_id": "88", "name": "Cheap Striker", "team_id": "5", "amount": 3_000_000,
-     "offer_id": "o-2", "expires_in_s": 0, "seller": "Felix K.", "listing_price": 3_200_000},
+     "offer_id": "o-2", "expires_in_s": 0, "seller": "Manager_04", "listing_price": 3_200_000},
 ]
 FEED_RAW = [
     {"i": "1", "t": 15, "dt": "2026-08-23T10:00:00Z",
-     "data": {"byr": "Osei", "pn": "Vozar", "trp": 1_280_015}},
+     "data": {"byr": "Manager_05", "pn": "Vozar", "trp": 1_280_015}},
 ]
 
 
@@ -118,7 +118,7 @@ def test_bids_payload_fields(client, fake_client):
     # Sortierung nach Restzeit: Manager-Listing (exs 0) zuerst
     assert manager["name"] == "Cheap Striker"
     assert manager["listing_type"] == "manager"
-    assert manager["seller"] == "Felix K."
+    assert manager["seller"] == "Manager_04"
     assert manager["expires_at"] is None
     assert kickbase["name"] == "Hidden Gem"
     assert kickbase["listing_type"] == "kickbase"

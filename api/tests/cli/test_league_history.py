@@ -12,8 +12,8 @@ from kickbase_agent.cli.cockpit import league_history as history
 
 FIX = Path(__file__).parents[1] / "fixtures" / "league_history_20260912"
 LEAGUE = "1234567"
-OWN = "2663242"
-RIVAL = "2465162"
+OWN = "9000010"
+RIVAL = "9000005"
 NOW = datetime(2026, 9, 11, 22, 10, tzinfo=UTC)
 
 
@@ -43,7 +43,7 @@ def cache_path(tmp_path, monkeypatch):
 
 
 def managers():
-    return [{"user_id": OWN, "name": "emil"}, {"user_id": RIVAL, "name": "Osei"}]
+    return [{"user_id": OWN, "name": "manager_self"}, {"user_id": RIVAL, "name": "Manager_05"}]
 
 
 def test_same_trade_from_two_managers_counts_once_and_keeps_ids():
@@ -170,8 +170,8 @@ async def test_bootstrap_pagination_uses_actual_short_then_empty_pages(cache_pat
     class Client:
         async def get_manager_transfers(self, league, uid, start):
             seen.append(start)
-            paths = {0: "own-transfer-first.json", 25: "manager-2663242-transfer-00025.json",
-                     50: "manager-2663242-transfer-00050.json"}
+            paths = {0: "own-transfer-first.json", 25: "manager-9000010-transfer-00025.json",
+                     50: "manager-9000010-transfer-00050.json"}
             return read(paths[start])
 
     for _ in range(3):

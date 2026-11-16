@@ -16,9 +16,9 @@ FEED = [
     {"i": "2", "t": 15, "dt": "2026-08-23T09:00:00Z",
      "data": {"slr": "emil", "pn": "Khannouss", "trp": 21_500_000}},
     {"i": "3", "t": 15, "dt": "2026-08-23T08:00:00Z",
-     "data": {"byr": "Osei", "pn": "Vozar", "trp": 1_280_015}},
+     "data": {"byr": "Manager_05", "pn": "Vozar", "trp": 1_280_015}},
     {"i": "4", "t": 15, "dt": "2026-08-23T07:00:00Z",
-     "data": {"slr": "Kili", "pn": "Sané", "trp": 30_000_000}},
+     "data": {"slr": "Manager_06", "pn": "Sané", "trp": 30_000_000}},
     {"i": "5", "t": 22, "dt": "2026-08-23T06:00:00Z", "data": {"bn": 50_000, "day": 6}},
     {"i": "6", "t": 3, "dt": "2026-08-23T05:00:00Z", "data": {"pn": "Bellingham"}},
 ]
@@ -48,13 +48,13 @@ def test_foreign_buy_and_sell_become_league_entries():
     events = {e["feed_id"]: e for e in league_events(FEED, me="emil")}
     buy = events["3"]
     assert buy["kind"] == "league"
-    assert buy["title"] == "Liga: Osei kauft Vozar für 1,28 M"
+    assert buy["title"] == "Liga: Manager_05 kauft Vozar für 1,28 M"
     assert buy["status"] == "liga"
-    assert buy["sources"] == {"price": 1_280_015, "price_fmt": "1,28 M", "buyer": "Osei"}
+    assert buy["sources"] == {"price": 1_280_015, "price_fmt": "1,28 M", "buyer": "Manager_05"}
     sell = events["4"]
     assert sell["kind"] == "league"
-    assert sell["title"] == "Liga: Kili verkauft Sané für 30,00 M"
-    assert sell["sources"]["seller"] == "Kili"
+    assert sell["title"] == "Liga: Manager_06 verkauft Sané für 30,00 M"
+    assert sell["sources"]["seller"] == "Manager_06"
 
 
 def test_bonus_becomes_praemie_transfer():
@@ -69,8 +69,8 @@ def test_bonus_becomes_praemie_transfer():
 def test_other_types_and_broken_items_are_skipped():
     broken = [
         {"i": "6", "t": 3, "dt": "2026-08-23T05:00:00Z", "data": {}},   # Markt-Event
-        {"i": "7", "t": 15, "dt": "kaputt", "data": {"byr": "Osei", "trp": 1}},
-        {"i": "8", "t": 15, "dt": "2026-08-23T05:00:00", "data": {"byr": "Osei"}},  # naiv
+        {"i": "7", "t": 15, "dt": "kaputt", "data": {"byr": "Manager_05", "trp": 1}},
+        {"i": "8", "t": 15, "dt": "2026-08-23T05:00:00", "data": {"byr": "Manager_05"}},  # naiv
         {"i": "9", "t": 15, "dt": "2026-08-23T05:00:00Z", "data": {}},  # weder byr noch slr
         {"i": "10", "t": 15, "dt": "2026-08-23T05:00:00Z"},             # ohne data
         "kein-dict",

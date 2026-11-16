@@ -23,7 +23,7 @@ async def test_strategy_selects_player_and_keeps_timestamp(remote, httpx_mock):
         feed_events=[], history_rows=[], performance_rows=[],
         squad_rows=[{"pid": "8329", "name": "Olise", "mv": 65000000}],
         market_rows=[], manager_rows=[], budget=0, open_bids=[], saved_lineup=None,
-        generated_at=at, user_id="2663242", user_name="emil",
+        generated_at=at, user_id="9000010", user_name="manager_self",
     )
     httpx_mock.add_response(url="https://box.example/api/strategy", json={
         **snapshot,
@@ -50,15 +50,15 @@ async def test_strategy_keeps_profiles_history_gaps_and_proposals(
 ):
     snapshot = build_strategy_insights(
         feed_events=[], history_rows=[], performance_rows=[], squad_rows=[],
-        market_rows=[], manager_rows=[{"user_id": "2465162", "name": "Osei"}],
+        market_rows=[], manager_rows=[{"user_id": "9000005", "name": "Manager_05"}],
         budget=0, open_bids=[], saved_lineup=None,
-        generated_at="2026-09-11T22:10:00+00:00", user_id="2663242", user_name="emil",
+        generated_at="2026-09-11T22:10:00+00:00", user_id="9000010", user_name="manager_self",
     )
     # Interner Fehlerzustand des Cockpits, keine fingierte Kickbase-Antwort.
     snapshot["league_history"] = {
         "reset_at": None,
-        "managers": [{"user_id": "2465162", "history_stale": True}],
-        "errors": [{"source": "history", "manager_id": "2465162", "type": "TimeoutError"}],
+        "managers": [{"user_id": "9000005", "history_stale": True}],
+        "errors": [{"source": "history", "manager_id": "9000005", "type": "TimeoutError"}],
     }
     snapshot["action_plan"] = build_action_plan(
         strategy=snapshot, buys=[], sells=[], intents=[], bids=[],
@@ -77,7 +77,7 @@ async def test_strategy_keeps_profiles_history_gaps_and_proposals(
 
     for key in ("manager_profiles", "league_history", "action_plan"):
         assert result[key] == snapshot[key]
-    rival = next(p for p in result["manager_profiles"] if p["user_id"] == "2465162")
+    rival = next(p for p in result["manager_profiles"] if p["user_id"] == "9000005")
     assert rival["summary"]["budget_eur"] is None
     assert rival["coverage"]["budget_unknown_reason"] == "rival_budget_not_observed"
     assert result["league_history"]["managers"][0]["history_stale"] is True

@@ -17,7 +17,7 @@ from kickbase_agent.worker.intents import (
 )
 
 _NOW = datetime(2026, 9, 1, 12, 0, tzinfo=UTC)
-_USER = "2663242"
+_USER = "9000010"
 
 
 def _item(
@@ -39,7 +39,7 @@ def _item(
         "prc": mv,
         "exs": exs,
         "tid": "7",
-        "u": {"i": seller, "n": "emil" if seller == _USER else "Rivale"},
+        "u": {"i": seller, "n": "manager_self" if seller == _USER else "Rivale"},
         "ofs": ofs or [],
     }
     if not dt_missing:

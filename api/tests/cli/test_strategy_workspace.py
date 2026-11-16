@@ -117,7 +117,7 @@ input({id:'reserve',value:'300000',dataset:{}});
 
 def test_completed_standings_override_interim_scores_for_season_gap():
     data = {
-        "ranking": [{"user_id": "me", "name": "emil", "me": True, "rank": 2,
+        "ranking": [{"user_id": "me", "name": "manager_self", "me": True, "rank": 2,
                      "points": 700}, {"user_id": "other", "name": "Andere", "rank": 1,
                                      "points": 1400}],
         "strategy": {"manager_stats": [{"user_id": "me", "completed_points": 1000},
@@ -132,13 +132,13 @@ def test_completed_standings_override_interim_scores_for_season_gap():
 def test_unknown_completed_points_use_explicit_live_standings():
     # Normalisierter UI-Vertrag aus dem Live-Build 11.09., 23:33 Berlin.
     data = {
-        "ranking": [{"user_id": "2663242", "name": "emil", "me": True,
+        "ranking": [{"user_id": "9000010", "name": "manager_self", "me": True,
                      "rank": 2, "points": 827},
-                    {"user_id": "2227102", "name": "Schmidinho", "rank": 1,
+                    {"user_id": "9000003", "name": "Schmidinho", "rank": 1,
                      "points": 1825}],
         "strategy": {"manager_stats": [
-            {"user_id": "2663242", "completed_points": None, "dashboard_points": 827},
-            {"user_id": "2227102", "completed_points": None, "dashboard_points": 1825},
+            {"user_id": "9000010", "completed_points": None, "dashboard_points": 827},
+            {"user_id": "9000003", "completed_points": None, "dashboard_points": 1825},
         ]},
     }
     result = _browser_runtime(data)
@@ -192,7 +192,7 @@ def test_news_prioritize_current_confirmed_own_player_and_remove_duplicates():
 def _manager_view_data() -> dict:
     """Normalisierte UI-Szenarien, keine nachgebildeten Kickbase-Antworten."""
     profiles = []
-    for uid, name, me, cost, gain in (("emil", "emil", True, 1_000_000, 200_000),
+    for uid, name, me, cost, gain in (("manager_self", "manager_self", True, 1_000_000, 200_000),
                                      ("rival", "Rival", False, 1_500_000, -300_000)):
         profiles.append({
             "user_id": uid, "name": name, "me": me, "completed_points": 300,
@@ -210,7 +210,7 @@ def _manager_view_data() -> dict:
                                   "provisional": False}],
         })
     return {"kader": [{"pid": "player", "name": "Spieler", "mv": 1_200_000}],
-            "ranking": [{"user_id": "emil", "name": "emil", "me": True, "rank": 1,
+            "ranking": [{"user_id": "manager_self", "name": "manager_self", "me": True, "rank": 1,
                          "points": 350}, {"user_id": "rival", "name": "Rival", "rank": 2,
                                            "points": 350}],
             "strategy": {"manager_profiles": profiles}}
@@ -271,7 +271,7 @@ def test_chart_unknown_values_interrupt_points_and_financial_lines():
         {"at": f"2026-09-{10+i:02d}T10:00:00Z", "realized_pnl_eur": v}
         for i, v in enumerate((-100_000, None, -300_000))
     ]
-    result = _browser_runtime(data, """manager('emil');
+    result = _browser_runtime(data, """manager('manager_self');
 click({dataset:{pointsMode:'matchday'}});
 click({dataset:{financeMode:'profit'}});""")
     for chart in (result["points"], result["finance"]):
@@ -291,13 +291,13 @@ def test_result_bridge_identifies_its_shared_covered_subset():
         "realized_buy_premium_eur": 30_000, "realized_sale_premium_eur": 10_000,
     })
     profile["coverage"] = {"round_trips_with_decomposition": 2}
-    content = _browser_runtime(data, "manager('emil');")["content"]
+    content = _browser_runtime(data, "manager('manager_self');")["content"]
     assert "2 von 5 Paaren mit vergleichbaren Marktwerten" in content
     assert "Ergebnis der Teilmenge" in content
     assert "100.000 €" in content
     assert "− Kaufaufschläge" in content
     profile["summary"]["realized_buy_premium_eur"] = None
-    content = _browser_runtime(data, "manager('emil');")["content"]
+    content = _browser_runtime(data, "manager('manager_self');")["content"]
     assert "Für die Ergebnisbrücke fehlen vergleichbare Marktwerte" in content
     assert "100.000 €" not in content
 
@@ -311,10 +311,10 @@ def test_uncertain_historical_values_never_appear_as_priced_premiums(uncertain):
     trade = data["strategy"]["manager_profiles"][0]["trades"][0]
     trade.update({"market_value": 765_432, "premium_pct": 30.64,
                   "mw_source": "api_history"})
-    certain = _browser_runtime(data, "manager('emil');openPlayer('player');")
+    certain = _browser_runtime(data, "manager('manager_self');openPlayer('player');")
     assert "30,6 %" in certain["drawer"]
     trade.update(uncertain)
-    result = _browser_runtime(data, "manager('emil');openPlayer('player');")
+    result = _browser_runtime(data, "manager('manager_self');openPlayer('player');")
     for content in (result["content"], result["drawer"]):
         assert "30,6 %" not in content
         assert "765.432 €" not in content

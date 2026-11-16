@@ -264,7 +264,7 @@ Rivalengebote schlägt. Vorhaben angelegt, Wartezeit lief, kein Veto.
 **Station 4 — Ausführung.** Gebot platziert, Rückgelesen, im Protokoll notiert —
 mit einer Zuschlag-Erwartung. Bis zum Ablauf blieb die Bieterzahl bei eins.
 
-**Das Ergebnis.** Der Zuschlag ging an Lukas M. für **4,23 Mio. € = 157 % des
+**Das Ergebnis.** Der Zuschlag ging an Manager_02 für **4,23 Mio. € = 157 % des
 Marktwerts.** Er bot in der letzten Minute. Wir hatten nie eine Chance, und wir
 haben es bis zur letzten Sekunde nicht gesehen.
 

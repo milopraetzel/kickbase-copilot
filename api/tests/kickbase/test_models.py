@@ -180,7 +180,7 @@ def test_market_player_parses_manager_seller_id():
         "tid": "5",
         "prc": 11_500_000,
         "dt": "2026-08-16T09:00:00Z",
-        "u": {"i": "1842317", "n": "Moritz W."},
+        "u": {"i": "1842317", "n": "Manager_01"},
     }
     mp = MarketPlayer.from_api(raw)
     assert mp.seller_id == "1842317"
@@ -201,10 +201,10 @@ def test_zombie_listing_detection():
     base = {"i": "1", "n": "X", "pos": 2, "mv": 1_000_000, "tid": "2", "prc": 900_000}
 
     old_manager = MarketPlayer.from_api(
-        {**base, "dt": "2026-08-16T09:00:00Z", "u": {"i": "5", "n": "Moritz W."}}
+        {**base, "dt": "2026-08-16T09:00:00Z", "u": {"i": "5", "n": "Manager_01"}}
     )
     fresh_manager = MarketPlayer.from_api(
-        {**base, "dt": "2026-08-23T18:00:00Z", "u": {"i": "5", "n": "Moritz W."}}
+        {**base, "dt": "2026-08-23T18:00:00Z", "u": {"i": "5", "n": "Manager_01"}}
     )
     kickbase = MarketPlayer.from_api({**base, "exs": 7200})
     rolled_kickbase = MarketPlayer.from_api({**base, "dt": "2026-08-10T09:00:00Z"})

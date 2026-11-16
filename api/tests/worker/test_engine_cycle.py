@@ -24,7 +24,7 @@ def setup(monkeypatch):
         get_budget=AsyncMock(return_value=3_000_000), get_own_bids=AsyncMock(return_value=[]),
     )
     monkeypatch.setattr(engine_cycle, "make_kickbase_client", AsyncMock(
-        return_value=(client, SimpleNamespace(league_id="1234567", user_id="2663242")),
+        return_value=(client, SimpleNamespace(league_id="1234567", user_id="9000010")),
     ))
     planner = AsyncMock(return_value="planned")
     monkeypatch.setattr(intents, "run_intent_planner", planner)

@@ -849,7 +849,7 @@ async def test_manager_listing_swap_and_friday_deficit_filler_keep_eleven_slots(
     )
     skov_listing = _replacement(mv=500_000, pid="skov").model_copy(
         update={
-            "seller_id": "2464959",
+            "seller_id": "9000004",
             "price": 500_000,
             "expires_at": now - timedelta(hours=6),
             "player": _replacement(mv=500_000, pid="skov").player.model_copy(
@@ -871,7 +871,7 @@ async def test_manager_listing_swap_and_friday_deficit_filler_keep_eleven_slots(
     assert pair.faller.player_id == "roster-2"
     assert pair.bid.action.amount == 500_000
     assert review["listing_type"] == "manager"
-    assert review["seller_id"] == "2464959"
+    assert review["seller_id"] == "9000004"
     assert review["swap_sale"]["player_id"] == "roster-2"
     assert purchase_review_veto(
         review, player_id="skov", amount=500_000, now=datetime.now(UTC)

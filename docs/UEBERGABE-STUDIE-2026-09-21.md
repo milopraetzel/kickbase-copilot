@@ -20,7 +20,7 @@ Read-only-Studie durchgeführt und einen Umbauplan geschrieben.
 | NICHT getan | Anmerkung |
 |---|---|
 | Kein Code geändert, kein Commit, kein Deploy, keine `.env`-Änderung | `git status`: nur die zwei Studien-Dateien und diese Datei sind neu |
-| Kein Kickbase-Write | Ein `place_bid` auf Remberg (8,60 M, mit Emils wörtlicher Auswahl als `emil_go`) wurde vom Executor **verweigert** („Kaufprüfung ungültig — unbekannte Schemaversion", Operator-Tor). Das Tor wurde nicht umgangen. Emil hat Remberg danach selbst in der App ersteigert; Osei nahm das Tigges-Gebot an. |
+| Kein Kickbase-Write | Ein `place_bid` auf Remberg (8,60 M, mit Emils wörtlicher Auswahl als `emil_go`) wurde vom Executor **verweigert** („Kaufprüfung ungültig — unbekannte Schemaversion", Operator-Tor). Das Tor wurde nicht umgangen. Emil hat Remberg danach selbst in der App ersteigert; Manager_05 nahm das Tigges-Gebot an. |
 | Der `emil_go`-Override im `git stash` wurde nicht angefasst | Empfehlung der Studie: verwerfen, Entscheidung bei Emil (E6) |
 | Keine Memory-Einträge zu Pauschalmandaten geändert | wartet auf Emils Einverständnis (E10) |
 

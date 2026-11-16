@@ -12,10 +12,10 @@ BASE = "https://api.kickbase.com/v4/leagues/1234567"
 
 @pytest.mark.parametrize("method,args,url,fixture", [
     ("get_league_overview", ("1234567",), BASE + "/overview", "league-overview.json"),
-    ("get_manager_transfers", ("1234567", "2663242", 25),
-     BASE + "/managers/2663242/transfer?start=25", "manager-2663242-transfer-00025.json"),
-    ("get_manager_performance", ("1234567", "2663242"),
-     BASE + "/managers/2663242/performance", "own-performance.json"),
+    ("get_manager_transfers", ("1234567", "9000010", 25),
+     BASE + "/managers/9000010/transfer?start=25", "manager-9000010-transfer-00025.json"),
+    ("get_manager_performance", ("1234567", "9000010"),
+     BASE + "/managers/9000010/performance", "own-performance.json"),
 ])
 async def test_new_history_gets_keep_real_payloads(httpx_mock, method, args, url, fixture):
     payload = json.loads((FIX / fixture).read_text())
@@ -29,4 +29,4 @@ async def test_new_history_gets_keep_real_payloads(httpx_mock, method, args, url
 async def test_history_offset_must_be_nonnegative_integer(start):
     client = KickbaseClient(token="test", rate_limit_per_second=0)
     with pytest.raises(ValueError):
-        await client.get_manager_transfers("1234567", "2663242", start=start)
+        await client.get_manager_transfers("1234567", "9000010", start=start)

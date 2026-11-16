@@ -119,7 +119,7 @@ async def test_manager_dashboard_live_total_is_not_a_completed_score():
             return raw["dashboard"]
 
     result = await cockpit_data.read_manager_squads(ManagerClient(), "1234567", [
-        {"user_id": "2663242", "name": "emil", "me": True, "rank": 12, "points": 827},
+        {"user_id": "9000010", "name": "manager_self", "me": True, "rank": 12, "points": 827},
     ])
     assert raw["dashboard"]["tp"] == sum(raw["dashboard"]["ph"]) == 827
     assert result[0]["completed_points"] is None
@@ -387,13 +387,13 @@ async def test_missing_squad_retains_ranked_manager_and_history(monkeypatch):
     monkeypatch.setattr(strategy_news, "fetch_strategy_news", news)
     result = await cockpit_data._collect_strategy(
         client=object(), league_id="1234567", expected_managers=2,
-        ranking_rows=[{"user_id": "2663242", "name": "emil", "points": 827},
-                      {"user_id": "2227102", "name": "Niklas B.", "points": 1825}],
+        ranking_rows=[{"user_id": "9000010", "name": "manager_self", "points": 827},
+                      {"user_id": "9000003", "name": "Manager_03", "points": 1825}],
         feed_events=[], squad_rows=[], market_rows=[], manager_rows=[], budget=2920437,
-        open_bids=[], saved_lineup={"it": []}, user_id="2663242", user_name="emil",
+        open_bids=[], saved_lineup={"it": []}, user_id="9000010", user_name="manager_self",
     )
-    assert {m["user_id"] for m in observed} == {"2663242", "2227102"}
-    rival = next(m for m in result["manager_profiles"] if m["user_id"] == "2227102")
+    assert {m["user_id"] for m in observed} == {"9000010", "9000003"}
+    rival = next(m for m in result["manager_profiles"] if m["user_id"] == "9000003")
     assert rival["live_points"] == 1825
     assert rival["summary"]["squad_value_eur"] is None
     assert rival["summary"]["budget_eur"] is None

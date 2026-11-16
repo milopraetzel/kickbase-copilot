@@ -27,7 +27,7 @@ from kickbase_agent.mcp import tools_ops, tools_read, tools_write
 
 LEAGUE = "L1"
 USER = "u1"
-MY_NAME = "emil"
+MY_NAME = "manager_self"
 NOW = datetime(2026, 8, 23, 8, 0, tzinfo=UTC)
 
 # --- Rohdaten (Strukturen wie live/Fixtures) -------------------------------------
@@ -61,7 +61,7 @@ MARKET_RAW: list[dict[str, Any]] = [
      "ofs": [{"u": USER, "uop": 5_120_000, "uoid": USER}]},
     # Manager-Listing (u.n = Verkäufer, exs 0 = kein Countdown; live 23.08.), kein eigenes Gebot
     {"i": "88", "fn": "Cheap", "n": "Striker", "pos": 4, "mv": 3_000_000, "prc": 3_200_000,
-     "exs": 0, "tid": "5", "u": {"n": "Felix K."}, "ofs": []},
+     "exs": 0, "tid": "5", "u": {"n": "Manager_04"}, "ofs": []},
     # Eigener gelisteter Kaderspieler (steht in Kader UND Markt — Hermes-Audit)
     {"i": "3", "fn": "Jamal", "n": "Musiala", "pos": 3, "mv": 25_000_000, "prc": 26_000_000,
      "exs": 0, "tid": "2", "u": {"n": MY_NAME}},
@@ -78,7 +78,7 @@ PLAYER_DETAIL_RAW: dict[str, Any] = {
            {"hp": True, "p": 71}, {"hp": True, "p": 12}],
     "plpt": "Ligainsider", "plpurl": "https://www.ligainsider.de/bernardo/12345/",
     "pim": "content/file/bernardo.png", "shn": 13, "g": 0, "a": 0, "y": 9, "r": 0,
-    "sec": 152_866, "cv": 8_700_000, "oui": "2663242", "day": 34,
+    "sec": 152_866, "cv": 8_700_000, "oui": "9000010", "day": 34,
 }
 
 # Detail-Payload eines FITTEN Spielers (Hoffmeier, live 23.08.26): ohne stxt/tp/ap.
@@ -87,7 +87,7 @@ PLAYER_DETAIL_FIT_RAW: dict[str, Any] = {
     "tfhmvt": -106_971, "tid": "29", "tn": "Paderborn", "prob": 3, "st": 0, "stl": [],
     "ph": [{"hp": False}] * 5, "plpt": "Ligainsider",
     "plpurl": "https://www.ligainsider.de/marcel-hoffmeier/23456/", "pim": "content/file/h.png",
-    "shn": 33, "cv": 7_700_000, "oui": "2663242", "day": 34,
+    "shn": 33, "cv": 7_700_000, "oui": "9000010", "day": 34,
 }
 
 FEED_RAW: list[dict[str, Any]] = [

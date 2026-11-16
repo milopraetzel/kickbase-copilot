@@ -20,7 +20,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-09-11T18:15:10Z",
       "data": {
-        "slr": "emil",
+        "slr": "manager_self",
         "pi": "3187",
         "pn": "Schäfer",
         "trp": 3898704
@@ -31,7 +31,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-09-11T18:15:07Z",
       "data": {
-        "slr": "emil",
+        "slr": "manager_self",
         "pi": "89",
         "pn": "Günter",
         "trp": 3646808
@@ -42,7 +42,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-09-11T18:15:04Z",
       "data": {
-        "slr": "emil",
+        "slr": "manager_self",
         "pi": "15181",
         "pn": "Leszczynski",
         "trp": 3973085
@@ -53,7 +53,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-09-07T07:50:25Z",
       "data": {
-        "slr": "emil",
+        "slr": "manager_self",
         "pi": "8351",
         "pn": "Højlund",
         "trp": 4639845
@@ -64,7 +64,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-09-07T07:50:22Z",
       "data": {
-        "slr": "emil",
+        "slr": "manager_self",
         "pi": "14890",
         "pn": "Vogt",
         "trp": 1625348
@@ -75,7 +75,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-09-07T07:50:19Z",
       "data": {
-        "slr": "emil",
+        "slr": "manager_self",
         "pi": "15472",
         "pn": "Daka",
         "trp": 9787642
@@ -86,8 +86,8 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-09-06T15:55:56Z",
       "data": {
-        "slr": "Osei",
-        "byr": "emil",
+        "slr": "Manager_05",
+        "byr": "manager_self",
         "pi": "4406",
         "pn": "Dina Ebimbe",
         "trp": 5548095
@@ -98,8 +98,8 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-09-06T09:04:28Z",
       "data": {
-        "slr": "Osei",
-        "byr": "emil",
+        "slr": "Manager_05",
+        "byr": "manager_self",
         "pi": "3081",
         "pn": "Vidović",
         "trp": 8554338
@@ -110,8 +110,8 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-09-05T07:55:24Z",
       "data": {
-        "slr": "Osei",
-        "byr": "emil",
+        "slr": "Manager_05",
+        "byr": "manager_self",
         "pi": "2855",
         "pn": "Ache",
         "trp": 15915792
@@ -122,7 +122,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-09-03T18:14:54Z",
       "data": {
-        "byr": "emil",
+        "byr": "manager_self",
         "pi": "7320",
         "pn": "Scheller",
         "trp": 7976663
@@ -133,7 +133,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-09-03T11:40:02Z",
       "data": {
-        "byr": "emil",
+        "byr": "manager_self",
         "pi": "15472",
         "pn": "Daka",
         "trp": 12886667
@@ -144,7 +144,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-09-02T18:30:02Z",
       "data": {
-        "slr": "emil",
+        "slr": "manager_self",
         "pi": "51",
         "pn": "Khedira",
         "trp": 8233478
@@ -155,7 +155,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-09-02T18:26:21Z",
       "data": {
-        "byr": "emil",
+        "byr": "manager_self",
         "pi": "89",
         "pn": "Günter",
         "trp": 5064699
@@ -166,7 +166,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-09-02T06:35:04Z",
       "data": {
-        "slr": "emil",
+        "slr": "manager_self",
         "pi": "10134",
         "pn": "Schmetgens",
         "trp": 7422546
@@ -177,7 +177,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-09-02T06:35:01Z",
       "data": {
-        "slr": "emil",
+        "slr": "manager_self",
         "pi": "7282",
         "pn": "Deman",
         "trp": 9588216
@@ -188,8 +188,8 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-08-28T17:29:34Z",
       "data": {
-        "slr": "Felix K. ",
-        "byr": "emil",
+        "slr": "Manager_04 ",
+        "byr": "manager_self",
         "pi": "4333",
         "pn": "Ullrich",
         "trp": 9400000
@@ -200,7 +200,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-08-28T17:26:02Z",
       "data": {
-        "slr": "emil",
+        "slr": "manager_self",
         "pi": "13472",
         "pn": "Reggiani",
         "trp": 3396495
@@ -211,7 +211,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-08-27T10:05:01Z",
       "data": {
-        "slr": "emil",
+        "slr": "manager_self",
         "pi": "3492",
         "pn": "Hoffmeier",
         "trp": 6526611
@@ -222,7 +222,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-08-26T18:29:27Z",
       "data": {
-        "slr": "emil",
+        "slr": "manager_self",
         "pi": "1954",
         "pn": "Bernardo",
         "trp": 7077515
@@ -233,7 +233,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-08-26T18:18:43Z",
       "data": {
-        "byr": "emil",
+        "byr": "manager_self",
         "pi": "7282",
         "pn": "Deman",
         "trp": 10642821
@@ -244,7 +244,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-08-26T18:06:59Z",
       "data": {
-        "byr": "emil",
+        "byr": "manager_self",
         "pi": "10134",
         "pn": "Schmetgens",
         "trp": 9578351
@@ -255,7 +255,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-08-25T16:19:49Z",
       "data": {
-        "slr": "emil",
+        "slr": "manager_self",
         "pi": "2941",
         "pn": "Scally",
         "trp": 4151452
@@ -266,7 +266,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-08-25T16:19:45Z",
       "data": {
-        "slr": "emil",
+        "slr": "manager_self",
         "pi": "2722",
         "pn": "Osterhage",
         "trp": 4012852
@@ -277,7 +277,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-08-25T16:19:41Z",
       "data": {
-        "slr": "emil",
+        "slr": "manager_self",
         "pi": "4576",
         "pn": "Hanche-Olsen",
         "trp": 3051141
@@ -288,7 +288,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-08-25T16:19:37Z",
       "data": {
-        "slr": "emil",
+        "slr": "manager_self",
         "pi": "12314",
         "pn": "Ndiaye",
         "trp": 2337169
@@ -299,7 +299,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-08-24T12:19:59Z",
       "data": {
-        "slr": "emil",
+        "slr": "manager_self",
         "pi": "11955",
         "pn": "El Khannouss",
         "trp": 22172376
@@ -310,7 +310,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-08-23T20:24:26Z",
       "data": {
-        "byr": "emil",
+        "byr": "manager_self",
         "pi": "8329",
         "pn": "Olise",
         "trp": 68017197
@@ -321,8 +321,8 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-08-21T21:43:27Z",
       "data": {
-        "slr": "Felix K. ",
-        "byr": "emil",
+        "slr": "Manager_04 ",
+        "byr": "manager_self",
         "pi": "3492",
         "pn": "Hoffmeier",
         "trp": 8700000
@@ -333,7 +333,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-08-20T07:50:23Z",
       "data": {
-        "byr": "emil",
+        "byr": "manager_self",
         "pi": "8351",
         "pn": "Højlund",
         "trp": 3620000
@@ -344,7 +344,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-08-19T14:28:20Z",
       "data": {
-        "slr": "emil",
+        "slr": "manager_self",
         "pi": "12293",
         "pn": "Arévalo",
         "trp": 3905842
@@ -355,7 +355,7 @@ REAL_EXPORT = json.loads(r"""
       "t": 15,
       "dt": "2026-08-19T14:28:18Z",
       "data": {
-        "slr": "emil",
+        "slr": "manager_self",
         "pi": "2261",
         "pn": "Neuhaus",
         "trp": 1961947
@@ -1517,8 +1517,8 @@ REAL_EXPORT = json.loads(r"""
     ]
   },
   "generated_at": "2026-09-11T19:52:37.519976+00:00",
-  "user_id": "2663242",
-  "user_name": "emil"
+  "user_id": "9000010",
+  "user_name": "manager_self"
 }
 """)
 
@@ -1564,14 +1564,16 @@ def test_api_history_wins_over_database_independent_of_input_order():
     assert [(t["feed_id"], t["market_value"]) for t in normal["trades"]] == [
         (t["feed_id"], t["market_value"]) for t in reversed_rows["trades"]
     ]
-    sales = [t for t in normal["trades"] if t["seller"] == "emil"]
+    sales = [t for t in normal["trades"] if t["seller"] == "manager_self"]
     assert len(sales) == 19
     assert all(t["amount"] == t["market_value"] for t in sales)
 
 
 def test_update_window_observation_stays_visible_but_out_of_quantiles():
     result = build()
-    uncertain = [t for t in result["trades"] if t["update_boundary"] and t["buyer"] == "emil"]
+    uncertain = [
+        t for t in result["trades"] if t["update_boundary"] and t["buyer"] == "manager_self"
+    ]
     assert [t["feed_id"] for t in uncertain] == ["12371920348"]
     assert result["purchase_premiums"]["n_boundary_excluded"] == 1
     assert result["purchase_premiums"]["n_priced"] == sum(
@@ -1630,7 +1632,7 @@ def test_missing_sources_remain_unknown_and_cash_is_not_capped():
     amount = next(
         t["data"]["trp"]
         for t in REAL_EXPORT["feed_events"]
-        if t["data"].get("byr", "").strip() == "emil"
+        if t["data"].get("byr", "").strip() == "manager_self"
     )
     scenario = build(open_bids=[{"amount": amount}])
     assert scenario["portfolio"]["cash_after_all_bids_eur"] == REAL_EXPORT["budget"] - amount
