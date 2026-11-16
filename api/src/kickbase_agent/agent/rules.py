@@ -133,7 +133,7 @@ def load_agent_rules(path: Path | None = None) -> AgentRules:
             raw_prot = getattr(settings, "protected_player_ids", "")
         except Exception:
             dry_run = True
-            raw_prot = "8329"
+            raw_prot = ""
         base = dict(PRESETS["full_autopilot"])
         base["mode"] = "dry_run" if dry_run else "full_autopilot"
         protected = [p.strip() for p in str(raw_prot).split(",") if p.strip()]

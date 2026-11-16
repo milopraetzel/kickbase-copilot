@@ -15,13 +15,13 @@
   </array>
 
   <key>WorkingDirectory</key>
-  <string>/Users/emil/Mein Claude /Kickbase-Agent/api</string>
+  <string>/path/to/kickbase-copilot/api</string>
 
   <!-- claude liegt in ~/.local/bin, uv in /opt/homebrew/bin — beide müssen auf den PATH -->
   <key>EnvironmentVariables</key>
   <dict>
     <key>PATH</key>
-    <string>/Users/emil/.local/bin:/opt/homebrew/bin:/usr/bin:/bin</string>
+    <string>$HOME/.local/bin:/opt/homebrew/bin:/usr/bin:/bin</string>
   </dict>
 
   <key>StartCalendarInterval</key>

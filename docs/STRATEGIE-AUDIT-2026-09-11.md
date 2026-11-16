@@ -8,8 +8,8 @@ Der neue [Strategie-Skill](../.claude/skills/kickbase-strategie/SKILL.md) ist lo
 
 Vollständige Analyse und Einzelbelege im lokalen Arbeitsbereich:
 
-- [Auswertung und Entscheidungen](</Users/emil/Documents/ChatGPT/Kickbase agent/analysis/strategy-2026-09-11/STRATEGIE-AUSWERTUNG.md>)
-- [Eigene Spieler, Preise, Kaufgründe](</Users/emil/Documents/ChatGPT/Kickbase agent/analysis/strategy-2026-09-11/own-trades/report.md>)
-- [Alle Ligakäufe und Managerprofile](</Users/emil/Documents/ChatGPT/Kickbase agent/analysis/strategy-2026-09-11/league-analysis.md>)
+- [Auswertung und Entscheidungen](</path/to/local-notes/analysis/strategy-2026-09-11/STRATEGIE-AUSWERTUNG.md>)
+- [Eigene Spieler, Preise, Kaufgründe](</path/to/local-notes/analysis/strategy-2026-09-11/own-trades/report.md>)
+- [Alle Ligakäufe und Managerprofile](</path/to/local-notes/analysis/strategy-2026-09-11/league-analysis.md>)
 
 Die Daten reichen nicht für garantierte Platzierung oder exakte fremde Gebotswahrscheinlichkeiten. API-Zugang, Hermes-Entscheidungshilfe und fest programmierte Worker-Strategie bleiben getrennte Ebenen. Die technischen Restarbeiten aus [DIAGNOSE-2026-09-11.md](DIAGNOSE-2026-09-11.md) sind durch diese Skill-Installation nicht erledigt.

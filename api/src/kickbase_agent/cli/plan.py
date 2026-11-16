@@ -38,6 +38,7 @@ from kickbase_agent.decision.kickoff_freeze import BID_FREEZE_MINUTES, KICKOFF_M
 from kickbase_agent.decision.models import Proposal
 from kickbase_agent.decision.overdraft import (
     MIDWEEK_SWAP_BRIDGE_EUR,
+    MIDWEEK_SWAP_BRIDGE_MIN_LEAD,
     PLANNING_OVERDRAFT_UNTIL,
     SWAP_SALE_CREDIT_PERCENT,
     midweek_swap_bridge,
@@ -262,6 +263,55 @@ EARLY_WEEK_DEFICIT_DOWNGRADE_LEAD = timedelta(hours=76)
 MIDWEEK_DEFICIT_DOWNGRADE_MAX_EUR = 3_500_000
 #: So weit liest load_recent_purchases das Audit zurück (mehr als die Haltefrist).
 PURCHASE_LOOKBACK = timedelta(days=30)
+#: Ab diesem beobachteten 24h-Anstieg (bzw. mvt=1 ohne 24h-Delta) gilt ein gesunder Starter im
+#: Tausch-Planer als steigend und wird vor gewöhnlichen Startern geschützt.
+STARTER_RISING_PROTECTION_24H = 75_000
+#: Schwachstellen-Grenzen (Baustellen-Vorrang): Unterhalb dieser erwarteten Punkte pro Spieltag
+#: (oder als Nicht-Starter / starker 24h-Verlierer) gilt ein Startelf-Platz als Baustelle.
+WEAK_SLOT_MIN_EXPECTED_POINTS = 58.0
+WEAK_SLOT_FALLING_24H_EUR = -150_000
+#: Mindest-Reserve aus freiem Upgrade-Budget + Brücke für eine allein besetzte Baustellen-Position
+#: (z. B. einziger Stürmer im 5-4-1 mit < 58 xP/Spiel).
+SOLE_WEAK_POS_RESERVE_EUR = 3_000_000
+#: Mindest-Horizontpunktgewinn (4 Spieltage) je Verkaufs-Tier in `swap_pays_off`.
+SWAP_MIN_GAIN_BY_TIER: dict[int, float] = {0: 15.0, 1: 24.0, 2: 48.0, 3: 72.0}
+#: Maximale Netto-Kapitalbindung (`max(0, Gebot - MW_verkauft)`) pro gewonnenem Horizontpunkt.
+SWAP_MAX_NET_CAPITAL_PER_HP_WEAK = 85_000
+SWAP_MAX_NET_CAPITAL_PER_HP_HEALTHY = 35_000
+
+
+def _mv_trend(player: object) -> int:
+    """Kickbase-Marktwerttrend (`1` steigend, `2` fallend) mit Legacy-Fallback."""
+    raw = getattr(player, "market_value_trend", None)
+    if raw is None:
+        raw = getattr(player, "mv_trend", 0)
+    return int(raw or 0)
+
+
+def _engine_trade_held_proceeds(
+    market_value: int,
+    buy_price: int,
+    *,
+    updates_until_friday: int = 0,
+    haircut_per_update_pct: float = 0.0,
+) -> int:
+    """Konservative Anrechnung gehaltener Bank-Trader für permanente Engine-Käufe.
+
+    Buchgewinne über `buy_price` zählen für dauerhafte Startelf-Käufe nur zur Hälfte (bzw.
+    höchstens 97 % des Peak-MW, nie unter `buy_price`), da Bank-Trader erst nach einem
+    negativen 22:00-Update verkauft werden.
+    """
+    proceeds = trade_sale_proceeds(
+        market_value,
+        updates_until_friday=updates_until_friday,
+        haircut_per_update_pct=haircut_per_update_pct,
+    )
+    bp = int(buy_price or 0)
+    if bp <= 0 or proceeds <= bp:
+        return proceeds
+    exit_buffered = max(bp, int(round(proceeds * 0.97)))
+    half_gain = bp + (proceeds - bp) // 2
+    return min(exit_buffered, half_gain)
 
 
 @dataclass
@@ -395,7 +445,7 @@ def _premium_record(
     sind Planwerte (Re-Review): Emils +10 % vor dem nächsten Lauf, ein manuelles Vorhaben
     oder der Nachanker des Executors ändern den tatsächlichen Betrag danach. Maßgeblich
     für die Auswertung ist `transfer_actions.amount` gegen `amount_eur`."""
-    if pid in commitments:
+    if pid in commitments and pid not in premiums:
         prior = (commitments[pid].get("purchase_review") or {}).get("bid_premium")
         if not isinstance(prior, dict) or type(prior.get("amount_eur")) is not int:
             return None
@@ -543,14 +593,24 @@ def swap_pays_off(
     team_value_eur: int,
     team_points: float,
     mv_advantage_eur: int = 0,
+    min_gain_points: float = 0.0,
+    net_capital_eur: int = 0,
+    max_capital_per_point_eur: int | None = None,
 ) -> bool:
-    """Lohnt ein Tausch? Der erwartete Punktgewinn muss mehr wert sein als der Aufschlag beim
-    Kauf (Tauschbremse, Emil 12.10.2026), abzüglich eines positiven Marktwert-Trendvorteils.
-    Ein Prognosepunkt kostet so viel, wie unsere Elf für ihre Punkte bezahlt hat:
-    Teamwert ÷ Prognosepunkte der Elf über den Horizont."""
+    """Lohnt ein Tausch? Der erwartete Punktgewinn muss die Mindestschwelle des Verkaufs-Tiers
+    erreichen, das eingesetzte Zusatzkapital effizient verzinsen und mehr wert sein als der
+    effektive Kaufaufschlag unter Berücksichtigung der symmetrischen Marktwert-Dynamik."""
     if team_points <= 0 or gain_points <= 0:
         return False
-    effective_premium = max(0, premium_eur - max(0, int(mv_advantage_eur)))
+    if gain_points < min_gain_points:
+        return False
+    if (
+        max_capital_per_point_eur is not None
+        and net_capital_eur > 0
+        and net_capital_eur > gain_points * max_capital_per_point_eur
+    ):
+        return False
+    effective_premium = max(0, int(premium_eur) - int(mv_advantage_eur))
     return gain_points * team_value_eur / team_points > effective_premium
 
 
@@ -955,7 +1015,26 @@ async def build_plan(
     # Bliebe sein Betrag reserviert, machte ein nur über seinen Verkauf gedecktes
     # Dispo-Tauschgebot den Plan unlösbar und räumte jedes andere geplante Gebot mit ab.
     # Als neues Ziel lehnt reject_reason es weiter mit dem Artikel ab.
-    dropped = {pid for pid in commitments if pid in role_verdicts and judged_by_news(pid)}
+    agent_rules = load_agent_rules()
+    custom_rules_active = agent_rules.is_custom_active()
+    live_bid_ids = {str(bid.get("player_id") or "") for bid in live_bids}
+    rule_dropped = (
+        {
+            pid
+            for pid, row in commitments.items()
+            if pid not in live_bid_ids
+            and (
+                not agent_rules.allow_bids
+                or agent_rules.mode == "dry_run"
+                or int(row.get("amount") or 0) > int(float(agent_rules.max_bid_million) * 1_000_000)
+            )
+        }
+        if custom_rules_active
+        else set()
+    )
+    dropped = {
+        pid for pid in commitments if pid in role_verdicts and judged_by_news(pid)
+    } | rule_dropped
     if dropped:
         commitments = {pid: row for pid, row in commitments.items() if pid not in dropped}
         pending_bids = [b for b in pending_bids if str(b.get("player_id") or "") not in dropped]
@@ -1017,8 +1096,9 @@ async def build_plan(
         float(agent_rules.friday_buffer_haircut_pct) if custom_rules_active else 0.0
     )
     trade_held_cover = sum(
-        trade_sale_proceeds(
+        _engine_trade_held_proceeds(
             squad_by_id[pid].market_value,
+            book.positions[pid].buy_price if pid in book.positions else 0,
             updates_until_friday=updates_until_friday,
             haircut_per_update_pct=haircut_pct,
         )
@@ -1046,110 +1126,6 @@ async def build_plan(
         for pid, bought in held.items()
         if li_status.get(pid) not in {Status.BENCH, Status.OUT}
     }
-
-    def _observed_24h_change(player) -> int:
-        if getattr(player, "mv_change_24h_observed", False):
-            return int(player.mv_change_24h or 0)
-        snaps = history.get(player.id, [])
-        if len(snaps) >= 2:
-            latest_dt = (
-                snaps[-1].recorded_at.replace(tzinfo=UTC)
-                if snaps[-1].recorded_at.tzinfo is None
-                else snaps[-1].recorded_at
-            )
-            if now - latest_dt <= timedelta(days=2):
-                return int(snaps[-1].market_value) - int(snaps[-2].market_value)
-        return int(getattr(player, "mv_change_24h", 0) or 0)
-
-    def _sold_allows_bridge(sold_player) -> bool:
-        if (
-            li_status.get(sold_player.id) in {Status.BENCH, Status.OUT}
-            or int(sold_player.lineup_prob or 5) in {4, 5}
-            or (int(sold_player.lineup_prob or 5) == 3 and int(sold_player.points or 0) < 0)
-        ):
-            return True
-        if _observed_24h_change(sold_player) >= ROLE_PROOF_KB3_MIN_MV_CHANGE_24H:
-            return False
-        return (
-            not is_verified_starter(
-                sold_player.id, sold_player.lineup_prob, li_status, sold_player.fitness_status
-            )
-            or _observed_24h_change(sold_player) < 0
-            or int(getattr(sold_player, "mv_trend", 0) or 0) == 2
-            or (budget < 0 and _observed_24h_change(sold_player) < 50_000)
-        )
-
-    swap_links: dict[str, str] = {}
-    # Ein ausgeführtes (live stehendes) Dispo-Gebot bleibt mit seinem wartenden Verkauf
-    # eine Einheit, bis die Auktion entschieden ist (Review 23.09.2026, Befund 1): Der
-    # Worker räumt den Verkauf dann nicht mehr ab, also rechnet der Plan ihn auch nach
-    # der Dispo-Frist und ohne erneute Auswahl des Ziels weiter an.
-    live_ids = {str(bid.get("player_id")) for bid in live_bids}
-    for link in couplings:
-        target, sold = str(link["for_player_id"]), str(link["player_id"])
-        if (
-            (dispo_active or target in live_ids)
-            and target in commitments
-            and sold in squad_by_id
-            and sold not in protected
-            and int(squad_by_id[sold].market_value) > 0
-            and target not in swap_links
-            and sold not in swap_links.values()
-            # Tauschbremse: Ein noch nicht abgegebenes Tauschgebot auf einen frisch Gekauften
-            # verliert seine Anrechnung (Codex-Review 12.10.2026); ein live stehendes bleibt
-            # mit seinem Verkauf bis zum Auktionsende eine Einheit.
-            and (sold not in held or target in live_ids)
-        ):
-            swap_links[target] = sold
-    base_deficit = max(
-        0,
-        -(
-            cash_plan
-            + trade_held_cover
-            + sum(int(commitments[t]["amount"]) for t in swap_links)
-        ),
-    )
-    swap_sale_only_credit = {
-        target: min(
-            swap_sale_proceeds(squad_by_id[sold].market_value),
-            int(commitments[target]["amount"]) + base_deficit,
-        )
-        for target, sold in swap_links.items()
-    }
-    uncommitted_cash = max(
-        0,
-        cash_plan
-        + trade_held_cover
-        + sum(int(commitments[t]["amount"]) for t in swap_links),
-    )
-    swap_bridge_credit = {
-        target: min(
-            midweek_swap_bridge(
-                now,
-                deadline,
-                sold_is_weak_or_falling=_sold_allows_bridge(squad_by_id[sold]),
-                until=PLANNING_OVERDRAFT_UNTIL,
-            ),
-            max(
-                0,
-                int(commitments[target]["amount"])
-                + base_deficit
-                - swap_sale_only_credit[target]
-                - uncommitted_cash,
-            ),
-        )
-        for target, sold in swap_links.items()
-    }
-    swap_credit = {
-        target: swap_sale_only_credit[target] + swap_bridge_credit[target]
-        for target in swap_links
-    }
-    swap_trade_cover = (
-        min(trade_held_cover, max(0, -(cash_plan + sum(swap_credit.values()))))
-        if swap_links
-        else 0
-    )
-    cash_plan += sum(swap_credit.values()) + swap_trade_cover
     candidates = {c.player_id: c for c in [*squad_cands, *market_cands]}
     artifact = load_active()
     projections: dict[str, dict] = {}
@@ -1268,12 +1244,167 @@ async def build_plan(
         projections[player.id] = forecast
         return forecast
 
+    for _sp in squad_players:
+        if _sp.id not in trade_ids:
+            project(_sp)
+
+    def _observed_24h_change(player) -> int:
+        if getattr(player, "mv_change_24h_observed", False):
+            return int(player.mv_change_24h or 0)
+        snaps = history.get(player.id, [])
+        if len(snaps) >= 2:
+            latest_dt = (
+                snaps[-1].recorded_at.replace(tzinfo=UTC)
+                if snaps[-1].recorded_at.tzinfo is None
+                else snaps[-1].recorded_at
+            )
+            if now - latest_dt <= timedelta(days=2):
+                return int(snaps[-1].market_value) - int(snaps[-2].market_value)
+        return int(getattr(player, "mv_change_24h", 0) or 0)
+
+    def _has_observed_24h(player) -> bool:
+        if getattr(player, "mv_change_24h_observed", False):
+            return True
+        snaps = history.get(player.id, [])
+        if len(snaps) >= 2:
+            latest_dt = (
+                snaps[-1].recorded_at.replace(tzinfo=UTC)
+                if snaps[-1].recorded_at.tzinfo is None
+                else snaps[-1].recorded_at
+            )
+            if now - latest_dt <= timedelta(days=2):
+                return True
+        return int(getattr(player, "mv_change_24h", 0) or 0) != 0
+
+    def _is_weak_slot(player) -> bool:
+        if (
+            li_status.get(player.id) in {Status.BENCH, Status.OUT}
+            or int(player.lineup_prob or 5) in {4, 5}
+            or (int(player.lineup_prob or 5) == 3 and int(player.points or 0) < 0)
+        ):
+            return True
+        if not is_verified_starter(
+            player.id, player.lineup_prob, li_status, player.fitness_status
+        ):
+            return True
+        if _observed_24h_change(player) <= WEAK_SLOT_FALLING_24H_EUR:
+            return True
+        exp_pts = float(projections.get(player.id, {}).get("expected_points") or 0.0)
+        return exp_pts < WEAK_SLOT_MIN_EXPECTED_POINTS
+
+    def _sold_allows_bridge(sold_player) -> bool:
+        if (
+            li_status.get(sold_player.id) in {Status.BENCH, Status.OUT}
+            or int(sold_player.lineup_prob or 5) in {4, 5}
+            or (int(sold_player.lineup_prob or 5) == 3 and int(sold_player.points or 0) < 0)
+        ):
+            return True
+        if _observed_24h_change(sold_player) >= ROLE_PROOF_KB3_MIN_MV_CHANGE_24H:
+            return False
+        return (
+            _is_weak_slot(sold_player)
+            or _observed_24h_change(sold_player) < 0
+            or (not _has_observed_24h(sold_player) and _mv_trend(sold_player) == 2)
+        )
+
+    swap_links: dict[str, str] = {}
+    # Ein ausgeführtes (live stehendes) Dispo-Gebot bleibt mit seinem wartenden Verkauf
+    # eine Einheit, bis die Auktion entschieden ist (Review 23.09.2026, Befund 1): Der
+    # Worker räumt den Verkauf dann nicht mehr ab, also rechnet der Plan ihn auch nach
+    # der Dispo-Frist und ohne erneute Auswahl des Ziels weiter an.
+    live_ids = {str(bid.get("player_id")) for bid in live_bids}
+    for link in couplings:
+        target, sold = str(link["for_player_id"]), str(link["player_id"])
+        if (
+            (dispo_active or target in live_ids)
+            and target in commitments
+            and sold in squad_by_id
+            and sold not in protected
+            and int(squad_by_id[sold].market_value) > 0
+            and target not in swap_links
+            and sold not in swap_links.values()
+            # Tauschbremse: Ein noch nicht abgegebenes Tauschgebot auf einen frisch Gekauften
+            # verliert seine Anrechnung (Codex-Review 12.10.2026); ein live stehendes bleibt
+            # mit seinem Verkauf bis zum Auktionsende eine Einheit.
+            and (sold not in held or target in live_ids)
+        ):
+            swap_links[target] = sold
+    def _standing_bridge_cap(target_pid: str, sold_player) -> int:
+        base = midweek_swap_bridge(
+            now,
+            deadline,
+            sold_is_weak_or_falling=_sold_allows_bridge(sold_player),
+            until=PLANNING_OVERDRAFT_UNTIL,
+        )
+        if (
+            target_pid in live_ids
+            and dispo_active
+            and deadline is not None
+            and (deadline - now) >= MIDWEEK_SWAP_BRIDGE_MIN_LEAD
+            and _sold_allows_bridge(sold_player)
+        ):
+            return max(base, MIDWEEK_SWAP_BRIDGE_EUR)
+        return base
+
+    base_deficit = 0
+    swap_sale_only_credit: dict[str, int] = {}
+    uncommitted_cash = 0
+    swap_bridge_credit: dict[str, int] = {}
+    swap_credit: dict[str, int] = {}
+    swap_trade_cover = 0
+
+    def _recompute_commitment_cash() -> None:
+        nonlocal base_deficit, uncommitted_cash, swap_trade_cover, cash_plan
+        base_cash_plan = cash_frei - KICKOFF_MIN_BALANCE
+        base_deficit = max(
+            0,
+            -(
+                base_cash_plan
+                + trade_held_cover
+                + sum(int(commitments[t]["amount"]) for t in swap_links)
+            ),
+        )
+        swap_sale_only_credit.clear()
+        for target, sold in swap_links.items():
+            swap_sale_only_credit[target] = min(
+                swap_sale_proceeds(squad_by_id[sold].market_value),
+                int(commitments[target]["amount"]) + base_deficit,
+            )
+        uncommitted_cash = max(
+            0,
+            base_cash_plan
+            + trade_held_cover
+            + sum(int(commitments[t]["amount"]) for t in swap_links),
+        )
+        swap_bridge_credit.clear()
+        for target, sold in swap_links.items():
+            swap_bridge_credit[target] = min(
+                _standing_bridge_cap(target, squad_by_id[sold]),
+                max(
+                    0,
+                    int(commitments[target]["amount"])
+                    + base_deficit
+                    - swap_sale_only_credit[target]
+                    - uncommitted_cash,
+                ),
+            )
+        swap_credit.clear()
+        for target in swap_links:
+            swap_credit[target] = swap_sale_only_credit[target] + swap_bridge_credit[target]
+        swap_trade_cover = (
+            min(trade_held_cover, max(0, -(base_cash_plan + sum(swap_credit.values()))))
+            if swap_links
+            else 0
+        )
+        cash_plan = base_cash_plan + sum(swap_credit.values()) + swap_trade_cover
+
+    _recompute_commitment_cash()
     options = [
         PlayerOption(
             p.id,
             int(p.position),
             p.team_id,
-            project(p)["horizon_points"],
+            projections[p.id]["horizon_points"],
             owned=True,
             name=p.last_name,
         )
@@ -1325,9 +1456,14 @@ async def build_plan(
             and all(matchday in minutes for matchday in observed_matchdays)
             and min(minutes[matchday] for matchday in observed_matchdays) >= ROLE_PROOF_MIN_MINUTES
         )
+        recent_breakout = (
+            bool(observed_matchdays)
+            and minutes.get(observed_matchdays[0], 0) >= ROLE_PROOF_BREAKOUT_MIN_MINUTES
+            and points_by_md.get(observed_matchdays[0], 0) >= ROLE_PROOF_BREAKOUT_MIN_POINTS
+        )
         if player.lineup_prob == 3:
             if (
-                standard_two_matchdays
+                (standard_two_matchdays or recent_breakout)
                 and li_status.get(player.id) not in {Status.BENCH, Status.OUT}
                 and (
                     _observed_24h_change(player) >= ROLE_PROOF_KB3_MIN_MV_CHANGE_24H
@@ -1622,12 +1758,7 @@ async def build_plan(
                     cash += int(commitments[target]["amount"])
                     if target in swap_credit:
                         sold_p = squad_by_id[swap_links[target]]
-                        bridge = midweek_swap_bridge(
-                            now,
-                            deadline,
-                            sold_is_weak_or_falling=_sold_allows_bridge(sold_p),
-                            until=PLANNING_OVERDRAFT_UNTIL,
-                        )
+                        bridge = _standing_bridge_cap(target, sold_p)
                         cash += (
                             min(
                                 swap_sale_proceeds(sold_p.market_value) + bridge,
@@ -1672,9 +1803,10 @@ async def build_plan(
 
     decisions: dict[str, BidDecision] = {}
     bid_model_versions: dict[str, str] = {}
-    # Gebotsregel V3 (Emil 25.09.2026) je neuem Kickbase-Ziel; stehende Gebote behalten
-    # ihren Betrag und bekommen keinen Eintrag.
+    # Gebotsregel V3 (Emil 25.09.2026) je neuem Kickbase-Ziel; unplatzierte geplante
+    # Kickbase-Vorhaben verankern ihren Betrag nach einem 22:00-Marktwert-Update frisch.
     premiums: dict[str, BidPremium] = {}
+    reanchored_ids: set[str] = set()
     refreshed: set[str] = set()
     detail_failed: set[str] = set()
     # Details der besten gemeinsamen Auswahl prüfen, bei Ausfall neu optimieren.
@@ -1716,12 +1848,28 @@ async def build_plan(
             }
         )
         projection = project(fresh)
+        prior_review = (
+            (commitments[pid].get("purchase_review") or {}) if pid in commitments else {}
+        )
+        prior_mv = (
+            prior_review.get("market_value_eur") if isinstance(prior_review, dict) else None
+        )
+        reanchor_mv = (
+            pid in commitments
+            and pid not in live_ids
+            and not row.seller_id
+            and commitments[pid].get("status") == "planned"
+            and not commitments[pid].get("manual")
+            and type(prior_mv) is int
+            and prior_mv > 0
+            and prior_mv != int(fresh.market_value)
+        )
         current_price = (
             prices[pid]
-            if pid in commitments
+            if pid in commitments and not reanchor_mv
             else max(fresh.market_value, manager_prices.get(pid, 0))
         )
-        if pid in commitments and current_price < max(
+        if pid in commitments and not reanchor_mv and current_price < max(
             fresh.market_value, manager_prices.get(pid, 0)
         ):
             options = [o for o in options if o.player_id != pid]
@@ -1739,13 +1887,42 @@ async def build_plan(
             else premium_limit
         )
         if pid in commitments:
-            prior = commitments[pid].get("purchase_review") or {}
-            prior_cap = prior.get("max_bid_eur")
-            cap = min(
-                int(fresh.market_value * fresh_factor),
-                budget + (trade_held_cover if pid in swap_links else 0) + swap_credit.get(pid, 0),
-            )
-            if type(prior_cap) is int and prior_cap > 0:
+            prior_cap = prior_review.get("max_bid_eur") if isinstance(prior_review, dict) else None
+            if reanchor_mv:
+                other_exp = max(0, open_bid_exposure - int(commitments[pid]["amount"]))
+                if pid in swap_links:
+                    sold_p = squad_by_id[swap_links[pid]]
+                    avail_swap = swap_sale_proceeds(sold_p.market_value) + _standing_bridge_cap(
+                        pid, sold_p
+                    )
+                    raw_cf = budget - other_exp
+                    gross_33_cap = raw_cf + planning_overdraft(
+                        now, team_value, raw_cf, until=PLANNING_OVERDRAFT_UNTIL
+                    )
+                    net_swap_cap = (
+                        budget - KICKOFF_MIN_BALANCE - other_exp + trade_held_cover + avail_swap
+                    )
+                    cap = min(int(fresh.market_value * fresh_factor), gross_33_cap, net_swap_cap)
+                else:
+                    avail_cash_only = budget - KICKOFF_MIN_BALANCE - other_exp
+                    reanchor_single = int(max(0, avail_cash_only) * bid_fraction)
+                    if custom_rules_active:
+                        reanchor_single = min(
+                            reanchor_single, int(float(agent_rules.max_bid_million) * 1_000_000)
+                        )
+                    cap = min(reanchor_single, int(fresh.market_value * fresh_factor))
+            else:
+                cap = min(
+                    int(fresh.market_value * fresh_factor),
+                    budget
+                    + (trade_held_cover if pid in swap_links else 0)
+                    + swap_credit.get(pid, 0),
+                )
+            if (
+                (pid in live_ids or commitments[pid].get("manual"))
+                and type(prior_cap) is int
+                and prior_cap > 0
+            ):
                 cap = min(cap, prior_cap)
             caps[pid] = cap
         else:
@@ -1828,7 +2005,15 @@ async def build_plan(
             if loss_plan.filled_slots < result.filled_slots
             else max(0.0, float(result.horizon_points - loss_plan.horizon_points))
         )
-        starter_gain_pts = slot_gain_horizon
+        starter_gain_pts = (
+            max(
+                0.0,
+                float(projection["horizon_points"])
+                - float(projections[swap_links[pid]]["horizon_points"]),
+            )
+            if reanchor_mv and pid in swap_links
+            else slot_gain_horizon
+        )
         rival_scarcity = estimate_rival_scarcity(
             alive,
             position=int(fresh.position),
@@ -1843,7 +2028,7 @@ async def build_plan(
                 starter_gain_points=starter_gain_pts,
                 **premium_kwargs,
             )
-            if listing_type == "kickbase" and pid not in commitments
+            if listing_type == "kickbase" and (pid not in commitments or reanchor_mv)
             else None
         )
         record_premium(premiums, pid, premium)
@@ -1858,7 +2043,7 @@ async def build_plan(
             target_reason=premium.describe() if premium is not None else None,
         )
         decisions[pid] = decision
-        if pid in commitments and decision.amount is not None:
+        if pid in commitments and not reanchor_mv and decision.amount is not None:
             decision = replace(
                 decision,
                 amount=current_price,
@@ -1878,6 +2063,23 @@ async def build_plan(
             options = [
                 replace(o, cost_eur=decision.amount) if o.player_id == pid else o for o in options
             ]
+        elif reanchor_mv:
+            old_amt = int(commitments[pid]["amount"])
+            new_amt = int(decision.amount)
+            prices[pid] = new_amt
+            commitments[pid] = {**commitments[pid], "amount": new_amt}
+            pending_bids = [
+                {**b, "amount": new_amt} if str(b.get("player_id") or "") == pid else b
+                for b in pending_bids
+            ]
+            open_bid_exposure = max(0, open_bid_exposure - old_amt + new_amt)
+            cash_frei = budget - open_bid_exposure
+            plan_base = cash_frei
+            _recompute_commitment_cash()
+            frame = planning_overdraft(
+                now, team_value, cash_frei, until=PLANNING_OVERDRAFT_UNTIL
+            )
+            reanchored_ids.add(pid)
         solve_cache.clear()
     alternative_options = list(options)
     options = [
@@ -1938,6 +2140,8 @@ async def build_plan(
                 and bool(market_by_id[s_pid].seller_id)
             }
         )
+        if custom_rules_active and not agent_rules.allow_bids and player.id not in commitments:
+            return "Gebote laut persönlichem KI-Regelwerk deaktiviert."
         if len(other_mgr_bids) >= MANAGER_MAX_OPEN_BIDS:
             return f"{base} (bereits ein offenes Manager-Gebot aktiv)."
         if seller_listing_counts.get(row.seller_id, 0) > MANAGER_MAX_SELLER_SHOWCASE:
@@ -2096,6 +2300,27 @@ async def build_plan(
             squad_players, li_status, set(), coupled_out
         )
         pos_min = {1: 1, 2: 3, 3: 2, 4: 1}
+        lineup_squad_players = [
+            p for p in squad_players if p.id in lineup_for_sales and p.id not in coupled_out
+        ]
+        has_weak_lineup_slot = any(_is_weak_slot(p) for p in lineup_squad_players)
+        lineup_pos_counts: dict[int, int] = {}
+        for _lp in lineup_squad_players:
+            _pos = int(_lp.position)
+            lineup_pos_counts[_pos] = lineup_pos_counts.get(_pos, 0) + 1
+        sole_weak_positions = {
+            int(p.position)
+            for p in lineup_squad_players
+            if _is_weak_slot(p)
+            and starter_pos_counts.get(int(p.position), 0) <= pos_min.get(int(p.position), 1)
+            and lineup_pos_counts.get(int(p.position), 0) <= pos_min.get(int(p.position), 1)
+        }
+        max_bridge_now = midweek_swap_bridge(
+            now,
+            deadline,
+            sold_is_weak_or_falling=True,
+            until=PLANNING_OVERDRAFT_UNTIL,
+        )
 
         def _sale_tier(sold_p) -> int:
             if (
@@ -2110,11 +2335,16 @@ async def build_plan(
                 return 1
             if _observed_24h_change(sold_p) <= -100_000:
                 return 1
+            if _is_weak_slot(sold_p) and not (
+                _observed_24h_change(sold_p) >= ROLE_PROOF_KB3_MIN_MV_CHANGE_24H
+                and _favorable_next_two_games(sold_p)
+            ):
+                return 1
             pos = int(sold_p.position)
             sole_pos = starter_pos_counts.get(pos, 0) <= pos_min.get(pos, 1)
             rising = (
-                _observed_24h_change(sold_p) >= ROLE_PROOF_KB3_MIN_MV_CHANGE_24H
-                or int(getattr(sold_p, "mv_trend", 0) or 0) == 1
+                _observed_24h_change(sold_p) >= STARTER_RISING_PROTECTION_24H
+                or (not _has_observed_24h(sold_p) and _mv_trend(sold_p) == 1)
             )
             if (sole_pos or rising) and _favorable_next_two_games(sold_p):
                 return 3
@@ -2124,8 +2354,17 @@ async def build_plan(
             p for p in sale_side
             if _sale_tier(p) == 0
             or not (
-                _observed_24h_change(p) >= ROLE_PROOF_KB3_MIN_MV_CHANGE_24H
-                and _favorable_next_two_games(p)
+                _favorable_next_two_games(p)
+                and (
+                    _observed_24h_change(p) >= ROLE_PROOF_KB3_MIN_MV_CHANGE_24H
+                    or (
+                        not _is_weak_slot(p)
+                        and (
+                            _observed_24h_change(p) >= STARTER_RISING_PROTECTION_24H
+                            or (not _has_observed_24h(p) and _mv_trend(p) == 1)
+                        )
+                    )
+                )
             )
         ]
         if non_surging:
@@ -2135,7 +2374,7 @@ async def build_plan(
             li_is_starter = li_status.get(target_p.id) is Status.STARTER
             mv24 = _observed_24h_change(target_p)
             if mv24 < (-100_000 if li_is_starter else 0) or (
-                not li_is_starter and int(getattr(target_p, "mv_trend", 0) or 0) == 2
+                not li_is_starter and not _has_observed_24h(target_p) and _mv_trend(target_p) == 2
             ):
                 return False
             if target_p.lineup_prob in {1, 2}:
@@ -2149,38 +2388,61 @@ async def build_plan(
                 )
             return False
 
-        def _pair_bridge(sold_p, target_mv: int) -> int:
-            proceeds_p = swap_sale_proceeds(sold_p.market_value)
-            if remaining + proceeds_p >= target_mv:
-                return 0
+        def _usable_remaining(sold_p, target_pos: int) -> int:
             if remaining < 0:
-                if _sale_tier(sold_p) == 0:
-                    return midweek_swap_bridge(
-                        now,
-                        deadline,
-                        sold_is_weak_or_falling=_sold_allows_bridge(sold_p),
-                        until=PLANNING_OVERDRAFT_UNTIL,
-                    )
-                if (
-                    proceeds_p - target_mv >= DEFICIT_HEAL_MIN_RELIEF_EUR
-                    and remaining + proceeds_p + DEFICIT_HEAL_MAX_RESIDUAL_EUR >= target_mv
-                ):
-                    return min(
-                        DEFICIT_HEAL_MAX_RESIDUAL_EUR,
-                        midweek_swap_bridge(
-                            now,
-                            deadline,
-                            sold_is_weak_or_falling=_sold_allows_bridge(sold_p),
-                            until=PLANNING_OVERDRAFT_UNTIL,
-                        ),
-                    )
+                return remaining
+            if has_weak_lineup_slot and not _is_weak_slot(sold_p):
                 return 0
-            return midweek_swap_bridge(
+            if sole_weak_positions and int(target_pos) not in sole_weak_positions:
+                allowed_spend = max(0, remaining + max_bridge_now - SOLE_WEAK_POS_RESERVE_EUR)
+                return min(remaining, allowed_spend)
+            return remaining
+
+        def _pair_bridge(
+            sold_p,
+            target_mv: int,
+            *,
+            target_pos: int | None = None,
+            usable_rem: int | None = None,
+        ) -> int:
+            proceeds_p = swap_sale_proceeds(sold_p.market_value)
+            eff_rem = (
+                usable_rem
+                if usable_rem is not None
+                else _usable_remaining(sold_p, int(target_pos or sold_p.position))
+            )
+            if eff_rem + proceeds_p >= target_mv:
+                return 0
+            base_bridge = midweek_swap_bridge(
                 now,
                 deadline,
                 sold_is_weak_or_falling=_sold_allows_bridge(sold_p),
                 until=PLANNING_OVERDRAFT_UNTIL,
             )
+            reserve_locked = (
+                bool(sole_weak_positions)
+                and target_pos is not None
+                and int(target_pos) not in sole_weak_positions
+            )
+            if remaining < 0:
+                if _sale_tier(sold_p) == 0 or (
+                    _is_weak_slot(sold_p) and remaining + base_bridge > 0
+                ):
+                    if reserve_locked:
+                        return max(0, base_bridge - SOLE_WEAK_POS_RESERVE_EUR)
+                    return base_bridge
+                if (
+                    proceeds_p - target_mv >= DEFICIT_HEAL_MIN_RELIEF_EUR
+                    and remaining + proceeds_p + DEFICIT_HEAL_MAX_RESIDUAL_EUR >= target_mv
+                ):
+                    return min(DEFICIT_HEAL_MAX_RESIDUAL_EUR, base_bridge)
+                return 0
+            if has_weak_lineup_slot and not _is_weak_slot(sold_p):
+                return 0
+            if reserve_locked:
+                allowed_spend = max(0, remaining + max_bridge_now - SOLE_WEAK_POS_RESERVE_EUR)
+                return min(base_bridge, max(0, allowed_spend - max(0, eff_rem)))
+            return base_bridge
 
         def is_deficit_filler(row) -> bool:
             if (
@@ -2225,9 +2487,8 @@ async def build_plan(
             if row.seller_id:
                 if new_ids or price <= remaining:
                     continue
-                mgr_ok = manager_reject_reason(row, ignore_open_for=pid) is None
-                deficit_filler = not mgr_ok and is_deficit_filler(row)
-                if not mgr_ok and not deficit_filler:
+                deficit_filler = is_deficit_filler(row)
+                if not deficit_filler:
                     continue
             else:
                 if row.expires_at + AUCTION_SETTLEMENT_BUFFER > latest_end:
@@ -2244,12 +2505,7 @@ async def build_plan(
                 (
                     not is_verified_starter(s.id, s.lineup_prob, li_status, s.fitness_status)
                     or _observed_24h_change(s) < 50_000
-                    or int(
-                        getattr(s, "market_value_trend", None)
-                        or getattr(s, "mv_trend", 0)
-                        or 0
-                    )
-                    == 2
+                    or _mv_trend(s) == 2
                 )
                 and swap_sale_proceeds(s.market_value) - price
                 >= max(DEFICIT_HEAL_MIN_RELIEF_EUR, -remaining)
@@ -2259,14 +2515,8 @@ async def build_plan(
                 non_starter = not is_verified_starter(
                     sold.id, sold.lineup_prob, li_status, sold.fitness_status
                 )
-                falling_starter = (
-                    _observed_24h_change(sold) < 0
-                    or int(
-                        getattr(sold, "market_value_trend", None)
-                        or getattr(sold, "mv_trend", 0)
-                        or 0
-                    )
-                    == 2
+                falling_starter = _observed_24h_change(sold) < 0 or (
+                    not _has_observed_24h(sold) and _mv_trend(sold) == 2
                 )
                 proceeds = swap_sale_proceeds(sold.market_value)
                 deficit_relief_ok = (
@@ -2286,14 +2536,18 @@ async def build_plan(
                     and not (
                         non_starter
                         or falling_starter
+                        or _is_weak_slot(sold)
                         or deficit_relief_ok
                         or emergency_deficit_relief
                     )
                 ):
                     continue
-                bridge = _pair_bridge(sold, price)
+                usable_rem = _usable_remaining(sold, int(player.position))
+                bridge = _pair_bridge(
+                    sold, price, target_pos=int(player.position), usable_rem=usable_rem
+                )
                 gain = projections[pid]["horizon_points"] - projections[sold.id]["horizon_points"]
-                credit_p = min(proceeds + bridge, price + max(0, -remaining))
+                credit_p = min(proceeds + bridge, price + max(0, -usable_rem))
                 tolerated_deficit = (
                     MIDWEEK_SWAP_BRIDGE_EUR
                     if deadline is not None
@@ -2323,7 +2577,7 @@ async def build_plan(
                 )
                 if (
                     (gain > 0 or heals_deficit_downgrade)
-                    and price - credit_p <= remaining
+                    and price - credit_p <= usable_rem
                     and price <= room_33
                 ):
                     prio = (
@@ -2403,16 +2657,19 @@ async def build_plan(
                 return None
             sold_p = squad_by_id[sold_id]
             proceeds = swap_sale_proceeds(sold_p.market_value)
-            bridge = _pair_bridge(sold_p, target_mv or amount)
+            usable_rem = _usable_remaining(sold_p, option.position)
+            bridge = _pair_bridge(
+                sold_p, target_mv or amount, target_pos=option.position, usable_rem=usable_rem
+            )
             credit_avail = (
                 proceeds
-                if remaining < 0 and bridge == 0
-                else min(proceeds + bridge, amount + max(0, -remaining))
+                if usable_rem < 0 and bridge == 0
+                else min(proceeds + bridge, amount + max(0, -usable_rem))
             )
             started = monotonic()
             plan = optimize_team(
                 [*base, replace(option, cost_eur=amount)],
-                cash_available=remaining + credit_avail,
+                cash_available=usable_rem + credit_avail,
                 club_counts=clubs,
                 max_per_club=max_club,
                 max_new_purchases=1,
@@ -2460,7 +2717,7 @@ async def build_plan(
                         (
                             int(not row.seller_id),
                             plan.filled_slots,
-                            int(_sale_tier(squad_by_id[sold_id]) <= 1),
+                            min(2, 3 - _sale_tier(squad_by_id[sold_id])),
                             round(plan.horizon_points, 6),
                             -prio,
                             -net,
@@ -2510,7 +2767,10 @@ async def build_plan(
             proceeds = swap_sale_proceeds(sold_p.market_value)
             is_mgr = bool(row.seller_id)
             minimum = max(int(fresh.market_value), int(row.price or 0) if is_mgr else 0, 1)
-            bridge = _pair_bridge(sold_p, minimum)
+            usable_rem = _usable_remaining(sold_p, int(fresh.position))
+            bridge = _pair_bridge(
+                sold_p, minimum, target_pos=int(fresh.position), usable_rem=usable_rem
+            )
             max_factor = (
                 MANAGER_MAX_PRICE_FACTOR
                 if is_mgr
@@ -2518,7 +2778,7 @@ async def build_plan(
             )
             maximum = min(
                 int(fresh.market_value * max_factor),
-                remaining + proceeds + bridge,
+                usable_rem + proceeds + bridge,
                 room_33,
             )
             listing_kind = "manager" if is_mgr else "kickbase"
@@ -2617,10 +2877,38 @@ async def build_plan(
                 continue
             gain = won.horizon_points - pair_loss.points
             premium_eur = max(0, decision.amount - int(fresh.market_value))
+            is_deficit_downgrade = (
+                remaining < 0
+                and float(option.horizon_points) <= float(projections[sold_id]["horizon_points"])
+            )
             mv_advantage = (
-                max(0, _observed_24h_change(fresh) - _observed_24h_change(sold_p))
-                if _observed_24h_change(sold_p) < 0
-                else 0
+                (
+                    max(0, _observed_24h_change(fresh) - _observed_24h_change(sold_p))
+                    if _observed_24h_change(sold_p) < 0
+                    else 0
+                )
+                if is_deficit_downgrade
+                else 3 * (_observed_24h_change(fresh) - _observed_24h_change(sold_p))
+            )
+            sold_tier = _sale_tier(sold_p)
+            min_gain_pts = (
+                0.0
+                if is_deficit_downgrade
+                else SWAP_MIN_GAIN_BY_TIER.get(sold_tier, 24.0)
+            )
+            net_cap_eur = (
+                0
+                if is_deficit_downgrade
+                else max(0, int(decision.amount) - int(sold_p.market_value))
+            )
+            max_cap_per_hp = (
+                None
+                if is_deficit_downgrade
+                else (
+                    SWAP_MAX_NET_CAPITAL_PER_HP_WEAK
+                    if _is_weak_slot(sold_p)
+                    else SWAP_MAX_NET_CAPITAL_PER_HP_HEALTHY
+                )
             )
             if won.filled_slots <= pair_loss.filled_slots and not swap_pays_off(
                 gain_points=gain,
@@ -2628,6 +2916,9 @@ async def build_plan(
                 team_value_eur=team_value,
                 team_points=max(1.0, pair_loss.points),
                 mv_advantage_eur=mv_advantage,
+                min_gain_points=min_gain_pts,
+                net_capital_eur=net_cap_eur,
+                max_capital_per_point_eur=max_cap_per_hp,
             ):
                 # Tauschbremse (Emil 12.10.2026): Der Punktgewinn muss den Aufschlag tragen.
                 worth = round(gain * team_value / loss.points) if loss.points > 0 else 0
@@ -2645,6 +2936,7 @@ async def build_plan(
                 if old_tid:
                     club_counts[old_tid] = max(0, club_counts.get(old_tid, 0) - 1)
                 selected_ids.discard(old_target_id)
+                reanchored_ids.discard(old_target_id)
                 decisions.pop(old_target_id, None)
                 reviews[old_target_id]["selected"] = False
                 reviews[old_target_id]["eligible"] = False
@@ -3041,8 +3333,9 @@ async def build_plan(
     # 100 % ihres Marktwerts (der Autopilot verkauft sie spätestens am Verkaufstermin) — sonst
     # gäbe die Engine für ein geplantes Minus aus dem Handel ihre eigenen Gebote auf.
     funding_budget = budget + sum(
-        trade_sale_proceeds(
+        _engine_trade_held_proceeds(
             squad_by_id[pid].market_value,
+            book.positions[pid].buy_price if pid in book.positions else 0,
             updates_until_friday=updates_until_friday,
             haircut_per_update_pct=haircut_pct,
         )
@@ -3339,7 +3632,7 @@ async def build_plan(
             "alternative_id": next(iter(fallback.purchase_ids), None),
         }
         reviews[pid] = review
-        if pid in commitments:
+        if pid in commitments and pid not in reanchored_ids:
             continue
         action = PlannedAction(
             "bid",
@@ -3386,9 +3679,9 @@ async def build_plan(
     ):
         for proposal in list(buys):
             pid = str(proposal.action.player_id)
-            if pid in new_swaps:
+            if pid in new_swaps or (pid in reanchored_ids and pid in swap_links):
                 # Tausch auf Dispo: Gebot + wartender Sofortverkauf genau dieses Spielers.
-                sold = new_swaps[pid]
+                sold = new_swaps.get(pid) or swap_links[pid]
                 swaps.append(
                     SwapPair(fallers[sold], proposal, int(squad_by_id[sold].market_value))
                 )
@@ -3483,9 +3776,9 @@ async def build_plan(
             custom_rules_active
             and (agent_rules.allow_sells == "none" or not agent_rules.allow_friday_rescue)
         )
-        and cash_frei - KICKOFF_MIN_BALANCE < 0
+        and cash_frei + trade_held_cover - KICKOFF_MIN_BALANCE < 0
     ):
-        deficit_left = -(cash_frei - KICKOFF_MIN_BALANCE)
+        deficit_left = -(cash_frei + trade_held_cover - KICKOFF_MIN_BALANCE)
         existing_sell_ids = (
             {str(p.action.player_id) for p in sells if p.action.action_type == "sell"}
             | set(new_swaps.values())

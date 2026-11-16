@@ -37,12 +37,14 @@ PLANNING_OVERDRAFT_UNTIL = datetime(2027, 6, 1, 0, 0, tzinfo=ZoneInfo("Europe/Be
 #: Anrechnung des gekoppelten Sofortverkaufs in Prozent des Marktwerts (95 % = 5 % Puffer
 #: gegen ein 22:00-Uhr-Marktwert-Update zwischen Gebot und Zuschlag bei Fallern; 06.11.2026).
 SWAP_SALE_CREDIT_PERCENT = 95
-#: Unter-der-Woche-Upgrade-Brücke (Hebel F, 19./20.10.2026; am 06.11.2026 auf 4,5 M € bei
-#: >= 48 h vor Anpfiff kalibriert): Erlaubt früh in der Woche (Sa–Mi, >= 48 h vor Frist)
-#: beim gekoppelten Tausch eines Nicht-Starters oder fallenden Spielers bis zu 4,5 M €
-#: Netto-Überhang über dem freien Konto innerhalb der 33-%-Grenze. Ab Donnerstag (< 48 h)
-#: ist die ungedeckte Brücke 0 €, damit kein spätes Freitags-Defizit entsteht.
+#: Unter-der-Woche-Upgrade-Brücke (Hebel F, 19./20.10.2026; am 06.11.2026 auf 4,5 M € und
+#: am 15.11.2026 als 72h/48h-Gleitpfad kalibriert): Erlaubt früh in der Woche (>= 72 h vor
+#: Frist, Sa–Di) beim gekoppelten Tausch einer Baustelle oder eines fallenden Spielers bis zu
+#: 4,5 M € Netto-Überhang über dem freien Konto innerhalb der 33-%-Grenze, reduziert am
+#: Mittwoch (48–72 h vor Frist) auf 2,25 M € und setzt ab Donnerstag (< 48 h) hart auf 0 €.
 MIDWEEK_SWAP_BRIDGE_EUR = 4_500_000
+MIDWEEK_SWAP_BRIDGE_LATE_EUR = 2_250_000
+MIDWEEK_SWAP_BRIDGE_LATE_LEAD = timedelta(hours=72)
 MIDWEEK_SWAP_BRIDGE_MIN_LEAD = timedelta(hours=48)
 
 
@@ -85,13 +87,16 @@ def midweek_swap_bridge(
     sold_is_weak_or_falling: bool = True,
     until: datetime = PLANNING_OVERDRAFT_UNTIL,
 ) -> int:
-    """Zusätzlicher Netto-Tauschrahmen unter der Woche (>= 50 h vor Anpfiff-Frist)."""
+    """Zusätzlicher Netto-Tauschrahmen unter der Woche (Gleitpfad >= 72 h / >= 48 h)."""
     if (
         not sold_is_weak_or_falling
         or deadline is None
         or not overdraft_active(now, until=until)
     ):
         return 0
-    if _aware(deadline) - _aware(now) < MIDWEEK_SWAP_BRIDGE_MIN_LEAD:
+    lead = _aware(deadline) - _aware(now)
+    if lead < MIDWEEK_SWAP_BRIDGE_MIN_LEAD:
         return 0
+    if lead < MIDWEEK_SWAP_BRIDGE_LATE_LEAD:
+        return MIDWEEK_SWAP_BRIDGE_LATE_EUR
     return MIDWEEK_SWAP_BRIDGE_EUR

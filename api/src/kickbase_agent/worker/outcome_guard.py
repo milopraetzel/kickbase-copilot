@@ -75,6 +75,7 @@ from kickbase_agent.decision.kickoff_freeze import KICKOFF_MIN_BALANCE
 from kickbase_agent.decision.lineup import MIN_SQUAD_SIZE
 from kickbase_agent.decision.overdraft import (
     PLANNING_OVERDRAFT_UNTIL,
+    midweek_swap_bridge,
     overdraft_active,
     swap_sale_proceeds,
 )
@@ -82,6 +83,7 @@ from kickbase_agent.kickbase.factory import make_kickbase_client
 from kickbase_agent.notify.report_store import save_report
 from kickbase_agent.trading.finance import overdraft_floor
 from kickbase_agent.trading.trade_book import (
+    active_engine_swap_bridge,
     load_trade_book,
     regular_fill,
     remaining_updates_until_friday,
@@ -218,6 +220,8 @@ class GuardState:
     trade_ids: frozenset[str] = frozenset()
     trade_bid_ids: frozenset[str] = frozenset()
     sale_by: datetime | None = None
+    #: Belegte aktive Midweek-Brücke eines Engine-Dispo-Tauschs für diesen Spieltag.
+    swap_bridge_eur: int = 0
 
 
 @dataclass(frozen=True)
@@ -348,18 +352,32 @@ def trade_cover(state: GuardState) -> int:
     )
 
 
+def _active_bridge(state: GuardState) -> int:
+    """Gedeckelte aktive Engine-Midweek-Brücke (>= 48 h vor Anpfiff)."""
+    if state.swap_bridge_eur <= 0:
+        return 0
+    return min(
+        int(state.swap_bridge_eur),
+        midweek_swap_bridge(state.now, state.deadline, until=PLANNING_OVERDRAFT_UNTIL),
+    )
+
+
 def effective_balance(state: GuardState) -> int:
-    """Konto nach dem Verkauf der Handelsspieler (ohne Handel: das Konto)."""
+    """Konto nach dem Verkauf der Handelsspieler (inkl. aktiver Midweek-Brücke)."""
     rules = load_agent_rules()
     haircut = rules.friday_buffer_haircut_pct if rules.is_custom_active() else 0.0
     updates = remaining_updates_until_friday(state.now, state.sale_by)
-    return state.budget + sale_cover(
-        held_mv=[int(e.market_value) for e in state.squad if e.player_id in state.trade_ids],
-        bid_target_mv=[],
-        now=state.now,
-        sale_by=state.sale_by,
-        updates_until_friday=updates,
-        haircut_per_update_pct=haircut,
+    return (
+        state.budget
+        + _active_bridge(state)
+        + sale_cover(
+            held_mv=[int(e.market_value) for e in state.squad if e.player_id in state.trade_ids],
+            bid_target_mv=[],
+            now=state.now,
+            sale_by=state.sale_by,
+            updates_until_friday=updates,
+            haircut_per_update_pct=haircut,
+        )
     )
 
 
@@ -496,11 +514,16 @@ def _coverage_finding(state: GuardState) -> Finding | None:
     worst_case = state.budget - bound
     cover = swap_cover(state)
     traded = trade_cover(state)
+    bridge = _active_bridge(state)
     if cover:
         # Tausch und Handel zugleich: Der Handel deckt sich über seinen Verkauf (Review).
-        return _swap_coverage_finding(state, bound, worst_case, cover, traded)
+        return _swap_coverage_finding(state, bound, worst_case, cover, traded, bridge)
     if traded:
-        return _trade_coverage_finding(state, bound, worst_case, traded)
+        return _trade_coverage_finding(state, bound, worst_case, traded, bridge)
+    if bridge > 0:
+        floor = overdraft_floor(team_value(state), state.budget)
+        if worst_case + bridge >= KICKOFF_MIN_BALANCE and worst_case >= floor:
+            return None
     if worst_case >= KICKOFF_MIN_BALANCE:
         return None
     if state.own_bids:
@@ -529,7 +552,12 @@ def _coverage_finding(state: GuardState) -> Finding | None:
 
 
 def _swap_coverage_finding(
-    state: GuardState, bound: int, worst_case: int, cover: int, traded: int = 0,
+    state: GuardState,
+    bound: int,
+    worst_case: int,
+    cover: int,
+    traded: int = 0,
+    bridge: int = 0,
 ) -> Finding | None:
     """(c) mit offenem Dispo-Tausch: netto gedeckt und innerhalb der 33-%-Grenze?
 
@@ -537,10 +565,14 @@ def _swap_coverage_finding(
     für die 33-%-Grenze — die gilt für das echte Konto, wenn alle Gebote zuschlagen, und der
     Handelsverkauf kommt erst danach."""
     floor = overdraft_floor(team_value(state), state.budget)
-    net = worst_case + cover + traded
+    net = worst_case + cover + traded + bridge
     if net >= KICKOFF_MIN_BALANCE and worst_case >= floor:
         return None
-    sold = f"{_fmt(cover)} angerechnet" + (f", Handel {_fmt(traded)}" if traded else "")
+    sold = (
+        f"{_fmt(cover)} angerechnet"
+        + (f", Handel {_fmt(traded)}" if traded else "")
+        + (f", Brücke {_fmt(bridge)}" if bridge else "")
+    )
     reason = (
         f"netto {_fmt(net)} nach den gekoppelten Verkäufen ({sold})"
         if net < KICKOFF_MIN_BALANCE
@@ -566,13 +598,14 @@ def _swap_coverage_finding(
 
 
 def _trade_coverage_finding(
-    state: GuardState, bound: int, worst_case: int, cover: int,
+    state: GuardState, bound: int, worst_case: int, cover: int, bridge: int = 0,
 ) -> Finding | None:
     """(c) mit Handel: gedeckt, wenn das Konto nach Verkauf aller Handelsspieler (und der
     Ziele laufender Handelsgebote) den Puffer hält — der Autopilot verkauft spätestens am
     Verkaufstermin. Reicht selbst das nicht, ist es ein echter Befund."""
-    net = worst_case + cover
-    if net >= KICKOFF_MIN_BALANCE:
+    net = worst_case + cover + bridge
+    floor = overdraft_floor(team_value(state), state.budget)
+    if net >= KICKOFF_MIN_BALANCE and (bridge == 0 or worst_case >= floor):
         return None
     until = f" bis {_fmt_time(state.sale_by)}" if state.sale_by is not None else ""
     lines = [
@@ -948,12 +981,24 @@ async def run_outcome_guard(channel, *, now: datetime | None = None) -> str:
             and isinstance((row.sources or {}).get("swap_for"), str)
             and dispo_smoothing_pair(session, row, squad_pids=squad_pids, now=stamp) is not None
         )
+        live_bids_map = {
+            str(b.get("player_id")): int(b.get("amount") or 0)
+            for b in bids
+            if b.get("player_id")
+        }
         book = load_trade_book(
             session, now=stamp, squad_ids=squad_pids, league_id=lg,
-            live_bids={str(b.get("player_id")): int(b.get("amount") or 0)
-                       for b in bids if b.get("player_id")},
+            live_bids=live_bids_map,
         )
         deadline = upcoming[1] if upcoming else None
+        swap_bridge_eur = active_engine_swap_bridge(
+            session,
+            now=stamp,
+            deadline=deadline,
+            league_id=lg,
+            squad_ids=squad_pids,
+            live_bids=live_bids_map,
+        )
         state = GuardState(
             now=stamp,
             squad=await _with_li(_squad_entries(squad)),
@@ -987,6 +1032,7 @@ async def run_outcome_guard(channel, *, now: datetime | None = None) -> str:
                 int(sp.player.position) for sp in squad
                 if str(sp.player.id) not in book.positions
             )),
+            swap_bridge_eur=swap_bridge_eur,
         )
         findings = evaluate(state, memory)
         delivered: list[Finding] = []

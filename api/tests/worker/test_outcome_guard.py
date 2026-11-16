@@ -963,3 +963,53 @@ def test_die_33_prozent_grenze_zaehlt_das_echte_konto_nicht_den_spaeteren_handel
     state = _tausch_mit_handel(5_000_000, squad=squad, bids=(OwnBid("t", "T", 15_000_000),))
     (finding,) = evaluate(state, GuardMemory())
     assert finding.slo == SLO_COVERAGE and "33-%" in finding.text
+
+
+def test_aktive_engine_swap_bruecke_verhindert_schein_alarm_und_laeuft_ab_t_minus_48h_aus():
+    """Audit 15.11.2026 (Fix 3): Eine ausgeführte Engine-Midweek-Brücke deckt das geplante
+    Übergangs-Minus früh in der Woche (>= 72h bis 4,5 M €, 48..72h bis 2,25 M €), erlischt aber
+    ab T-48h auf 0 €, damit ungedeckte Rest-Löcher rechtzeitig gemeldet werden."""
+    # Konto -5,5 M €, Handelsspieler 3,0 M € -> Lücke -2,5 M €, deklarierte Brücke 3,0 M €.
+    early = GuardState(
+        **{
+            **_trade_state(
+                budget=-5_500_000,
+                trade=[("t", 3_000_000)],
+                deadline=NOW + timedelta(hours=100),
+            ).__dict__,
+            "sale_by": NOW + timedelta(hours=94),
+            "swap_bridge_eur": 3_000_000,
+        }
+    )
+    mem = GuardMemory(low_balance_since=NOW - timedelta(hours=30))
+    assert evaluate(early, mem) == []
+    assert next_memory(early, mem, []).low_balance_since is None
+
+    # Bei T-60h sinkt der Gleitpfad-Deckel auf 2,25 M € -> -5,5 M + 3,0 M + 2,25 M = -0,25 M -> rot!
+    wed = GuardState(
+        **{
+            **_trade_state(
+                budget=-5_500_000,
+                trade=[("t", 3_000_000)],
+                deadline=NOW + timedelta(hours=60),
+            ).__dict__,
+            "sale_by": NOW + timedelta(hours=54),
+            "swap_bridge_eur": 3_000_000,
+        }
+    )
+    assert [f.slo for f in evaluate(wed, GuardMemory())] == [SLO_COVERAGE]
+
+    # Ab T-36h (< 48h) ist die Brücke komplett 0 €:
+    thu = GuardState(
+        **{
+            **_trade_state(
+                budget=-4_500_000,
+                trade=[("t", 3_000_000)],
+                deadline=NOW + timedelta(hours=36),
+            ).__dict__,
+            "sale_by": NOW + timedelta(hours=30),
+            "swap_bridge_eur": 3_000_000,
+        }
+    )
+    assert [f.slo for f in evaluate(thu, GuardMemory())] == [SLO_COVERAGE]
+

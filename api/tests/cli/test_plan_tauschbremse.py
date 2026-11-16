@@ -322,3 +322,55 @@ async def test_deficit_cover_prefers_falling_non_starter_over_rising_when_both_c
 
     deficit_sells = [p for p in plan.sells if p.rule_id == "sell_deficit_cover"]
     assert [p.action.player_id for p in deficit_sells] == ["roster-12"]
+
+
+def test_swap_pays_off_enforces_tier_min_gain_net_capital_cap_and_mv_trend():
+    """Audit 15.11.2026 (Fix 2): Stufen-Mindestgewinn, Netto-Zuzahlungsdeckel je hP und
+    Marktwert-Trend-Delta verhindern teure Luxus-Swaps (Schwäbe -> Kobel, Regeer -> Leweling)."""
+    # 1) Stufen-Mindestgewinn (z. B. Tier 2 braucht >= 48 hP):
+    assert (
+        plan_mod.swap_pays_off(
+            gain_points=30.0,
+            premium_eur=100_000,
+            team_value_eur=120_000_000,
+            team_points=3_000.0,
+            min_gain_points=48.0,
+        )
+        is False
+    )
+    # 2) Netto-Kapitaldeckel je hP: Schwäbe -> Kobel (+100,8 hP für +6,38 M € Zuzahlung = 63,3k/hP)
+    #    scheitert am Deckel für intakte Starter (35k €/hP), ginge für echte Baustelle (85k €/hP):
+    assert (
+        plan_mod.swap_pays_off(
+            gain_points=100.8,
+            premium_eur=200_000,
+            team_value_eur=135_000_000,
+            team_points=3_200.0,
+            net_capital_eur=6_380_000,
+            max_capital_per_point_eur=plan_mod.SWAP_MAX_NET_CAPITAL_PER_HP_HEALTHY,
+        )
+        is False
+    )
+    assert (
+        plan_mod.swap_pays_off(
+            gain_points=100.8,
+            premium_eur=200_000,
+            team_value_eur=135_000_000,
+            team_points=3_200.0,
+            net_capital_eur=6_380_000,
+            max_capital_per_point_eur=plan_mod.SWAP_MAX_NET_CAPITAL_PER_HP_WEAK,
+        )
+        is True
+    )
+    # 3) Negativer Marktwert-Trend-Vorteil (Abgabe eines Steigers erhöht die effektive Hürde):
+    assert (
+        plan_mod.swap_pays_off(
+            gain_points=10.0,
+            premium_eur=100_000,
+            team_value_eur=120_000_000,
+            team_points=3_000.0,
+            mv_advantage_eur=-350_000,
+        )
+        is False
+    )
+

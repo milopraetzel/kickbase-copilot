@@ -72,30 +72,30 @@ CPython 3.14, Container `python:3.12-slim`), ssh-Key für die Box (nur für Depl
 Der Pfad enthält ein Leerzeichen — **immer quoten**.
 
 ```bash
-cd "/Users/emil/Mein Claude /Kickbase-Agent/api" && uv sync --extra dev
+cd "/path/to/kickbase-copilot/api" && uv sync --extra dev
 ```
 
 `.env` aus der Vorlage anlegen und ausfüllen (Kickbase-Auth Weg A Token/Refresh-Token oder Weg B
 E-Mail/Passwort, `KICKBASE_LEAGUE_ID=1234567`, Discord-Variablen, Flags):
 
 ```bash
-cp "/Users/emil/Mein Claude /Kickbase-Agent/api/.env.example" "/Users/emil/Mein Claude /Kickbase-Agent/api/.env"
+cp "/path/to/kickbase-copilot/api/.env.example" "/path/to/kickbase-copilot/api/.env"
 ```
 
 Lokale DB (`DATABASE_URL=sqlite:///kba_local.db`, Datei `api/kba_local.db`, per `.gitignore` ausgeschlossen):
 
 ```bash
-cd "/Users/emil/Mein Claude /Kickbase-Agent/api" && uv run alembic upgrade head
+cd "/path/to/kickbase-copilot/api" && uv run alembic upgrade head
 ```
 
 Tests (Stand 23.08.: **778 passed**, ~20 s) und Lint:
 
 ```bash
-cd "/Users/emil/Mein Claude /Kickbase-Agent/api" && uv run --extra dev pytest -q
+cd "/path/to/kickbase-copilot/api" && uv run --extra dev pytest -q
 ```
 
 ```bash
-cd "/Users/emil/Mein Claude /Kickbase-Agent/api" && uv run --extra dev ruff check src/ tests/
+cd "/path/to/kickbase-copilot/api" && uv run --extra dev ruff check src/ tests/
 ```
 
 Cockpit lokal bauen (Live-Daten, 1–2 min) und im Browser ansehen (`.claude/launch.json`
@@ -103,7 +103,7 @@ Cockpit lokal bauen (Live-Daten, 1–2 min) und im Browser ansehen (`.claude/lau
 `http://localhost:8765/kba-dashboard.html`):
 
 ```bash
-cd "/Users/emil/Mein Claude /Kickbase-Agent/api" && uv run kba dashboard-html /tmp/kba-dashboard.html
+cd "/path/to/kickbase-copilot/api" && uv run kba dashboard-html /tmp/kba-dashboard.html
 ```
 
 MCP-Server lokal (stdio; Logs auf stderr). In Claude Code lädt `.mcp.json` ihn automatisch als
@@ -112,7 +112,7 @@ Server `kickbase` — **mit `env AGENT_DRY_RUN=0` + `AGENT_ALLOW_LIVE=1`, d. h. 
 `AGENT_AUTO_BONUS=1` der lokalen `.env`). Neue Session nötig, damit `.mcp.json` greift.
 
 ```bash
-cd "/Users/emil/Mein Claude /Kickbase-Agent" && uv run --directory api kba-mcp
+cd "/path/to/kickbase-copilot" && uv run --directory api kba-mcp
 ```
 
 Weitere lokale Werkzeuge: `uv run kba --help` (login, kader, markt, news, probe, snapshot, plan,
@@ -139,7 +139,7 @@ Mehrere Claude-Sessions arbeiten im selben Repo. rsync überschreibt die Box mit
 Stand — wer mit altem Stand deployt, deployt fremde Änderungen weg.
 
 ```bash
-cd "/Users/emil/Mein Claude /Kickbase-Agent" && git fetch && git status -sb && git log --oneline HEAD..@{u}
+cd "/path/to/kickbase-copilot" && git fetch && git status -sb && git log --oneline HEAD..@{u}
 ```
 
 Gibt es Commits hinter dem eigenen HEAD → erst `git pull --rebase`. Dann Prüfsumme des Code-Baums
@@ -147,7 +147,7 @@ lokal und auf der Box vergleichen (gleiche Hash-Zeile = Box entspricht dem lokal
 jemand hat dazwischen deployt oder lokal liegt Ungesichertes):
 
 ```bash
-cd "/Users/emil/Mein Claude /Kickbase-Agent" && find api/src -name '*.py' -not -path '*/__pycache__/*' | LC_ALL=C sort | xargs shasum -a 256 | shasum -a 256
+cd "/path/to/kickbase-copilot" && find api/src -name '*.py' -not -path '*/__pycache__/*' | LC_ALL=C sort | xargs shasum -a 256 | shasum -a 256
 ```
 
 ```bash
@@ -184,7 +184,7 @@ Services. **`--exclude='.env'` ist Pflicht** — sonst überschreibt die lokale 
 (andere Flags, andere Zugangsdaten).
 
 ```bash
-cd "/Users/emil/Mein Claude /Kickbase-Agent" && rsync -az --exclude='.git' --exclude='.venv' --exclude='__pycache__' --exclude='*.db' --exclude='*.db-journal' --exclude='*.db-shm' --exclude='*.db-wal' --exclude='.env' --exclude='.env.*' --exclude='.pytest_cache' --exclude='.ruff_cache' --exclude='.mypy_cache' --exclude='.coverage' --exclude='node_modules' api docker-compose.yml deploy root@203.0.113.10:/opt/kickbase-agent/ && scp .claude/skills/kickbase/LEARNINGS.md root@203.0.113.10:/opt/kickbase-agent/learnings.md && ssh root@203.0.113.10 'cd /opt/kickbase-agent && docker compose --env-file api/.env up -d --build && docker cp /opt/kickbase-agent/learnings.md kickbase-agent:/app/data/learnings.md'
+cd "/path/to/kickbase-copilot" && rsync -az --exclude='.git' --exclude='.venv' --exclude='__pycache__' --exclude='*.db' --exclude='*.db-journal' --exclude='*.db-shm' --exclude='*.db-wal' --exclude='.env' --exclude='.env.*' --exclude='.pytest_cache' --exclude='.ruff_cache' --exclude='.mypy_cache' --exclude='.coverage' --exclude='node_modules' api docker-compose.yml deploy root@203.0.113.10:/opt/kickbase-agent/ && scp .claude/skills/kickbase/LEARNINGS.md root@203.0.113.10:/opt/kickbase-agent/learnings.md && ssh root@203.0.113.10 'cd /opt/kickbase-agent && docker compose --env-file api/.env up -d --build && docker cp /opt/kickbase-agent/learnings.md kickbase-agent:/app/data/learnings.md'
 ```
 
 Hinweise:
@@ -261,7 +261,7 @@ Danach `https://localhost:8080` im Browser prüfen (Zeitstempel im Cockpit, Zent
 
 **Wo er läuft.** Der Selbstumbau (`agent/self_change.py`, Flag `AGENT_SELF_CHANGE`, Default 0)
 läuft ausschließlich dort, wo auch Emil deployt: **auf dem Mac, im Git-Checkout**
-(`/Users/emil/Mein Claude /Kickbase-Agent`). Er legt einen Branch `selbst/JJJJMMTT-…` an,
+(`/path/to/kickbase-copilot`). Er legt einen Branch `selbst/JJJJMMTT-…` an,
 committet genau einen `[selbst]`-Commit, deployt über denselben Weg wie Abschnitt 3.2
 (rsync + `docker compose`, in der Praxis MCP `deploy_verify`) und nimmt sich bei roter
 Gesundheitsprüfung per `git revert` selbst zurück.
@@ -543,7 +543,7 @@ ssh root@203.0.113.10 'docker exec kickbase-agent uv run python -c "import sqlit
 Kopie auf den Mac (Pfad quoten):
 
 ```bash
-scp root@203.0.113.10:/opt/kickbase-agent/backup/kba-<datum>.db "/Users/emil/Mein Claude /Kickbase-Agent/api/backup-box-kba.db"
+scp root@203.0.113.10:/opt/kickbase-agent/backup/kba-<datum>.db "/path/to/kickbase-copilot/api/backup-box-kba.db"
 ```
 
 (`*.db` und die SQLite-Journale sind per `.gitignore` ausgeschlossen — landet nie im Repo. Die Endung zählt: bis 27.08. galt nur `*.db`, weshalb die SQLite-Journale `kba_local.db-shm`/`-wal` versioniert waren und per rsync auf der Box landeten.) Empfehlung: vor jedem Deploy

@@ -12,6 +12,7 @@ services:
       KBA_WORKER_RUNTIME: box
       DATABASE_URL: sqlite:////app/data/kba.db
       COCKPIT_HTML_PATH: /app/data/cockpit/index.html
+      PROTECTED_PLAYER_IDS: "${PROTECTED_PLAYER_IDS:-}"
       TZ: Europe/Berlin
     volumes:
       - kba-data:/app/data
@@ -26,6 +27,7 @@ services:
     environment:
       DATABASE_URL: sqlite:////app/data/kba.db
       COCKPIT_HTML_PATH: /app/data/cockpit/index.html
+      PROTECTED_PLAYER_IDS: "${PROTECTED_PLAYER_IDS:-}"
       TZ: Europe/Berlin
       KBA_API_HOST: 0.0.0.0
       KBA_API_PORT: "8000"

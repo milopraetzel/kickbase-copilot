@@ -76,6 +76,7 @@ from kickbase_agent.scouts.ligainsider.teams import TEAMS
 from kickbase_agent.trading.trade_book import (
     TRADE_CAP_EUR,
     TradePosition,
+    active_engine_swap_bridge,
     live_swap_cover,
     load_trade_book,
     regular_fill,
@@ -893,6 +894,14 @@ async def run_trade_radar(channel, *, now: datetime | None = None) -> str:
         )))
         swap_cover_eur, _ = live_swap_cover(
             open_sells, squad_mv=squad_mv, live_bids=live_bids, now=stamp
+        )
+        swap_cover_eur += active_engine_swap_bridge(
+            session,
+            now=stamp,
+            deadline=deadline,
+            league_id=lg,
+            squad_ids=squad_ids,
+            live_bids=live_bids,
         )
 
     # Kandidat ist weder ein eigener Spieler noch einer mit laufendem Gebot (Engine-Ziel oder

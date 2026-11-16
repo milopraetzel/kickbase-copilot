@@ -413,7 +413,9 @@ async def test_midweek_swap_bridge_finances_upgrade_of_non_starter_or_falling_pl
     squad = await client.get_squad("L1")
     for sp in squad:
         if sp.player.id == WEAK:
-            sp.player = sp.player.model_copy(update={"mv_change_24h": -268_000, "mv_trend": 2})
+            sp.player = sp.player.model_copy(
+                update={"mv_change_24h": -268_000, "market_value_trend": 2}
+            )
 
     async def get_squad(_league_id):
         return squad
@@ -493,7 +495,7 @@ async def test_deficit_healing_swap_sells_bench_hack_before_tigges_when_account_
                     "lineup_prob": 3,
                     "points": 412,
                     "mv_change_24h": 205_000,
-                    "mv_trend": 1,
+                    "market_value_trend": 1,
                 }
             )
 
@@ -602,7 +604,11 @@ async def test_surging_starter_shield_depends_on_next_two_opponents(monkeypatch)
             )
         elif sp.player.id == "roster-10":
             sp.player = sp.player.model_copy(
-                update={"mv_change_24h": 205_000, "mv_change_24h_observed": True, "mv_trend": 1}
+                update={
+                    "mv_change_24h": 205_000,
+                    "mv_change_24h_observed": True,
+                    "market_value_trend": 1,
+                }
             )
 
     async def get_squad(_league_id):
@@ -1125,6 +1131,341 @@ async def test_hundred_percent_proceeds_and_six_million_bridge_reach_top_segment
         amount=pair.bid.action.amount,
         now=datetime.now(UTC),
     ) is None
+
+
+async def test_midweek_manager_listing_does_not_lock_overdraft_swap_slot(monkeypatch):
+    """Unter der Woche belegt `_plan_overdraft_swap` den einzigen Tausch-Slot (`couplings`)
+    nicht mit einem Manager-Listing ohne Auktionsende (0/12 Annahmequote in der Liga; das
+    sofort ausgeführte Gebot sperrte Tage lang echte Kickbase-Tauschauktionen)."""
+    now = datetime.now(UTC)
+    specs = [(pos, 10_000_000) for pos in ELEVEN]
+    client = await _prepare_dispo(monkeypatch, specs=specs, cash=1_320_000)
+    _forecast(
+        monkeypatch,
+        {**{f"roster-{i}": 0.80 for i in range(10)}, WEAK: 0.35, "mohya": 0.95},
+    )
+    mgr_listing = _replacement(mv=10_580_000, pid="mohya").model_copy(
+        update={
+            "seller_id": "rival-1",
+            "price": 10_715_000,
+            "expires_at": now - timedelta(hours=4),
+        }
+    )
+    client.market = [mgr_listing]
+
+    plan = await plan_mod.build_plan()
+    assert plan.swaps == []
+    assert plan.team_plan["filled_slots"] == 11
+    assert plan.team_plan["optimal"] is True
+
+
+async def test_luxury_keeper_swap_blocked_when_weak_striker_exists_and_trader_dispo_negative(
+    monkeypatch,
+):
+    """Audit 15.11.2026 (Fall 1: Schwäbe -> Kobel): Solange eine echte Baustelle (Tigges,
+    37,5 xP/Spiel, KB 3, -118k/Tag) in der Startelf steht, darf ein gesunder Stammtorhüter
+    (Schwäbe, 110,6 xP/Spiel) weder freies Aufpreis-Cash noch Midweek-Brücke ziehen — auch
+    nicht dann, wenn gehaltene Bank-Trader das Rohkonto (`budget`) tief ins Minus drücken."""
+    from kickbase_agent.trading.trade_book import TradeBook, TradePosition
+
+    specs = (
+        [(1, 13_690_000)]  # roster-0: Schwäbe (fitter KB-1-Stammtorhüter)
+        + [(2, 10_000_000) for _ in range(5)]
+        + [(3, 10_000_000) for _ in range(4)]
+        + [(4, 4_370_000)]  # roster-10: Tigges (alleiniger Stürmer, KB 3, 37,5 xP)
+        + [(3, 10_400_000), (2, 10_400_000)]  # zwei gehaltene Bank-Trader
+    )
+    client = await _prepare_dispo(monkeypatch, specs=specs, cash=-18_000_000)
+    squad = await client.get_squad("L1")
+    for sp in squad:
+        if sp.player.id == "roster-0":
+            sp.player = sp.player.model_copy(
+                update={
+                    "last_name": "Schwaebe",
+                    "mv_change_24h": 0,
+                    "mv_change_24h_observed": True,
+                }
+            )
+        elif sp.player.id == "roster-10":
+            sp.player = sp.player.model_copy(
+                update={
+                    "last_name": "Tigges",
+                    "lineup_prob": 3,
+                    "mv_change_24h": -118_000,
+                    "mv_change_24h_observed": True,
+                    "market_value_trend": 2,
+                }
+            )
+
+    async def get_squad(_league_id):
+        return squad
+
+    client.get_squad = get_squad
+    now = datetime.now(UTC)
+    trade_book = TradeBook(
+        positions={
+            "roster-11": TradePosition("roster-11", 10_000_000, now - timedelta(days=1), 1, 1),
+            "roster-12": TradePosition("roster-12", 10_000_000, now - timedelta(days=1), 2, 2),
+        },
+        live_bids={},
+        pending={},
+        firm={},
+    )
+    monkeypatch.setattr(plan_mod, "load_trade_book", lambda *args, **kwargs: trade_book)
+    _forecast(
+        monkeypatch,
+        {
+            "roster-0": 1.106,
+            **{f"roster-{i}": 0.90 for i in range(1, 10)},
+            "roster-10": 0.375,
+            "kobel": 1.358,
+        },
+    )
+    kobel_listing = _replacement(mv=18_500_000, pid="kobel").model_copy(
+        update={
+            "player": _replacement(mv=18_500_000, pid="kobel").player.model_copy(
+                update={
+                    "last_name": "Kobel",
+                    "position": Position.GOALKEEPER,
+                    "team_id": "club-bvb",
+                    "lineup_prob": 1,
+                }
+            )
+        }
+    )
+    client.market = [kobel_listing]
+
+    plan = await plan_mod.build_plan()
+    assert plan.swaps == []
+    assert "roster-0" in plan.team_plan["lineup_ids"]
+
+
+async def test_midfield_swap_protects_regeer_and_upgrades_adeline_keeping_striker_reserve(
+    monkeypatch,
+):
+    """Audit 15.11.2026 (Fall 2: Regeer -> Leweling):
+    (A) Ohne freies Geld opfert die Engine niemals den steigenden Stammspieler Regeer
+        (102,7 xP, +125k/Tag, market_value_trend=1) für +7,5 xP/Spiel auf Leweling (110,2 xP).
+    (B) Mit ausreichendem Upgrade-Pool tauscht sie gezielt Baustelle Adeline (55,3 xP < 58)
+        auf Leweling, lässt Regeer unangetastet und reserviert >= 3,0 M € für Allein-Stürmer
+        Tigges."""
+    specs = [
+        (1, 20_000_000),
+        (2, 10_000_000),
+        (2, 10_000_000),
+        (2, 10_000_000),
+        (2, 10_000_000),
+        (2, 10_000_000),
+        (3, 65_000_000),
+        (3, 15_780_000),  # roster-7: Regeer (+125k/d, 102,7 xP)
+        (3, 11_670_000),  # roster-8: Onyedika (+40k/d, 80,9 xP)
+        (3, 5_820_000),   # roster-9: Adeline (+31k/d, 55,3 xP)
+        (4, 4_370_000),   # roster-10: Tigges (-118k/d, 37,5 xP, Allein-Stürmer)
+    ]
+    client = await _prepare_dispo(monkeypatch, specs=specs, cash=10_000)
+    squad = await client.get_squad("L1")
+    updates = {
+        "roster-7": {
+            "last_name": "Regeer",
+            "mv_change_24h": 125_000,
+            "mv_change_24h_observed": True,
+            "market_value_trend": 1,
+        },
+        "roster-8": {
+            "last_name": "Onyedika",
+            "mv_change_24h": 40_000,
+            "mv_change_24h_observed": True,
+            "market_value_trend": 1,
+        },
+        "roster-9": {
+            "last_name": "Adeline",
+            "mv_change_24h": 31_000,
+            "mv_change_24h_observed": True,
+            "market_value_trend": 1,
+        },
+        "roster-10": {
+            "last_name": "Tigges",
+            "lineup_prob": 3,
+            "mv_change_24h": -118_000,
+            "mv_change_24h_observed": True,
+            "market_value_trend": 2,
+        },
+    }
+    for sp in squad:
+        if sp.player.id in updates:
+            sp.player = sp.player.model_copy(update=updates[sp.player.id])
+
+    async def get_squad(_league_id):
+        return squad
+
+    client.get_squad = get_squad
+    _forecast(
+        monkeypatch,
+        {
+            **{f"roster-{i}": 1.00 for i in range(7)},
+            "roster-7": 1.027,
+            "roster-8": 0.809,
+            "roster-9": 0.553,
+            "roster-10": 0.375,
+            "leweling": 1.102,
+        },
+    )
+    leweling = _replacement(mv=12_000_000, pid="leweling").model_copy(
+        update={
+            "player": _replacement(mv=12_000_000, pid="leweling").player.model_copy(
+                update={
+                    "last_name": "Leweling",
+                    "position": Position.MIDFIELDER,
+                    "team_id": "club-vfb",
+                    "lineup_prob": 1,
+                    "mv_change_24h": 54_000,
+                    "mv_change_24h_observed": True,
+                }
+            )
+        }
+    )
+    client.market = [leweling]
+
+    # Fall A: Ohne freies Cash (remaining = 0 €) und mit 3,0-M-Sturmreserve darf weder Regeer
+    # geopfert noch die gesamte 4,5-M-Brücke für das Mittelfeld verbraucht werden.
+    plan_tight = await plan_mod.build_plan()
+    assert plan_tight.swaps == []
+
+    # Fall B: Mit +6,5 M € Cash (+ 4,5 M € Brücke = 11,0 M € Pool; abzüglich 3,0 M € Reserve
+    # für Tigges bleiben 8,0 M € für andere Baustellen) wird gezielt Adeline auf Leweling
+    # hochgetauscht und Regeer bleibt in der Startelf geschützt.
+    client.budget = 6_510_000
+    plan_funded = await plan_mod.build_plan()
+    pair, review = _only_swap(plan_funded)
+    assert pair.faller.player_id == "roster-9"
+    assert pair.bid.action.player_id == "leweling"
+    assert "roster-7" in review["team_plan"]["lineup_ids"]
+
+
+async def test_cross_pos_swap_unlocks_weak_starter_and_partial_bridge_covers_striker_under_minus(
+    monkeypatch,
+):
+    """Audit 15.11.2026 (Fall 3 + Blind Spot 5):
+    (A) Eine verifizierte Startelf-Baustelle (< 58 xP, z. B. Adeline 55,3 xP auf MF) darf
+        positionsübergreifend gegen einen zweiten Stürmer getauscht werden (5-4-1 -> 5-3-2).
+    (B) Steht das Konto unter der Woche leicht im Minus (-1,10 M € aus Teil-Brücke), erhält
+        Allein-Stürmer Tigges (_sale_tier == 1) trotzdem den verbleibenden Brückenrahmen."""
+    specs = [
+        (1, 15_000_000),
+        (2, 10_000_000),
+        (2, 10_000_000),
+        (2, 10_000_000),
+        (2, 10_000_000),
+        (2, 10_000_000),
+        (3, 12_000_000),
+        (3, 12_000_000),
+        (3, 12_000_000),
+        (3, 5_820_000),   # roster-9: Adeline (KB 1, +31k/d, aber nur 55,3 xP)
+        (4, 4_370_000),   # roster-10: Tigges (KB 3, -118k/d, 37,5 xP)
+    ]
+    client = await _prepare_dispo(monkeypatch, specs=specs, cash=3_000_000)
+    squad = await client.get_squad("L1")
+    for sp in squad:
+        if sp.player.id == "roster-9":
+            sp.player = sp.player.model_copy(
+                update={"mv_change_24h": 31_000, "mv_change_24h_observed": True}
+            )
+        elif sp.player.id == "roster-10":
+            sp.player = sp.player.model_copy(
+                update={
+                    "lineup_prob": 3,
+                    "mv_change_24h": -118_000,
+                    "mv_change_24h_observed": True,
+                }
+            )
+
+    async def get_squad(_league_id):
+        return squad
+
+    client.get_squad = get_squad
+    _forecast(
+        monkeypatch,
+        {
+            **{f"roster-{i}": 0.90 for i in range(9)},
+            "roster-9": 0.553,
+            "roster-10": 0.375,
+            "silva": 0.95,
+        },
+    )
+    # Teil A: Silva kostet 11,5 M € -> Tigges (4,15 M + 3,0 M + 4,5 M = 11,65 M) bräuchte
+    # fast kein Gebotspolster; Adeline (5,53 M + 3,0 M + 4,5 M = 13,03 M) schaltet 5-3-2 frei!
+    client.market = [_striker(11_500_000, "silva")]
+    plan_cross = await plan_mod.build_plan()
+    pair_cross, review_cross = _only_swap(plan_cross)
+    assert pair_cross.bid.action.player_id == "silva"
+    assert pair_cross.faller.player_id in {"roster-9", "roster-10"}
+    if pair_cross.faller.player_id == "roster-9":
+        assert review_cross["team_plan"]["formation"] == "5-3-2"
+
+    # Teil B: Konto bei -1,09 M € (remaining = -1,10 M €), Stürmer für 6,5 M € am Markt ->
+    # Tigges (4,15 M Erlös + 4,50 M Brücke - 1,10 M Defizit = 7,55 M Rahmen) kann trotzdem
+    # auf den Stürmer upgraden!
+    client.budget = -1_090_000
+    client.market = [_striker(6_500_000, "silva")]
+    plan_minus = await plan_mod.build_plan()
+    pair_minus, review_minus = _only_swap(plan_minus)
+    assert pair_minus.faller.player_id == "roster-10"
+    assert pair_minus.bid.action.player_id == "silva"
+    assert purchase_review_veto(
+        review_minus,
+        player_id="silva",
+        amount=pair_minus.bid.action.amount,
+        now=datetime.now(UTC),
+    ) is None
+
+
+async def test_trader_unrealized_peak_gain_is_buffered_and_does_not_trigger_deficit_cover_sell(
+    monkeypatch,
+):
+    """Audit 15.11.2026 (Fix 5 & Blind Spot 6):
+    (1) Gehaltene Bank-Trader im Dispo dürfen `sell_deficit_cover` niemals dazu bringen,
+        reguläre Bankspieler panikartig zu verkaufen, solange die Trader das Konto decken.
+    (2) Buchgewinne gehaltener Bank-Trader über ihrem Kaufpreis fließen nur gedämpft in
+        `trade_sale_cover_eur` ein, damit nicht vor dem Exit-Drop 100 % Peak-Gewinn dauerhaft
+        in Startelf-Käufen gebunden werden."""
+    from kickbase_agent.trading.trade_book import TradeBook, TradePosition
+
+    specs = (
+        [(pos, 10_000_000) for pos in ELEVEN]
+        + [(2, 3_000_000)]   # roster-11: regulärer KB-4-Bankspieler
+        + [(3, 11_000_000), (3, 11_000_000), (2, 11_000_000)]  # 3 Bank-Trader (MV 33 M €)
+    )
+    client = await _prepare_dispo(monkeypatch, specs=specs, cash=-29_500_000)
+    squad = await client.get_squad("L1")
+    for sp in squad:
+        if sp.player.id == "roster-11":
+            sp.player = sp.player.model_copy(update={"lineup_prob": 4, "last_name": "Reserve"})
+
+    async def get_squad(_league_id):
+        return squad
+
+    client.get_squad = get_squad
+    client.market = []
+    now = datetime.now(UTC)
+    trade_book = TradeBook(
+        positions={
+            "roster-12": TradePosition("roster-12", 10_000_000, now - timedelta(days=2), 1, 1),
+            "roster-13": TradePosition("roster-13", 10_000_000, now - timedelta(days=2), 2, 2),
+            "roster-14": TradePosition("roster-14", 10_000_000, now - timedelta(days=2), 3, 3),
+        },
+        live_bids={},
+        pending={},
+        firm={},
+    )
+    monkeypatch.setattr(plan_mod, "load_trade_book", lambda *args, **kwargs: trade_book)
+
+    plan = await plan_mod.build_plan()
+    deficit_sells = [p for p in plan.sells if p.rule_id == "sell_deficit_cover"]
+    assert deficit_sells == []
+    cover_eur = plan.team_plan["technical_limits"]["trade_sale_cover_eur"]
+    assert 30_000_000 <= cover_eur < 33_000_000
+
+
 
 
 

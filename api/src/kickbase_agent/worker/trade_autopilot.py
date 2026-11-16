@@ -50,7 +50,7 @@ from kickbase_agent.db.session import SessionLocal
 from kickbase_agent.decision.guardrails import DEFAULT_GUARDRAILS
 from kickbase_agent.decision.kickoff_freeze import KICKOFF_MIN_BALANCE
 from kickbase_agent.decision.lineup import MIN_SQUAD_SIZE
-from kickbase_agent.decision.overdraft import MIDWEEK_SWAP_BRIDGE_EUR
+from kickbase_agent.decision.overdraft import MIDWEEK_SWAP_BRIDGE_EUR, midweek_swap_bridge
 from kickbase_agent.decision.purchase_review import REVIEW_LIFETIME
 from kickbase_agent.kickbase.factory import make_kickbase_client
 from kickbase_agent.notify.report_store import save_report
@@ -59,6 +59,7 @@ from kickbase_agent.trading.trade_book import (
     POSITION_MINIMUMS,
     TRADE_CAP_EUR,
     TradeBook,
+    active_engine_swap_bridge,
     is_trade,
     live_swap_cover,
     load_trade_book,
@@ -544,12 +545,22 @@ def _is_planned_dispo_swap_bid(row: Intent) -> bool:
     )
 
 
-def _planned_swap_cash_need(row: Intent) -> int:
+def _planned_swap_cash_need(
+    row: Intent,
+    *,
+    now: datetime | None = None,
+    deadline: datetime | None = None,
+) -> int:
     """Echtes Konto-Geld, das ein geplanter Dispo-Tausch über Verkaufserlös + Midweek-Brücke
     hinaus bindet — bleibt in der Handelsdeckung für die Engine reserviert."""
     sale = wi._dispo_sale((row.sources or {}).get("purchase_review"))
     proceeds = int(sale.get("proceeds_eur") or 0) if isinstance(sale, Mapping) else 0
-    return max(0, int(row.amount or 0) - proceeds - MIDWEEK_SWAP_BRIDGE_EUR)
+    bridge_eur = (
+        midweek_swap_bridge(now, deadline)
+        if now is not None and deadline is not None
+        else MIDWEEK_SWAP_BRIDGE_EUR
+    )
+    return max(0, int(row.amount or 0) - proceeds - bridge_eur)
 
 
 def engine_busy(
@@ -908,6 +919,14 @@ async def run_trade_autopilot(channel=None, *, now: datetime | None = None) -> s
         blocked = {pid for kind, pid in wi.blocked_keys(session, stamp) if kind == "bid"}
         trade_bids_today = _trade_bids_today(session, stamp)
         buys_today = wi.today_intent_counts(session, stamp).buys
+        engine_bridge_eur = active_engine_swap_bridge(
+            session,
+            now=stamp,
+            deadline=deadline,
+            league_id=lg,
+            squad_ids=squad_ids,
+            live_bids=live_bids,
+        )
     regular = [sp for sp in squad if str(sp.player.id) not in book.positions]
     regular_filled = regular_fill(int(sp.player.position) for sp in regular)
     sale_by = sale_deadline(deadline, regular_filled)
@@ -973,7 +992,7 @@ async def run_trade_autopilot(channel=None, *, now: datetime | None = None) -> s
         regular_counts[int(sp.player.position)] = regular_counts.get(int(sp.player.position),
                                                                      0) + 1
     swap_cash_reserved = sum(
-        _planned_swap_cash_need(r)
+        _planned_swap_cash_need(r, now=stamp, deadline=deadline)
         for r in engine_bid_rows
         if _is_planned_dispo_swap_bid(r)
     )
@@ -988,7 +1007,11 @@ async def run_trade_autopilot(channel=None, *, now: datetime | None = None) -> s
         engine_bid_intents=len(engine_bid_rows),
         after_bids=budget - sum(live_bids.values()) - engine_planned_amount,
         floor=overdraft_floor(team_value, budget),
-        coverage=budget - sum(live_bids.values()) - swap_cash_reserved + swap_cover_eur
+        coverage=budget
+        - sum(live_bids.values())
+        - swap_cash_reserved
+        + swap_cover_eur
+        + engine_bridge_eur
         + sale_cover(
             held_mv=held_mv,
             bid_target_mv=target_mv,

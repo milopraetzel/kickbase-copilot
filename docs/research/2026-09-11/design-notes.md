@@ -2,7 +2,7 @@
 
 ## Tatsächliche Stilreferenz
 
-Referenz: `/Users/emil/Selbstständigkeit/WebMCP_Storefront`.
+Referenz: `local-reference`.
 Die aktuelle Startseite `/` rendert `app/customer-portal.tsx`, nicht den alten Storefront-Prototyp.
 Ihre Tokens stehen in `app/globals.css:61`, Komponenten in `app/customer-portal.css`.
 `app/layout.tsx` lädt Geist und Geist Mono. Keine Screenshots im Repository gefunden; einziges Rasterasset ist ein Anbieterlogo.

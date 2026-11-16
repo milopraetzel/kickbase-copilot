@@ -272,3 +272,168 @@ def test_live_swap_cover_credits_waiting_swap_sell_for_live_bid(session):
     assert covered_ids == {"mohya"}
     assert cover_eur == int(4_409_573 * 0.95)
 
+
+def test_midweek_swap_bridge_glidepath():
+    """Audit 15.11.2026 (Fix 3): Dreistufiger Brücken-Gleitpfad (>= 72h: 4,5 M €,
+    48h..72h: 2,25 M €, < 48h: 0 €)."""
+    from kickbase_agent.decision.overdraft import midweek_swap_bridge
+
+    deadline = NOW + 100 * H
+    assert midweek_swap_bridge(NOW, deadline) == 4_500_000
+    assert midweek_swap_bridge(deadline - 72 * H, deadline) == 4_500_000
+    assert midweek_swap_bridge(deadline - 60 * H, deadline) == 2_250_000
+    assert midweek_swap_bridge(deadline - 48 * H, deadline) == 2_250_000
+    assert midweek_swap_bridge(deadline - 47 * H, deadline) == 0
+
+
+def test_live_swap_cover_credits_waiting_swap_sell_after_target_won_in_squad():
+    """Audit 15.11.2026 (Fix 3): Ist das Tauschziel bereits im Kader (Zuschlag erfolgt), der
+    gekoppelte `swap_sell` aber noch `planned`, zählt sein 95-%-Erlös in `live_swap_cover`."""
+    from kickbase_agent.trading.trade_book import live_swap_cover
+
+    sell_row = Intent(
+        created_at=NOW,
+        updated_at=NOW,
+        kind="sell",
+        player_id="adeline",
+        player_name="Martin Adeline",
+        amount=4_409_573,
+        sources={
+            "rule_id": "swap_sell",
+            "swap_dispo": True,
+            "swap_for": "mohya",
+            "after_squad_size": 12,
+        },
+        listing_type="kickbase",
+        execute_at=NOW,
+        status="planned",
+    )
+    squad_mv = {f"p{i}": 10_000_000 for i in range(10)}
+    squad_mv["mohya"] = 12_000_000
+    squad_mv["adeline"] = 4_409_573
+    cover_eur, covered_ids = live_swap_cover(
+        [sell_row],
+        squad_mv=squad_mv,
+        live_bids={},
+        now=NOW,
+    )
+    assert covered_ids == set()
+    assert cover_eur == int(4_409_573 * 0.95)
+
+
+def test_active_engine_swap_bridge_tracks_won_swap_and_ignores_lost_auction(session):
+    """Audit 15.11.2026 (Live-Fall 4): `active_engine_swap_bridge` erkennt die in Anspruch
+    genommene Brücke eines gewonnenen Engine-Swaps (Kobel #505 + Schwäbe #504), ignoriert
+    überbotene Auktionen (Silva #495) und folgt dem Brücken-Gleitpfad bis T-48h."""
+    from kickbase_agent.trading.trade_book import active_engine_swap_bridge
+
+    deadline = NOW + 100 * H
+    # Überbotene Auktion (Silva #495: nicht in squad_ids und nicht in live_bids):
+    session.add(
+        Intent(
+            created_at=NOW - 12 * H,
+            updated_at=NOW - 10 * H,
+            kind="bid",
+            player_id="9698",
+            player_name="Fabio Silva",
+            amount=13_159_522,
+            sources={
+                "league_id": "L1",
+                "swap_out": "2749",
+                "purchase_review": {
+                    "team_plan": {
+                        "matchday_deadline": deadline.isoformat(),
+                        "technical_limits": {"midweek_swap_bridge_eur": 3_447_881},
+                    },
+                },
+            },
+            listing_type="kickbase",
+            execute_at=NOW - 11 * H,
+            status="executed",
+        )
+    )
+    # Gewonnener Swap (Kobel #505 im Kader + Schwäbe #504 verkauft):
+    session.add(
+        Intent(
+            created_at=NOW - 6 * H,
+            updated_at=NOW - 5 * H,
+            kind="bid",
+            player_id="1873",
+            player_name="Gregor Kobel",
+            amount=20_071_517,
+            sources={
+                "league_id": "L1",
+                "swap_out": "1580",
+                "purchase_review": {
+                    "team_plan": {
+                        "matchday_deadline": deadline.isoformat(),
+                        "technical_limits": {"midweek_swap_bridge_eur": 2_630_789},
+                    },
+                },
+            },
+            listing_type="kickbase",
+            execute_at=NOW - 5 * H,
+            status="executed",
+        )
+    )
+    session.add(
+        Intent(
+            created_at=NOW - 6 * H,
+            updated_at=NOW - 4 * H,
+            kind="sell",
+            player_id="1580",
+            player_name="Marvin Schwaebe",
+            amount=13_686_830,
+            sources={
+                "league_id": "L1",
+                "rule_id": "swap_sell",
+                "swap_for": "1873",
+                "swap_dispo": True,
+                "after_squad_size": 12,
+            },
+            listing_type="kickbase",
+            execute_at=NOW - 4 * H,
+            status="executed",
+        )
+    )
+    session.commit()
+
+    squad_ids = {"1873"} | {f"p{i}" for i in range(10)}
+    # Bei T-100h (>= 72h): volle deklarierte Brücke (2,63 M € <= 4,50 M €):
+    assert (
+        active_engine_swap_bridge(
+            session,
+            now=NOW,
+            deadline=deadline,
+            league_id="L1",
+            squad_ids=squad_ids,
+            live_bids=(),
+        )
+        == 2_630_789
+    )
+    # Bei T-60h (48h..72h): gedeckelt auf 2,25 M €:
+    assert (
+        active_engine_swap_bridge(
+            session,
+            now=deadline - 60 * H,
+            deadline=deadline,
+            league_id="L1",
+            squad_ids=squad_ids,
+            live_bids=(),
+        )
+        == 2_250_000
+    )
+    # Ab T-47h (< 48h): Brücke erlischt auf 0 €:
+    assert (
+        active_engine_swap_bridge(
+            session,
+            now=deadline - 47 * H,
+            deadline=deadline,
+            league_id="L1",
+            squad_ids=squad_ids,
+            live_bids=(),
+        )
+        == 0
+    )
+
+

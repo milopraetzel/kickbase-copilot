@@ -710,3 +710,121 @@ async def test_live_dispo_swap_bid_keeps_trading_into_deep_minus_when_covered(db
     assert hack_bid.status == "planned" and hack_bid.amount == 7_150_000
 
 
+async def test_executed_engine_swap_bridge_keeps_trade_autopilot_covered(db, monkeypatch):
+    """Audit 15.11.2026 (Live-Fall 4): Nach Ausführung eines Engine-Dispo-Swaps (Kobel gekauft,
+    Schwäbe verkauft) liegt die beanspruchte Midweek-Brücke real im Kontostand (`budget`).
+    `active_engine_swap_bridge` hält `Capacity.coverage` gedeckt, damit der Handels-Autopilot
+    nicht blockiert, bis die 22:00-Updates die Brücke abbauen."""
+    from kickbase_agent.db.models import TransferAction
+    from kickbase_agent.kickbase.models import SquadPlayer
+
+    from .test_trade_autopilot import DEADLINE
+
+    expires = NOW + 9 * H
+    # DEADLINE liegt 7,5 Tage nach NOW (> 72h -> Brücken-Cap 4,50 M €).
+    # 11 Reguläre (inkl. gewonnenem Kobel "1873") + 1 gehaltener Trader Gouweleeuw (MW 8,50 M €).
+    kobel = SquadPlayer(player=_player("1873", "Kobel", 20_070_000, position=1))
+    base_rest = _eleven()[1:]
+    trader = SquadPlayer(player=_player("gouweleeuw", "Gouweleeuw", 8_500_000, position=2))
+    market = [
+        MarketPlayer(
+            player=_player("hack", "Robin Hack", 6_500_000),
+            price=6_500_000,
+            expires_at=expires,
+        )
+    ]
+    # Ohne Brücke wäre budget + trader_mv = -9,75 M + 8,50 M = -1,25 M € (< +10k € -> tot!).
+    # Mit aktiver Engine-Brücke (1,63 M €) liegt coverage bei +380.789 € >= +10.000 €.
+    client = _ReadOnlyClient(
+        squad=[kobel, *base_rest, trader],
+        market=market,
+        budget=-9_750_000,
+        own_bids=[],
+    )
+    _world(monkeypatch, client)
+    _radar(db, NOW - 5 * MIN, _kauf("hack", 6_500_000, 6_650_000, expires))
+    _engine_plan(db, NOW - 5 * MIN, purchases=[])
+
+    with db() as s:
+        t_act = TransferAction(
+            league_id="L1",
+            action_type="bid",
+            player_id="gouweleeuw",
+            amount=8_100_000,
+            status="executed",
+            idempotency_key="gouweleeuw-trade",
+            rule_id="intent-bid",
+            dry_run=False,
+            created_at=NOW - 24 * H,
+        )
+        s.add(t_act)
+        s.flush()
+        s.add(
+            Intent(
+                created_at=NOW - 24 * H,
+                updated_at=NOW - 24 * H,
+                kind="bid",
+                player_id="gouweleeuw",
+                player_name="Gouweleeuw",
+                amount=8_100_000,
+                sources={"trade": True, "league_id": "L1"},
+                listing_type="kickbase",
+                deadline=NOW - 23 * H,
+                execute_at=NOW - 24 * H,
+                status="executed",
+                executed_action_id=t_act.id,
+            )
+        )
+        s.add(
+            Intent(
+                created_at=NOW - 6 * H,
+                updated_at=NOW - 5 * H,
+                kind="bid",
+                player_id="1873",
+                player_name="Gregor Kobel",
+                amount=20_071_517,
+                sources={
+                    "league_id": "L1",
+                    "swap_out": "1580",
+                    "purchase_review": {
+                        "team_plan": {
+                            "matchday_deadline": DEADLINE.isoformat(),
+                            "technical_limits": {"midweek_swap_bridge_eur": 1_630_789},
+                        },
+                    },
+                },
+                listing_type="kickbase",
+                deadline=NOW - 5 * H,
+                execute_at=NOW - 6 * H,
+                status="executed",
+            )
+        )
+        s.add(
+            Intent(
+                created_at=NOW - 6 * H,
+                updated_at=NOW - 4 * H,
+                kind="sell",
+                player_id="1580",
+                player_name="Marvin Schwaebe",
+                amount=13_686_830,
+                sources={
+                    "league_id": "L1",
+                    "rule_id": "swap_sell",
+                    "swap_for": "1873",
+                    "swap_dispo": True,
+                    "after_squad_size": 12,
+                },
+                listing_type="kickbase",
+                execute_at=NOW - 4 * H,
+                status="executed",
+            )
+        )
+        s.commit()
+
+    assert await ta.run_trade_autopilot(now=NOW) == "ok:1/0/0"
+    with db() as s:
+        hack_bid = s.scalars(select(Intent).where(Intent.player_id == "hack")).one()
+    assert hack_bid.status == "planned" and hack_bid.amount == 6_650_000
+
+
+

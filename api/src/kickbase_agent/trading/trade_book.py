@@ -34,6 +34,7 @@ from kickbase_agent.decision.guardrails import protected_player_ids
 from kickbase_agent.decision.lineup import _FORMATIONS, MIN_SQUAD_SIZE
 from kickbase_agent.decision.overdraft import (
     PLANNING_OVERDRAFT_UNTIL,
+    midweek_swap_bridge,
     overdraft_active,
     swap_sale_proceeds,
 )
@@ -204,15 +205,14 @@ def live_swap_cover(
     live_bids: Mapping[str, int],
     now: datetime,
 ) -> tuple[int, set[str]]:
-    """Deckung und gekoppelte Ziel-IDs wartender Dispo-Tauschverkäufe für laufende Gebote.
+    """Deckung und gekoppelte Ziel-IDs wartender Dispo-Tauschverkäufe.
 
-    Steht zu einem bereits bei Kickbase platzierten Live-Gebot (`live_bids`) der gekoppelte
-    `swap_sell`-Sofortverkauf eines ungeschützten eigenen Spielers bereit, bringt der Zuschlag
-    automatisch `swap_sale_proceeds(MW)` zurück (höchstens den Gebotsbetrag). Konsistent mit
-    `outcome_guard.swap_cover` und `worker.intents.squad_condition_unmet` (`min(need, 12)`).
+    Steht zu einem bereits bei Kickbase platzierten Live-Gebot (`live_bids`) oder einem soeben
+    gewonnenen Tauschziel (`target_pid in squad_mv`) der gekoppelte `swap_sell`-Sofortverkauf
+    eines ungeschützten eigenen Spielers bereit, bringt der Verkauf automatisch
+    `swap_sale_proceeds(MW)` zurück. Konsistent mit `outcome_guard.swap_cover`.
     """
-    if not overdraft_active(_utc(now), until=PLANNING_OVERDRAFT_UNTIL):
-        return 0, set()
+    active = overdraft_active(_utc(now), until=PLANNING_OVERDRAFT_UNTIL)
     protected = protected_player_ids()
     squad_size = len(squad_mv)
     cover_eur = 0
@@ -236,20 +236,143 @@ def live_swap_cover(
             or sell_pid in seen_sellers
             or sell_pid in protected
             or sell_pid not in squad_mv
-            or target_pid not in live_bids
-            or target_pid in squad_mv
         ):
             continue
         need = _after_squad_size(sources.get("after_squad_size"))
-        if need is None or squad_size + 1 < min(need, 12):
+        won_in_squad = target_pid in squad_mv
+        after_win = squad_size + (0 if won_in_squad else 1)
+        if need is None or after_win < min(need, 12):
             continue
-        seen_sellers.add(sell_pid)
-        covered_targets.add(target_pid)
-        cover_eur += min(
-            swap_sale_proceeds(int(squad_mv[sell_pid])),
-            int(live_bids[target_pid]),
-        )
+        if won_in_squad:
+            seen_sellers.add(sell_pid)
+            cover_eur += swap_sale_proceeds(int(squad_mv[sell_pid]))
+        elif active and target_pid in live_bids:
+            seen_sellers.add(sell_pid)
+            covered_targets.add(target_pid)
+            cover_eur += min(
+                swap_sale_proceeds(int(squad_mv[sell_pid])),
+                int(live_bids[target_pid]),
+            )
     return cover_eur, covered_targets
+
+
+def _parse_iso_utc(raw: object) -> datetime | None:
+    if not isinstance(raw, str) or not raw.strip():
+        return None
+    try:
+        parsed = datetime.fromisoformat(raw)
+    except ValueError:
+        return None
+    return _utc(parsed)
+
+
+def active_engine_swap_bridge(
+    session: Any,
+    *,
+    now: datetime,
+    deadline: datetime | None,
+    league_id: str | None = None,
+    squad_ids: Iterable[str] = (),
+    live_bids: Mapping[str, int] | None = None,
+) -> int:
+    """Aktive Midweek-Brücke eines laufenden oder bereits gewonnenen Engine-Dispo-Tauschs.
+
+    Solange ein Engine-Tausch nur `planned` ist, reserviert `_planned_swap_cash_need` bereits
+    nur den Teil oberhalb der Brücke. Sobald das Engine-Gebot aber live in `own_bids` steht
+    oder gewonnen im Kader liegt (während der gekoppelte Verkauf wartet oder bereits ausgeführt
+    wurde), liegt die gezogene Brücke echt auf `budget`. Diese Funktion gibt den belegten
+    Brückenbetrag des aktuellen Spieltags zurück — gedeckelt durch den zeitlichen Gleitpfad
+    `midweek_swap_bridge(now, deadline)` (4,5 M € >= 72 h, 2,25 M € bei 48–72 h, 0 € < 48 h).
+    """
+    if session is None or not hasattr(session, "scalars") or deadline is None:
+        return 0
+    cap = midweek_swap_bridge(now, deadline, until=PLANNING_OVERDRAFT_UNTIL)
+    if cap <= 0:
+        return 0
+    now_utc = _utc(now)
+    deadline_utc = _utc(deadline)
+    squad_set = {str(pid) for pid in squad_ids}
+    live_set = {str(pid) for pid in (live_bids or {})}
+    if not squad_set and not live_set:
+        return 0
+    protected = protected_player_ids()
+    valid_targets: set[str] = set()
+    sell_rows = session.scalars(
+        select(Intent).where(
+            Intent.kind == "sell",
+            Intent.status.in_(("planned", "executing", "executed")),
+        )
+    )
+    for srow in sell_rows:
+        src = srow.sources if isinstance(srow.sources, Mapping) else {}
+        if not (src.get("swap_dispo") is True or src.get("rule_id") == "swap_sell"):
+            continue
+        saved_lg = src.get("league_id")
+        if league_id is not None and saved_lg is not None and str(saved_lg) != str(league_id):
+            continue
+        sell_pid = str(srow.player_id or "")
+        target_pid = str(src.get("swap_for") or "")
+        if not sell_pid or not target_pid or sell_pid in protected:
+            continue
+        if srow.status in ("planned", "executing") and sell_pid in squad_set:
+            valid_targets.add(target_pid)
+        elif srow.status == "executed" and sell_pid not in squad_set:
+            valid_targets.add(target_pid)
+    if not valid_targets:
+        return 0
+
+    last_sale: dict[str, datetime] = {}
+    sales_q = select(TransferAction).where(
+        TransferAction.action_type.in_(("sell", "accept")),
+        TransferAction.status == "executed",
+        TransferAction.dry_run.is_(False),
+    )
+    if league_id is not None:
+        sales_q = sales_q.where(TransferAction.league_id == league_id)
+    for action in session.scalars(sales_q):
+        pid = str(action.player_id or "")
+        stamp = _utc(action.created_at)
+        if pid and stamp > last_sale.get(pid, datetime.min.replace(tzinfo=UTC)):
+            last_sale[pid] = stamp
+
+    declared_max = 0
+    bid_rows = session.scalars(
+        select(Intent).where(
+            Intent.kind == "bid",
+            Intent.status.in_(("executing", "executed")),
+        )
+    )
+    for brow in bid_rows:
+        src = brow.sources if isinstance(brow.sources, Mapping) else {}
+        if is_trade(src):
+            continue
+        raw_review = src.get("purchase_review")
+        review = raw_review if isinstance(raw_review, Mapping) else {}
+        plan = review.get("team_plan") if isinstance(review.get("team_plan"), Mapping) else {}
+        saved_lg = src.get("league_id") or plan.get("league_id")
+        if league_id is not None and saved_lg is not None and str(saved_lg) != str(league_id):
+            continue
+        pid = str(brow.player_id or "")
+        if pid not in valid_targets or (pid not in live_set and pid not in squad_set):
+            continue
+        created_utc = _utc(brow.created_at)
+        if pid in squad_set and pid in last_sale and last_sale[pid] > created_utc:
+            continue
+        plan_dl = _parse_iso_utc(plan.get("matchday_deadline"))
+        if plan_dl is not None:
+            if plan_dl != deadline_utc:
+                continue
+        elif created_utc < deadline_utc - timedelta(days=14) or created_utc > now_utc:
+            continue
+        limits = (
+            plan.get("technical_limits")
+            if isinstance(plan.get("technical_limits"), Mapping)
+            else {}
+        )
+        raw_bridge = limits.get("midweek_swap_bridge_eur")
+        if type(raw_bridge) is int and raw_bridge > 0:
+            declared_max = max(declared_max, raw_bridge)
+    return min(cap, declared_max)
 
 
 @dataclass(frozen=True)

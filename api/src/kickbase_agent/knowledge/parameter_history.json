@@ -2,6 +2,66 @@
  "_comment": "Parameter-Historie der Entscheidungs-Engine — nur belegte Aenderungen (Commit + Grund). Neueste zuerst; Pflege von Hand bei jeder Parameter-Aenderung. old=null: Parameter neu eingefuehrt.",
  "entries": [
   {
+   "date": "2026-11-15",
+   "parameter": "plan.bid_premium",
+   "old": "Ein vor 22:00 Uhr angelegtes, noch nicht bei Kickbase platziertes `planned`-Vorhaben behielt nach dem 22:00-Uhr-Marktwert-Update stur seinen Vor-Update-Betrag (womit der reale Aufschlag eines Steigers wie Fábio Silva `9698` unbemerkt von `+10,0 %` auf `+7,7 %` schrumpfte); zusätzlich deckelte `prior_cap` (`prior_review['max_bid_eur']`) in Folgeläufen auch unplatzierte geplante Vorhaben wie eine Einweg-Sperrklinke nach unten.",
+   "new": "Noch nicht bei Kickbase platzierte, unberührte geplante Kickbase-Vorhaben (`status == 'planned'`, nicht in `live_ids`, nicht `manual` / ohne `adjusted_from`) verankern ihren Zielbetrag und ihre V3-Herleitung nach einem 22:00-Uhr-Marktwert-Update (`prior_mv != fresh.market_value`) frisch auf dem neuen Marktwert und aktualisieren das offene Vorhaben über `upsert_intents` (inkl. gekoppelter Dispo-Tausche). Die `prior_cap`-Klammer gilt nur noch für bereits live abgegebene oder manuelle/Emil-angepasste Vorhaben.",
+   "reason": "Architektur-Review 15.11.2026 (Architektur- & Entscheidungs-Audit, Fix 6 / Live-Fall Fábio Silva `act#413`): Ein vor 22:00 Uhr geplantes Sniper-Vorhaben verlor durch den nächtlichen Marktwert-Sprung real ~2,3 Prozentpunkte Gebotsaufschlag, ohne dass ein `cancel_bid`-Risiko bestand (da das Gebot noch gar nicht bei Kickbase lag).",
+   "expect": "Volle V3-/+10-%-Auktions-Durchschlagskraft bei Sniper-Vorhaben über das 22:00-Uhr-Update hinweg, null `cancel_bid`-Risiko auf Live-Geboten und unangetasteter Vorrang manueller sowie von Architektur-Review angepasster Vorhaben.",
+   "review": "Spieltage 11 und 12: Vor 22:00 Uhr angelegte und erst nach 22:00 Uhr fällige Kickbase-Vorhaben auf frische Nachverankerung und Zuschlagsquote prüfen.",
+   "beleg": "tests/cli/test_plan_bid_premium.py (test_unplaced_planned_bid_reanchors_after_22h_mv_update_while_manual_and_live_stay_fixed, test_unplaced_planned_dispo_swap_reanchors_across_22h_update_end_to_end_in_intents)",
+   "quelle": "Architektur-Review 15.11.2026; Architektur- & Mathematik-Review (Fix 6)",
+   "commit": "b18afb3"
+  },
+  {
+   "date": "2026-11-15",
+   "parameter": "plan.planning_overdraft",
+   "old": "Intakte Starter (z. B. Stammtorhüter Schwäbe 110,6 xP/Spiel) durften bei frei gewordenem Aufpreis-Budget + `budget < 0`-Schlupfloch in `_sold_allows_bridge` sowohl das freie Cash-Budget (`remaining`) als auch die 4,5-M-€-Midweek-Brücke verbrauchen, während eine offene Startelf-Schwachstelle (Tigges 37,5 xP/Spiel, alleiniger `pos=4` im 5-4-1) leer ausging und wegen `not sold_is_starter` nicht positionsübergreifend getauscht werden konnte; zudem verbuchte `cli/plan.py` 100 % ungesicherter Buchgewinne gehaltener Bank-Trader dauerhaft in `trade_held_cover` und prüfte `sell_deficit_cover` ohne Trader-Deckung.",
+   "new": "(1) Baustellen-Vorrang (`_is_weak_slot`: Nicht-Starter, `< 58,0 xP/Spiel` oder `<= -150k €/Tag`): Solange eine echte Baustelle in der 11er-Startelf existiert, erhalten intakte Starter `0 €` aus `remaining` und `0 €` aus `midweek_swap_bridge` (nur 95-%-Eigenfinanzierung); das `budget < 0`-Schlupfloch in `_sold_allows_bridge` entfällt. (2) Allein-Positions-Reserve (`SOLE_WEAK_POS_RESERVE_EUR = 3.000.000 €`): Ist eine Baustelle der einzige Kaderspieler ihrer Pflichtposition (z. B. alleiniger Stürmer), bleiben 3,0 M € Aufpreis-Kapital für diese Position reserviert. (3) Cross-Positions-Tausch (`5-4-1 -> 4-4-2 / 5-3-2`) auch für schwache Startelf-Baustellen freigeschaltet, sofern die Ziel-Formation gültig bleibt. (4) Vorsichtige Engine-Anrechnung gehaltener Bank-Trader (`_engine_trade_held_proceeds`: `min(max(buy_price, round(0,97 * MW)), buy_price + (MW - buy_price) // 2)`) sowie Trader-Deckungs-Berücksichtigung in `sell_deficit_cover`.",
+   "reason": "Architektur-Review 15.11.2026 (Architektur- & Entscheidungs-Audit 12.11.–15.11.2026, Live-Fälle 1 & 3 + Blinde Flecken 6 & 7): Nach Überbietung auf Fábio Silva (#413) band `Schwäbe -> Kobel` (#416/#417) 6,38 M € Zusatzkapital (+25,2 xP/Spiel im Tor) inklusive 1,63 M € Brücke, sodass für Stürmer-Schwachstelle Steffen Tigges (37,5 xP/Spiel, -118k/Tag) 0 € Aufpreis-Budget übrig blieb.",
+   "expect": "Knappes Aufpreis-Kapital und Midweek-Brücke fließen strikt in echte Startelf-Baustellen (< 58 xP/Spiel, Nicht-Starter, starke Faller); kein Luxus-Torwart-Upgrade vor Schließung offener Feld-Baustellen; keine dauerhafte Verpfändung volatiler Trader-Spitzengewinne.",
+   "review": "Freitag 20.11.2026 20:30 (MD-11-Anpfiff) und Spieltag 12: Zielgerichtete Schließung der Sturm-Baustelle, 11/11 Startelf und Konto >= +10.000 € zum Anpfiff prüfen.",
+   "beleg": "tests/cli/test_plan_dispo.py (test_baustellen_vorrang_blocks_luxury_gk_upgrade_and_reserves_sole_striker_budget, test_cross_position_swap_unlocks_weak_starter_and_remaining_bridge_works_in_minus, test_trader_unrealized_gain_haircut_and_no_panic_deficit_sell_under_trader_cover)",
+   "quelle": "Architektur-Review 15.11.2026; Architektur- & Mathematik-Review (Fixes 1, 4 & 5)",
+   "commit": "b18afb3"
+  },
+  {
+   "date": "2026-11-15",
+   "parameter": "plan.swap_brake",
+   "old": "`_sale_tier` stufte jeden Starter mit `mv_change_24h > 0` oder binärem Kickbase-Flag `market_value_trend == 1` (bereits ab +18k/+31k €/Tag bei Sirch/Adeline) als `Tier 3` ein und legte in `ranked` `Tier 2` und `Tier 3` über `max(0, 2 - _sale_tier)` auf denselben Rang `0` zusammen; `swap_pays_off` prüfte nur den Auktions-Aufschlag (`bid - mv`) ohne Stufen-Mindestgewinn, ohne Netto-Zuzahlungsdeckel je Horizontpunkt und ohne Marktwert-Trend-Verlust des abgegebenen Steigers.",
+   "new": "(1) Echte Trend-Schwelle in `_sale_tier` (`STARTER_RISING_PROTECTION_24H = 75.000 €/Tag`, `market_value_trend == 1` nur als Fallback ohne beobachtetes 24h-Euro-Delta) sowie strikte Trennung `Tier 0 > Tier 1 > Tier 2 > Tier 3` in `ranked` (`min(2, 3 - _sale_tier)`), wobei Baustellen (`< 58 xP/Spiel` ohne aktiven Surge-Shield) in `Tier 1` eingeordnet werden. (2) Erweiterte Kosten-Nutzen-Bremse in `swap_pays_off`: Stufen-Mindestgewinn `SWAP_MIN_GAIN_BY_TIER = {0: 15, 1: 24, 2: 48, 3: 72}` Horizontpunkte (ausgenommen Freitag-Defizit-Notfüller), Netto-Zuzahlungsdeckel `85.000 €/hP` für Baustellen bzw. `35.000 €/hP` für intakte Starter sowie symmetrisches 3-Tage-Marktwert-Trend-Delta `3 * (fresh_24h - sold_24h)`.",
+   "reason": "Architektur-Review 15.11.2026 (Architektur- & Entscheidungs-Audit, Live-Fall 2 `act#421/#422`): Beim Kauf von Jamie Leweling (13,94 M €, 110,2 xP/Spiel) verkaufte die Engine den steigenden Stammspieler Youri Regeer (15,78 M €, 102,7 xP/Spiel, +125k/Tag) für magere +7,5 xP/Spiel statt Adeline (55,3 xP) oder Onyedika (80,9 xP), weil Adeline/Onyedika auf denselben Verkaufs-Rang wie Regeer fielen und Regeer der einzige eigenfinanzierte Kandidat war.",
+   "expect": "Keine Seitwärts-Tausche steigender Leistungsträger für minimale Punktgewinne mehr; klare Priorisierung schwacher Starter (Tier 1) vor soliden Startern (Tier 2) und echten Steigern >= +75k €/Tag (Tier 3).",
+   "review": "Spieltage 11 und 12: Verkaufsseiten aller ausgeführten Engine-Tausche sowie Netto-Punktegewinn je eingesetztem Euro prüfen.",
+   "beleg": "tests/cli/test_plan_dispo.py (test_tier_separation_and_min_gain_prevent_regeer_for_leweling_sidegrade), tests/cli/test_plan_tauschbremse.py (test_swap_pays_off_enforces_tier_min_gain_net_capital_cap_and_mv_trend)",
+   "quelle": "Architektur-Review 15.11.2026; Architektur- & Mathematik-Review (Fix 2)",
+   "commit": "b18afb3"
+  },
+  {
+   "date": "2026-11-15",
+   "parameter": "radar.trade_autopilot",
+   "old": "`midweek_swap_bridge` sprang hart bei `T-48h` von `4.500.000 €` auf `0 €`; sobald ein Engine-Dispo-Swap ausgeführt war (wie Kobel `#505`), kannten weder `trade_autopilot.py` (`Capacity.coverage`), `trade_radar.py` (`account_summary`) noch `outcome_guard.py` die in Anspruch genommene Engine-Brücke, wodurch `Capacity.coverage` unter `KICKOFF_MIN_BALANCE` (+10.000 €) fiel und den Handels-Autopiloten blockierte, der diese Brücke eigentlich durch Bank-Flips abbauen soll.",
+   "new": "(1) Dreistufiger Brücken-Gleitpfad in `midweek_swap_bridge` (`decision/overdraft.py`): `4.500.000 €` bei `>= 72 h` vor Anpfiff (Sa–Di), `2.250.000 €` bei `48..72 h` (Mi) und `0 €` bei `< 48 h` (Do–Fr), mit Bestandsschutz für bereits live stehende Kickbase-Auktionen bis `T-48h`. (2) `active_engine_swap_bridge` (`trading/trade_book.py`) ermittelt die aktive deklarierte Brücke laufender oder gewonnener Engine-Dispo-Swaps des aktuellen Spieltags (gedeckelt durch den Gleitpfad) und rechnet sie in `trade_autopilot.py` (`Capacity.coverage`), `trade_radar.py` und `outcome_guard.py` (nur Netto-Deckung, nie auf die harte 33-%-Kickbase-Dispo-Grenze!) an; `live_swap_cover` deckt zudem das Zeitfenster zwischen Auktions-Zuschlag und Ausführung des gekoppelten `swap_sell` ab.",
+   "reason": "Architektur-Review 15.11.2026 (Architektur- & Entscheidungs-Audit, Live-Fall 4): Nach Ausführung des Kobel-Swaps schlug die gezogene Brücke (1,63 M €) voll auf `budget` durch, ließ `Capacity.coverage` im Handels-Autopiloten künstlich unter +10.000 € fallen und legte ausgerechnet den Handels-Motor lahm, bis 22:00-Uhr-Updates das Loch schlossen.",
+   "expect": "Nahtloses Weiterhandeln des 50-M-€-Autopiloten nach ausgeführten Engine-Dispo-Swaps innerhalb der 33-%-Dispo-Grenze, kontrollierter Brücken-Abbau über den 72h/48h-Gleitpfad und 0 € ungedeckte Brücke ab Donnerstag (< 48 h vor Anpfiff).",
+   "review": "Mittwoch 18.11. (T-72h), Donnerstag 19.11. (T-48h) und Freitag 20.11.2026 14:30 / 20:30: Parallele Handels-Gebote trotz aktiver Engine-Brücke sowie pünktliche Glattstellung bis Freitag prüfen.",
+   "beleg": "tests/trading/test_trade_book.py (test_midweek_swap_bridge_glidepath, test_live_swap_cover_credits_waiting_swap_sell_after_target_won_in_squad, test_active_engine_swap_bridge_tracks_won_swap_and_ignores_lost_auction), tests/worker/test_trade_engine_priority.py (test_executed_engine_swap_bridge_keeps_trade_autopilot_covered), tests/worker/test_outcome_guard.py",
+   "quelle": "Architektur-Review 15.11.2026; Architektur- & Mathematik-Review (Fix 3)",
+   "commit": "b18afb3"
+  },
+  {
+   "date": "2026-11-10",
+   "parameter": "radar.trade_autopilot",
+   "old": "Sobald ein 1-zu-1-Dispo-Swap-Gebot der Engine ausgeführt und in `own_bids` live war, setzte `bool(set(live_bids) - set(book.live_bids))` in `trade_autopilot.py` (sowie `engine_busy` bei laufenden Kickbase-Auktionen) `busy = True`, und weder `Capacity.coverage` noch `trade_radar.account_summary` rechneten den gekoppelten offenen `swap_sell`-Erlös an (zudem prüfte `outcome_guard.swap_cover` `after_squad_size` gegen den Rohwert statt `min(after_squad_size, 12)` bei gehaltenen Handelsspielern). Dadurch stoppte der MW-Handel schon bei -10,68 M € `pbaa` statt den zinsfreien 50-M-€-Handelsrahmen auszuschöpfen.",
+   "new": "`live_swap_cover` (`trading/trade_book.py`) rechnet für laufende Dispo-Swap-Gebote den 95-%-Sofortverkaufserlös (`swap_sale_proceeds`) des offenen, ungeschützten `swap_sell`-Vorhabens (`min(after_squad_size, 12) >= 11`) in `Capacity.coverage` (`trade_autopilot.py`) und `account_summary` (`trade_radar.py`) an und nimmt solche 1-zu-1-Tauschgebote bei voller regulärer 11er-Elf von `busy` und `engine_busy` aus; `outcome_guard.swap_cover` nutzt ebenfalls `min(sale.after_squad_size, 12)`.",
+   "reason": "Architektur-Review 10.11.2026 ('Wir hatten ja gesagt, wir können noch viel weiter ins Minus gehen als die 10 Millionen, nur um Geld zu verdienen. Wir zahlen ja keine Zinsen oder so'): Laufendes 12,00-M-€-Gebot (Mohya) zog die volle Summe ab, ohne den wartenden Tauschverkauf Adeline (+4,19 M €) gegenzurechnen, und meldete scheinbar -2,16 M € Unterdeckung trotz echter +2,03 M € Freitagsdeckung.",
+   "expect": "Volle Nutzung des zinsfreien Dispos bis zum 50-M-€-Handelsrahmen (bzw. -33-%-Kickbase-Dispo-Grenze) für kurzfristige Marktwert-Steiger parallel zu laufenden 1-zu-1-Dispo-Tauschen, bei unverändert harter Freitagsdeckung >= +10.000 € zum Anpfiff.",
+   "review": "Nach Spieltag 10 und 11: Ausnutzung des Handelsrahmens bei parallelen Dispo-Swaps sowie Kontostand >= +10.000 € vor Anpfiff prüfen.",
+   "beleg": "tests/worker/test_trade_engine_priority.py (test_live_dispo_swap_bid_keeps_trading_into_deep_minus_when_covered), tests/worker/test_trade_radar.py",
+   "quelle": "Architektur-Review 10.11.2026; Freischaltung tieferes zinsfreies Dispo-Minus parallel zu laufenden 1-zu-1-Dispo-Swaps",
+   "commit": "14cff88"
+  },
+  {
    "date": "2026-11-06",
    "parameter": "plan.planning_overdraft",
    "old": "SWAP_SALE_CREDIT_PERCENT = 100 (0 % Puffer gegen ein 22:00-Uhr-Marktwert-Update zwischen Gebotsabgabe und Zuschlag bei Fallern); MIDWEEK_SWAP_BRIDGE_EUR = 6.000.000 € bis MIDWEEK_SWAP_BRIDGE_MIN_LEAD = 12 Stunden vor Anpfiff (erlaubte noch Donnerstagabend/Freitagfrüh bis zu 6,0 M € ungedeckte Tausch-Brücke ohne verbleibende Marktwert-Updates).",

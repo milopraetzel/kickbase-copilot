@@ -7,7 +7,7 @@ eine ``commits.json`` (JSON-Array, neueste zuerst) und legt sie ins Daten-Volume
 Exaktes Erzeugungs-Kommando (Feld-/Record-Trenner ␟/␞, damit Anführungszeichen
 und Umbrüche in Subjects/Bodies das JSON nie zerbrechen)::
 
-    cd "/Users/emil/Mein Claude /Kickbase-Agent" && \
+    cd "/path/to/kickbase-copilot" && \
       git log -60 --pretty=format:'%H%x1f%cI%x1f%s%x1f%b%x1e' | python3 -c '
     import json, sys
     rows = [r.strip("\\n").split("\\x1f") for r in sys.stdin.read().split("\\x1e") if r.strip()]

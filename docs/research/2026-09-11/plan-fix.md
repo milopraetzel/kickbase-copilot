@@ -67,6 +67,6 @@ durch diese Korrektur.
 Reproduktion:
 
 ```sh
-cd "/Users/emil/Mein Claude /Kickbase-Agent/api"
+cd "/path/to/kickbase-copilot/api"
 uv run --extra dev pytest -q tests/cli/test_plan_roster_value.py tests/cli/test_plan.py tests/decision/test_swaps.py tests/worker/test_swap_pipeline.py
 ```

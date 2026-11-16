@@ -141,8 +141,9 @@ OPEN_CALIBRATIONS: tuple[str, ...] = (
     "Gebotsregel V3: Koeffizienten aus sechs Wochen Liga-Käufen (bis 24.09.2026), fest "
     "eingetragen. Prospektiv messen: Zuschlagsquote und Buchwert nach 7 Tagen je Gebot. "
     "Eine Neuschätzung braucht dauerhaft gespeicherte Liga-Transfers und unverkaufte Listings. "
-    "Ein geplantes Vorhaben behält seinen Betrag über das 22-Uhr-Update; der wirksame "
-    "Aufschlag weicht dann vom geplanten ab (Neubepreisung offen, Frage an Emil).",
+    "Noch nicht platzierte, unberührte geplante Kickbase-Vorhaben verankern ihren Betrag nach "
+    "dem 22-Uhr-Marktwert-Update frisch; bereits live abgegebene sowie manuelle oder von Emil "
+    "angepasste Vorhaben behalten ihren Betrag.",
     "Jev-Rolle aus kicker-Artikeln: Schwelle 0,95 an 33 Paaren vom 29.09.2026 geprüft "
     "(echte Ausfälle 0,95–1,00, Fehlwerte bis 0,83; Rauschen ±0,05, gebündelt gegen einzeln "
     "bis 0,4). Prospektiv messen: gesperrte Ziele, die doch spielten, und freigegebene, die "
@@ -322,7 +323,9 @@ def _bid_premium_text() -> str:
         f"{bp.STEP_FLOOR}..{bp.STEP_CEILING}; ohne beobachtetes tfhmvt Mindestpreis; nie ueber "
         "Obergrenze, Einzelrahmen und technischen Kappen; gekuerzt, wo es dem Paket einen "
         "Platz oder Punkte naehme oder einen gleich guten, guenstigeren Ersatz gleichstellte; "
-        "geplante Vorhaben behalten Betrag und Herleitung, Live-Gebote ihren Betrag"
+        "unplatzierte geplante Vorhaben verankern nach 22-Uhr-Marktwert-Updates frisch (ohne "
+        "prior_cap-Sperrklinke), unveraenderte/manuelle Vorhaben und Live-Gebote behalten ihren "
+        "Betrag"
     )
 
 
