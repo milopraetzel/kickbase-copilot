@@ -141,7 +141,7 @@ def test_candidate_mutation_after_promotion_fails_closed(tmp_path):
     assert model.load_competition("1234567", "kickbase", registry_dir=tmp_path / "registry") is None
 
 
-def prospective_bid(session, *, amount=None, my_name="emil"):
+def prospective_bid(session, *, amount=None, my_name="manager_self"):
     row = bid(session, amount=amount)
     row.dry_run = False
     row.payload = {
@@ -167,7 +167,7 @@ def test_confirmed_prospective_labels_do_not_need_an_old_probability(session, re
     row = prospective_bid(
         session,
         amount=RECEIPT["data"]["trp"] - int(result == "lost"),
-        my_name="emil" if result == "won" else "different manager",
+        my_name="manager_self" if result == "won" else "different manager",
     )
     [observation] = observations_from_actions([row], as_of=AT + timedelta(days=3))
     assert observation.prospective

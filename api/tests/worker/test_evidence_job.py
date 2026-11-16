@@ -164,7 +164,7 @@ async def test_job_collects_a_bid_settled_after_the_previous_run(session, result
     settled = settle_bid_expectations(
         session, squad_pids={"15589"} if result == "won" else set(),
         open_bid_pids=set(), now=settled_at, receipts=[receipt],
-        my_name="emil" if result == "won" else "anderer Manager",
+        my_name="manager_self" if result == "won" else "anderer Manager",
     )
     assert len(settled) == 1 and settled[0].result == result
     await evidence_job.run_evidence_job(None, now=NOW)

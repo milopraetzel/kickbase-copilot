@@ -38,7 +38,7 @@ def bid(session, *, key="bid", delta=1, amount=None, league="1234567"):
     return row
 
 
-def settle(session, my_name="emil"):
+def settle(session, my_name="manager_self"):
     return settle_bid_expectations(
         session, league_id="1234567", squad_pids=set(), open_bid_pids=set(),
         receipts=FEED, my_name=my_name, now=AT + timedelta(days=3),
